@@ -4,7 +4,7 @@
 #   m u t e    Installer shell
 # +         +
 #
-# ©2022 kitamura_design <kitamura_design@me.com>
+# (C)2022 kitamura_design <kitamura_design@me.com>
 
 set -e
 VER=$(cat ./www/cgi-bin/etc/mute.conf | grep ver | cut -d "=" -f 2)
