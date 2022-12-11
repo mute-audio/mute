@@ -1,0 +1,99 @@
+<!-- index.html                     -->
+<!-- [ mute ] ©2021 kitamura_design -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>[ mute ]</title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+</head>
+
+<body>
+
+<!-- Loading Screen-->
+ <div id="loading">
+    <div class="loadingtext"> Loading... </div>
+ </div>
+
+<!-- Main -->
+
+   <h2>Introduction</h2>
+
+    <p class="bodytext">
+    <br>
+    Hello,
+    <br>
+    <br>
+    If you are seeing this page, it means that [ mute ] has been successfully installed on your RaspberryPi.
+    <br>
+    This WebApp is designed ONLY to work to set up the "RPi-Audio Player", NOT to browse / play your music library.
+    To control MPD, you need the Client App ( like <a href="https://www.openaudiolab.com/yampc/" target="_blank">yaMPC</a> ) installed on your mobile or tablet. 
+    It consists of the following five sections, which can be accessed from the menu tabs on the left.
+    By configuring the settings in order from the top, you will be able to build "RPi Audio Player" without any knowledge of terminal or Linux commands.
+    </p>
+
+    <br>
+    <h3>Step 1 : RaspberryPi</h3>
+     <p class="bodytext">
+       The first step is to configure the basic settings for the RaspberryPi.
+       <br>
+       Configure the time zone, WiFi, and other settings.
+       At the same time, you can check the status of the RaspberryPi board, including its model name, CPU temperature, and RaspberryPi OS version.
+       Also refer to this menu when you want to power off or reboot.
+       <br>
+     </p>
+
+     <br>
+     <h3>Step 2 : Sound Device</h3>
+     <p class="bodytext">
+       The next step is to configure the sound devices such as the DAC HAT and USB DAC.
+       <br>
+       The sound driver is ALSA, PulseAudio is not supported.
+       USB DACs are automatically recognized when connected and are listed in the MPD settings in step 4,
+       but DAC HATs that are connected to I2S using the GPIO port of the RasberryPi are not automatically recognized and need to be registered.
+       Once registered, the sound device can be sound checked using the "speaker-test" command.
+       <br>
+     </p>
+
+     <br>
+     <h3>Step 3 : Source Volume</h3>
+     <p class="bodytext">
+       Did you get any sound with Sound Check?
+       <br>
+       Next, use this form to register the NAS where your music library is stored.
+       When the NAS is mounted successfully, [ mute ] will automatically create a symbolic link to the /music directory in MPD.
+       If not, please check your SMB version. In most cases 'vers=1.0' should work.
+       <br>
+     </p>
+
+     <br>
+     <h3>Step 4 : MPD</h3>
+     <p class="bodytext">
+       Now it's time to set up MPD.
+       However, MPD is not yet installed, so you will first need to select and install the MPD package. 
+       Choose the MPD package and install it; there is an official RaspberryPi OS version and an "unofficial" version recommended by the MPD project. 
+       After successful installation, you will be able to configure various settings.
+     <br>
+     </p>
+     
+     <br>
+     <h3>Step 5 : Other Settings</h3>
+     <p class="bodytext">
+       In this step, you can do two things:
+   <br> 1. Last.fm scribble settings
+   <br> 2. Copy buttons for the host and server names for use with client apps such as yaMPC ( very useful to use on iPad )
+       <br>
+     </p>
+
+     <br>
+     <h3>That's it.</h3>
+     <p class="bodytext">
+       If you've set it up this far, you should be able to play your library or web radio from your Raspy audio system.
+       But don't forget to use a client app such as yaMPC, as it doesn't have library browsing or playback capabilities.
+       <br>
+     </p>
+
+</body>
+</html>

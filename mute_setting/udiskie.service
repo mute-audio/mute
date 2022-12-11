@@ -1,0 +1,10 @@
+[Unit]
+Description = udiskie (Usb Stick auto-mounter) daemon
+
+[Service]
+ExecStart = /usr/bin/udiskie -N -F
+Restart = no
+Type = simple
+
+[Install]
+WantedBy = multi-user.target

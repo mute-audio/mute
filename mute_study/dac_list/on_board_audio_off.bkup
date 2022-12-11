@@ -1,0 +1,23 @@
+#!/bin/bash
+
+onboardaudio=$(cat /home/pi/dac_list/config.txt | egrep --only-matching '#dtparam=audio=on')
+
+if [ "$onboardaudio" = "#dtparam=audio=on" ]; then
+
+ echo "On-board audio is already OFF."
+
+else
+
+ sudo cp /home/pi/dac_list/config.txt /home/pi/dac_list/config.temp
+ sudo chmod 777 /home/pi/dac_list/config.temp
+ sudo chmod 777 /home/pi/dac_list/config.txt
+
+ sed -e 's/dtparam=audio=on/#dtparam=audio=on/' /home/pi/dac_list/config.temp > /home/pi/dac_list/config.txt
+
+ sudo chmod 755 /home/pi/dac_list/config.txt
+ sudo rm -f  /home/pi/dac_list/config.temp
+ wait
+
+ echo "Set On-board audio OFF to 'config.txt'."
+
+fi

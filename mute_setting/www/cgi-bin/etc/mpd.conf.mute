@@ -1,0 +1,261 @@
+#############################################################################################
+
+# MPD Config. for [ mute ]
+# Please refer to the user manual for more information on how to configure MPD.
+# http://www.musicpd.org/doc/user/　or /usr/share/doc/mpd/html/user.html
+
+#############################################################################################
+
+
+# Files and directories #####################################################################
+music_directory			"/var/lib/mpd/music"
+playlist_directory		"/var/lib/mpd/playlists"
+db_file				"/var/lib/mpd/tag_cache"
+#log_file			"/var/log/mpd/mpd.log"
+pid_file			"/run/mpd/pid"
+state_file			"/var/lib/mpd/state"
+sticker_file			"/var/lib/mpd/sticker.sql"
+
+
+# General music daemon options ##############################################################
+user			"mpd"
+#group			"audio"
+bind_to_address		"any"
+#port			"6600"
+#log_level		"default"
+restore_paused		"no"
+#save_absolute_paths_in_playlists	"no"
+#metadata_to_use	"artist,album,title,track,name,genre,date,composer,performer,disc"
+#metadata_to_use	 "+comment"
+auto_update		"no"
+#auto_update_depth	"3"
+audio_buffer_size	"4096"
+
+
+# Symbolic link behavior ####################################################################
+follow_outside_symlinks	"yes"
+follow_inside_symlinks	"yes"
+
+
+# Zeroconf / Avahi Service Discovery ########################################################
+#zeroconf_enabled		"yes"
+#zeroconf_name			"mute@ %h"
+
+
+# Database ##################################################################################
+#database {
+#       plugin "proxy"
+#       host "other.mpd.host"
+#       port "6600"
+#}
+
+
+# Input #####################################################################################
+# CURL input plugin
+input {
+        enabled    "yes"
+        plugin     "curl"
+#       proxy "proxy.isp.com:8080"
+#       proxy_user "user"
+#       proxy_password "password"
+}
+
+# QOBUZ input plugin
+input {
+        enabled    "no"
+        plugin     "qobuz"
+#        app_id     "ID"
+#        app_secret "SECRET"
+#        username   "USERNAME"
+#        password   "PASSWORD"
+#        format_id  "N"
+}
+
+# TIDAL input plugin
+input {
+        enabled      "no"
+        plugin       "tidal"
+#        token        "TOKEN"
+#        username     "USERNAME"
+#        password     "PASSWORD"
+#        audioquality "Q"
+}
+
+
+# Decoder ###################################################################################
+decoder {
+        plugin   "mad"
+        enabled  "yes"
+}
+
+decoder {
+        plugin   "mpg123"
+        enabled  "yes"
+}
+
+decoder {
+        plugin   "vorbis"
+        enabled  "yes"
+}
+
+decoder {
+	plugin	 "oggflac"
+	enabled	 "yes"
+}
+
+decoder {
+	plugin	 "flac"
+	enabled	 "yes"
+}
+
+decoder {
+        plugin   "opus"
+        enabled  "yes"
+}
+
+decoder {
+        plugin   "sndfile"
+        enabled  "yes"
+}
+
+decoder {
+        plugin   "audiofile"
+        enabled  "yes"
+}
+
+decoder {
+        plugin   "dsdiff"
+        enabled  "yes"
+}
+
+decoder {
+        plugin   "dsf"
+        enabled  "yes"
+}
+
+decoder {
+        plugin   "hybrid_dsd"
+        enabled  "no"
+}
+
+decoder {
+        plugin   "faad"
+        enabled  "yes"
+}
+
+decoder {
+        plugin   "mpcdec"
+        enabled  "yes"
+}
+
+decoder {
+        plugin   "wavpack"
+        enabled  "yes"
+}
+
+decoder {
+        plugin   "openmpt"
+        enabled  "no"
+}
+
+decoder {
+        plugin   "modplug"
+        enabled  "yes"
+}
+
+decoder {
+        plugin   "mikmod"
+        enabled  "yes"
+}
+
+decoder {
+        plugin   "sidplay"
+        enabled  "yes"
+}
+
+decoder {
+        plugin   "wildmidi"
+        enabled  "yes"
+}
+
+decoder {
+        plugin   "fluidsynth"
+        enabled  "yes"
+}
+
+decoder {
+        plugin   "adplug"
+        enabled  "yes"
+}
+
+decoder {
+        plugin   "ffmpeg"
+        enabled  "yes"
+}
+
+decoder {
+        plugin   "gme"
+        enabled  "yes"
+}
+
+decoder {
+        plugin   "pcm"
+        enabled  "yes"
+}
+
+
+# Audio Output #############################################################################
+#ALSA
+audio_output {
+	type		"alsa"
+	name		"(Not Assigned)"
+	device		"hw:0,0"
+	dop		"no"
+	auto_resample	"no"
+	mixer_type      "disabled"
+#	mixer_device	"default"	# optional
+	mixer_control	"PCM"		# optional
+#	mixer_index	"0"		# optional
+}
+
+#HTTPD
+#audio_output {
+#	type            "httpd"
+#	name		"My HTTP Stream mute"
+#	encoder		"vorbis"                # optional, vorbis or lame
+#	port		"8000"
+#	bind_to_address "0.0.0.0"               # optional, IPv4 or IPv6
+#	quality         "5.0"                   # do not define if bitrate is defined
+#	bitrate	"128"                   # do not define if quality is defined
+#	format          "44100:16:1"
+#	max_clients     "0"                     # optional 0=no limit
+#}
+
+
+# Charset ##################################################################################
+filesystem_charset		"UTF-8"
+
+
+
+############################################################################################
+#  Additional confing should be located below this line
+############################################################################################
+
+
+# Normalization automatic volume adjustments ###############################################
+#replaygain                     "album"
+#replaygain_preamp              "0"
+#replaygain_missing_preamp      "0"
+#replaygain_limit               "yes"
+#volume_normalization           "no"
+
+# Audio Output #############################################################################
+#Pulseaudio
+#audio_output {
+#	type            "pulse"
+#	name            "My Pulse Output"
+#	server          "remote_server"         # optional
+#	sink            "remote_server_sink"    # optional
+#}
+
+######################################################################################### 0.9b

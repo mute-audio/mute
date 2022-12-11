@@ -1,0 +1,7 @@
+[Unit]
+Description=Mount USB Drive on %i
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStart=/usr/bin/pmount -s --noatime --umask 022 /dev/%i
+ExecStop=/usr/bin/pumount /dev/%i

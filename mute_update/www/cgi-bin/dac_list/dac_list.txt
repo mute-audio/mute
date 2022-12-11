@@ -1,0 +1,158 @@
+Info:Digital Dreamtime Akkordion Music Player
+Load:dtoverlay=akkordion-iqdacplus
+ 
+Info:Allo Boss DAC audio cards
+Load:dtoverlay=allo-boss-dac-pcm512x-audio
+ 
+Info:Allo Boss2 DAC audio card
+Load:dtoverlay=allo-boss2-dac-audio
+ 
+Info:Allo Digione audio card
+Load:dtoverlay=allo-digione
+ 
+Info:Allo Katana DAC audio card
+Load:dtoverlay=allo-katana-dac-audio
+ 
+Info:Allo Piano DAC (2.0/2.1) audio cards
+Load:dtoverlay=allo-piano-dac-pcm512x-audio
+ 
+Info:Allo Piano DAC (2.1) audio cards
+Load:dtoverlay=allo-piano-dac-plus-pcm512x-audio
+ 
+Info:Orchard Audio ApplePi-DAC audio card
+Load:dtoverlay=applepi-dac
+ 
+Info:audioinjector.net audio add on soundcards
+Load:dtoverlay=audioinjector-addons
+ 
+Info:audioinjector.net isolated soundcard
+Load:dtoverlay=audioinjector-isolated-soundcard
+ 
+Info:audioinjector.net ultra soundcard
+Load:dtoverlay=audioinjector-ultra
+ 
+Info:audioinjector.net audio add on soundcard
+Load:dtoverlay=audioinjector-wm8731-audio
+ 
+Info:audiosense-pi add on soundcard
+Load:dtoverlay=audiosense-pi
+ 
+Info:Chip Dip audio cards
+Load:dtoverlay=chipdip-dac
+ 
+Info:Dion Audio LOCO DAC-AMP
+Load:dtoverlay=dionaudio-loco
+ 
+Info:Dion Audio LOCO-V2 DAC-AMP
+Load:dtoverlay=dionaudio-loco-v2
+ 
+Info:Fe-Pi Audio Sound Card
+Load:dtoverlay=fe-pi-audio
+ 
+Info:An overlay for Ghost amplifier
+Load:dtoverlay=ghost-amp
+ 
+Info:Google voiceHAT soundcard
+Load:dtoverlay=googlevoicehat-soundcard
+ 
+Info:HifiBerry Amp and Amp+ audio cards
+Load:dtoverlay=hifiberry-amp
+ 
+Info:HifiBerry AMP100 audio card
+Load:dtoverlay=hifiberry-amp100
+ 
+Info:HifiBerry DAC audio cards
+Load:dtoverlay=hifiberry-dac
+ 
+Info:HifiBerry DAC+ audio card
+Load:dtoverlay=hifiberry-dacplus
+
+Info:HifiBerry DAC+ PRO audio card
+Load:dtoverlay=hifiberry-dacplus
+
+Info:HifiBerry DAC+ADC audio card
+Load:dtoverlay=hifiberry-dacplusadc
+ 
+Info:HifiBerry DAC+ADC PRO audio card
+Load:dtoverlay=hifiberry-dacplusadcpro
+ 
+Info:HifiBerry DAC+DSP audio card
+Load:dtoverlay=hifiberry-dacplusdsp
+ 
+Info:HifiBerry DAC+ HD audio card
+Load:dtoverlay=hifiberry-dacplushd
+ 
+Info:HifiBerry Digi and Digi+ audio card
+Load:dtoverlay=hifiberry-digi
+ 
+Info:HifiBerry Digi+ Pro audio card
+Load:dtoverlay=hifiberry-digi-pro
+ 
+Info:Audiophonics I-SABRE Q2M DAC
+Load:dtoverlay=i-sabre-q2m
+ 
+Info:IQaudio Codec audio card
+Load:dtoverlay=iqaudio-codec
+ 
+Info:IQaudio DAC audio card
+Load:dtoverlay=iqaudio-dac
+ 
+Info:IQaudio DAC+ audio card
+Load:dtoverlay=iqaudio-dacplus
+ 
+Info:IQAudIO Digi WM8804 audio card
+Load:dtoverlay=iqaudio-digi-wm8804-audio
+ 
+Info:justboom-dac and justboom-digi based audio cards
+Load:dtoverlay=justboom-both
+ 
+Info:JustBoom DAC HAT, Amp HAT, DAC Zero and Amp Zero audio cards
+Load:dtoverlay=justboom-dac
+ 
+Info:JustBoom Digi HAT and Digi Zero audio cards
+Load:dtoverlay=justboom-digi
+ 
+Info:Maxim MAX98357A I2S DAC
+Load:dtoverlay=max98357a
+ 
+Info:mbed AudioCODEC (TLV320AIC23B)
+Load:dtoverlay=mbed-dac
+ 
+Info:merus-amp audio card
+Load:dtoverlay=merus-amp
+ 
+Info:pibell audio card
+Load:dtoverlay=pibell
+ 
+Info:PiFi 40W stereo amplifier
+Load:dtoverlay=pifi-40
+ 
+Info:PiFi DAC HD
+Load:dtoverlay=pifi-dac-hd
+ 
+Info:PiFi DAC Zero
+Load:dtoverlay=pifi-dac-zero
+ 
+Info:PiFi Mini stereo amplifier
+Load:dtoverlay=pifi-mini-210
+ 
+Info:Blokas Labs pisound card
+Load:dtoverlay=pisound
+ 
+Info:Cirrus Logic Audio Card
+Load:dtoverlay=rpi-cirrus-wm5102
+ 
+Info:RPi DAC audio card
+Load:dtoverlay=rpi-dac
+
+Info:RPi Proto audio card
+Load:dtoverlay=rpi-proto
+
+Info:Red Rocks Audio DigiDAC1 soundcard
+Load:dtoverlay=rra-digidac1-wm8741-audio
+
+Info:SuperAudioBoard sound card
+Load:dtoverlay=superaudioboard
+
+Info:Waveshare wm8960 soundcard
+Load:dtoverlay=wm8960-soundcard

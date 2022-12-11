@@ -1,0 +1,32 @@
+Ver_1.04b (2022/11/17)
+ - Add: Self Updater for [ mute ] via WEB on Update Tab
+ - Add: mute Update shell script : update_mute.sh
+ - Improved: Loading & Progress Animation
+ - Improved: Refactoring shell scripts by "ShellCheck (shellcheck.net)"
+ - Improved: Switching Dark/Light/Auto mode available
+ - Note: Migrated coding environment to VS Code
+ 
+Ver_1.03b (2022/09/26)
+ - Improved: Available for Multiple NAS-Mounting on Source Volume Tab
+ - Improved: "Reboot Required" badge appears after updating on RaspberryPi Tab
+ - Improved: When No WiFi device on board, Cancel WiFi setting Indication on RaspberryPi tab
+
+Ver_1.02b (2022/08/19)
+ - Bugfix: WiFi setting (Enable/Disable) not available on RaspberryPi tab
+ - Bugfix: WiFi setting (SSID/Password) not available on RaspberryPi tab
+ - Add: WiFi Access point status badge (UP/DOWN) on SSID pull-down
+   Modify related CGIs :
+   /var/www/cgi-bin/RaspberryPi/unblock_wifi.cgi
+   /var/www/cgi-bin/RaspberryPi/WiFi_apply.cgi
+   /var/www/cgi-bin/RaspberryPi/block_wifi.cgi
+   /var/www/cgi-bin/RaspberryPi/Raspberrypi.cgi
+
+Ver_1.01b (2022/08/07)
+ - Typo: "Auto Resample" label on MPD tab 
+ - Bugfix: MPD version not updated after update on MPD tab 
+
+Ver_1.00b (2022/6/27)
+ - Add: "MPD.conf Reset Button" on MPD tab
+
+Ver_0.99b (2022/5/14)
+ - Beta release on the Web
