@@ -1,5 +1,9 @@
 #!/bin/bash
 
+## [ mute ] DAC list generator shell
+## (C)2022 kitamura_design <kitamura_design@me.com>
+
+
 ## Extract the Info line containing "audio", "sound", "music", "DAC", 
 ## and "amplifier" from /boot/overlays/README and store it in the $INFO.
 

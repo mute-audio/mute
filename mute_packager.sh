@@ -2,7 +2,7 @@
 
 set -e
 
-## [ m u t e ] Packager shell
+## [ mute ] Packager shell
 ## (C)2022 kitamura_design <kitamura_design@me.com>
 
 ## Show Title
