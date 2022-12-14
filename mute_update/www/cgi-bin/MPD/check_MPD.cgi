@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # check_MPD.cgi         			 #
-# ©2022 kitamura_design <kitamura_design@me.com> #
+# (C)2022 kitamura_design <kitamura_design@me.com> #
 
 ### Get infomations
  checkMPD=$(systemctl status mpd | grep mpd.service | sed -n 1p | cut -d " " -f2)

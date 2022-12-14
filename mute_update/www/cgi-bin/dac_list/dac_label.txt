@@ -1,4 +1,4 @@
-Akkordion Music Player</option>
+Digital Dreamtime Akkordion Music Player</option>
 Allo Boss DAC audio cards</option>
 Allo Boss2 DAC audio card</option>
 Allo Digione audio card</option>
@@ -7,16 +7,24 @@ Allo Piano DAC (2.0/2.1) audio cards</option>
 Allo Piano DAC (2.1) audio cards</option>
 Orchard Audio ApplePi-DAC audio card</option>
 audioinjector.net audio add on soundcards</option>
+audioinjector.net audio bare i2s soundcard</option>
 audioinjector.net isolated soundcard</option>
 audioinjector.net ultra soundcard</option>
 audioinjector.net audio add on soundcard</option>
 audiosense-pi add on soundcard</option>
+Switches PWM sound output to GPIOs on 40-pin header</option>
+Chip Dip audio cards</option>
+Cirrus Logic Audio Card</option>
+dacberry400 add on soundcard</option>
+Dion Audio KIWI STREAMER</option>
 Dion Audio LOCO DAC-AMP</option>
 Dion Audio LOCO-V2 DAC-AMP</option>
 Fe-Pi Audio Sound Card</option>
+An overlay for Ghost amplifier</option>
 Google voiceHAT soundcard</option>
 HifiBerry Amp and Amp+ audio cards</option>
 HifiBerry AMP100 audio card</option>
+HifiBerry Amp3 audio card</option>
 HifiBerry DAC audio cards</option>
 HifiBerry DAC+ audio card</option>
 HifiBerry DAC+ADC audio card</option>
@@ -26,13 +34,16 @@ HifiBerry DAC+ HD audio card</option>
 HifiBerry Digi and Digi+ audio card</option>
 HifiBerry Digi+ Pro audio card</option>
 Audiophonics I-SABRE Q2M DAC</option>
+any passive I2S DAC soundcard</option>
 IQaudio Codec audio card</option>
 IQaudio DAC audio card</option>
 IQaudio DAC+ audio card</option>
 IQAudIO Digi WM8804 audio card</option>
-justboom-dac and justboom-digi based card</option>
+justboom-dac and justboom-digi based audio cards</option>
 JustBoom DAC HAT, Amp HAT, DAC Zero and Amp Zero audio cards</option>
 JustBoom Digi HAT and Digi Zero audio cards</option>
+Maxim MAX98357A I2S DAC</option>
+mbed AudioCODEC (TLV320AIC23B)</option>
 merus-amp audio card</option>
 pibell audio card</option>
 PiFi 40W stereo amplifier</option>
@@ -40,8 +51,12 @@ PiFi DAC HD</option>
 PiFi DAC Zero</option>
 PiFi Mini stereo amplifier</option>
 Blokas Labs pisound card</option>
-Cirrus Logic Audio Card</option>
-RPi DAC audio card</option>
-RPi Proto audio card</option>
+PROTO Audio Codec card</option>
+Raspberry Pi Codec Zero sound card</option>
+Raspberry Pi DAC+ card</option>
+Raspberry Pi DAC Pro sound card</option>
+Raspberry Pi DigiAMP+ sound card</option>
 Red Rocks Audio DigiDAC1 soundcard</option>
-uperAudioBoard sound card</option>
+SuperAudioBoard sound card</option>
+tc358743-fast overlay to route audio</option>
+Waveshare wm8960 soundcard</option>

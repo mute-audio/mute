@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # about_mute.cgi                                        #
-# ©2022 kitamura_design <kitamura_design@me.com>        #
+# (C)2022 kitamura_design <kitamura_design@me.com>      #
 
 VER=$(grep ver /var/www/cgi-bin/etc/mute.conf | cut -d "=" -f 2)
 #install_log=$(sudo cat /var/www/cgi-bin/log/install.log | sed -e "s/$/<br>/g")
