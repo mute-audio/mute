@@ -18,4 +18,4 @@ sudo grep -A4 "$INFO" /boot/overlays/README \
 | grep -e "Info" -e "Load" \
 | sed "/Load/a \ " \
 | sed -e "s/Configures //g" -e "s/the //g" -e "s/:   /:/g" -e "/Load/s/,<param>//g" -e "/Load/s/=<val>//g" -e "/Info/s/\.$//g" \
-| sudo tee ./dac_list.txt.source 2>/dev/null
+| sudo tee ./dac_list.txt.source 1>/dev/null 2>/dev/null
