@@ -25,6 +25,9 @@ Load:dtoverlay=applepi-dac
 Info:audioinjector.net audio add on soundcards
 Load:dtoverlay=audioinjector-addons
  
+Info:audioinjector.net audio bare i2s soundcard
+Load:dtoverlay=audioinjector-bare-i2s
+ 
 Info:audioinjector.net isolated soundcard
 Load:dtoverlay=audioinjector-isolated-soundcard
  
@@ -37,8 +40,20 @@ Load:dtoverlay=audioinjector-wm8731-audio
 Info:audiosense-pi add on soundcard
 Load:dtoverlay=audiosense-pi
  
+Info:Switches PWM sound output to GPIOs on 40-pin header
+Load:dtoverlay=audremap
+ 
 Info:Chip Dip audio cards
 Load:dtoverlay=chipdip-dac
+ 
+Info:Cirrus Logic Audio Card
+Load:dtoverlay=cirrus-wm5102
+ 
+Info:dacberry400 add on soundcard
+Load:dtoverlay=dacberry400
+ 
+Info:Dion Audio KIWI STREAMER
+Load:dtoverlay=dionaudio-kiwi
  
 Info:Dion Audio LOCO DAC-AMP
 Load:dtoverlay=dionaudio-loco
@@ -61,15 +76,15 @@ Load:dtoverlay=hifiberry-amp
 Info:HifiBerry AMP100 audio card
 Load:dtoverlay=hifiberry-amp100
  
+Info:HifiBerry Amp3 audio card
+Load:dtoverlay=hifiberry-amp3
+ 
 Info:HifiBerry DAC audio cards
 Load:dtoverlay=hifiberry-dac
  
 Info:HifiBerry DAC+ audio card
 Load:dtoverlay=hifiberry-dacplus
-
-Info:HifiBerry DAC+ PRO audio card
-Load:dtoverlay=hifiberry-dacplus
-
+ 
 Info:HifiBerry DAC+ADC audio card
 Load:dtoverlay=hifiberry-dacplusadc
  
@@ -90,6 +105,9 @@ Load:dtoverlay=hifiberry-digi-pro
  
 Info:Audiophonics I-SABRE Q2M DAC
 Load:dtoverlay=i-sabre-q2m
+ 
+Info:any passive I2S DAC soundcard
+Load:dtoverlay=i2s-dac
  
 Info:IQaudio Codec audio card
 Load:dtoverlay=iqaudio-codec
@@ -139,20 +157,29 @@ Load:dtoverlay=pifi-mini-210
 Info:Blokas Labs pisound card
 Load:dtoverlay=pisound
  
-Info:Cirrus Logic Audio Card
-Load:dtoverlay=rpi-cirrus-wm5102
+Info:PROTO Audio Codec card
+Load:dtoverlay=proto-codec
  
-Info:RPi DAC audio card
-Load:dtoverlay=rpi-dac
-
-Info:RPi Proto audio card
-Load:dtoverlay=rpi-proto
-
+Info:Raspberry Pi Codec Zero sound card
+Load:dtoverlay=rpi-codeczero
+  
+Info:Raspberry Pi DAC+ card
+Load:dtoverlay=rpi-dacplus
+ 
+Info:Raspberry Pi DAC Pro sound card
+Load:dtoverlay=rpi-dacpro
+ 
+Info:Raspberry Pi DigiAMP+ sound card
+Load:dtoverlay=rpi-digiampplus
+ 
 Info:Red Rocks Audio DigiDAC1 soundcard
 Load:dtoverlay=rra-digidac1-wm8741-audio
-
+ 
 Info:SuperAudioBoard sound card
 Load:dtoverlay=superaudioboard
-
+ 
+Info:tc358743-fast overlay to route audio
+Load:dtoverlay=tc358743-audio
+ 
 Info:Waveshare wm8960 soundcard
 Load:dtoverlay=wm8960-soundcard
