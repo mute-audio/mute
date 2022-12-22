@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Update_exec.cgi		                             #
-# ©2022 kitamura_design <kitamura_design@me.com> #
+# Update_exec.cgi		                               #
+# (C)2022 kitamura_design <kitamura_design@me.com> #
 
 ## Do Update by apt
  sudo apt -o Acquire::Retries=3 -y -qq full-upgrade 2>/dev/null 1>/dev/null
@@ -28,5 +28,5 @@
  sudo apt clean 2>/dev/null 1>/dev/null
 
 ## Go back to the Page
- echo "Location: /cgi-bin/loading.cgi?/cgi-bin/RaspberryPi/Raspberrypi.cgi"           
+ echo "Location: /cgi-bin/loading.cgi?/cgi-bin/RaspberryPi/Raspberrypi.cgi"
  echo ''
