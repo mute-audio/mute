@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # unblock_wifi.cgi              				 #
-# ©2022 kitamura_design <kitamura_design@me.com> #
+# (C)2022 kitamura_design <kitamura_design@me.com> #
 
 WPA_CONF="/etc/wpa_supplicant/wpa_supplicant.conf"
 

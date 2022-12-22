@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# getcover.cgi                                   #
-# ©2022 kitamura_design <kitamura_design@me.com> #
+# getcover.cgi                                     #
+# (C)2022 kitamura_design <kitamura_design@me.com> #
 
 FILE=$(echo ${QUERY_STRING} | cut -d '=' -f 2 | nkf -Ww --url-input)
 

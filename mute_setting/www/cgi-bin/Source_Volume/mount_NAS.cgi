@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # mount_NAS.cgi                                  #
-# ©2022 kitamura_design <kitamura_design@me.com> #
+# (C)2022 kitamura_design <kitamura_design@me.com> #
 
 # Cut Input Data form Source_info_NAS/NONAS.cgi to Parts
 NAME=$(echo ${QUERY_STRING} | cut -d '&' -f 1 | cut -d '=' -f 2 | nkf -Ww --url-input)
@@ -60,6 +60,7 @@ MPD_check=$(dpkg -l mpd | grep --only-matching mpd)
  #else
  fi
 
-echo "Location: /cgi-bin/Source_Volume/Source_volume.cgi"       # Go back to the Page
+ # Go back to the Page
+echo "Location: /cgi-bin/Source_Volume/Source_volume.cgi"
 echo ""
 

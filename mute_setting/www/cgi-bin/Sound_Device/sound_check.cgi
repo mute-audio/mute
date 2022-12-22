@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # sound_check.cgi            					 #
-# ©2022 kitamura_design <kitamura_design@me.com> #
+# (C)2022 kitamura_design <kitamura_design@me.com> #
 
 
 #Checking mpc status

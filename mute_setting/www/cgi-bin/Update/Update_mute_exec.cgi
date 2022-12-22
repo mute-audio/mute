@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Update_mute_exec.cgi                           #
-# ©2022 kitamura_design <kitamura_design@me.com> #
+# (C)2022 kitamura_design <kitamura_design@me.com> #
 
 #### Get Update file's URL ####
 

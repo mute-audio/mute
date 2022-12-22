@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # mpd_log.cgi                                    #
-# ©2022 kitamura_design <kitamura_design@me.com> #
+# (C)2022 kitamura_design <kitamura_design@me.com> #
 
 # Clean QUERY_STRING
  mpdLOG=$(echo ${QUERY_STRING} | cut -d '=' -f 2 | nkf -Ww --url-input)
@@ -17,4 +17,4 @@ elif [ ${mpdLOG} = "No" ]; then
 fi
 
 echo "Location: /cgi-bin/MPD/MPDupdating.cgi?mpdconfig"
-echo
+echo ''

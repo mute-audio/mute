@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Country_Select.cgi                             #
-# ©2022 kitamura_design <kitamura_design@me.com> #
+# (C)2022 kitamura_design <kitamura_design@me.com> #
 
 #### Rewrite /etc/wpa_supplicant/wpa_supplicant.conf
  current=$(sudo cat /etc/wpa_supplicant/wpa_supplicant.conf | grep country)
