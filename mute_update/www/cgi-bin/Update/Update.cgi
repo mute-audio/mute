@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Update.cgi                			         #
+# Update.cgi                			           #
 # (C)2022 kitamura_design <kitamura_design@me.com> #
 
 query=$(date +%Y%m%d%I%M%S)
