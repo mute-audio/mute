@@ -279,8 +279,8 @@ else
 
 	echo " Copying [ mute ] source..."
 	sudo chmod -R 777 /var/www
-	#sudo cp -RT ./www /var/www
-	sudo cp -R ./www/ /var/www
+	sudo cp -RT ./www /var/www
+	#sudo cp -R ./www/ /var/www
 	wait
     sudo chmod -R 755 /var/www
     echo " Copying [ mute ] source... Done" | sudo tee -a /boot/mute_log > /dev/null
