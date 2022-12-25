@@ -1,3 +1,7 @@
+Ver_1.05b (2023/1/XX)
+- Improved: Changed progress display of MPD installations
+- Improved: Audio Buffer numerical input type="tel" on MPD Tab
+
 Ver_1.04b (2022/12/15)
  - Add: Self Updater for [ mute ] via WEB on Update Tab
  - Add: mute Update shell script : update_mute.sh

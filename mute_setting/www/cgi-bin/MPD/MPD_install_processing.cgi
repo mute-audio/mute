@@ -42,8 +42,8 @@ echo "<body onLoad=\"uiLock()\" onunload=\"uiUnlock()\">"
    <div id="loading-top2">
      <div class="loader">
         <div class="loadingtext">Installing MPD : [ ${PKG} ] ...</div>
+        <div class="loadingtext">It may take quite a while (around 10 minutes). Please wait.</div>
         <progress class="progress"></progress>
-        <div class="loadingtext">It will take quite a while (around 10 minutes). Please wait.</div>
      </div>
    </div>
 HTML
