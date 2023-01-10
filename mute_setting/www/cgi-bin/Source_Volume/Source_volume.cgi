@@ -6,8 +6,7 @@
 query=$(date +%Y%m%d%I%M%S)
 
 cat <<HTML
-<!-- HTML Header -->
-Content-type: text/html; charset=utf-8"
+Content-type: text/html; charset=utf-8
 
 <!DOCUTYPE html>
 <html>
