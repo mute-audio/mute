@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Raspberrypi.cgi		        				 #
+# Raspberrypi.cgi		        				   #
 # (C)2022 kitamura_design <kitamura_design@me.com> #
 
 #### HTML Header
@@ -94,7 +94,7 @@ TEMP="$(bc <<< "scale=1; $temp/1000") c˚"
 CPUMax=$(sudo vcgencmd get_config int | grep arm_freq | cut -d "=" -f 2 | sed -n 1p)
 VNDR=$(sudo lscpu | grep Vendor | cut -d ":" -f 2 | cut -d " " -f 12)
 MDL=$(sudo lscpu | grep "Model name" | cut -d ":" -f 2 | sed -e 's/ //g')
-RAM=$(free -m -t | grep Total: | cut -d " " -f 11)
+RAM=$(free --mega -t | grep Total: | sed -e 's/  */ /g' | cut -d " " -f2)
 
 cat <<HTML
 		<!-- Main Board -->
