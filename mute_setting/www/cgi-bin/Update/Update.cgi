@@ -67,7 +67,7 @@ Content-type: text/html; charset=utf-8
 HTML
 
 cat <<HTML
-<body id="iframe" onLoad="keepHover()" onunload="offHover()">
+<body id="iframe" onload="keepHover()" onunload="offHover()">
 
     <!-- Title -->
     <h1>Update</h1>
