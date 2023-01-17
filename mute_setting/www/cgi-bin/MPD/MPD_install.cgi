@@ -3,18 +3,18 @@
 # MPD_install.cgi                                  #
 # (C)2022 kitamura_design <kitamura_design@me.com> #
 
-
 PKG=$(echo ${QUERY_STRING} | cut -d '=' -f 2 | sed -e 's/+/\ /g' | nkf -Ww --url-input)
 query=$(date +%Y%m%d%I%M%S)
 RELEASE=$(lsb_release -sc)
 
-sudo apt clean && sudo apt autoremove -y -q > /dev/null
-wait
+sudo apt update -qq 2>/dev/null 1>/dev/null
+# sudo apt clean 2>/dev/null 1>/dev/null
+# sudo apt autoremove -y -q 2>/dev/null 1>/dev/null
 
 if [ "$PKG" = "Debian Official ( Stable version )" ]; then
 
         # install Debian Official
-	sudo apt -o Acquire::Retries=3 install -y -q mpd > /dev/null
+	sudo apt -o Acquire::Retries=3 install -y -q mpd 2>/dev/null 1>/dev/null
 
 	if [ $? != 0 ]; then
 	        echo "Location: /cgi-bin/MPD/MPD_install_error.cgi?${QUERY_STRING}"
@@ -25,9 +25,7 @@ if [ "$PKG" = "Debian Official ( Stable version )" ]; then
         # replace original mpd.conf to mute mpd.conf
         sudo cp /etc/mpd.conf /var/www/cgi-bin/etc/mpd.conf.bkup
         sudo chmod 755 /var/www/cgi-bin/etc/mpd.conf.bkup
-        wait
         sudo cp /var/www/cgi-bin/etc/mpd.conf.mute /etc/mpd.conf
-        wait
 
 	set +e
 
@@ -47,46 +45,31 @@ if [ "$PKG" = "Debian Official ( Stable version )" ]; then
             done
         fi
 
-#	status=$(df -h | egrep --only-matching '/mnt/nas')
-#
-#	if [ "$status" = "/mnt/nas" ]; then                 # If there mounted NAS already,
-#		sudo chown mpd:audio /mnt/nas		    # Ownership to be changed to mpd/audio from root/root
-#		sudo ln -s /mnt/nas /var/lib/mpd/music/NAS  # Make link to mpd music dir.
-#	fi
-
 	sudo ln -s /media /var/lib/mpd/music/USB	    # Make link of /media(USBs) to mpd music dir.
-
 	sudo ln -s /var/lib/mpd/music /var/www/html/        # Make link of mpd music dir to html root for Coverart search.
 
 	set -e
 
 	sudo systemctl enable mpd
-	wait
         sudo systemctl restart mpd
-        wait
-
-	sudo apt -o Acquire::Retries=3 install -y -q mpc mpdscribble > /dev/null
-        wait
-
+	sudo apt -o Acquire::Retries=3 install -y -q mpc mpdscribble 2>/dev/null 1>/dev/null
 	sudo systemctl stop mpdscribble
-	wait
 
         set +e
 
 	sudo systemctl stop mpd.service
-	wait
 	sudo systemctl stop mpd.socket
-	wait
 	sudo systemctl disable mpd.socket
-	wait
 	sudo systemctl start mpd.service
-	wait
 
 	sudo sed -i -e "s/^pkg=.*/pkg=Debian Stable/" /var/www/cgi-bin/etc/mute.conf
 
         mpd -V | sudo tee /var/www/cgi-bin/MPD/MPD_conf/temp/mpd_v.txt > /dev/null
 
 	sudo cp /var/log/apt/term.log /var/www/cgi-bin/log/install.log
+
+        sudo apt clean 2>/dev/null 1>/dev/null
+        sudo apt autoremove -y -q 2>/dev/null 1>/dev/null
 
         echo "Location: /cgi-bin/MPD/DBupdating.cgi?${query}"
         echo ""
@@ -97,10 +80,9 @@ elif  [ "$PKG" = "MPD Official ( Backports version )" ]; then
         sudo wget -O /usr/share/keyrings/deb.kaliko.me.gpg https://media.kaliko.me/kaliko.gpg
         sudo echo "deb [signed-by=/usr/share/keyrings/deb.kaliko.me.gpg] https://deb.kaliko.me/raspios-backports/ ${RELEASE}-backports main" | sudo tee /etc/apt/sources.list.d/deb.kaliko.me.list > /dev/null
 
-	sudo apt update -q > /dev/null
-	wait
+	sudo apt update -q 2>/dev/null 1>/dev/null
 
-	sudo apt -o Acquire::Retries=3 install -y -q mpd/${RELEASE}-backports > /dev/null
+	sudo apt -o Acquire::Retries=3 install -y -q mpd/${RELEASE}-backports  2>/dev/null 1>/dev/null
 
         if [ $? != 0 ]; then
 	        echo "Location: /cgi-bin/MPD/MPD_install_error.cgi?${QUERY_STRING}"
@@ -111,9 +93,7 @@ elif  [ "$PKG" = "MPD Official ( Backports version )" ]; then
         #replace original mpd.conf to mute mpd.conf
         sudo cp /etc/mpd.conf /var/www/cgi-bin/etc/mpd.conf.bkup
         sudo chmod 755 /var/www/cgi-bin/etc/mpd.conf.bkup
-        wait
         sudo cp /var/www/cgi-bin/etc/mpd.conf.mute /etc/mpd.conf
-        wait
 
         set +e
 
@@ -133,46 +113,33 @@ elif  [ "$PKG" = "MPD Official ( Backports version )" ]; then
             done
         fi
 
-#        status=$(df -h | egrep --only-matching '/mnt/nas')
-#
-#        if [ "$status" = "/mnt/nas" ]; then                # If there mounted NAS already,
-#                sudo chown mpd:audio /mnt/nas              # Ownership to be changed to mpd/audio from root/root
-#                sudo ln -s /mnt/nas /var/lib/mpd/music/NAS # Make link to mpd music dir.
-#        fi
-
 	sudo ln -s /media /var/lib/mpd/music/USB            # Make link of /media(USBs) to mpd music dir.
-
         sudo ln -s /var/lib/mpd/music /var/www/html/	    # Make link of mpd music dir to html root for Coverart search.
 
         set -e
 
         sudo systemctl enable mpd
-        wait
         sudo systemctl restart mpd
-        wait
 
-	sudo apt -o Acquire::Retries=3 install -y -q mpc mpdscribble > /dev/null
-        wait
+	sudo apt -o Acquire::Retries=3 install -y -q mpc mpdscribble  2>/dev/null 1>/dev/null
 
 	sudo systemctl stop mpdscribble
-	wait
 
 	set +e
 
         sudo systemctl stop mpd.service
-	wait
         sudo systemctl stop mpd.socket
-	wait
         sudo systemctl disable mpd.socket
-	wait
         sudo systemctl start mpd.service
-	wait
 
         sudo sed -i -e "s/^pkg=.*/pkg=MPD Backports/" /var/www/cgi-bin/etc/mute.conf
 
         mpd -V | sudo tee /var/www/cgi-bin/MPD/MPD_conf/temp/mpd_v.txt > /dev/null
 
         sudo cp /var/log/apt/term.log /var/www/cgi-bin/log/install.log
+
+        sudo apt clean 2>/dev/null 1>/dev/null
+        sudo apt autoremove -y -q 2>/dev/null 1>/dev/null
 
         echo "Location: /cgi-bin/MPD/DBupdating.cgi?${query}"
         echo ''

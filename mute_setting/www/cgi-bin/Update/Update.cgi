@@ -123,6 +123,17 @@ HTML
 HTML
     fi
 
+    ## MPD install check
+    ## If the mpd installation is [installed,local],
+    ## reinstall mpd so that automatic updates are enabled.
+
+        mpd_Install_CHK=$(sudo apt -a -qq list mpd 2>/dev/null | grep "\[installed,local\]")
+
+        if [ -n "$mpd_Install_CHK" ]; then
+            sudo apt —reinstall -y install mpd 2>/dev/null
+        fi
+    ##
+
 ######## RaspberryPi OS Update
 
 stsUPD=$(sudo apt update -qq 2>/dev/null | cut -d"." -f 1)
