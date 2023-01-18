@@ -7,14 +7,14 @@ PKG=$(echo ${QUERY_STRING} | cut -d '=' -f 2 | sed -e 's/+/\ /g' | nkf -Ww --url
 query=$(date +%Y%m%d%I%M%S)
 RELEASE=$(lsb_release -sc)
 
-sudo apt update -qq 2>/dev/null 1>/dev/null
+# sudo apt update -qq 2>/dev/null 1>/dev/null
 # sudo apt clean 2>/dev/null 1>/dev/null
 # sudo apt autoremove -y -q 2>/dev/null 1>/dev/null
 
 if [ "$PKG" = "Debian Official ( Stable version )" ]; then
 
         # install Debian Official
-	sudo apt -o Acquire::Retries=3 install -y -q mpd 2>/dev/null 1>/dev/null
+	sudo apt -o Acquire::Retries=5 install -y --no-install-recommends mpd 2>/dev/null 1>/dev/null
 
 	if [ $? != 0 ]; then
 	        echo "Location: /cgi-bin/MPD/MPD_install_error.cgi?${QUERY_STRING}"
@@ -52,7 +52,7 @@ if [ "$PKG" = "Debian Official ( Stable version )" ]; then
 
 	sudo systemctl enable mpd
         sudo systemctl restart mpd
-	sudo apt -o Acquire::Retries=3 install -y -q mpc mpdscribble 2>/dev/null 1>/dev/null
+	sudo apt -o Acquire::Retries=3 install -y --no-install-recommends mpc mpdscribble 2>/dev/null 1>/dev/null
 	sudo systemctl stop mpdscribble
 
         set +e
@@ -78,11 +78,11 @@ elif  [ "$PKG" = "MPD Official ( Backports version )" ]; then
 
         #install MPD Backports
         sudo wget -O /usr/share/keyrings/deb.kaliko.me.gpg https://media.kaliko.me/kaliko.gpg
-        sudo echo "deb [signed-by=/usr/share/keyrings/deb.kaliko.me.gpg] https://deb.kaliko.me/raspios-backports/ ${RELEASE}-backports main" | sudo tee /etc/apt/sources.list.d/deb.kaliko.me.list > /dev/null
+        sudo echo "deb [signed-by=/usr/share/keyrings/deb.kaliko.me.gpg] https://deb.kaliko.me/raspios-backports/${RELEASE}-backports main" | sudo tee /etc/apt/sources.list.d/deb.kaliko.me.list > /dev/null
 
 	sudo apt update -q 2>/dev/null 1>/dev/null
 
-	sudo apt -o Acquire::Retries=3 install -y -q mpd/${RELEASE}-backports  2>/dev/null 1>/dev/null
+	sudo apt -o Acquire::Retries=5 install -y --no-install-recommends mpd/${RELEASE}-backports  2>/dev/null 1>/dev/null
 
         if [ $? != 0 ]; then
 	        echo "Location: /cgi-bin/MPD/MPD_install_error.cgi?${QUERY_STRING}"
@@ -121,7 +121,7 @@ elif  [ "$PKG" = "MPD Official ( Backports version )" ]; then
         sudo systemctl enable mpd
         sudo systemctl restart mpd
 
-	sudo apt -o Acquire::Retries=3 install -y -q mpc mpdscribble  2>/dev/null 1>/dev/null
+	sudo apt -o Acquire::Retries=3 install -y --no-install-recommends mpc mpdscribble  2>/dev/null 1>/dev/null
 
 	sudo systemctl stop mpdscribble
 
