@@ -78,7 +78,7 @@ elif  [ "$PKG" = "MPD Official ( Backports version )" ]; then
 
         #install MPD Backports
         sudo wget -O /usr/share/keyrings/deb.kaliko.me.gpg https://media.kaliko.me/kaliko.gpg
-        sudo echo "deb [signed-by=/usr/share/keyrings/deb.kaliko.me.gpg] https://deb.kaliko.me/raspios-backports/${RELEASE}-backports main" | sudo tee /etc/apt/sources.list.d/deb.kaliko.me.list > /dev/null
+        sudo echo "deb [signed-by=/usr/share/keyrings/deb.kaliko.me.gpg] https://deb.kaliko.me/raspios-backports/ ${RELEASE}-backports main" | sudo tee /etc/apt/sources.list.d/deb.kaliko.me.list > /dev/null
 
 	sudo apt update -q 2>/dev/null 1>/dev/null
 
