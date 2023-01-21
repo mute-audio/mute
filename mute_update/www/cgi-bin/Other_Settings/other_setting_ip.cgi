@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# other_setting_ip.cgi  						 #
-# ©2022 kitamura_design <kitamura_design@me.com> #
+# other_setting_ip.cgi  						               #
+# (C)2022 kitamura_design <kitamura_design@me.com> #
 
 # Get infomations
 # mpdscribble

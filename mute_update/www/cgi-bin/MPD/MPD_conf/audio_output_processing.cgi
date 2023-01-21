@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # audio_output_processing.cgi                    #
-# ©2022 kitamura_design <kitamura_design@me.com> #
+# (C)2022 kitamura_design <kitamura_design@me.com> #
 
 # Clean QUERY_STRING
  OPTION=$(echo ${QUERY_STRING} | cut -d '=' -f 1 | nkf -Ww --url-input)

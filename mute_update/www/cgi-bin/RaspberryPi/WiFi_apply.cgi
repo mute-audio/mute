@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # WiFi_apply.cgi		                         #
-# ©2022 kitamura_design <kitamura_design@me.com> #
+# (C)2022 kitamura_design <kitamura_design@me.com> #
 
 query=$(date +%Y%m%d%I%M%S)
 SSID=$(echo ${QUERY_STRING} | cut -d '&' -f 1 | cut -d '=' -f 2 | nkf -Ww --url-input)

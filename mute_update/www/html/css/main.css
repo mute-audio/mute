@@ -331,6 +331,23 @@ input {
 
 /* UI Parts */
 
+.cover {
+  display: block;
+  box-sizing: border-box;
+  /* width: 100vmin; */
+  height: 100vmin;
+  margin: auto;
+}
+
+.songinfo {
+  display: block;
+  margin-left: 5px;
+/*   padding: 0.2rem;*/
+  font-size: 2.5vmin;
+  font-weight: 100;
+  color: #7D7D7D;
+}
+
 .icon {
   box-sizing: border-box;
   width: 100%;

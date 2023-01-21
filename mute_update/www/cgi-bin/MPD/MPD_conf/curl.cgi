@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # curl.cgi                                       #
-# ©2022 kitamura_design <kitamura_design@me.com> #
+# (C)2022 kitamura_design <kitamura_design@me.com> #
 
 # Clean QUERY_STRING
  CURL=$(echo ${QUERY_STRING} | cut -d '=' -f 2 | nkf -Ww --url-input)
@@ -17,4 +17,4 @@ elif [ ${CURL} = "No" ]; then
 fi
 
 echo "Location: /cgi-bin/MPD/MPDupdating.cgi?inputplugin"
-echo
+echo ''

@@ -1,13 +1,12 @@
 #!/bin/bash
 
 # Source_volume.cgi                              #
-# ©2022 kitamura_design <kitamura_design@me.com> #
+# (C)2022 kitamura_design <kitamura_design@me.com> #
 
 query=$(date +%Y%m%d%I%M%S)
 
 cat <<HTML
-<!-- HTML Header -->
-Content-type: text/html; charset=utf-8"
+Content-type: text/html; charset=utf-8
 
 <!DOCUTYPE html>
 <html>

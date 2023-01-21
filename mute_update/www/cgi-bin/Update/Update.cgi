@@ -67,7 +67,7 @@ Content-type: text/html; charset=utf-8
 HTML
 
 cat <<HTML
-<body id="iframe" onLoad="keepHover()" onunload="offHover()">
+<body id="iframe" onload="keepHover()" onunload="offHover()">
 
     <!-- Title -->
     <h1>Update</h1>
@@ -122,6 +122,17 @@ HTML
             </h4>
 HTML
     fi
+
+    ## MPD install check
+    ## If the mpd installation is [installed,local],
+    ## reinstall mpd so that automatic updates are enabled.
+
+        mpd_Install_CHK=$(sudo apt -a -qq list mpd 2>/dev/null | grep "\[installed,local\]")
+
+        if [ -n "$mpd_Install_CHK" ]; then
+            sudo apt —reinstall -y install mpd 2>/dev/null
+        fi
+    ##
 
 ######## RaspberryPi OS Update
 

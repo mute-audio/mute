@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Update_mute_error.cgi		                     #
-# ©2022 kitamura_design <kitamura_design@me.com> #
+# (C)2022 kitamura_design <kitamura_design@me.com> #
 
 query=$(date +%Y%m%d%I%M%S)
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # decoder.cgi                                    #
-# ©2022 kitamura_design <kitamura_design@me.com> #
+# (C)2022 kitamura_design <kitamura_design@me.com> #
 
 # Clean QUERY_STRING
  DECODER=$(echo ${QUERY_STRING} | cut -d '=' -f 1 | nkf -Ww --url-input)
@@ -18,4 +18,4 @@ elif [ ${SW} = "No" ]; then
 fi
 
 echo "Location: /cgi-bin/MPD/MPDupdating.cgi?decoder"
-echo
+echo ''

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # i2s_dac_install.cgi		                      #
-# ©2022 kitamura_design <kitamura_design@me.com> #
+# (C)2022 kitamura_design <kitamura_design@me.com> #
 
 # Getting current DAC info
 #dacinfo=$(cat /proc/asound/card0/pcm0p/sub0/info | grep name | sed -n 1P | sed -e 's/name: //g')

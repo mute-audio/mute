@@ -34,7 +34,7 @@ echo    "}"
 echo  "</script>"
 echo  "</head>"
 
-echo "<body onLoad=\"uiLock()\" onunload=\"uiUnlock()\">"
+echo "<body onload=\"uiLock()\" onunload=\"uiUnlock()\">"
 
    cat <<HTML
    <div id="loading-top2">

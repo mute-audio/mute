@@ -149,7 +149,7 @@ HTML
           <div class="setting-items-wrap">
           <input id="Apply" type="submit" value="Set " class="button"></input>
           <div class="ellipsis-wrap">123</div>
-          <input type="number" id="bufferSIZE" name="bufferSIZE" value="${audioBUFFER}" class="inputbox-single" required>
+          <input type="tel" id="bufferSIZE" name="bufferSIZE" value="${audioBUFFER}" class="inputbox-single" required>
           <label for="">Audio Buffer Size</label>
           </div>
         </form>

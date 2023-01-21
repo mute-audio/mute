@@ -1,6 +1,10 @@
-Ver_1.05b (2023/1/XX)
+Ver_1.05b (2023/1/21)
+- Improved: Revise of mpd install and Update scripts
 - Improved: Changed progress display of MPD installations
-- Improved: Audio Buffer numerical input type="tel" on MPD Tab
+- Improved: MPD Tab: Audio Buffer numerical input type="tel"
+- Bugfix: RaspberryPi Tab: 64bit kernel SW
+- Bugfix: RaspberryPi Tab: Model/Clock/RAM indication problem in case of arm6l architecture
+- Bugfix: Update Tab: In some case mpd update notice is not comming
 
 Ver_1.04b (2022/12/15)
  - Add: Self Updater for [ mute ] via WEB on Update Tab
