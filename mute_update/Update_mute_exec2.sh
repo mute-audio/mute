@@ -68,6 +68,10 @@ if [ "$Dark_Mode" = "darkmode=off" ]; then
 
 elif [ "$Dark_Mode" = "darkmode=on" ]; then
   sudo cp /var/www/html/css/css_select/main_dark.css /var/www/html/css/main.css
+
+elif [ "$Dark_Mode" = "darkmode=auto" ]; then
+  sudo cp /var/www/html/css/css_select/main_auto.css /var/www/html/css/main.css
+
 fi
 
 sudo rm -Rf ../mute_update 2>/dev/null 1>/dev/null
