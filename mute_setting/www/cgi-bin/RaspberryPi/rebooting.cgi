@@ -46,9 +46,20 @@ echo "<body onLoad=\"uiLock()\" onunload=\"uiUnlock()\">"
    </div>
 HTML
 
-echo "<script>"
-echo "setTimeout(\"history.back()\",100000);"
-echo "</script>"
+## Auto-reconnect after rebooting
+cat <<HTML
+<script>
+
+setInterval("autoReconnect()", 10000)
+function autoReconnect() {
+fetch("/")
+.then(response => {
+  if(response.ok){parent.location.href="/index.html"}
+})
+}
+
+</script>
+HTML
 
 echo "</body>"
 echo "</html>"
