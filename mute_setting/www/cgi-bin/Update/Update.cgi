@@ -105,6 +105,8 @@ lastUPDmute=$(sudo sed -n '$p' /var/www/cgi-bin/log/update_mute.log)
             Last Updated : ${lastUPDmute:- Not updated yet}</br>
             ${stsUPDmute}.
             </h4>
+
+    <div class="separator"><hr></div>
 HTML
     else
 
@@ -120,6 +122,8 @@ HTML
             Last Updated : ${lastUPDmute:- Not updated yet}</br>
             ${stsUPDmute}.
             </h4>
+            
+    <div class="separator"><hr></div>
 HTML
     fi
 
