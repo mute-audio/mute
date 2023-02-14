@@ -1,0 +1,8 @@
+main script;
+/var/www/cgi-bin/Update/Update_Checker.cgi
+
+systemd service;
+/etc/systemd/system/updchk.service
+
+systemd timer;
+/etc/systemd/system/updchk.timer
