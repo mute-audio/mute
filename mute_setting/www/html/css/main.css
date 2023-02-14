@@ -191,9 +191,9 @@ h3 {
 h4 {
   margin-left: 5px;
   margin-right: 0.75%;
-  padding-top: 1.5vw;
+  padding-top: 1.5vmin;
   padding-left: 2.5vw;
-  padding-bottom: 1.5vmin;
+  padding-bottom: 0.75vmin;
   font-size: 2.5vmin;
   color: #7D7D7D;
   line-height: 1.25;
