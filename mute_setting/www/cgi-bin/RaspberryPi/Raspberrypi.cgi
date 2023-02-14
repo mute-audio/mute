@@ -378,7 +378,7 @@ cat <<HTML
 		   setInterval("tempUpdateCheck()", 10000)
 
 		   function tempUpdateCheck() {
-			   fetch("/cgi-bin/temp_check.cgi")
+			   fetch("/cgi-bin/RaspberryPi/temp_check.cgi")
 			   .then(response => {
 		         return response.text();
 			   })
