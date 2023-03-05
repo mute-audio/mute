@@ -283,6 +283,8 @@ input::placeholder {
 .sidebar {
   width: 20vw;
   height: 100%;
+  display: flex;
+  flex-direction: column;
   background-color: #D8D8D8;
   color: #FBFBFB;
 }
