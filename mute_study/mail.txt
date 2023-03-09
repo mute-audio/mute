@@ -1,5 +1,0 @@
-From: pi@mute.local
-To: kitamura_design@me.com
-Subject: MPD install finished!
-
-Hi, MPD has just installed on [ mute ].
