@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Update.cgi           			           #
+# Update.cgi           			                   #
 # (C)2022 kitamura_design <kitamura_design@me.com> #
 
 query=$(date +%Y%m%d%I%M%S)
@@ -136,24 +136,17 @@ HTML
 
 ######## RaspberryPi OS Update
 
-# stsUPD=$(sudo apt update -qq 2>/dev/null | cut -d"." -f 1)
 stsUPD=$(cat /var/www/cgi-bin/Update/Update_notice.txt)
 lastUPD=$(sudo sed -n '$p' /var/www/cgi-bin/log/update.log)
-# apt_list=$(sudo apt list --upgradable -qq 2>/dev/null | sed -e "s/$/<br>/g")
 
     if [ "$stsUPD" = "All packages are up to date." ]; then
 
         cat <<HTML
         <!-- RaspberryPi OS -->
         <div class="title-btn-title">
-          <a href="" class="toggle-off-sw"> Update </a>
+          <a href="/cgi-bin/Update/Update_Checker.cgi" target="mainview" class="toggle-on-sw"> Check Update </a>
           <h3>RaspberryPi OS</h3>
         </div>
-
-            <h4>
-            Last Updated : ${lastUPD:- Not updated yet}</br>
-            ${stsUPD}.
-            </h4>
 HTML
     else
 
@@ -164,19 +157,14 @@ HTML
           <h3>RaspberryPi OS</h3>
           <div class="status">Update Available</div>
         </div>
-
-            <h4>
-            Last Updated : ${lastUPD:- Not updated yet}</br>
-            ${stsUPD}.
-            </h4>
-
-            <h4>
-            ${apt_list}
-            </h4>
 HTML
     fi
+        cat <<HTML
+        <h4>
+          Last Updated : ${lastUPD:- Not updated yet}</br>
+          ${stsUPD}
+        </h4>
 
-    cat <<HTML
     <div class="separator"><hr></div>
     </body>
 </html>
