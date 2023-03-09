@@ -70,6 +70,14 @@ Content-type: text/html; charset=utf-8
   </head>
 HTML
 
+ ## MPD install check
+ ## If the mpd installation is [installed,local],
+ ## reinstall mpd so that automatic updates are enabled.
+   mpd_Install_CHK=$(sudo apt -a -qq list mpd 2>/dev/null | grep --only-matching "installed,local")
+   if [ -n "$mpd_Install_CHK" ]; then
+      sudo apt install --reinstall -y mpd 2>/dev/null
+   fi
+
 #### MPD_V.txt check
 if [ ! -e /var/www/cgi-bin/MPD/MPD_conf/temp/mpd_v.txt ]; then
    mpd -V | sudo tee /var/www/cgi-bin/MPD/MPD_conf/temp/mpd_v.txt > /dev/null

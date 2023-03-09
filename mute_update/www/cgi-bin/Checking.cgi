@@ -15,26 +15,26 @@ Content-type: text/html; charset=utf-8
      <link rel="stylesheet" type="text/css" href="/css/main.css?$query">
      <meta http-equiv="refresh" content="0; ${QUERY_STRING}">
      <script>
-        function uiLock(){ 
+        function uiLock(){
          target = parent.document.getElementById("sidebar");
          if (target != null){
             target.className = "sidebar-ui-lock";
          }
         }
 
-        function uiUnlock(){ 
-         target = parent.document.getElementById("sidebar"); 
-         if (target != null){ 
-            target.className = "sidebar-ui-unlock"; 
-         } 
-        } 
+        function uiUnlock(){
+         target = parent.document.getElementById("sidebar");
+         if (target != null){
+            target.className = "sidebar-ui-unlock";
+         }
+        }
     </script>
   </head>
 
   <body onload="uiLock()" onunload="uiUnlock()">
    <div id="loading-top2">
      <div class="loader">
-        <div class="loadingtext">Checking Updates ...</div>
+        <div class="loadingtext">Checking Update ...</div>
         <progress class="progress"></progress>
      </div>
    </div>

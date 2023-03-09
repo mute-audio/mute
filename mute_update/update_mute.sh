@@ -50,6 +50,10 @@ echo " Updating [ mute ] ..."
   sudo cp -RT ./www /var/www
   sudo chmod -R 755 /var/www
 
+ 	## Install Update-Check Service & Timer (1.06)
+	sudo mv /var/www/cgi-bin/Update/updchk.service /etc/systemd/system/updchk.service
+	sudo mv /var/www/cgi-bin/Update/updchk.timer /etc/systemd/system/updchk.timer
+
 echo " Updating [ mute ]... Done" \
  | sudo tee -a /boot/mute_log > /dev/null
 

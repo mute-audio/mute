@@ -1,0 +1,10 @@
+Unit]
+Description=timer updchk.service
+
+[Timer]
+# OnUnitActiveSec=10m
+OnCalendar=hourly
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -22,6 +22,16 @@ if [ "$PKG" = "Debian Official ( Stable version )" ]; then
 	exit 1
 	fi
 
+        ## MPD install check
+        ## If the mpd installation status is [installed,local],
+        ## reinstall mpd so that automatic updates are enabled.
+
+        mpd_Install_CHK=$(sudo apt -a -qq list mpd 2>/dev/null | grep --only-matching "installed,local")
+
+        if [ -n "$mpd_Install_CHK" ]; then
+            sudo apt install --reinstall -y mpd 2>/dev/null
+        fi
+
         # replace original mpd.conf to mute mpd.conf
         sudo cp /etc/mpd.conf /var/www/cgi-bin/etc/mpd.conf.bkup
         sudo chmod 755 /var/www/cgi-bin/etc/mpd.conf.bkup
@@ -88,6 +98,16 @@ elif  [ "$PKG" = "MPD Official ( Backports version )" ]; then
 	        echo "Location: /cgi-bin/MPD/MPD_install_error.cgi?${QUERY_STRING}"
 	        echo ''
         exit 1
+        fi
+
+        ## MPD install check
+        ## If the mpd installation status is [installed,local],
+        ## reinstall mpd so that automatic updates are enabled.
+
+        mpd_Install_CHK=$(sudo apt -a -qq list mpd 2>/dev/null | grep --only-matching "installed,local")
+
+        if [ -n "$mpd_Install_CHK" ]; then
+            sudo apt install --reinstall -y mpd/${RELEASE}-backports 2>/dev/null
         fi
 
         #replace original mpd.conf to mute mpd.conf

@@ -87,7 +87,7 @@ cat <<HTML
 		<h1>RaspberryPi</h1>
 HTML
 
-#### MainBoard
+#### MainBoard status: CPU Model, Vendor, RAM, and Temp
 mainboard=$(grep Model /proc/cpuinfo | cut -d ":" -f 2 | sed -e 's/^ //g')
 temp="$(cat /sys/class/thermal/thermal_zone0/temp)"
 TEMP="$(bc <<< "scale=1; $temp/1000") c˚"
@@ -107,9 +107,8 @@ cat <<HTML
 			<h4>
 			${VNDR} ${MDL} / ${CPUMax} MHz / ${RAM} MB RAM
 			<br>
-			CPU Temp : ${TEMP}</br>
+			<div id="temp">CPU Temp : ${TEMP}</div>
 			</h4>
-
 		<div class="separator"><hr></div>
 HTML
 
@@ -368,8 +367,25 @@ HTML
 	fi
 fi
 
-cat<< HTML
+## CPU Temp updator
+
+cat <<HTML
 	  <div class="separator"><hr></div>
+
+	    <script>
+		   const tempUpdate = document.querySelector('#temp');
+
+		   setInterval("tempUpdateCheck()", 10000)
+
+		   function tempUpdateCheck() {
+			   fetch("/cgi-bin/RaspberryPi/temp_check.cgi")
+			   .then(response => {
+		         return response.text();
+			   })
+		       .then((text) => tempUpdate.textContent = text)
+		   }
+
+	    </script>
 
 	</body>
 </html>

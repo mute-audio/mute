@@ -42,6 +42,23 @@
     exit 1
   fi
 
+ 	## Install Update-Check Service & Timer (1.06)
+	sudo mv /var/www/cgi-bin/Update/updchk.service /etc/systemd/system/updchk.service 2>/dev/null 1>/dev/null
+
+   if [ $? != 0 ]; then
+    echo "Location: /cgi-bin/Update/Update_mute_error.cgi"
+    echo ''
+    exit 1
+  fi
+
+	sudo mv /var/www/cgi-bin/Update/updchk.timer /etc/systemd/system/updchk.timer 2>/dev/null 1>/dev/null
+
+ if [ $? != 0 ]; then
+    echo "Location: /cgi-bin/Update/Update_mute_error.cgi"
+    echo ''
+    exit 1
+  fi
+
   #sudo chmod -R 755 /var/www
 
 #### Finalize ####

@@ -1,20 +1,20 @@
 #!/bin/bash
 
-# rebooting.cgi                                    #
+# Updae_checking.cgi
 # (C)2022 kitamura_design <kitamura_design@me.com> #
 
 query=$(date +%Y%m%d%I%M%S)
 
 #HTML
 echo "Content-type: text/html; charset=utf-8"
-echo ""
+echo
 
 echo "<!DOCUTYPE html>"
 echo "<html>"
 
 echo  "<head>"
 echo    "<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/main.css?$query\">"
-echo    "<meta http-equiv=\"refresh\" content=\"0; URL=/cgi-bin/RaspberryPi/reboot.cgi\">"
+echo    "<meta http-equiv=\"refresh\" content=\"0; URL=/cgi-bin/Update/Update_Checker.cgi\">"
 echo    "<script>"
 
 echo    "function uiLock(){"
@@ -34,31 +34,15 @@ echo    "}"
 echo  "</script>"
 echo  "</head>"
 
-echo "<body onLoad=\"uiLock()\" onunload=\"uiUnlock()\">"
+echo "<body onload=\"uiLock()\" onunload=\"uiUnlock()\">"
 
-#### Loading Screen
    cat <<HTML
    <div id="loading-top2">
      <div class="loader">
-        <div class="loadingtext">Rebooting ...</div>
+        <div class="loadingtext"> Checking Update ... </div>
         <progress class="progress"></progress>
      </div>
    </div>
-HTML
-
-## Auto-reconnect after rebooting
-cat <<HTML
-<script>
-
-setInterval("autoReconnect()", 10000)
-function autoReconnect() {
-fetch("/")
-.then(response => {
-  if(response.ok){parent.location.href="/index.html"}
-})
-}
-
-</script>
 HTML
 
 echo "</body>"

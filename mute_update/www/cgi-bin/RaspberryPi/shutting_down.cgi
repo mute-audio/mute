@@ -41,5 +41,20 @@ echo     "<div class=\"loadingtext\">Powered off.</div>"
 echo     "<a href=\"/cgi-bin/index.cgi\" target=\"_parent\" class=\"toggle-on-sw\"> Reload </a>"
 echo "</div>"
 
+## Auto-reconnect after rebooting
+cat <<HTML
+<script>
+
+setInterval("autoReconnect()", 10000)
+function autoReconnect() {
+fetch("/")
+.then(response => {
+  if(response.ok){parent.location.href="/index.html"}
+})
+}
+
+</script>
+HTML
+
 echo "</body>"
 echo "</html>"
