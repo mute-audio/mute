@@ -51,6 +51,7 @@ cat <<HTML
 <script>
 
 setInterval("autoReconnect()", 10000)
+
 function autoReconnect() {
 fetch("/")
 .then(response => {
