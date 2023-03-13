@@ -86,9 +86,18 @@ if [ "$PKG" = "Debian Official ( Stable version )" ]; then
 
 elif  [ "$PKG" = "MPD Official ( Backports version )" ]; then
 
-        #install MPD Backports
-        sudo wget -O /usr/share/keyrings/deb.kaliko.me.gpg https://media.kaliko.me/kaliko.gpg
-        sudo echo "deb [signed-by=/usr/share/keyrings/deb.kaliko.me.gpg] https://deb.kaliko.me/raspios-backports/ ${RELEASE}-backports main" | sudo tee /etc/apt/sources.list.d/deb.kaliko.me.list > /dev/null
+        ## install MPD Backports
+        ## get repo pgp-key
+          sudo wget -O /usr/share/keyrings/deb.kaliko.me.gpg https://media.kaliko.me/kaliko.gpg
+
+        ## OS bit check
+          OS_bit=$(uname -m)
+
+                if [ "${OS_bit}" = "aarch64" ]; then
+                        sudo echo "deb [signed-by=/usr/share/keyrings/deb.kaliko.me.gpg] https://deb.kaliko.me/debian-backports/ ${RELEASE}-backports main" | sudo tee /etc/apt/sources.list.d/deb.kaliko.me.list > /dev/null
+                else
+                        sudo echo "deb [signed-by=/usr/share/keyrings/deb.kaliko.me.gpg] https://deb.kaliko.me/raspios-backports/ ${RELEASE}-backports main" | sudo tee /etc/apt/sources.list.d/deb.kaliko.me.list > /dev/null
+                fi
 
 	sudo apt update -q 2>/dev/null 1>/dev/null
 

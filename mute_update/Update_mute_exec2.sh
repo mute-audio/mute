@@ -59,7 +59,11 @@
     exit 1
   fi
 
-  #sudo chmod -R 755 /var/www
+	sudo chmod 644 /etc/systemd/system/updchk.service /etc/systemd/system/updchk.timer
+
+  sudo systemctl daemon-reload
+	sudo systemctl --now enable updchk.service
+	sudo systemctl --now enable updchk.timer
 
 #### Finalize ####
 newVER=$(cat ./update.info | grep ver | cut -d "=" -f 2)

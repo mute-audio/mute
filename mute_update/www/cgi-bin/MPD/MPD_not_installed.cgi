@@ -39,29 +39,11 @@ echo  "</head>"
 
 echo "<body id=\"iframe\" onLoad=\"keepHover()\" onunload=\"offHover()\">"
 
-######## MPD
-
-OS_bit=$(uname -m)
+######## MPD Not Installed Tab
 
 echo    "<h1>MPD</h1>"
 
 echo    "<h3>Music Player Deamon <div class=\"status\">Not Installed</div> </h3>"
-
-if [ "${OS_bit}" = "aarch64" ]; then
-
-echo    "<form method=GET action=\"/cgi-bin/MPD/MPD_install_processing.cgi\" target=\"_self\">"
-echo        "<div class=\"setting-items-wrap\">"
-echo          "<input id=\"Apply\" type=\"submit\" value=\"Install \" class=\"button\">"
-echo          "<div class=\"ellipsis-wrap\"><div class=\"allow-down\"></div></div>"
-echo          "<select  id=\"package\" name=\"package\" class=\"inputbox-single\">"
-echo            "<option selected>Debian Official ( Stable version )</option>"
-echo            "<option disabled>MPD Official ( Backports version )</option>"
-echo          "</select>"
-echo          "<label for=\"\">Package</label>"
-echo        "</div>"
-echo    "</form>"
-
-else
 
 echo    "<form method=GET action=\"/cgi-bin/MPD/MPD_install_processing.cgi\" target=\"_self\">"
 echo        "<div class=\"setting-items-wrap\">"
@@ -75,8 +57,6 @@ echo          "<label for=\"\">Package</label>"
 echo        "</div>"
 echo    "</form>"
 
-fi
-
 echo   "<div class=\"separator\">"
 echo     "<hr>"
 echo   "</div>"
@@ -85,8 +65,6 @@ echo    "<br>"
 echo    "<p class=\"bodytext2\">"
 echo    "MPD is not yet installed, so you will first need to select and install the MPD package."
 echo    "Choose the MPD package and install it; \"an official\" Debian version or an \"unofficial\" Backports version by the MPD project."
-echo    "<br>"
-echo    "CAUTION: Backports version supports ONLY 32-bit OS."
 echo    "<br>"
 echo    "</p>"
 

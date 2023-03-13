@@ -287,6 +287,11 @@ else
  	## Install Update-Check Service & Timer (1.06)
 	sudo mv /var/www/cgi-bin/Update/updchk.service /etc/systemd/system/updchk.service
 	sudo mv /var/www/cgi-bin/Update/updchk.timer /etc/systemd/system/updchk.timer
+	sudo chmod 644 /etc/systemd/system/updchk.service /etc/systemd/system/updchk.timer
+	
+    sudo systemctl daemon-reload
+	sudo systemctl --now enable updchk.service
+	sudo systemctl --now enable updchk.timer
 
     echo " Copying [ mute ] source... Done" | sudo tee -a /boot/mute_log > /dev/null
 

@@ -7,6 +7,7 @@ if [ "$stsUPD" != "All packages are up to date" ]; then
 
         echo "${stsUPD}." | sudo tee /var/www/cgi-bin/Update/Update_notice.txt > /dev/null
         echo "<br>" | sudo tee -a /var/www/cgi-bin/Update/Update_notice.txt > /dev/null
+        echo "<br>" | sudo tee -a /var/www/cgi-bin/Update/Update_notice.txt > /dev/null
         echo "$apt_list" | sudo tee -a /var/www/cgi-bin/Update/Update_notice.txt # > /dev/null
 
         echo "Location: /cgi-bin/Update/Update.cgi"
