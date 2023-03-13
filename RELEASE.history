@@ -1,4 +1,4 @@
-Ver_1.06b (2023/3/xx)
+Ver_1.06b (2023/3/13)
 - Improved: Revised auto-reconnect process after reboot/shut-down
 - Improved: Auto-update CPU Temperature on RaspberryPi Tab
 - Improved: Scheduled update checks to run in the background
