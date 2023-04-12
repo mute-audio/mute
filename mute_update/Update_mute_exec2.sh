@@ -106,5 +106,5 @@ sudo rm -Rf ../mute_update 2>/dev/null 1>/dev/null
 #### Update Log ####
 date +"%Y-%m-%d %H:%M:%S" | sudo tee -a /var/www/cgi-bin/log/update_mute.log > /dev/null
 
-echo "Location: /cgi-bin/loading.cgi?/cgi-bin/RaspberryPi/Raspberrypi.cgi"
+echo "Location: /index.html"
 echo ''

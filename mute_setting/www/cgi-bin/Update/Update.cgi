@@ -20,11 +20,9 @@ Content-type: text/html; charset=utf-8
         }
     }
 
-    function autoRebootMsg(){
-        if(window.confirm('Automatically Reboot after running.\nAre you sure?')){
-            return true;
-            } else {
-                return false;
+    function dispUpdateMute(){
+        if(window.confirm('Are you sure to update mute?')){
+            location.href = "/cgi-bin/Update/Updating_mute.cgi";
         }
     }
 
@@ -97,7 +95,7 @@ lastUPDmute=$(sudo sed -n '$p' /var/www/cgi-bin/log/update_mute.log)
         cat <<HTML
         <!-- [ mute ] -->
         <div class="title-btn-title">
-          <a href="" class="toggle-off-sw"> Update </a>
+          <a href="/cgi-bin/Checking.cgi?/cgi-bin/Update/Update.cgi" class="toggle-on-sw"> Check Update </a>
           <h3>[ mute ]</h3>
         </div>
 
@@ -113,7 +111,8 @@ HTML
         cat <<HTML
         <!-- [ mute ] -->
         <div class="title-btn-title">
-          <a href="/cgi-bin/Update/Updating_mute.cgi" target="_self" class="toggle-on-sw"> Update </a>
+          <a href="#" onClick="dispUpdateMute(); return false;" target="_self" class="toggle-on-sw"> Update </a>
+          <!-- a href="/cgi-bin/Update/Updating_mute.cgi" target="_self" class="toggle-on-sw"> Update </a -->
           <h3>[ mute ]</h3>
         <div class="status">Update Available</div>
         </div>
