@@ -81,7 +81,7 @@ lastUPDmute=$(sudo sed -n '$p' /var/www/cgi-bin/log/update_mute.log)
         cat <<HTML
         <!-- [ mute ] -->
         <div class="title-btn-title">
-          <a href="/cgi-bin/Checking.cgi?/cgi-bin/Update/Update.cgi" class="toggle-on-sw"> Check Update </a>
+          <a href="/cgi-bin/Checking.cgi?/cgi-bin/Update/Update_Checker.cgi" class="toggle-on-sw"> Check Update </a>
           <h3>[ mute ]</h3>
         </div>
 
