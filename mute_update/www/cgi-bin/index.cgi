@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # index.cgi                                        #
-# (C)2022 kitamura_design <kitamura_design@me.com> #
+# (C)2023 kitamura_design <kitamura_design@me.com> #
 
 query=$(date +%Y%m%d%I%M%S)
 muteLogo=$(< /var/www/html/image/mute_logo.svg)

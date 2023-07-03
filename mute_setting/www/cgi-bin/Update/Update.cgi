@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Update.cgi           			                   #
-# (C)2022 kitamura_design <kitamura_design@me.com> #
+# (C)2023 kitamura_design <kitamura_design@me.com> #
 
 query=$(date +%Y%m%d%I%M%S)
 
@@ -72,22 +72,8 @@ cat <<HTML
 HTML
 
 ######## [ mute ] Update
-ver_UPDATE=$(\
-sudo wget --no-check-certificate -q -O - "https://www.dropbox.com/s/9op8f7ras6s4a94/update.info" \
-    | grep "ver=" | sed -e 's/[^0-9]//g'\
-)
 
-ver_CURRENT=$(\
-grep "ver=" /var/www/cgi-bin/etc/mute.conf \
-    | sed -e 's/[^0-9]//g'\
-)
-
-if [[ "$ver_UPDATE" -gt "$ver_CURRENT" ]]; then
-    stsUPDmute="[ mute ] Update available"
-else
-    stsUPDmute="[ mute ] is up to date"
-fi
-
+stsUPDmute=$(cat /var/www/cgi-bin/Update/Update_mute_notice.txt)
 lastUPDmute=$(sudo sed -n '$p' /var/www/cgi-bin/log/update_mute.log)
 
     if [ "$stsUPDmute" = "[ mute ] is up to date" ]; then
@@ -169,6 +155,37 @@ HTML
         </h4>
 
     <div class="separator"><hr></div>
+
+    <script>
+
+    setInterval ("watchUpdateCheck()" , 60000)
+
+    function watchUpdateCheck() {
+     fetch("/cgi-bin/Update/Update_notice.txt")
+      .then((response) => response.text())
+      .then((text) => {
+         if ( text !== "All packages are up to date.\n" ) {
+            location.href = "/cgi-bin/Update/Update.cgi";
+        }
+      })
+      .catch((error) => console.log(error))
+    }
+    
+    setInterval ("watchUpdateMute()" , 60000)
+
+    function watchUpdateMute() {
+     fetch("/cgi-bin/Update/Update_mute_notice.txt")
+      .then((response) => response.text())
+      .then((text) => {
+        if ( text !== "[ mute ] is up to date\n" ) {
+                location.href = "/cgi-bin/Update/Update.cgi" ;
+        }
+      })
+      .catch((error) => console.log(error))
+    }
+
+    </script>
+
     </body>
 </html>
 HTML

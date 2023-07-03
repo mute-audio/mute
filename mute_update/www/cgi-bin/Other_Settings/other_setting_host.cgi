@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # other_setting_host.cgi                           #
-# (C)2022 kitamura_design <kitamura_design@me.com> #
+# (C)2023 kitamura_design <kitamura_design@me.com> #
 
 # Get infomations
 # mpdscribble
@@ -150,14 +150,19 @@ Content-type: text/html; charset=utf-8
         <div class="separator"><hr></div>
 HTML
 
-### Dark Mode Setting ####
-darkmodeSTS=$(grep darkmode /var/www/cgi-bin/etc/mute.conf)
+### User Interface ###
+
+        cat <<HTML
+        <h3>User Interface</h3>
+HTML
+
+    ### Dark Mode Setting ####
+    darkmodeSTS=$(grep darkmode /var/www/cgi-bin/etc/mute.conf)
 
        if [ "$darkmodeSTS" = "darkmode=on" ]; then
        cat <<HTML
         <!-- Dark Mode Selector -->
 
-        <h3>Dark / Light Mode</h3>
           <form method=GET action="/cgi-bin/Other_Settings/darkmode_sw_Processing.cgi" target="_parent">
             <div class="setting-items-wrap">
               <input type="submit" value=" Apply " class="button">
@@ -167,6 +172,7 @@ darkmodeSTS=$(grep darkmode /var/www/cgi-bin/etc/mute.conf)
                 <option value="darkmode=off">Light Mode</option>
                 <option value="darkmode=auto">Auto (System)</option>
               </select>
+              <label>Dark / Light Mode</label>
             </div>
           </form>
 HTML
@@ -175,7 +181,6 @@ HTML
        cat <<HTML
         <!-- Dark Mode Selector -->
 
-        <h3>Dark / Light Mode</h3>
           <form method=GET action="/cgi-bin/Other_Settings/darkmode_sw_Processing.cgi" target="_parent">
             <div class="setting-items-wrap">
               <input type="submit" value=" Apply " class="button">
@@ -185,6 +190,7 @@ HTML
                 <option value="darkmode=off" selected >Light Mode</option>
                 <option value="darkmode=auto">Auto (System)</option>
               </select>
+              <label>Dark / Light Mode</label>
             </div>
           </form>
 HTML
@@ -193,7 +199,6 @@ HTML
        cat <<HTML
         <!-- Dark Mode Selector -->
 
-        <h3>Dark / Light Mode</h3>
           <form method=GET action="/cgi-bin/Other_Settings/darkmode_sw_Processing.cgi" target="_parent">
             <div class="setting-items-wrap">
               <input type="submit" value=" Apply " class="button">
@@ -203,8 +208,36 @@ HTML
                 <option value="darkmode=off">Light Mode</option>
                 <option value="darkmode=auto" selected >Auto (System)</option>
               </select>
+              <label>Dark / Light Mode</label>
+
             </div>
           </form>
+HTML
+      fi
+
+        ### System Startup Sound  ####
+
+      if [[ -L /etc/systemd/system/multi-user.target.wants/startUpSound.service ]]; then
+
+        cat <<HTML
+        <div class="setting-items-wrap">
+         <div class="toggle-wrap">
+            <a id="SoundOFFbtn" href="/cgi-bin/Other_Settings/StartUpSound_switching.cgi?other_setting_host.cgi" onclick="toggleOff()" target="_self" class="toggle-on-sw"> Enabled </a>
+            <div class="toggle-on-wrap"><div id="tgl-on" class="toggle-on-mark"></div></div>
+            </div><input class="inputbox-single-invisible" value="off/any  " readonly="">
+            <label>System Startup Sound</label>
+        </div>
+HTML
+      else
+
+        cat <<HTML
+        <div class="setting-items-wrap">
+         <div class="toggle-wrap">
+            <div class="toggle-off-wrap"><div id="tgl-off" class="toggle-off-mark"></div></div>
+            <a id="SoundONbtn" href="/cgi-bin/Other_Settings/StartUpSound_switching.cgi?other_setting_host.cgi" onclick="toggleOn()" target="_self" class="toggle-off-sw"> Disabled </a>
+            </div><input class="inputbox-single-invisible" value="off/any  " readonly="">
+            <label>System Startup Sound</label>
+        </div>
 HTML
       fi
 

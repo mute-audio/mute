@@ -60,6 +60,13 @@ echo " Updating [ mute ] ..."
 	sudo systemctl --now enable updchk.service
 	sudo systemctl --now enable updchk.timer
 
+	## Install Start-Up Sound Service (1.07b)
+	sudo mv /var/www/cgi-bin/Start/startUpSound.service /etc/systemd/system/startUpSound.service
+  sudo chmod 644 /etc/systemd/system/startUpSound.service
+
+	sudo systemctl daemon-reload
+	sudo systemctl enable startUpSound.service > /dev/null
+
 echo " Updating [ mute ]... Done" \
  | sudo tee -a /boot/mute_log > /dev/null
 

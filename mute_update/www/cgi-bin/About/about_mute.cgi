@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # about_mute.cgi                                        #
-# (C)2022 kitamura_design <kitamura_design@me.com>      #
+# (C)2023 kitamura_design <kitamura_design@me.com>      #
 
 VER=$(grep ver /var/www/cgi-bin/etc/mute.conf | cut -d "=" -f 2)
 #install_log=$(sudo cat /var/www/cgi-bin/log/install.log | sed -e "s/$/<br>/g")
@@ -40,7 +40,7 @@ Content-type: text/html; charset=utf-8
          <br>
          <p class="bodytext2">
          This WebApp is designed ONLY to work to set up the "RPi-Audio Player", NOT to browse / play your music library.
-         To control MPD, you can use the Client App ( like <a href="https://www.openaudiolab.com/yampc/\" target="_blank">yaMPC</a> ) installed on your mobile or tablet.
+         To control MPD, you can use the Client App ( like <a href="https://www.openaudiolab.com/yampc/" target="_blank">yaMPC</a> ) installed on your mobile or tablet.
          <br>
          This WebAPP is released as "A Freeware" under the MIT License.
          <br>
@@ -121,9 +121,10 @@ Content-type: text/html; charset=utf-8
          <br>
          <div class="separator"><hr></div>
 
-         <h3>License</h3>
+         <h2>License</h2>
          <p class="bodytext2">
-         [ mute ] ©2022 Yoichi KITAMURA / <a href="https://kitamura-design.format.com" target="_blank">kitamura_design</a>
+         <br>
+         [ mute ] ©2023 Yoichi KITAMURA / <a href="https://kitamura-design.format.com" target="_blank">kitamura_design</a>
          <br>
          <br>
          Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
@@ -138,89 +139,137 @@ Content-type: text/html; charset=utf-8
          IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
          TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
          <br>
+         <br>
          </p>
 
          <div class="separator"><hr></div>
+HTML
 
-         <h3>Dependencies</h3>
+cat <<HTML
+         <h2>Dependencies</h2>
          <p class="bodytext2">
+	 <br>
          This WebApp is written by BASH for the RasberryPi OS and consists of various shell script CGIs, which are accessed and operated by a web browser via LAN.
          The following languages, middleware, packages, and libraries are required for operation.
          <br>
          </p>
+HTML
 
+BASH_INFO1=$(bash --version | sed -n 1p | cut -d "(" -f 1)
+BASH_INFO2=$(bash --version | sed -n 2p)
+
+cat <<HTML
          <br>
          <h3><a href="https://tiswww.case.edu/php/chet/bash/bashtop.html" target="_blank">bash - GNU Bourne-Again SHell</a></h3>
          <p class="bodytext2">
-         GNU Bash 5.0
+         ${BASH_INFO1}
          <br>
-         ©1989-2018 by the Free Software Foundation, Inc.
-         <br>
+	 ${BASH_INFO2}
+	 <br>
          </p>
+HTML
 
+LIGHTTPD_INFO=$(lighttpd -v | cut -d "(" -f 1)
+
+cat <<HTML
          <br>
          <h3><a href="https://redmine.lighttpd.net/projects/lighttpd/wiki/" target="_blank">lighttpd - a fast, secure and flexible web server</a></h3>
          <p class="bodytext2">
+	 ${LIGHTTPD_INFO}<br>
          Jan Kneschke [jan@kneschke.de]
          <br>
          </p>
+HTML
 
+MPD_INFO1=$(cat /var/www/cgi-bin/MPD/MPD_conf/temp/mpd_v.txt | sed -n 1p | cut -d "(" -f 1)
+MPD_INFO2=$(cat /var/www/cgi-bin/MPD/MPD_conf/temp/mpd_v.txt | sed -n 2p | cut -d "<" -f 1)
+MPD_INFO3=$(cat /var/www/cgi-bin/MPD/MPD_conf/temp/mpd_v.txt | sed -n 3p | cut -d "<" -f 1)
+
+cat <<HTML
          <br>
          <h3><a href="http://www.musicpd.org/" target="_blank">MPD - A daemon for playing music</a></h3>
          <p class="bodytext2">
+	 ${MPD_INFO1}<br>
+	 ${MPD_INFO2}<br>
+	 ${MPD_INFO3}<br>
          Max Kellermann [max.kellermann@gmail.com]
          <br>
          </p>
+HTML
 
+MPC_INFO=$(mpc help | sed -n 2p)
+
+MPDSCRIBBLE_INFO1=$(mpdscribble -V | sed -n 1p)
+MPDSCRIBBLE_INFO3=$(mpdscribble -V | sed -n 3p | cut -d "<" -f 1)
+MPDSCRIBBLE_INFO4=$(mpdscribble -V | sed -n 4p | cut -d "<" -f 1)
+
+cat <<HTML
          <br>
          <h3><a href="https://www.musicpd.org/clients/mpc/" target="blank">mpc - a command-line client for the Music Player Daemon (MPD)</a></h3>
          <p class="bodytext2">
+	 ${MPC_INFO}<br>
          Max Kellermann [max.kellermann@gmail.com]
-         <br>
-         ©2003-2018 The Music Player Daemon Project
          <br>
          </p>
 
          <br>
          <h3><a href="https://www.musicpd.org/clients/mpdscribble/" target="_blank">mpdscribble - A Music Player Daemon (MPD) client which submits information about tracks being played to a scrobbler (e.g. last.fm).</a></h3>
          <p class="bodytext2">
+	 ${MPDSCRIBBLE_INFO1}<br>
+         ${MPDSCRIBBLE_INFO3}<br>
+         ${MPDSCRIBBLE_INFO4}<br>
          Max Kellermann [max.kellermann@gmail.com]
          <br>
-         Kuno Woudt [kuno@frob.nl]
-         <br>
-         Nikki
-         <br>
-         honey in #audioscrobbler
-         <br>
-         Trevor Caira [trevor.caira@gmail.com]<br>
          </p>
+HTML
 
+NKF_INFO1=$(nkf -v | sed -n 1p | cut -d "(" -f 1)
+NKF_INFO2=$(nkf -v | sed -n 2p)
+NKF_INFO3=$(nkf -v | sed -n 3p)
+
+cat <<HTML
          <br>
          <h3><a href="https://ja.osdn.net/projects/nkf/" target="_blank">nkf - Network Kanji Filter</a></h3>
          <p class="bodytext2">
-         ©1987, Fujitsu LTD. (Itaru ICHIKAWA).
-         <br>
-         ©1996-2018, The nkf Project.
-         <br>
+         ${NKF_INFO1}<br>
+	 ${NKF_INFO2}<br>
+         ${NKF_INFO3}<br>
          </p>
+HTML
 
+LSOF_VER=$(apt list lsof | cut -d " " -f 2 | sed -n 2p | cut -d "+" -f1)
+
+cat <<HTML
          <br>
          <h3>lsof - list open files</h3>
          <p class="bodytext2">
+	 lsof ${LSOF_VER}<br>
          Written by Victor A.Abell [abe@purdue.edu] of Purdue University.
          <br>
          </p>
+HTML
 
+BC_INFO1=$(bc -v | sed -n 1p)
+BC_INFO2=$(bc -v | sed -n 2p)
+
+cat <<HTML
          <br>
          <h3>bc - An arbitrary precision calculator language</h3>
          <p class="bodytext2">
+	 ${BC_INFO1}<br>
+         ${BC_INFO2}<br>
          Philip A. Nelson [philnelson@acm.org].
          <br>
          </p>
+HTML
 
+PMOUNT_VER=$(echo pmount $(sudo pmount -V))
+
+cat <<HTML
          <br>
          <h3>pmount - mount arbitrary hotpluggable devices as normal user</h3>
          <p class="bodytext2">
+	 ${PMOUNT_VER}<br>
          Developed by Martin Pitt [martin.pitt@canonical.com]
          <br>
          Maintained by Vincent Fourmond [fourmond@debian.org]
@@ -245,17 +294,6 @@ Content-type: text/html; charset=utf-8
          </p>
 
          <div class="separator"><hr></div>
-
-        <!-- Debug Mode 
-         <h4>
-         [ Install log ]
-         <br>
-         <br>
-         ${install_log}
-         </h4>
-
-         <div class="separator"><hr></div>
-         -->
 
   </body>
 </html>

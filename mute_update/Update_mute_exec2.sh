@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Update_mute_exec2.sh            #
-# mute (C)2022 kitamura_design    #
+# mute (C)2023 kitamura_design    #
 
 #### Copy Update source ####
   ### Move to HOME dir ###
@@ -62,8 +62,22 @@
 	sudo chmod 644 /etc/systemd/system/updchk.service /etc/systemd/system/updchk.timer
 
   sudo systemctl daemon-reload
-	sudo systemctl --now enable updchk.service
-	sudo systemctl --now enable updchk.timer
+	sudo systemctl --now enable updchk.service 2>/dev/null 1>/dev/null
+	sudo systemctl --now enable updchk.timer 2>/dev/null 1>/dev/null
+
+  ## Install Start-Up Sound Service (1.07b)
+	sudo mv /var/www/cgi-bin/Start/startUpSound.service /etc/systemd/system/startUpSound.service 2>/dev/null 1>/dev/null
+  
+   if [ $? != 0 ]; then
+    echo "Location: /cgi-bin/Update/Update_mute_error.cgi"
+    echo ''
+    exit 1
+  fi
+
+  sudo chmod 644 /etc/systemd/system/startUpSound.service
+
+	sudo systemctl daemon-reload
+	sudo systemctl enable startUpSound.service 2>/dev/null 1>/dev/null
 
 #### Finalize ####
 newVER=$(cat ./update.info | grep ver | cut -d "=" -f 2)

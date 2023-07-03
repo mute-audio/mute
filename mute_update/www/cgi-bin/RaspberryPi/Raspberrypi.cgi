@@ -208,46 +208,8 @@ HTML
 
 fi
 
-#### 64bit SW
-kernel=$(uname -m)
-
-if [ "$kernel" = "aarch64" ]; then
-	Running="Activated"
-else
-	Running="Not activated"
-fi
-
-if [ "$Running" = "Activated" ]; then
-
-  cat <<HTML
-		<!-- 64bit Activated -->
-		<div class="setting-items-wrap">
-		  <div class="toggle-wrap">
-			 <a id="64bit_btn" href="#" onClick="toggleOff(); disp64bit(); return false;" target="_self" class="toggle-on-sw">Activated</a>
-        	 <div class="toggle-on-wrap"><div class="toggle-on-mark"></div></div>
-		  </div>
-		  <input type="text" id="64bit" name="64bit" value="${Running}" class="inputbox-single-invisible" readonly>
-		  <label>64bit kernel</label>
-		</div>
-HTML
-
-else
-
-  cat <<HTML
-  		<!-- 64bit Inactivated -->
-		<div class="setting-items-wrap">
-  		  <div class="toggle-wrap">
-		     <div class="toggle-off-wrap"><div class="toggle-off-mark"></div></div>
-		     <a id="64bit_btn" href="#" onClick="toggleOn(); disp64bit(); return false;" target="_self" class="toggle-off-sw">Inactivated</a>
-		  </div>
-		  <input type="text" id="64bit" name="64bit" value="${Running}" class="inputbox-single-invisible" readonly>
-		  <label>64bit kernel</label>
-		</div>
-HTML
-
-fi
-
 #### WiFi Settings
+
 # Initialize wpa_supplicant.conf
 wpa_country=$(sudo grep country /etc/wpa_supplicant/wpa_supplicant.conf)
 if [ -z ${wpa_country} ]; then

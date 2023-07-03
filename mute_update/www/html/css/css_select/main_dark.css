@@ -264,15 +264,6 @@ small {
   float: right;
  }
 
- code {
-  display: inline-block;
-  margin-left: 5px;
-  white-space: pre-wrap;
-  line-height: 1.5;
-  color: #7D7D7D;
-  font-size: 2.0vmin;
-}
-
 label {
   float: right;
   margin: 0.75%;

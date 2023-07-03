@@ -55,7 +55,7 @@ setInterval("autoReconnect()", 10000)
 function autoReconnect() {
 fetch("/")
 .then(response => {
-  if(response.ok){parent.location.href="/index.html"}
+  if(response.ok){location.href="/cgi-bin/start.cgi"}
 })
 }
 

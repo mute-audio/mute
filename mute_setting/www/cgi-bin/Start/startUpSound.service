@@ -1,0 +1,10 @@
+[Unit]
+Description=Play the boot-up sound
+After=etwork.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=simple
+ExecStart=/bin/sh /var/www/cgi-bin/Start/startUpSound.cgi
+
+[Install]
+WantedBy=multi-user.target
