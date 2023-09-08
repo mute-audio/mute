@@ -50,13 +50,18 @@ HTML
 cat <<HTML
 <script>
 
-setInterval("autoReconnect()", 10000)
+setInterval( autoReconnect , 10000);
 
 function autoReconnect() {
-fetch("/")
-.then(response => {
-  if(response.ok){location.href="/cgi-bin/start.cgi"}
-})
+  fetch("/")
+  .then(response => {
+   if(response.ok){
+      location.href="/cgi-bin/start.cgi";
+    }else{
+      return;
+    }
+  })
+  .catch((error) => console.log(error))
 }
 
 </script>

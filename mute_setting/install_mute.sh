@@ -340,7 +340,7 @@ else
     echo ''
 
     DATE=$(date)
-	echo ' --------  mute install Finished.${DATE} --------' | sudo tee -a /boot/mute_log > /dev/null
+	echo " --------  mute install Finished. ${DATE} --------" | sudo tee -a /boot/mute_log > /dev/null
 
 	echo ' Rebooting...'
 	echo ''

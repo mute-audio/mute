@@ -24,13 +24,14 @@ Content-type: text/html; charset=utf-8
           <link rel="stylesheet" type="text/css" href="/css/main.css?$query">
           <!-- <meta http-equiv="Refresh" content="30"> -->
           <script>
-            function autoRebootMsg(){
-                if(window.confirm('Automatically Reboot after running.\nAre you sure?')){
-                        return true;
-                        } else {
-                        return false;
-                        }
-                }
+
+       		  function autoRebootMsg(){
+      				if(window.confirm('Automatically Reboot after running.\nAre you sure?')){
+			      		return true;
+					    } else {
+					    return false;
+				      }
+			      }
 
             function keepHover(){
                 target = parent.document.getElementById("SoundDevice");
@@ -52,9 +53,7 @@ HTML
 #### Current DAC_info & Sound Check
 
 #### ALSA Info
-ALSA=$(cut -d " " -f 6,7 /proc/asound/version)
 alsaSTS=$(systemctl status alsa-state.service | grep Active: | cut -d ":" -f 2 | cut -d " " -f 3)
-alsaUTLver=$(dpkg-query -l | grep alsa-utils | sed -e 's/ \+/\t/g' | cut -f 3)
 
   if [ ${alsaSTS} = "(running)" ]; then
          alsaSTS=Running
@@ -75,15 +74,6 @@ alsaUTLver=$(dpkg-query -l | grep alsa-utils | sed -e 's/ \+/\t/g' | cut -f 3)
           </h3>
           </div>
  
-          <!-- Driver Info-->
-          <h4>
-          ${ALSA}
-          <br>
-          alsa-utils : ${alsaUTLver:- -- Not Installed --}
-          <br>
-          </h4>
-
-          <div class="separator"><hr></div>
 HTML
 
 #### Sound Devices Setting
@@ -93,13 +83,14 @@ CARDS=$(grep -c " [0-9]" /proc/asound/cards)
   cat <<HTML
           <!-- Driver Info-->
           <h3>Sound Devices</h3>
+          <div id="Device_List">
 HTML
 
     if [ $CARDS = 0 ]; then
         cat <<HTML
           <div class="setting-items-wrap">
           <form>
-                 <input id="sounddevice" type="button" value="Sound Check" class="button-disabled" disable readonly>
+                 <input id="soundCheck" type="button" value="Sound Check" class="button-disabled" disable readonly>
                  <input class="inputbox-single-readonly" value="-- No Sound Device --" readonly>
           </form>
           </div>
@@ -108,33 +99,37 @@ HTML
 	  for ((i=0; i<$CARDS; i++)); do
 
           cardNAME=$(grep name /proc/asound/card$i/pcm0p/sub0/info | sed -n 1P | sed -e 's/name: //g')
-	  cardSTS=$(sed -n 1p /proc/asound/card$i/pcm0p/sub0/status | cut -d " " -f 2)
+      	  cardSTS=$(sed -n 1p /proc/asound/card$i/pcm0p/sub0/status | cut -d " " -f 2)
           cardNUM=$(sed -n /^card/p /proc/asound/card$i/pcm0p/sub0/info | cut -d " " -f 2)
           devNUM=$(sed -n /^device/p /proc/asound/card$i/pcm0p/sub0/info | cut -d " " -f 2)
           DEVICE="hw:${cardNUM},${devNUM}"
 
 	  if [ ${cardSTS} = "RUNNING" ]; then
-		cardSTS=Running
+		  cardSTS=Running
 	  elif [ ${cardSTS} = "closed" ]; then
-		cardSTS=Closed
-          elif [ ${cardSTS} = "DRAINING" ]; then
-                cardSTS=Draining
+		  cardSTS=Closed
+    elif [ ${cardSTS} = "DRAINING" ]; then
+      cardSTS=Draining
 	  fi
 
           cat <<HTML
-           <div class="setting-items-wrap">
+           <div id="deviceSTS-$i" class="setting-items-wrap">
            <form method=GET action="/cgi-bin/Sound_Device/sound_checking.cgi" target="_self">
-                 <input id="sounddevice" name="sounddevice" type="hidden" value="${DEVICE}">
-                 <input id="sounddevice" type="submit" value="Sound Check" class="button">
+                 <input id="soundDevice-$i" name="sounddevice" type="hidden" value="${DEVICE}">
+                 <input id="soundCheck-$i" type="submit" value="Sound Check" class="button">
 		 <input class="inputbox-single-readonly" value="${cardNAME:- -- No Sound Device --}" readonly>
 		 <label> ${DEVICE}</label>
-                 <label><div id="sounddevice" class="status"> ${cardSTS}</div></label>
+                 <label><div class="status"> ${cardSTS}</div></label>
 	   </form>
            </div>
 HTML
            done
 
         fi
+
+        cat <<HTML
+        </div>
+HTML
 
 #### Device Setting
           cat <<HTML
@@ -155,6 +150,40 @@ HTML
           </form>
 
           <div class="separator"><hr></div>
+
+        <script>
+        
+       // ALSA Status Checker -----
+           const alsaSTS = document.querySelector('#alsa-STS');
+
+        function alsaSTSCheck() {
+                   fetch("/cgi-bin/Sound_Device/alsaSTS_Check.cgi")
+                   .then(response => {
+                         return response.text();
+                   })
+                   .then((text) => alsaSTS.textContent = text)
+
+                   setTimeout( alsaSTSCheck , 10000 )
+        }
+
+        alsaSTSCheck();
+
+       // SoundDevice (DAC) Status Checker -----
+        function cardSTSCheck() {
+            const deviceList = document.querySelector("#Device_List");
+            const URL = '/cgi-bin/Sound_Device/cardSTS_Check.cgi';
+
+            fetch(URL)
+            .then( (response) => response.text())
+            .then( (text) => deviceList.innerHTML = text )
+            .catch( (error) => console.log(error))
+
+            setTimeout( cardSTSCheck , 10000 )
+        }
+
+        cardSTSCheck();
+
+        </script>
 
        </body>
 </html>
