@@ -40,7 +40,7 @@ NNT_check=$(df -ah | egrep --only-matching '/mnt/${NAME}')
 
  else                                                               # If failed to mount NAS, Exit with deleting the mount-point dir.
     sudo rmdir /mnt/${NAME}                                         # Delete a mount point dir.
-    echo "Location: /cgi-bin/Source_Volume/Source_volume.cgi"       # Go back to the Page
+    echo "Location: /cgi-bin/Source_Volume/NAS_mount_error.cgi"     # Go to the error Page
     echo ""
  fi
 
@@ -61,6 +61,6 @@ MPD_check=$(dpkg -l mpd | grep --only-matching mpd)
  fi
 
  # Go back to the Page
-echo "Location: /cgi-bin/Source_Volume/Source_volume.cgi"
+echo "Location: /cgi-bin/loading.cgi?/cgi-bin/Source_Volume/Source_volume.cgi"
 echo ""
 

@@ -1,20 +1,20 @@
 #!/bin/bash
 
-# rebooting.cgi                                    #
-# (C)2022 kitamura_design <kitamura_design@me.com> #
+# NAS_mount_error.cgi	                    	   #
+# (C)2023 kitamura_design <kitamura_design@me.com> #
 
 query=$(date +%Y%m%d%I%M%S)
 
 #HTML
+
 echo "Content-type: text/html; charset=utf-8"
-echo ""
+echo
 
 echo "<!DOCUTYPE html>"
 echo "<html>"
 
 echo  "<head>"
 echo    "<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/main.css?$query\">"
-echo    "<meta http-equiv=\"refresh\" content=\"0; URL=/cgi-bin/RaspberryPi/reboot.cgi\">"
 echo    "<script>"
 
 echo    "function uiLock(){"
@@ -36,36 +36,15 @@ echo  "</head>"
 
 echo "<body onLoad=\"uiLock()\" onunload=\"uiUnlock()\">"
 
-#### Loading Screen
-   cat <<HTML
-   <div id="loading-top2">
-     <div class="loader">
-        <div class="loadingtext">Rebooting ...</div>
-        <progress class="progress"></progress>
-     </div>
-   </div>
-HTML
+RaspberryPiMenu="/cgi-bin/RaspberryPi/Raspberrypi.cgi"
+SourceVolumeMenu="/cgi-bin/Source_Volume/Source_volume.cgi"
 
-## Auto-reconnect after rebooting
-cat <<HTML
-<script>
-
-setInterval( autoReconnect , 10000);
-
-function autoReconnect() {
-  fetch("/")
-  .then(response => {
-   if(response.ok){
-      location.href="/cgi-bin/start.cgi";
-    }else{
-      return;
-    }
-  })
-  .catch((error) => console.log(error))
-}
-
-</script>
-HTML
+######## Loading Screen
+echo   "<div id=\"loading-top2\">"
+echo     "<div class=\"loadingtext\"> ...Some Error occurred during NAS mount. </div>"
+echo     "<a href=\"/cgi-bin/loading.cgi?${RaspberryPiMenu}\" target=\"_self\" class=\"button2\"> Cancel </a>"
+echo     "<a href=\"/cgi-bin/loading.cgi?${SourceVolumeMenu}\" target=\"_self\" class=\"button\"> Retry </a>"
+echo   "</div>"
 
 echo "</body>"
 echo "</html>"

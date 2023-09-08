@@ -13,9 +13,9 @@ grep "ver=" /var/www/cgi-bin/etc/mute.conf \
 )
 
 if [[ "$ver_UPDATE" -gt "$ver_CURRENT" ]]; then
+
     echo "[ mute ] Update available" | sudo tee /var/www/cgi-bin/Update/Update_mute_notice.txt > /dev/null
-else
-    echo "[ mute ] is up to date" | sudo tee /var/www/cgi-bin/Update/Update_mute_notice.txt > /dev/null
+
 fi
 
 ######## RaspberryPi OS Update Check
@@ -30,14 +30,9 @@ if [ "$stsUPD" != "All packages are up to date" ]; then
         echo "<br>" | sudo tee -a /var/www/cgi-bin/Update/Update_notice.txt > /dev/null
         echo "$apt_list" | sudo tee -a /var/www/cgi-bin/Update/Update_notice.txt # > /dev/null
 
-        echo "Location: /cgi-bin/Update/Update.cgi"
-        echo ''
-else
-        echo "${stsUPD}." | sudo tee /var/www/cgi-bin/Update/Update_notice.txt > /dev/null
-
-        echo "Location: /cgi-bin/Update/Update.cgi"
-        echo ''
-
 fi
+
+echo "Location: /cgi-bin/Update/Update.cgi"
+echo ''
 
 exit 0

@@ -1,3 +1,13 @@
+Ver_1.08b (WIP)
+- Improved: Revised reboot process (changed "setInterval" to "setTimeout")
+- Improved: Revise tab menu contents
+- Improved: Auto Update WiFi Listing / RaspberryPi Tab 
+- Improved: Automatic updating of Status Badges / Sound Device Tab
+- Improved: Automatic updating of Status Badges of NAS & USB / Source Volume Tab
+- Improved: Automatic updating of content / Update Tab
+- Bugfix: [Source Volume Tab] Fixed duplicate titles when mounting multiple volumes
+- Bugfix: [Source Volume Tab] Fixed unmount process not working properly
+
 Ver_1.07b (2023/7/4)
 - Add: System startup sound playback
 - Revised: Eliminate 64-bit switching

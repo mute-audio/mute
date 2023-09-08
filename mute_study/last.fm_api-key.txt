@@ -1,0 +1,8 @@
+Application name	mute
+API key	8bfb22b216840ebf3111daa8374a863b
+Shared secret	88b8c752f85d15eb21e3609a049f81c3
+Registered to	kitamura_design
+
+https://www.last.fm/api/accounts
+ID kitamura_design
+PWD Machine-55

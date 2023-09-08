@@ -129,8 +129,8 @@ cat <<HTML
 			<h3>OS : RaspberryPi OS ${DISTRO^}</h3>
 			${reboot_badge}
 		</div>
-			<!-- RaspberryPi OS Info-->
-			<h4>Kernel : ${kernelNAME} ${kernelR}</h4>
+			<!-- RaspberryPi OS Info -->
+			<!-- h4>Kernel : ${kernelNAME} ${kernelR}</h4 -->
 HTML
 
 ######### Genaral Options: TimeZone
@@ -337,15 +337,36 @@ cat <<HTML
 	    <script>
 		   const tempUpdate = document.querySelector('#temp');
 
-		   setInterval("tempUpdateCheck()", 10000)
-
 		   function tempUpdateCheck() {
 			   fetch("/cgi-bin/RaspberryPi/temp_check.cgi")
 			   .then(response => {
 		         return response.text();
 			   })
 		       .then((text) => tempUpdate.textContent = text)
+
+			   setTimeout( tempUpdateCheck , 10000 )
 		   }
+
+		   tempUpdateCheck();
+
+		   function ssidStatusCheck() {
+                const SSID = document.querySelector('#ssid');
+
+                if(!SSID) {
+                    return;
+                }
+
+                fetch("/cgi-bin/RaspberryPi/SSID_STS.cgi")
+                .then(response => {
+                    return response.text();
+                })
+                .then((text) => SSID.outerHTML = text)
+                .catch((error) => console.log(error))
+
+                setTimeout( ssidStatusCheck , 10000 )
+           }
+
+           ssidStatusCheck();
 
 	    </script>
 

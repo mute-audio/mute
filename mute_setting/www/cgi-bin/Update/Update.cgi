@@ -81,7 +81,7 @@ lastUPDmute=$(sudo sed -n '$p' /var/www/cgi-bin/log/update_mute.log)
         cat <<HTML
         <!-- [ mute ] -->
         <div class="title-btn-title">
-          <a href="/cgi-bin/Checking.cgi?/cgi-bin/Update/Update_Checker.cgi" class="toggle-on-sw"> Check Update </a>
+          <a href="/cgi-bin/Update/Update_checking.cgi" class="toggle-on-sw"> Check Update </a>
           <h3>[ mute ]</h3>
         </div>
 
@@ -89,6 +89,8 @@ lastUPDmute=$(sudo sed -n '$p' /var/www/cgi-bin/log/update_mute.log)
           Last Updated : ${lastUPDmute:- Not updated yet}</br>
           ${stsUPDmute}.
         </h4>
+
+        <div hidden id="stsUPDmute">${stsUPDmute}</div>
 
         <div class="separator"><hr></div>
 HTML
@@ -107,6 +109,8 @@ HTML
           Last Updated : ${lastUPDmute:- Not updated yet}</br>
           ${stsUPDmute}.
         </h4>
+
+        <div hidden id="stsUPDmute">${stsUPDmute}</div>
 
         <div class="separator"><hr></div>
 HTML
@@ -127,6 +131,8 @@ HTML
 
 stsUPD=$(cat /var/www/cgi-bin/Update/Update_notice.txt)
 lastUPD=$(sudo sed -n '$p' /var/www/cgi-bin/log/update.log)
+kernelR=$(uname -r)
+kernelNAME=$(uname -s)
 
     if [ "$stsUPD" = "All packages are up to date." ] || [ -z "$stsUPD" ]; then
 
@@ -150,42 +156,80 @@ HTML
     fi
         cat <<HTML
         <h4>
+          Kernel Ver. : ${kernelNAME} ${kernelR}</br>
           Last Updated : ${lastUPD:- Not updated yet}</br>
           ${stsUPD}
         </h4>
+
+        <div hidden id="stsUPD">${stsUPD}</div>
 
     <div class="separator"><hr></div>
 
     <script>
 
-    setInterval ("watchUpdateCheck()" , 60000)
-
-    function watchUpdateCheck() {
+    function watchUpdateOS() {
      fetch("/cgi-bin/Update/Update_notice.txt")
       .then((response) => response.text())
       .then((text) => {
-         if ( text !== "All packages are up to date.\n" ) {
-            location.href = "/cgi-bin/Update/Update.cgi";
+        if ( text !== "All packages are up to date.\n" ) {
+            fetch("/cgi-bin/Update/Update.cgi")
+              .then((response) => response.text())
+              .then((text) => {
+                const textToHTML = document.createElement('div');
+                textToHTML.innerHTML = text
+
+                const rpiOverWrite = textToHTML.querySelector('#RPi_OS');
+                const RPiOSDiv = document.querySelector('#RPi_OS');
+
+                RPiOSDiv.innerHTML = rpiOverWrite.innerHTML;
+//                console.log('RPi-OS : Updates are available.');
+                return true;
+               })
+         }else{
+//            console.log('RPi-OS : No Update');
+            return false;
         }
       })
       .catch((error) => console.log(error))
+
+      setTimeout ("watchUpdateOS()" , 60000)
     }
     
-    setInterval ("watchUpdateMute()" , 60000)
+    watchUpdateOS();
 
     function watchUpdateMute() {
      fetch("/cgi-bin/Update/Update_mute_notice.txt")
       .then((response) => response.text())
       .then((text) => {
         if ( text !== "[ mute ] is up to date\n" ) {
-                location.href = "/cgi-bin/Update/Update.cgi" ;
-        }
+            fetch("/cgi-bin/Update/Update.cgi")
+              .then((response) => response.text())
+              .then((text) => {
+
+                const textToHTML = document.createElement('div');
+                textToHTML.innerHTML = text;
+
+                const muteOverWrite = textToHTML.querySelector('#mute');
+                const muteDiv = document.querySelector('#mute');
+
+                muteDiv.innerHTML = muteOverWrite.innerHTML;
+//                console.log('mute : Updates are available.');
+                return true;
+              })
+         }else{
+//            console.log('mute : No Update.');
+            return false;
+         }
       })
       .catch((error) => console.log(error))
+
+      setTimeout ("watchUpdateMute()" , 60000)
     }
 
+    watchUpdateMute();
+    
     </script>
 
-    </body>
+  </body>
 </html>
 HTML

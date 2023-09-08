@@ -38,14 +38,20 @@ HTML
 HTML
 
  #### NAS List (Multiple Version)
+
+        cat <<HTML
+        <h3>NAS</h3>
+        <div id="NAS_list">
+HTML
+
  NAS_count=$(df -ah | grep -c /mnt.*) # Check NAS
 
       if [ $NAS_count = 0 ]; then
         cat <<HTML
-        <h3>NAS</h3>
         <div class="setting-items-wrap">
           <a class="button-disabled">Unmount</a>
           <input class="inputbox-single-readonly" value="-- No NAS Mounted --" readonly>
+          <label><div class="status" style="display: none;">none</div></label>
         </div>
 HTML
       else
@@ -61,11 +67,10 @@ HTML
              nasSTS='Busy'  #Set Disable un-mount
 
              cat <<HTML
-              <h3>NAS</h3>
-              <div class="setting-items-wrap">
+              <div id="nas-$i"class="setting-items-wrap">
                 <a class="button-disabled">Unmount</a>
                 <input class="inputbox-single-readonly" value="${NAS_name} : ${NAS}" readonly>
-                <label><div id="nasSTS" class="status">${nasSTS}</div></label>
+                <label><div class="status">${nasSTS}</div></label>
               </div>
 HTML
             else
@@ -73,11 +78,10 @@ HTML
              nasSTS='Not busy' #Set Enable un-mount
 
              cat <<HTML
-              <h3>NAS</h3>
-              <div class="setting-items-wrap">
+              <div id="nas-$i" class="setting-items-wrap">
                 <a href="/cgi-bin/Source_Volume/unmounting_NAS.cgi?${NAS_name}" target="_self" class="button">Unmount</a>
                 <input class="inputbox-single-readonly" value="${NAS_name} : ${NAS}" readonly>
-              <label><div id="nasSTS" class="status">${nasSTS}</div></label>
+              <label><div class="status">${nasSTS}</div></label>
               </div>
 HTML
             fi
@@ -86,62 +90,13 @@ HTML
 
       fi
 
- #### NAS Mount Form
- busyCHECK2=$(sudo lsof /mnt/*)
-
-      if [ -n "$busyCHECK2" ]; then
-
-        cat <<HTML
-        <h4> NAS Setting [ SMB ] -- Disabled while Busy --</h4>
-
-        <form method=GET action="/cgi-bin/Source_Volume/mount_NAS.cgi" target="_self">
-             <ul>
-                  <!-- NAS Label (Mount Name) -->
-                <li class="setting-items-wrap">
-                   <div class="ellipsis-wrap">Aa</div>
-                   <input type="text" id="mount_name" name="mount_name" placeholder="NAS_1" class="inputbox" disabled>
-                   <label for="">NAS Name</label>
-                </li>
-
-                  <!-- Volume Path -->
-                <li class="setting-items-wrap">
-                   <div class="ellipsis-wrap">Aa</div>
-                   <input type="text" id="volume_path" name="volume_path" placeholder="192.168.xx.xxx/share/music" class="inputbox" disabled>
-                   <label for="">Volume Path</label>
-                </li>
-
-                  <!-- smb option -->
-                <li class="setting-items-wrap">
-                   <div class="ellipsis-wrap">Aa</div>
-                   <input type="text" id="vers" name="vers" placeholder="vers=1.0" class="inputbox" disabled>
-                   <label for="">SMB Version</label>
-                </li>
-
-                  <!-- User -->
-                <li class="setting-items-wrap">
-                   <div class="ellipsis-wrap">Aa</div>
-                   <input type="text" id="user" name="user" placeholder="User Name" class="inputbox" disabled>
-                   <label for="">User</label>
-                </li>
-
-                  <!-- Password -->
-                <li class="setting-items-wrap">
-                   <div class="ellipsis-wrap">Aa</div>
-                   <input type="password" id="password" name="password" placeholder="Password" class="inputbox" disabled>
-                   <label for="password">Password</label>
-                </li>
-             </ul>
-
-             <!-- Submit & reset -->
-             <div class="setting-items-wrap">
-             <input id="submit" type="submit" value=" Mount " class="button-disabled" disabled></input>
-             <input id="reset" type="reset" value=" Reset " class="button2" disabled></input>
-             </div>
-        </form>
+      cat <<HTML
+      </div>
 HTML
-      else
 
+ #### NAS Mount Form
         cat <<HTML
+        <div id="NAS_MOUNT_FORM">
         <h4> NAS Setting [ SMB ]</h4>
 
         <form method=GET action="/cgi-bin/Source_Volume/mouting_NAS.cgi" target="_self">
@@ -188,21 +143,25 @@ HTML
              <input id="reset" type="reset" value=" Reset " class="button2"></input>
              </div>
         </form>
+      </div>
 HTML
-      fi
 
 
  #### USB Drive List
+        cat <<HTML
+        <h3>USB</h3>
+        <div id="USB-list">
+HTML
+
  USB_count=$(df -h | grep /media/ | cut -d "/" -f 5 | wc -l)
 
       if [ $USB_count = 0 ]; then
 
         cat <<HTML
-        <h3>USB</h3>
-
         <div class="setting-items-wrap">
         <a class="button-disabled">Unmount</a>
         <input class="inputbox-single-readonly" value="-- No USB Drive --" readonly>
+        <label><div class="status" style="display: none;">none</div></label>
         </div>
 HTML
       else
@@ -217,26 +176,20 @@ HTML
              usbSTS="Busy"
 
               cat <<HTML
-             <!-- Title -->
-             <h3>USB</h3>
-
-              <div class="setting-items-wrap">
+              <div id="usb-$i" class="setting-items-wrap">
                    <a class="button-disabled">Unmount</a>
                    <input class="inputbox-single-readonly" value="/media/${LABEL}" readonly>
-                   <label><div id="usbSTS" class="status">${usbSTS}</div></label>
+                   <label><div class="status">${usbSTS}</div></label>
               </div>
 HTML
             else
              usbSTS="Not Busy"
 
               cat <<HTML
-             <!-- Title -->
-             <h3>USB</h3>
-
-              <div class="setting-items-wrap">
+              <div id="usb-$i" class="setting-items-wrap">
                    <a href="/cgi-bin/Source_Volume/unmounting_USB.cgi?${USB}" target="_self" class="button">Unmount</a>
                    <input class="inputbox-single-readonly" value="/media/${LABEL}" readonly>
-                   <label><div id="usbSTS"class="status">${usbSTS}</div></label>
+                   <label><div class="status">${usbSTS}</div></label>
               </div>
 HTML
             fi
@@ -244,9 +197,47 @@ HTML
         done
 
       fi
+
+        cat <<HTML
+        </div>
+HTML
+
       cat <<HTML
 
               <div class="separator"><hr></div>
+        
+        <script>
+
+        function nasSTSCheck() {
+                   const nasList = document.querySelector("#NAS_list");
+                   const URL = '/cgi-bin/Source_Volume/NAS_STS.cgi';
+
+                    fetch(URL)
+                    .then( (response) => response.text() )
+                    .then( (text) => nasList.innerHTML = text )
+                    .catch( (error) => console.log(error) )
+
+                 setTimeout( nasSTSCheck , 5000 );
+        }
+
+        nasSTSCheck();
+
+
+        function usbSTSCheck() {
+                   const usbList = document.querySelector("#USB_list");
+                   const URL = '/cgi-bin/Source_Volume/USB_STS.cgi';
+
+                    fetch(URL)
+                    .then( (response) => response.text() )
+                    .then( (text) => usbList.innerHTML = text )
+                    .catch( (error) => console.log(error) )
+
+                 setTimeout( usbSTSCheck , 5000 );
+        }
+
+        usbSTSCheck();
+
+        </script>
 
        </body>
 </html>

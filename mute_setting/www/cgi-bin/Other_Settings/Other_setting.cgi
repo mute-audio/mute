@@ -130,22 +130,39 @@ Content-type: text/html; charset=utf-8
 
         <!-- MPD Client Information -->
         <div class="title-btn-title">
-          <a href="/cgi-bin/Other_Settings/other_setting_ip.cgi" target="_self" class="toggle-on-sw">By IP Address</a>
           <h3>MPD Client Information</h3>
         </div>
 
-            <!-- MPD Server -->
+          <h4>MPD Server</h4>
+            <!-- MPD Server (Hostname)-->
             <div class="setting-items-wrap">
               <button class="btn" data-clipboard-target="#MPD-host">Copy</button>
               <input id="MPD-host" value="$(hostname).local" class="inputbox-single-readonly" readonly></input>
-              <label>MPD Server</label>
+              <label>Hostname</label>
             </div>
-            <!-- Coverart URL -->
+
+            <!-- MPD Server (IP Address)-->
+            <div class="setting-items-wrap">
+            <button class="btn" data-clipboard-target="#MPD-ip">Copy</button>
+            <input id="MPD-ip" value="$(hostname -I | cut -d " " -f 1)" class="inputbox-single-readonly" readonly></input>
+            <label>IP Address</label>
+            </div>
+
+          <h4>Coverart URL</h4>
+            <!-- Coverart URL (Hostname)-->
             <div class="setting-items-wrap">
               <button class="btn" data-clipboard-target="#COVER-host">Copy</button>
               <input id="COVER-host" value="http://$(hostname).local/music" class="inputbox-single-readonly" readonly></input>
-              <label>Coverart URL</label>
+              <label>Hostname</label>
             </div>
+
+            <!-- Coverart URL (IP Address)-->
+            <div class="setting-items-wrap">
+            <button class="btn" data-clipboard-target="#COVER-ip">Copy</button>
+            <input id="COVER-ip" value="http://$(hostname -I | cut -d " " -f 1)/music" class="inputbox-single-readonly" readonly></input>
+            <label>IP Address</label>
+            </div>
+
 
         <div class="separator"><hr></div>
 HTML

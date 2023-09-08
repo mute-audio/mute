@@ -70,7 +70,7 @@ Content-type: text/html; charset=utf-8
 
         <!-- Other Settings -->
         <form method=GET action="/cgi-bin/loading.cgi" target="mainview">
-          <input type="hidden" name="URL" value="/cgi-bin/Other_Settings/other_setting_host.cgi">
+          <input type="hidden" name="URL" value="/cgi-bin/Other_Settings/Other_setting.cgi">
           <input id="OtherSettings" type="submit" value="Other Settings" class="menutab">
         </form>
 
