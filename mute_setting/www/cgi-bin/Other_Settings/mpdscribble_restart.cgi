@@ -9,5 +9,5 @@
 	wait
 
 # Goback to page
-echo "Location: /cgi-bin/Other_Settings/other_setting_host.cgi"
+echo "Location: /cgi-bin/loading.cgi?/cgi-bin/Other_Settings/Other_setting.cgi"
 echo ""
