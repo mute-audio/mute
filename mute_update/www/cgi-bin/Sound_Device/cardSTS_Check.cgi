@@ -37,8 +37,7 @@ else
            <form method=GET action="/cgi-bin/Sound_Device/sound_checking.cgi" target="_self">
                  <input id="soundDevice-$i" name="sounddevice" type="hidden" value="${DEVICE}">
                  <input id="soundCheck-$i" type="submit" value="Sound Check" class="button">
-		 <input class="inputbox-single-readonly" value="${cardNAME:- -- No Sound Device --}" readonly>
-		 <label> ${DEVICE}</label>
+		 <input class="inputbox-single-readonly" value="${DEVICE} : ${cardNAME:- -- No Sound Device --}" readonly>
                  <label><div class="status"> ${cardSTS}</div></label>
 	   </form>
            </div>

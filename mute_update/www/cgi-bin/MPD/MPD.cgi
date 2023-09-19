@@ -431,15 +431,15 @@ HTML
 if [ "$mixerTYPE" = "software" ]; then
         mixerTYPE_A=Software
         mixerTYPE_B=Hardware
-        mixerTYPE_C=Disabled
+        mixerTYPE_C=None
 
 elif [ "$mixerTYPE" = "hardware" ]; then
         mixerTYPE_A=Hardware
-        mixerTYPE_B=Disabled
+        mixerTYPE_B=None
         mixerTYPE_C=Software
 
-elif [ "$mixerTYPE" = "disabled" ]; then
-        mixerTYPE_A=Disabled
+elif [ "$mixerTYPE" = "none" ]; then
+        mixerTYPE_A=None
         mixerTYPE_B=Software
         mixerTYPE_C=Hardware
 fi
@@ -471,7 +471,7 @@ CTL_option=$(amixer scontrols | cut -d "'" -f 2 | sed -e "s/^/<option>/g" -e "s/
               <input id="Apply" type="submit" value="Apply" class="button"></input>
               <div class="ellipsis-wrap"><div class="allow-down"></div></div>
               <select  id="mixerctle" name="mixerctl" class="inputbox-single">
-                <option selected>${mixerCTL}</option>
+                <option selected>${mixerCTL:- (Not Assigned)}</option>
                 $CTL_option
               </select>
               <label for="">Mixer Control</label>
@@ -692,7 +692,7 @@ HTML
                   <!-- Decoder Not assigned -->
                   <div class="setting-items-wrap">
                     <div class="toggle-wrap">
-                      <a href="" target="_self" class="toggle-off-sw">Not assigned</a>
+                      <a href="" target="_self" class="toggle-off-sw">Not Assigned</a>
                     </div>
                     <span id="tooltips" class="description">${format}</span>
                     <label>${decoder}</label>

@@ -20,5 +20,5 @@ CurrentPWD=$(sudo sed -n -e '/\[last.fm\]/,+3p' /etc/mpdscribble.conf | sed -n -
 
 	sudo systemctl restart mpdscribble
 
-        echo "Location: /cgi-bin/Other_Settings/other_setting_host.cgi"
-        echo ""
+    echo "Location: /cgi-bin/loading.cgi?/cgi-bin/Other_Settings/Other_setting.cgi"
+    echo ""

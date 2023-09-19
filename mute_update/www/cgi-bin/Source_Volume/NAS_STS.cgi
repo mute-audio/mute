@@ -18,7 +18,7 @@ HTML
          for ((i=1; i<=$NAS_count; i++)); do
 
             NAS=$(df -ah | grep /mnt.* | cut -d " " -f 1 | sed -n "$i"p) ## Get NAS Volume
-            NAS_name=$(df -ah | grep --only-matching /mnt.* | sed -n "$i"p) ##Get NAS Name
+            NAS_name=$(df -ah | grep --only-matching /mnt.* | sed -n "$i"p | sed -e "s/\/.*\///") ##Get NAS Name
             busyCHECK=$(sudo lsof "$NAS_name")
 
             if [ -n "$busyCHECK" ]; then
@@ -48,5 +48,5 @@ HTML
          done
 
       fi
-      
+
 exit 0

@@ -59,7 +59,7 @@ HTML
          for ((i=1; i<=$NAS_count; i++)); do
 
             NAS=$(df -ah | grep /mnt.* | cut -d " " -f 1 | sed -n "$i"p) ## Get NAS Volume
-            NAS_name=$(df -ah | grep --only-matching /mnt.* | sed -n "$i"p) ##Get NAS Name
+            NAS_name=$(df -ah | grep --only-matching /mnt.* | sed -n "$i"p | sed -e "s/\/.*\///") ##Get NAS Name
             busyCHECK=$(sudo lsof "$NAS_name")
 
             if [ -n "$busyCHECK" ]; then
@@ -150,7 +150,7 @@ HTML
  #### USB Drive List
         cat <<HTML
         <h3>USB</h3>
-        <div id="USB-list">
+        <div id="USB_list">
 HTML
 
  USB_count=$(df -h | grep /media/ | cut -d "/" -f 5 | wc -l)
@@ -178,7 +178,7 @@ HTML
               cat <<HTML
               <div id="usb-$i" class="setting-items-wrap">
                    <a class="button-disabled">Unmount</a>
-                   <input class="inputbox-single-readonly" value="/media/${LABEL}" readonly>
+                   <input class="inputbox-single-readonly" value="${LABEL}" readonly>
                    <label><div class="status">${usbSTS}</div></label>
               </div>
 HTML
@@ -188,7 +188,7 @@ HTML
               cat <<HTML
               <div id="usb-$i" class="setting-items-wrap">
                    <a href="/cgi-bin/Source_Volume/unmounting_USB.cgi?${USB}" target="_self" class="button">Unmount</a>
-                   <input class="inputbox-single-readonly" value="/media/${LABEL}" readonly>
+                   <input class="inputbox-single-readonly" value="${LABEL}" readonly>
                    <label><div class="status">${usbSTS}</div></label>
               </div>
 HTML

@@ -28,7 +28,7 @@ HTML
               cat <<HTML
               <div id="usb-$i" class="setting-items-wrap">
                    <a class="button-disabled">Unmount</a>
-                   <input class="inputbox-single-readonly" value="/media/${LABEL}" readonly>
+                   <input class="inputbox-single-readonly" value="${LABEL}" readonly>
                    <label><div class="status">${usbSTS}</div></label>
               </div>
 HTML
@@ -38,7 +38,7 @@ HTML
               cat <<HTML
               <div id="usb-$i" class="setting-items-wrap">
                    <a href="/cgi-bin/Source_Volume/unmounting_USB.cgi?${USB}" target="_self" class="button">Unmount</a>
-                   <input class="inputbox-single-readonly" value="/media/${LABEL}" readonly>
+                   <input class="inputbox-single-readonly" value="${LABEL}" readonly>
                    <label><div class="status">${usbSTS}</div></label>
               </div>
 HTML

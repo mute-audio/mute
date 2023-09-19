@@ -212,9 +212,9 @@ audio_output {
 	device		"hw:0,0"
 	dop		"no"
 	auto_resample	"no"
-	mixer_type      "disabled"
+	mixer_type      "none"
 #	mixer_device	"default"	# optional
-	mixer_control	"PCM"		# optional
+	mixer_control	""		# optional
 #	mixer_index	"0"		# optional
 }
 

@@ -41,7 +41,7 @@ SourceVolumeMenu="/cgi-bin/Source_Volume/Source_volume.cgi"
 
 ######## Loading Screen
 echo   "<div id=\"loading-top2\">"
-echo     "<div class=\"loadingtext\"> ...Some Error occurred during NAS mount. </div>"
+echo     "<div class=\"loadingtext\"> ...NAS mount failed. </div>"
 echo     "<a href=\"/cgi-bin/loading.cgi?${RaspberryPiMenu}\" target=\"_self\" class=\"button2\"> Cancel </a>"
 echo     "<a href=\"/cgi-bin/loading.cgi?${SourceVolumeMenu}\" target=\"_self\" class=\"button\"> Retry </a>"
 echo   "</div>"

@@ -73,7 +73,7 @@ alsaSTS=$(systemctl status alsa-state.service | grep Active: | cut -d ":" -f 2 |
           <div id="alsa-STS" class="status">${alsaSTS}</div>
           </h3>
           </div>
- 
+
 HTML
 
 #### Sound Devices Setting
@@ -104,28 +104,26 @@ HTML
           devNUM=$(sed -n /^device/p /proc/asound/card$i/pcm0p/sub0/info | cut -d " " -f 2)
           DEVICE="hw:${cardNUM},${devNUM}"
 
-	  if [ ${cardSTS} = "RUNNING" ]; then
-		  cardSTS=Running
-	  elif [ ${cardSTS} = "closed" ]; then
-		  cardSTS=Closed
-    elif [ ${cardSTS} = "DRAINING" ]; then
-      cardSTS=Draining
-	  fi
+	        if [ ${cardSTS} = "RUNNING" ]; then
+		      cardSTS=Running
+	        elif [ ${cardSTS} = "closed" ]; then
+		      cardSTS=Closed
+            elif [ ${cardSTS} = "DRAINING" ]; then
+              cardSTS=Draining
+	        fi
 
           cat <<HTML
            <div id="deviceSTS-$i" class="setting-items-wrap">
            <form method=GET action="/cgi-bin/Sound_Device/sound_checking.cgi" target="_self">
                  <input id="soundDevice-$i" name="sounddevice" type="hidden" value="${DEVICE}">
                  <input id="soundCheck-$i" type="submit" value="Sound Check" class="button">
-		 <input class="inputbox-single-readonly" value="${cardNAME:- -- No Sound Device --}" readonly>
-		 <label> ${DEVICE}</label>
+		         <input class="inputbox-single-readonly" value="${DEVICE} : ${cardNAME:- -- No Sound Device --}" readonly>
                  <label><div class="status"> ${cardSTS}</div></label>
-	   </form>
+	       </form>
            </div>
 HTML
-           done
-
-        fi
+      done
+    fi
 
         cat <<HTML
         </div>
@@ -152,7 +150,7 @@ HTML
           <div class="separator"><hr></div>
 
         <script>
-        
+
        // ALSA Status Checker -----
            const alsaSTS = document.querySelector('#alsa-STS');
 

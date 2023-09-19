@@ -5,5 +5,5 @@
 
 mpc update --wait 2>/dev/null 1>/dev/null
 
-echo "Location: /cgi-bin/MPD/check_MPD.cgi"
+echo "Location: /cgi-bin/MPD/MPD.cgi"
 echo ''
