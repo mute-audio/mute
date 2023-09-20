@@ -1,0 +1,43 @@
+1.08 Beta
+muteサイトのダウンロードリンク作成
+　mute_setting_108b.zip
+    (Google Driveの元リンク)
+    https://drive.google.com/file/d/1jKyY3ChCZBxjVJAZLgx1FoPMJHpluCow/view?usp=sharing
+
+    (直接ダウンロード可能リンクに変換)
+    https://drive.google.com/uc?export=download&id=1jKyY3ChCZBxjVJAZLgx1FoPMJHpluCow
+
+オンラインアップデート用ダウンロードリンク作成手順（update.info）
+　mute_update_108.zip
+    （Drop Boxの元リンク）
+    https://www.dropbox.com/s/1dfvlvkmfwykyyi/mute_update_108.zip?dl=0
+    
+    （直接ダウンロード可能リンクに変換）
+    https://www.dropbox.com/s/1dfvlvkmfwykyyi/mute_update_108.zip
+
+    （注意）DropBoxへは、Mac Miniからアップロードしてリンクの設定をすること。
+        でないと、updateスクリプトで処理できないURLになってしまう。（理由不明）
+
+ver=1.08b
+
+主な変更点
+- Improved: Auto Update WiFi Listing / RaspberryPi Tab 
+- Improved: Automatic updating of Status Badges of DAC / Sound Device Tab
+- Improved: Automatic updating of Status Badges of NAS & USB / Source Volume Tab
+- Improved: Automatic updating of upgradable package lists / Update Tab
+- Improved: Change Mixer type and Mixer Control setting items / MPD Tab
+- Bugfix: Duplicate titles when mounting multiple volumes / Source Volume Tab
+- Bugfix: Unmount process not working properly / Source Volume Tab
+- Bugfix: Playback resume behavior after updating MPD settings / MPD Tab
+
+- WiFiリストの自動更新 / RaspberryPi タブ
+- DAC動作ステータスバッジの自動更新 / Sound Device タブ
+- NASとUSBのステータスバッジの自動更新 / Source Volume タブ
+- アップデートリストの自動更新 / Update タブ
+- Mixer TypeとMixer Control設定項目の変更 / MPD タブ
+- 複数のボリュームをマウントするとタイトルが重複する不具合を修正 / Source Volume タブ
+- アンマウント処理が正しく動作しない場合があったのを修正 / Source Volume タブ
+- MPD設定更新後の再生再開動作が不安定だったのを修正 / MPDタブ
+
+
+以上

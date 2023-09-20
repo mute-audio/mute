@@ -1,10 +1,8 @@
-Ver_1.08b (WIP)
-- Improved: Revised reboot process (changed "setInterval" to "setTimeout")
-- Improved: Revise tab menu contents
+Ver_1.08b (2023/9/20)
 - Improved: Auto Update WiFi Listing / RaspberryPi Tab 
-- Improved: Automatic updating of Status Badges / Sound Device Tab
+- Improved: Automatic updating of Status Badges of DAC / Sound Device Tab
 - Improved: Automatic updating of Status Badges of NAS & USB / Source Volume Tab
-- Improved: Automatic updating of content / Update Tab
+- Improved: Automatic updating of upgradable package lists / Update Tab
 - Improved: Change Mixer type and Mixer Control setting items / MPD Tab
 - Bugfix: Duplicate titles when mounting multiple volumes / Source Volume Tab
 - Bugfix: Unmount process not working properly / Source Volume Tab
