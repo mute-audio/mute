@@ -1,3 +1,13 @@
+Ver_1.09b (WIP)
+- Bugfix: Automatic updating of upgradable package lists / Update Tab
+
+ToDo
+* MPD DB update Auto-refresh
+* Network Status-monitor (WiFi/LAN)
+* Web-radio Playlist Maker
+* Coverart Server [alfa-release]
+
+
 Ver_1.08b (2023/9/20)
 - Improved: Auto Update WiFi Listing / RaspberryPi Tab 
 - Improved: Automatic updating of Status Badges of DAC / Sound Device Tab

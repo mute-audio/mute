@@ -80,6 +80,7 @@ lastUPDmute=$(sudo sed -n '$p' /var/www/cgi-bin/log/update_mute.log)
 
         cat <<HTML
         <!-- [ mute ] -->
+      <div id="mute">
         <div class="title-btn-title">
           <a href="/cgi-bin/Update/Update_checking.cgi" class="toggle-on-sw"> Check Update </a>
           <h3>[ mute ]</h3>
@@ -91,6 +92,7 @@ lastUPDmute=$(sudo sed -n '$p' /var/www/cgi-bin/log/update_mute.log)
         </h4>
 
         <div hidden id="stsUPDmute">${stsUPDmute}</div>
+      </div>
 
         <div class="separator"><hr></div>
 HTML
@@ -98,6 +100,7 @@ HTML
 
         cat <<HTML
         <!-- [ mute ] -->
+      <div id="mute">
         <div class="title-btn-title">
           <a href="#" onClick="dispUpdateMute(); return false;" target="_self" class="toggle-on-sw"> Update </a>
           <!-- a href="/cgi-bin/Update/Updating_mute.cgi" target="_self" class="toggle-on-sw"> Update </a -->
@@ -111,6 +114,7 @@ HTML
         </h4>
 
         <div hidden id="stsUPDmute">${stsUPDmute}</div>
+      </div>
 
         <div class="separator"><hr></div>
 HTML
@@ -138,6 +142,7 @@ kernelNAME=$(uname -s)
 
         cat <<HTML
         <!-- RaspberryPi OS -->
+      <div id="RPi_OS">
         <div class="title-btn-title">
           <a href="/cgi-bin/Update/Update_checking.cgi" target="mainview" class="toggle-on-sw"> Check Update </a>
           <h3>RaspberryPi OS</h3>
@@ -147,6 +152,7 @@ HTML
 
         cat <<HTML
         <!-- RaspberryPi OS Update Available-->
+      <div id="RPi_OS">
         <div class="title-btn-title">
           <a href="#" onClick="dispUpdate(); return false;" target="_self" class="toggle-on-sw"> Update </a>
           <h3>RaspberryPi OS</h3>
@@ -162,6 +168,7 @@ HTML
         </h4>
 
         <div hidden id="stsUPD">${stsUPD}</div>
+    </div>
 
     <div class="separator"><hr></div>
 
@@ -194,7 +201,7 @@ HTML
 
       setTimeout ("watchUpdateOS()" , 60000)
     }
-    
+
     watchUpdateOS();
 
     function watchUpdateMute() {
@@ -227,7 +234,7 @@ HTML
     }
 
     watchUpdateMute();
-    
+
     </script>
 
   </body>
