@@ -173,67 +173,30 @@ HTML
     <div class="separator"><hr></div>
 
     <script>
+    
+    function watchUpdate() {
+     const beforeOSdiv = document.querySelector('#RPi_OS');
+     const beforeMutediv = document.querySelector('#mute');
 
-    function watchUpdateOS() {
-     fetch("/cgi-bin/Update/Update_notice.txt")
+     fetch("/cgi-bin/Update/Update.cgi")
       .then((response) => response.text())
       .then((text) => {
-        if ( text !== "All packages are up to date.\n" ) {
-            fetch("/cgi-bin/Update/Update.cgi")
-              .then((response) => response.text())
-              .then((text) => {
-                const textToHTML = document.createElement('div');
-                textToHTML.innerHTML = text
+         const textToHTML = document.createElement('div');
+         textToHTML.innerHTML = text
 
-                const rpiOverWrite = textToHTML.querySelector('#RPi_OS');
-                const RPiOSDiv = document.querySelector('#RPi_OS');
+         const afterOSdiv = textToHTML.querySelector('#RPi_OS');
+         const afterMutediv = textToHTML.querySelector('#mute');
 
-                RPiOSDiv.innerHTML = rpiOverWrite.innerHTML;
-//                console.log('RPi-OS : Updates are available.');
-                return true;
-               })
-         }else{
-//            console.log('RPi-OS : No Update');
-            return false;
-        }
+         beforeOSdiv.innerHTML = afterOSdiv.innerHTML;
+         beforeMutediv.innerHTML = afterMutediv.innerHTML;
+
       })
       .catch((error) => console.log(error))
 
-      setTimeout ("watchUpdateOS()" , 60000)
+      setTimeout (watchUpdate , 60000)
     }
 
-    watchUpdateOS();
-
-    function watchUpdateMute() {
-     fetch("/cgi-bin/Update/Update_mute_notice.txt")
-      .then((response) => response.text())
-      .then((text) => {
-        if ( text !== "[ mute ] is up to date\n" ) {
-            fetch("/cgi-bin/Update/Update.cgi")
-              .then((response) => response.text())
-              .then((text) => {
-
-                const textToHTML = document.createElement('div');
-                textToHTML.innerHTML = text;
-
-                const muteOverWrite = textToHTML.querySelector('#mute');
-                const muteDiv = document.querySelector('#mute');
-
-                muteDiv.innerHTML = muteOverWrite.innerHTML;
-//                console.log('mute : Updates are available.');
-                return true;
-              })
-         }else{
-//            console.log('mute : No Update.');
-            return false;
-         }
-      })
-      .catch((error) => console.log(error))
-
-      setTimeout ("watchUpdateMute()" , 60000)
-    }
-
-    watchUpdateMute();
+    watchUpdate();
 
     </script>
 

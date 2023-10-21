@@ -1,5 +1,17 @@
 #!/bin/bash
 
+### Cancel this process in case of Web Streaming to avoid alsa_output error.
+
+volume=$(mpc -f %file% current | cut -d / -f 1)
+
+if [ "$volume" = "http:" ] || [ "$volume" = "https:" ]; then
+
+    echo "Location: /cgi-bin/Update/Update.cgi"
+    echo ''
+
+    exit 1
+fi
+
 ######## [ mute ] Update Check
 
 ver_UPDATE=$(\
