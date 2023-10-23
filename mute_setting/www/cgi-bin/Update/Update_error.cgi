@@ -38,7 +38,7 @@ echo "<body onLoad=\"uiLock()\" onunload=\"uiUnlock()\">"
 
 #### Error massage
 echo   "<div id=\"loading-top2\">"
-echo     "<div class=\"loadingtext\"> ...Some Error occurred during Update. </div>"
+echo     "<div class=\"loadingtext\"> ...Some Error occurred during update. </div>"
 echo     "<a href=\"/cgi-bin/loading.cgi?/cgi-bin/RaspberryPi/Raspberrypi.cgi\" target=\"_self\" class=\"button2\"> Cancel </a>"
 echo     "<a href=\"/cgi-bin/Checking.cgi?/cgi-bin/Update/Update.cgi\" target=\"_self\" class=\"button\"> Retry </a>"
 echo   "</div>"

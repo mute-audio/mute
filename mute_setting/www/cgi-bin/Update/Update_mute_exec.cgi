@@ -29,7 +29,7 @@ UpdateFile=$(echo "$muteUPD_URL" | rev | cut -d "/" -f 1 | rev)
 sudo unzip -qq $UpdateFile 2>/dev/null 1>/dev/null
 
   if [ $? != 0 ]; then
-    echo "Location: /cgi-bin/Update/Update_mute_error.cgi"
+    echo "Location: /cgi-bin/Update/Update_error.cgi"
     echo ''
     exit 1
   fi
@@ -37,7 +37,7 @@ sudo unzip -qq $UpdateFile 2>/dev/null 1>/dev/null
 sudo rm $UpdateFile 2>/dev/null 1>/dev/null
 
   if [ $? != 0 ]; then
-    echo "Location: /cgi-bin/Update/Update_mute_error.cgi"
+    echo "Location: /cgi-bin/Update/Update_error.cgi"
     echo ''
     exit 1
   fi
@@ -47,7 +47,7 @@ sudo rm $UpdateFile 2>/dev/null 1>/dev/null
 sudo bash /var/tmp/mute_update/Update_mute_exec2.sh
 
   if [ $? != 0 ]; then
-    echo "Location: /cgi-bin/Update/Update_mute_error.cgi"
+    echo "Location: /cgi-bin/Update/Update_error.cgi"
     echo ''
     exit 1
   fi

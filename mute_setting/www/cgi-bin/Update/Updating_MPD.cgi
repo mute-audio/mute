@@ -1,12 +1,11 @@
 #!/bin/bash
 
-# Update_mute_error.cgi		                     #
-# (C)2022 kitamura_design <kitamura_design@me.com> #
+# Updating_MPD.cgi
+# (C)2023 kitamura_design <kitamura_design@me.com> #
 
 query=$(date +%Y%m%d%I%M%S)
 
 #HTML
-
 echo "Content-type: text/html; charset=utf-8"
 echo
 
@@ -15,6 +14,7 @@ echo "<html>"
 
 echo  "<head>"
 echo    "<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/main.css?$query\">"
+echo    "<meta http-equiv=\"refresh\" content=\"0; URL=/cgi-bin/Update/Update_MPD_exec.cgi\">"
 echo    "<script>"
 
 echo    "function uiLock(){"
@@ -36,12 +36,15 @@ echo  "</head>"
 
 echo "<body onLoad=\"uiLock()\" onunload=\"uiUnlock()\">"
 
-######## Error Msg.
-echo   "<div id=\"loading-top2\">"
-echo     "<div class=\"loadingtext\"> ...Some Error occurred during Update [ mute ]. </div>"
-echo     "<a href=\"/cgi-bin/loading.cgi?/cgi-bin/RaspberryPi/Raspberrypi.cgi\" target=\"_self\" class=\"button2\"> Cancel </a>"
-echo     "<a href=\"/cgi-bin/Checking.cgi?/cgi-bin/Update/Update.cgi\" target=\"_self\" class=\"button\"> Retry </a>"
-echo   "</div>"
+#### Loading Screen
+   cat <<HTML
+   <div id="loading-top2">
+     <div class="loader">
+        <div class="loadingtext">Updating MPD ...</div>
+        <progress class="progress"></progress>
+     </div>
+   </div>
+HTML
 
 echo "</body>"
 echo "</html>"

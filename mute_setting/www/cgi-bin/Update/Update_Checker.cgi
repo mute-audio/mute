@@ -30,6 +30,16 @@ if [[ "$ver_UPDATE" -gt "$ver_CURRENT" ]]; then
 
 fi
 
+####### MPD Update Check
+
+currentMPD_List=$(cat /var/www/cgi-bin/Update/Update_MPD_notice.txt)
+mpd_List=$(sudo apt list -a -qq mpd 2>/dev/null | grep -B 1 'mpd.*now')
+
+if [ "$currentMPD_List" != "$mpd_List" ]; then
+
+    echo $mpd_List | sudo tee /var/www/cgi-bin/Update/Update_MPD_notice.txt > /dev/null
+fi
+
 ######## RaspberryPi OS Update Check
 
 stsUPD=$(sudo apt update -qq 2>/dev/null | cut -d"." -f 1)

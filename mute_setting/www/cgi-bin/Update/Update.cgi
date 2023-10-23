@@ -26,6 +26,12 @@ Content-type: text/html; charset=utf-8
         }
     }
 
+    function dispUpdateMPD(){
+        if(window.confirm('Are you sure to update MPD?')){
+            location.href = "/cgi-bin/Update/Updating_MPD.cgi";
+        }
+    }
+
     function keepHover(){
         target = parent.document.getElementById("Update");
         if (target != null){
@@ -120,16 +126,42 @@ HTML
 HTML
     fi
 
-    ## MPD install check
-    ## If the mpd installation is [installed,local],
-    ## reinstall mpd so that automatic updates are enabled.
+####### MPD update check
+      # Show MPD update button if a package newer than "mpd/now" exists
 
-        mpd_Install_CHK=$(sudo apt -a -qq list mpd 2>/dev/null | grep --only-matching "installed,local")
+     mpd_List=$(cat /var/www/cgi-bin/Update/Update_MPD_notice.txt)
+     mpd_Install_CHK=$(echo $mpd_List | wc -l)
+     newPKG=$(echo $mpd_List | sed -n 1p)
 
-        if [ -n "$mpd_Install_CHK" ]; then
-            sudo apt install --reinstall -y mpd 2>/dev/null
-        fi
-    ##
+     if [ $mpd_Install_CHK = 2 ]; then
+
+        cat <<HTML
+        <!-- MPD -->
+        <div id="MPD">
+          <div class="title-btn-title">
+            <a href="#" onClick="dispUpdateMPD(); return false;" target="_self" class="toggle-on-sw"> Update </a>
+            <h3>MPD</h3>
+          <div class="status">Update Available</div>
+          </div>
+
+          <h4>
+            New Package Found : ${newPKG}</br>
+          </h4>
+        </div>
+
+        <div class="separator"><hr></div>
+HTML
+
+     else
+
+        cat <<HTML
+        <!-- MPD -->
+        <div id="MPD">
+        </div>
+
+HTML
+
+     fi
 
 ######## RaspberryPi OS Update
 
@@ -173,7 +205,7 @@ HTML
     <div class="separator"><hr></div>
 
     <script>
-    
+
     function watchUpdate() {
      const beforeOSdiv = document.querySelector('#RPi_OS');
      const beforeMutediv = document.querySelector('#mute');
