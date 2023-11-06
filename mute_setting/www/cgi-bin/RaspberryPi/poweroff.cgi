@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # poweroff.cgi                                   #
-# (C)2022 kitamura_design <kitamura_design@me.com> #
+# (C)2023 kitamura_design <kitamura_design@me.com> #
 
 #Reboot Starting
- sudo poweroff
+ sudo poweroff --no-wall 2>/dev/null 1>/dev/null

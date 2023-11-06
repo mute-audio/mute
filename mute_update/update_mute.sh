@@ -4,7 +4,16 @@
 #   m u t e    Updater shell
 # +         +
 #
-# ©2022 kitamura_design <kitamura_design@me.com>
+# ©2023 kitamura_design <kitamura_design@me.com>
+
+# Check current OS Codename
+OS_codename=$(lsb_release -a |  grep Codename | cut -f 2)
+
+if [ ${OS_codename} = "bookworm" ]; then
+   bootDIR="${bootDIR}"
+else
+   bootDIR="boot"
+fi
 
 set -e
 VER=$(cat ./update.info | grep ver | cut -d "=" -f 2)
@@ -15,7 +24,7 @@ echo '   m u t e    RPi-Audio/ MPD Dashboard'
 echo " +         +  ver.${VER}"
 echo ''
 echo " Updater shell for ver.${VER}"
-echo ' ©2022 kitamura_design <kitamura_design@me.com>'
+echo ' ©2023 kitamura_design <kitamura_design@me.com>'
 echo ''
 
 if [ "$1" = "-y" ]; then
@@ -35,7 +44,7 @@ esac
 DATE=$(date)
 
 echo " -------- mute Update ( ver.${VER} ) Starts  ${DATE} --------" \
- | sudo tee -a /boot/mute_log > /dev/null
+ | sudo tee -a /${bootDIR}/mute_log > /dev/null
 
 #### Copy Updated Source       ####################
 
@@ -68,7 +77,7 @@ echo " Updating [ mute ] ..."
 	sudo systemctl enable startUpSound.service > /dev/null
 
 echo " Updating [ mute ]... Done" \
- | sudo tee -a /boot/mute_log > /dev/null
+ | sudo tee -a /${bootDIR}/mute_log > /dev/null
 
 #### Finalize ####################
 echo ''
@@ -92,7 +101,7 @@ fi
 sudo rm -Rf ../mute_update
 
 echo " Finalizing Install... Done" \
- | sudo tee -a /boot/mute_log > /dev/null
+ | sudo tee -a /${bootDIR}/mute_log > /dev/null
 
 #### Update Log ####
 date +"%Y-%m-%d %H:%M:%S" \
@@ -105,7 +114,9 @@ echo " [ mute ] is updated successfully."
 echo " To confirm update, re-load \" ${hostname}.local \"."
 echo ''
 
-echo " --------  mute Update Finished.  --------" \
- | sudo tee -a /boot/mute_log > /dev/null
+DATE=$(date)
+
+echo " --------  mute Update Finished. ${DATE} --------" \
+ | sudo tee -a /${bootDIR}/mute_log > /dev/null
 
 exit 0

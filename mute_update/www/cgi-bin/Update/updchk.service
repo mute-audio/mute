@@ -3,7 +3,7 @@ Description=run Update_Checker.cgi
 
 [Service]
 Type=simple
-ExecStart=/bin/sh /var/www/cgi-bin/Update/Update_Checker.cgi
+ExecStart=/bin/bash /var/www/cgi-bin/Update/Update_Checker.cgi
 
 [Install]
 WantedBy=multi-user.target

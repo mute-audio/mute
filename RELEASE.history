@@ -2,6 +2,8 @@ Ver_1.09b (WIP)
 - Bugfix: Automatic updating of upgradable package lists / Update Tab
 - Revised: Update check process
 - Added workaround for cases where MPD cannot be updated due to repository updates
+- Bookworm Support(/boot/firmware issue): Modify Installer and Updater
+- Bookworm Support(/boot/firmware issue): Modify DAC install script / Sound Device Tab
 
 ToDo
 * Bookworm Support -- NetworkManager

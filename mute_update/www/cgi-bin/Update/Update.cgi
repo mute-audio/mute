@@ -26,6 +26,12 @@ Content-type: text/html; charset=utf-8
         }
     }
 
+    function dispUpdateMPD(){
+        if(window.confirm('Are you sure to update MPD?')){
+            location.href = "/cgi-bin/Update/Updating_MPD.cgi";
+        }
+    }
+
     function keepHover(){
         target = parent.document.getElementById("Update");
         if (target != null){
@@ -80,6 +86,7 @@ lastUPDmute=$(sudo sed -n '$p' /var/www/cgi-bin/log/update_mute.log)
 
         cat <<HTML
         <!-- [ mute ] -->
+      <div id="mute">
         <div class="title-btn-title">
           <a href="/cgi-bin/Update/Update_checking.cgi" class="toggle-on-sw"> Check Update </a>
           <h3>[ mute ]</h3>
@@ -91,6 +98,7 @@ lastUPDmute=$(sudo sed -n '$p' /var/www/cgi-bin/log/update_mute.log)
         </h4>
 
         <div hidden id="stsUPDmute">${stsUPDmute}</div>
+      </div>
 
         <div class="separator"><hr></div>
 HTML
@@ -98,6 +106,7 @@ HTML
 
         cat <<HTML
         <!-- [ mute ] -->
+      <div id="mute">
         <div class="title-btn-title">
           <a href="#" onClick="dispUpdateMute(); return false;" target="_self" class="toggle-on-sw"> Update </a>
           <!-- a href="/cgi-bin/Update/Updating_mute.cgi" target="_self" class="toggle-on-sw"> Update </a -->
@@ -111,21 +120,48 @@ HTML
         </h4>
 
         <div hidden id="stsUPDmute">${stsUPDmute}</div>
+      </div>
 
         <div class="separator"><hr></div>
 HTML
     fi
 
-    ## MPD install check
-    ## If the mpd installation is [installed,local],
-    ## reinstall mpd so that automatic updates are enabled.
+####### MPD update check
+      # Show MPD update button if a package newer than "mpd/now" exists
 
-        mpd_Install_CHK=$(sudo apt -a -qq list mpd 2>/dev/null | grep --only-matching "installed,local")
+     mpd_List=$(cat /var/www/cgi-bin/Update/Update_MPD_notice.txt)
+     mpd_Install_CHK=$(echo $mpd_List | wc -l)
+     newPKG=$(echo $mpd_List | sed -n 1p)
 
-        if [ -n "$mpd_Install_CHK" ]; then
-            sudo apt install --reinstall -y mpd 2>/dev/null
-        fi
-    ##
+     if [ $mpd_Install_CHK = 2 ]; then
+
+        cat <<HTML
+        <!-- MPD -->
+        <div id="MPD">
+          <div class="title-btn-title">
+            <a href="#" onClick="dispUpdateMPD(); return false;" target="_self" class="toggle-on-sw"> Update </a>
+            <h3>MPD</h3>
+          <div class="status">Update Available</div>
+          </div>
+
+          <h4>
+            New Package Found : ${newPKG}</br>
+          </h4>
+        </div>
+
+        <div class="separator"><hr></div>
+HTML
+
+     else
+
+        cat <<HTML
+        <!-- MPD -->
+        <div id="MPD">
+        </div>
+
+HTML
+
+     fi
 
 ######## RaspberryPi OS Update
 
@@ -138,6 +174,7 @@ kernelNAME=$(uname -s)
 
         cat <<HTML
         <!-- RaspberryPi OS -->
+      <div id="RPi_OS">
         <div class="title-btn-title">
           <a href="/cgi-bin/Update/Update_checking.cgi" target="mainview" class="toggle-on-sw"> Check Update </a>
           <h3>RaspberryPi OS</h3>
@@ -147,6 +184,7 @@ HTML
 
         cat <<HTML
         <!-- RaspberryPi OS Update Available-->
+      <div id="RPi_OS">
         <div class="title-btn-title">
           <a href="#" onClick="dispUpdate(); return false;" target="_self" class="toggle-on-sw"> Update </a>
           <h3>RaspberryPi OS</h3>
@@ -162,72 +200,36 @@ HTML
         </h4>
 
         <div hidden id="stsUPD">${stsUPD}</div>
+    </div>
 
     <div class="separator"><hr></div>
 
     <script>
 
-    function watchUpdateOS() {
-     fetch("/cgi-bin/Update/Update_notice.txt")
+    function watchUpdate() {
+     const beforeOSdiv = document.querySelector('#RPi_OS');
+     const beforeMutediv = document.querySelector('#mute');
+
+     fetch("/cgi-bin/Update/Update.cgi")
       .then((response) => response.text())
       .then((text) => {
-        if ( text !== "All packages are up to date.\n" ) {
-            fetch("/cgi-bin/Update/Update.cgi")
-              .then((response) => response.text())
-              .then((text) => {
-                const textToHTML = document.createElement('div');
-                textToHTML.innerHTML = text
+         const textToHTML = document.createElement('div');
+         textToHTML.innerHTML = text
 
-                const rpiOverWrite = textToHTML.querySelector('#RPi_OS');
-                const RPiOSDiv = document.querySelector('#RPi_OS');
+         const afterOSdiv = textToHTML.querySelector('#RPi_OS');
+         const afterMutediv = textToHTML.querySelector('#mute');
 
-                RPiOSDiv.innerHTML = rpiOverWrite.innerHTML;
-//                console.log('RPi-OS : Updates are available.');
-                return true;
-               })
-         }else{
-//            console.log('RPi-OS : No Update');
-            return false;
-        }
+         beforeOSdiv.innerHTML = afterOSdiv.innerHTML;
+         beforeMutediv.innerHTML = afterMutediv.innerHTML;
+
       })
       .catch((error) => console.log(error))
 
-      setTimeout ("watchUpdateOS()" , 60000)
-    }
-    
-    watchUpdateOS();
-
-    function watchUpdateMute() {
-     fetch("/cgi-bin/Update/Update_mute_notice.txt")
-      .then((response) => response.text())
-      .then((text) => {
-        if ( text !== "[ mute ] is up to date\n" ) {
-            fetch("/cgi-bin/Update/Update.cgi")
-              .then((response) => response.text())
-              .then((text) => {
-
-                const textToHTML = document.createElement('div');
-                textToHTML.innerHTML = text;
-
-                const muteOverWrite = textToHTML.querySelector('#mute');
-                const muteDiv = document.querySelector('#mute');
-
-                muteDiv.innerHTML = muteOverWrite.innerHTML;
-//                console.log('mute : Updates are available.');
-                return true;
-              })
-         }else{
-//            console.log('mute : No Update.');
-            return false;
-         }
-      })
-      .catch((error) => console.log(error))
-
-      setTimeout ("watchUpdateMute()" , 60000)
+      setTimeout (watchUpdate , 60000)
     }
 
-    watchUpdateMute();
-    
+    watchUpdate();
+
     </script>
 
   </body>

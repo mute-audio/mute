@@ -116,7 +116,7 @@ elif  [ "$PKG" = "MPD Official ( Backports version )" ]; then
         mpd_Install_CHK=$(sudo apt -a -qq list mpd 2>/dev/null | grep --only-matching "installed,local")
 
         if [ -n "$mpd_Install_CHK" ]; then
-            sudo apt install --reinstall -y mpd/${RELEASE}-backports 2>/dev/null
+            sudo apt install --reinstall -y mpd/${RELEASE}-backports 2>/dev/null 1>/dev/null
         fi
 
         #replace original mpd.conf to mute mpd.conf

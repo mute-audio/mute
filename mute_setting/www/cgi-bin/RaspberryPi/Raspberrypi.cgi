@@ -335,19 +335,19 @@ cat <<HTML
 	  <div class="separator"><hr></div>
 
 	    <script>
-		   const tempUpdate = document.querySelector('#temp');
+            function tempUpdateCheck() {
+                const tempUpdate = document.querySelector('#temp');
+                fetch("/cgi-bin/RaspberryPi/temp_check.cgi")
+                .then(response => {
+                  return response.text();
+                })
+                .then((text) => tempUpdate.outerHTML = text)
+                .catch((error) => console.log(error))
 
-		   function tempUpdateCheck() {
-			   fetch("/cgi-bin/RaspberryPi/temp_check.cgi")
-			   .then(response => {
-		         return response.text();
-			   })
-		       .then((text) => tempUpdate.textContent = text)
+                setTimeout( tempUpdateCheck , 10000 )
+                }
 
-			   setTimeout( tempUpdateCheck , 10000 )
-		   }
-
-		   tempUpdateCheck();
+                   tempUpdateCheck();
 
 		   function ssidStatusCheck() {
                 const SSID = document.querySelector('#ssid');
