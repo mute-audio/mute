@@ -89,8 +89,9 @@ HTML
 
 #### MainBoard status: CPU Model, Vendor, RAM, and Temp
 mainboard=$(grep Model /proc/cpuinfo | cut -d ":" -f 2 | sed -e 's/^ //g')
-temp="$(cat /sys/class/thermal/thermal_zone0/temp)"
-TEMP="$(bc <<< "scale=1; $temp/1000") c˚"
+#temp="$(cat /sys/class/thermal/thermal_zone0/temp)"
+#TEMP="$(bc <<< "scale=1; $temp/1000") c˚"
+TEMP=$(sudo vcgencmd measure_temp | cut -d "=" -f 2)
 CPUMax=$(sudo vcgencmd get_config int | grep arm_freq | cut -d "=" -f 2 | sed -n 1p)
 VNDR=$(sudo lscpu | grep Vendor | cut -d ":" -f 2 | cut -d " " -f 12)
 MDL=$(sudo lscpu | grep "Model name" | cut -d ":" -f 2 | sed -e 's/ //g')
@@ -329,31 +330,31 @@ HTML
 	fi
 fi
 
-## CPU Temp updator
+## CPU Temp & SSID List updator
 
 cat <<HTML
 	  <div class="separator"><hr></div>
 
 	    <script>
-		   const tempUpdate = document.querySelector('#temp');
+            function tempUpdateCheck() {
+                const tempUpdate = document.querySelector('#temp');
+                fetch("/cgi-bin/RaspberryPi/temp_check.cgi")
+                .then(response => {
+                  return response.text();
+                })
+                .then((text) => tempUpdate.outerHTML = text)
+                .catch((error) => console.log(error))
 
-		   function tempUpdateCheck() {
-			   fetch("/cgi-bin/RaspberryPi/temp_check.cgi")
-			   .then(response => {
-		         return response.text();
-			   })
-		       .then((text) => tempUpdate.textContent = text)
+                setTimeout( tempUpdateCheck , 10000 )
+                }
 
-			   setTimeout( tempUpdateCheck , 10000 )
-		   }
-
-		   tempUpdateCheck();
+                   tempUpdateCheck();
 
 		   function ssidStatusCheck() {
                 const SSID = document.querySelector('#ssid');
 
                 if(!SSID) {
-                    return;
+                  return;
                 }
 
                 fetch("/cgi-bin/RaspberryPi/SSID_STS.cgi")
@@ -366,7 +367,7 @@ cat <<HTML
                 setTimeout( ssidStatusCheck , 10000 )
            }
 
-           ssidStatusCheck();
+//           ssidStatusCheck();
 
 	    </script>
 

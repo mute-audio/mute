@@ -1,9 +1,13 @@
 Ver_1.09b (WIP)
 - Bugfix: Automatic updating of upgradable package lists / Update Tab
+- Bugfix: Timezone setting / RaspberryPi Tab
 - Revised: Update check process
+- Revised: CPU temp check script
 - Added workaround for cases where MPD cannot be updated due to repository updates
 - Bookworm Support(/boot/firmware issue): Modify Installer and Updater
 - Bookworm Support(/boot/firmware issue): Modify DAC install script / Sound Device Tab
+- Bookworm Support: Bugfix: Reboot and Shutdown process
+- Bookworm Support: Addd WiFi On/Off script for NetworkManager
 
 ToDo
 * Bookworm Support -- NetworkManager

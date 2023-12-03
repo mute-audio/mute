@@ -1,6 +1,10 @@
 #!/bin/bash
 
-temp="$(cat /sys/class/thermal/thermal_zone0/temp)"
-TEMP="$(bc <<< "scale=1; $temp/1000") c˚"
+# temp_check.cgi.cgi                               #
+# (C)2023 kitamura_design <kitamura_design@me.com> #
 
-echo "CPU Temp : ${TEMP}"
+TEMP=$(sudo vcgencmd measure_temp | cut -d "=" -f 2)
+
+cat <<HTML
+<div id="temp">CPU Temp : ${TEMP} </div>
+HTML

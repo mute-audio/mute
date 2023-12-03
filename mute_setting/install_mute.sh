@@ -10,7 +10,7 @@
 OS_codename=$(lsb_release -a |  grep Codename | cut -f 2)
 
 if [ ${OS_codename} = "bookworm" ]; then
-   bootDIR="${bootDIR}"
+   bootDIR="boot/firmware"
 else
    bootDIR="boot"
 fi
@@ -24,7 +24,7 @@ echo '   m u t e    RPi-Audio/ MPD Dashboard'
 echo " +         +  ver.${VER}"
 echo ''
 echo " Installer shell for ver.${VER}"
-echo ' ©2022 kitamura_design <kitamura_design@me.com>'
+echo ' ©2023 kitamura_design <kitamura_design@me.com>'
 echo ''
 echo ' PROCEDURES'
 echo ''
@@ -289,7 +289,6 @@ else
 	echo " Copying [ mute ] source..."
 	sudo chmod -R 777 /var/www
 	sudo cp -RT ./www /var/www
-	#sudo cp -R ./www/ /var/www
 	wait
     sudo chmod -R 755 /var/www
 

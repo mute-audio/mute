@@ -14,7 +14,6 @@ echo "<html>"
 
 echo  "<head>"
 echo    "<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/main.css?$query\">"
-echo    "<meta http-equiv=\"refresh\" content=\"0.5; URL=/cgi-bin/RaspberryPi/poweroff.cgi\">"
 echo    "<script>"
 
 echo    "function uiLock(){"
@@ -45,7 +44,20 @@ echo "</div>"
 cat <<HTML
 <script>
 
-setInterval("autoReconnect()", 10000)
+function powerOffMute() {
+  fetch( '/cgi-bin/RaspberryPi/poweroff.cgi' )
+  .then( response => {
+   if(!response.ok){
+      return;
+   }
+  })
+  .catch((error) => console.log(error))
+}
+
+powerOffMute();
+
+// setInterval( autoReconnect , 10000)
+
 function autoReconnect() {
 fetch("/")
 .then(response => {

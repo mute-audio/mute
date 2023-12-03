@@ -56,7 +56,8 @@ function powerOffMute() {
 
 powerOffMute();
 
-setInterval("autoReconnect()", 10000)
+// setInterval( autoReconnect , 10000)
+
 function autoReconnect() {
 fetch("/")
 .then(response => {

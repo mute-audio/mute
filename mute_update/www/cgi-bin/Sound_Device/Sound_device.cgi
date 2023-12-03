@@ -152,16 +152,15 @@ HTML
         <script>
 
        // ALSA Status Checker -----
-           const alsaSTS = document.querySelector('#alsa-STS');
-
         function alsaSTSCheck() {
-                   fetch("/cgi-bin/Sound_Device/alsaSTS_Check.cgi")
-                   .then(response => {
-                         return response.text();
-                   })
-                   .then((text) => alsaSTS.textContent = text)
+            const alsaSTS = document.querySelector('#alsa-STS');
 
-                   setTimeout( alsaSTSCheck , 10000 )
+            fetch("/cgi-bin/Sound_Device/alsaSTS_Check.cgi")
+            .then( (response) => response.text())
+            .then((text) => alsaSTS.outerHTML = text)
+            .catch( (error) => console.log(error))
+
+             setTimeout( alsaSTSCheck , 10000 )
         }
 
         alsaSTSCheck();

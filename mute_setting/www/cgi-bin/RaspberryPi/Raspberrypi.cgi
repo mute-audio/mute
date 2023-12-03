@@ -89,8 +89,9 @@ HTML
 
 #### MainBoard status: CPU Model, Vendor, RAM, and Temp
 mainboard=$(grep Model /proc/cpuinfo | cut -d ":" -f 2 | sed -e 's/^ //g')
-temp="$(cat /sys/class/thermal/thermal_zone0/temp)"
-TEMP="$(bc <<< "scale=1; $temp/1000") c˚"
+#temp="$(cat /sys/class/thermal/thermal_zone0/temp)"
+#TEMP="$(bc <<< "scale=1; $temp/1000") c˚"
+TEMP=$(sudo vcgencmd measure_temp | cut -d "=" -f 2)
 CPUMax=$(sudo vcgencmd get_config int | grep arm_freq | cut -d "=" -f 2 | sed -n 1p)
 VNDR=$(sudo lscpu | grep Vendor | cut -d ":" -f 2 | cut -d " " -f 12)
 MDL=$(sudo lscpu | grep "Model name" | cut -d ":" -f 2 | sed -e 's/ //g')
@@ -134,7 +135,8 @@ cat <<HTML
 HTML
 
 ######### Genaral Options: TimeZone
-TimezoneSTS=$(< /etc/timezone)
+#TimezoneSTS=$(< /etc/timezone)
+TimezoneSTS=$(timedatectl show | grep Timezone | cut -d "=" -f 2)
 TimezoneLIST=$(timedatectl list-timezones | sed -e 's/^/<option>/g' -e 's/$/<\/option>/g')
 
 cat <<HTML
@@ -329,7 +331,7 @@ HTML
 	fi
 fi
 
-## CPU Temp updator
+## CPU Temp & SSID List updator
 
 cat <<HTML
 	  <div class="separator"><hr></div>
@@ -353,7 +355,7 @@ cat <<HTML
                 const SSID = document.querySelector('#ssid');
 
                 if(!SSID) {
-                    return;
+                  return;
                 }
 
                 fetch("/cgi-bin/RaspberryPi/SSID_STS.cgi")
@@ -366,7 +368,7 @@ cat <<HTML
                 setTimeout( ssidStatusCheck , 10000 )
            }
 
-           ssidStatusCheck();
+//           ssidStatusCheck();
 
 	    </script>
 

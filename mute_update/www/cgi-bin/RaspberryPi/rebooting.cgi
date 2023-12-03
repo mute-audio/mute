@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # rebooting.cgi                                    #
-# (C)2022 kitamura_design <kitamura_design@me.com> #
+# (C)2023 kitamura_design <kitamura_design@me.com> #
 
 query=$(date +%Y%m%d%I%M%S)
 
@@ -14,7 +14,6 @@ echo "<html>"
 
 echo  "<head>"
 echo    "<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/main.css?$query\">"
-echo    "<meta http-equiv=\"refresh\" content=\"0; URL=/cgi-bin/RaspberryPi/reboot.cgi\">"
 echo    "<script>"
 
 echo    "function uiLock(){"
@@ -49,6 +48,18 @@ HTML
 ## Auto-reconnect after rebooting
 cat <<HTML
 <script>
+
+function rebootMute() {
+  fetch( '/cgi-bin/RaspberryPi/reboot.cgi' )
+  .then( response => {
+   if(!response.ok){
+      return;
+   }
+  })
+  .catch((error) => console.log(error))
+}
+
+rebootMute();
 
 setInterval( autoReconnect , 10000);
 
