@@ -6,10 +6,10 @@
 # Check current OS Codename
 OS_codename=$(lsb_release -a |  grep Codename | cut -f 2)
 
-if [ ${OS_codename} = "bookworm" ]; then
-   bootDIR="boot/firmware"
-else
+if [ ${OS_codename} = "buster" ] || [ ${OS_codename} = "bullseye" ]; then  # In case of Buster, Bullseye etc.
    bootDIR="boot"
+else
+   bootDIR="boot/firmware"
 fi
 
 # Checking config.txt
@@ -37,3 +37,5 @@ fi
 
 echo "Location: /cgi-bin/RaspberryPi/rebooting.cgi"           # Proceed to Reboot
 echo
+
+exit 0

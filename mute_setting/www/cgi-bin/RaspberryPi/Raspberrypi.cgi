@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Raspberrypi.cgi		        				   #
-# (C)2022 kitamura_design <kitamura_design@me.com> #
+# (C)2023 kitamura_design <kitamura_design@me.com> #
 
 #### HTML Header
 query=$(date +%Y%m%d%I%M%S)

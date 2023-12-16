@@ -58,12 +58,12 @@ powerOffMute();
 
 // setInterval( autoReconnect , 10000)
 
-function autoReconnect() {
-fetch("/")
-.then(response => {
-  if(response.ok){parent.location.href="/index.html"}
-})
-}
+// function autoReconnect() {
+// fetch("/")
+// .then(response => {
+//   if(response.ok){parent.location.href="/index.html"}
+// })
+// }
 
 </script>
 HTML
