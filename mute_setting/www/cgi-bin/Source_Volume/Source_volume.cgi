@@ -60,7 +60,7 @@ HTML
 
             NAS=$(df -ah | grep /mnt.* | cut -d " " -f 1 | sed -n "$i"p) ## Get NAS Volume
             NAS_name=$(df -ah | grep --only-matching /mnt.* | sed -n "$i"p | sed -e "s/\/.*\///") ##Get NAS Name
-            busyCHECK=$(sudo lsof "$NAS_name")
+            busyCHECK=$(sudo lsof "/mnt/${NAS_name}")
 
             if [ -n "$busyCHECK" ]; then
 
