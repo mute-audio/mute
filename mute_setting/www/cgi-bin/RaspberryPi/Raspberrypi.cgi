@@ -341,6 +341,10 @@ cat <<HTML
                 const tempUpdate = document.querySelector('#temp');
                 fetch("/cgi-bin/RaspberryPi/temp_check.cgi")
                 .then(response => {
+
+				if( response.status === 500 ){
+                  return;
+                }
                   return response.text();
                 })
                 .then((text) => tempUpdate.outerHTML = text)
@@ -349,9 +353,9 @@ cat <<HTML
                 setTimeout( tempUpdateCheck , 10000 )
                 }
 
-                   tempUpdateCheck();
+            tempUpdateCheck();
 
-		   function ssidStatusCheck() {
+		    function ssidStatusCheck() {
                 const SSID = document.querySelector('#ssid');
 
                 if(!SSID) {

@@ -368,6 +368,8 @@ input {
   /* width: 100vmin; */
   height: 100vmin;
   margin: auto;
+  animation: fadeIn 1s ease 0s 1 normal;
+  -webkit-animation: fadeIn 1s ease 0s 1 normal;
 }
 
 .songinfo {
