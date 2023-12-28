@@ -343,7 +343,7 @@ cat <<HTML
                 .then(response => {
 
 				if( response.status === 500 ){
-                  return;
+                  return tempUpdate.outerHTML;
                 }
                   return response.text();
                 })
