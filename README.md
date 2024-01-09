@@ -22,7 +22,12 @@ Step 2 : Copy the "mute_setting" folder under /boot of the OS media
 
 Step 3 : Insert the OS media into RaspberryPi and boot.
 
-Step 4 : Connect to RaspberryPi via SSH and type the installation command ;
+Step 4 : Connect to RaspberryPi via SSH and type the installation command;
+```
 cd /boot/firmware/mute_setting && . /install_mute.sh
-
+```
+Note: When installing on a legacy OS;
+```
+cd /boot/mute_setting && . /install_mute.sh
+```
 Step 5 : Access RaspberryPi with a browser on PC or tablet
