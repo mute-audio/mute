@@ -31,3 +31,4 @@ Note: When installing on a legacy OS;
 cd /boot/mute_setting && . /install_mute.sh
 ```
 Step 5 : Access RaspberryPi with a browser on PC or tablet
+test
