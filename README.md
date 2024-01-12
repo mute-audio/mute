@@ -1,3 +1,4 @@
+![mute_top](https://github.com/mute-audio/mute/assets/120294905/8cfdd1db-430b-4641-8053-2148d7120e92)
 # [ mute ] 
 
 ### Simple Raspi Audio / MPD Dashboard
