@@ -8,6 +8,7 @@ ToDo
 * MPD DB update Auto-refresh
 * Network Status-ICON (WiFi/LAN)
 * CPU Temp Status-ICON
+* Revise mute update scripts : Change update data from DropBox to Git Hub
 
 Ver_1.09b (2023/12/27)
 - Bugfix: Automatic updating of upgradable package lists / Update Tab
