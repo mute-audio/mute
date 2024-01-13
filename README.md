@@ -27,7 +27,7 @@ Step 4 : Connect to RaspberryPi via SSH and type the installation command;
 ```
 cd /boot/firmware/mute_setting && . /install_mute.sh
 ```
-Note: When installing on a legacy OS;
+Or in case of installing on a legacy OS;
 ```
 cd /boot/mute_setting && . /install_mute.sh
 ```
