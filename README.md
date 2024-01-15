@@ -33,4 +33,6 @@ cd /boot/mute_setting && . /install_mute.sh
 ```
 Step 5 : Access RaspberryPi with a browser on PC or tablet
 
-### For more information, [visit [ mute ] site](https://kitamura-design.format.com/mute-en)
+<!-- ### For more information, [visit [ mute ] site](https://kitamura-design.format.com/mute-en) -->
+
+©2024 kitamura_design
