@@ -52,11 +52,11 @@ Step 2 : Download the latest setting file "mute_update_[VERSION].zip" in any dir
 wget [DOWNLOAD LINK]
 ```
 
-Step 2 : Unzip the downloaded zip file;
+Step 3 : Unzip the downloaded zip file;
 ```
 sudo unzip mute_update_[VERSION].zip
 ```
-Step 3 : Type the installation command;
+Step 4 : Type the installation command;
 ```
 cd mute_update && ./update_mute.sh
 ```
