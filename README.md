@@ -18,7 +18,7 @@ If you try to install MPD manually and play sound, you will need a lot of knowle
 
 So, let's make something that can easily build a "plain MPD audio server," and this is how [ mute ] was born.
 
-## Installing and Updating [ mute ]
+## Install and Update [ mute ]
 
 ### Install [ mute ] 
 
@@ -42,7 +42,7 @@ cd /boot/mute_setting && ./install_mute.sh
 ```
 Step 6 : Access RaspberryPi with a browser on PC or tablet
 
-### Updating [ mute ] 
+### Update [ mute ] 
 Follow the steps below to update [ mute ].
 
 Step 1 : Login to your [ mute ] via SSH
