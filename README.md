@@ -21,11 +21,13 @@ Follow the steps below to install [ mute ].
 
 Step 1 : Create RaspberryPi OS media (SD card)
 
-Step 2 : Copy the "mute_setting" folder under /boot of the OS media
+Step 2 : Download the latest setting file "mute_setting_<yymmdd>.zip"
 
-Step 3 : Insert the OS media into RaspberryPi and boot.
+Step 3 : Unzip and copy the "mute_setting" folder under /boot of the OS media
 
-Step 4 : Connect to RaspberryPi via SSH and type the installation command;
+Step 4 : Insert the OS media into RaspberryPi and boot.
+
+Step 5 : Connect to RaspberryPi via SSH and type the installation command;
 ```
 cd /boot/firmware/mute_setting && . /install_mute.sh
 ```
@@ -33,7 +35,18 @@ Or in case of installing on a legacy OS;
 ```
 cd /boot/mute_setting && . /install_mute.sh
 ```
-Step 5 : Access RaspberryPi with a browser on PC or tablet
+Step 6 : Access RaspberryPi with a browser on PC or tablet
+
+## Updating [ mute ] 
+Follow the steps below to update [ mute ].
+
+Step 1 : Login to your [ mute ] via SSH
+
+Step 1 : Download the latest setting file "mute_update_<version>.zip"
+```
+wget https://github.com/mute-audio/mute/releases/download/v1.09-beta/mute_update_109.zip
+```
+Step 2 : Unzip and copy the "mute_update" folder under /boot of the OS media
 
 <!-- ### For more information, [visit [ mute ] site](https://kitamura-design.format.com/mute-en) -->
 
