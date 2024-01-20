@@ -19,7 +19,7 @@ If you try to install MPD manually and play sound, you will need a lot of knowle
 So, let's make something that can easily build a "plain MPD audio server," and this is how [ mute ] was born.
 
 ## Installing and Updating [ mute ]
-Check ![here]() for download links to the latest installer and updater;
+Check [here](https://github.com/mute-audio/mute/releases) for download links to the latest installer and updater;
 
 ### Install [ mute ] 
 
