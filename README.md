@@ -19,7 +19,6 @@ If you try to install MPD manually and play sound, you will need a lot of knowle
 So, let's make something that can easily build a "plain MPD audio server," and this is how [ mute ] was born.
 
 ## Installing and Updating [ mute ]
-Check [here](https://github.com/mute-audio/mute/releases) for download links to the latest installer and updater;
 
 ### Install [ mute ] 
 
@@ -27,7 +26,7 @@ Follow the steps below to install [ mute ].
 
 Step 1 : Create RaspberryPi OS media (SD card)
 
-Step 2 : Download the latest setting file "mute_setting_[DATE].zip"
+Step 2 : Download the latest setting file "mute_setting_[DATE].zip"  (Check [here](https://github.com/mute-audio/mute/releases))
 
 Step 3 : Unzip and copy the "mute_setting" folder under /boot of the OS media
 
@@ -48,11 +47,12 @@ Follow the steps below to update [ mute ].
 
 Step 1 : Login to your [ mute ] via SSH
 
-Step 2 : Download the latest setting file "mute_update_[VERSION].zip" in any directory;
+Step 2 : Download the latest setting file "mute_update_[VERSION].zip" in any directory (Check [here](https://github.com/mute-audio/mute/releases))
 ```
-wget https://github.com/mute-audio/mute/releases/download/[TAG]/mute_update_[VERSION].zip
+wget [DOWNLOAD LINK]
 ```
-Step 2 : Unzip the "mute_update" folder;
+
+Step 2 : Unzip the downloaded zip file;
 ```
 sudo unzip mute_update_[VERSION].zip
 ```
