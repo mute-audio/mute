@@ -45,7 +45,7 @@ Step 6 : Access RaspberryPi with a browser on PC or tablet
 ### Update [ mute ] 
 Follow the steps below to update [ mute ].
 
-Step 1 : Login to your [ mute ] via SSH
+Step 1 : Connect to your [ mute ] via SSH
 
 Step 2 : Download the latest setting file "mute_update_[VERSION].zip" in any directory (Check [here](https://github.com/mute-audio/mute/releases))
 ```
