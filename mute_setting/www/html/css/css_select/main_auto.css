@@ -1,6 +1,6 @@
 /*    Split-View UI Style Sheet          */
-/*    [ mute ] ©2022 kitamura_design     */
-/*    main_auto.css for [LIGHT MODE]      */
+/*    [ mute ] ©2024 kitamura_design     */
+/*    main_auto.css for [AUTO MODE]      */
 
 /* Basic Style   */
 /* Fonts         */
@@ -340,14 +340,13 @@ input {
 /* UI Parts */
 
 .cover {
+  display: block;
   box-sizing: border-box;
-  width: 100%;
-/*      margin-top: 2.5%;
-  margin-left: 5px;
-  margin-right: 0.5%;
-  margin-bottom: 0.5%;
-*/      padding: 0%;
-  box-shadow: 0rem 0rem 0.3rem #D8D8D8;   
+  /* width: 100vmin; */
+  height: 100vmin;
+  margin: auto;
+  animation: fadeIn 1s ease 0s 1 normal;
+  -webkit-animation: fadeIn 1s ease 0s 1 normal;
 }
 
 .songinfo {

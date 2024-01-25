@@ -1,5 +1,5 @@
 /*    Split-View UI Style Sheet          */
-/*    [ mute ] ©2022 kitamura_design     */
+/*    [ mute ] ©2024 kitamura_design     */
 /*    main_dark.css for [DARK MODE]      */
 
 
@@ -368,6 +368,8 @@ input {
   /* width: 100vmin; */
   height: 100vmin;
   margin: auto;
+  animation: fadeIn 1s ease 0s 1 normal;
+  -webkit-animation: fadeIn 1s ease 0s 1 normal;
 }
 
 .songinfo {
@@ -456,7 +458,7 @@ input {
   border-top-left-radius: 0;
   border-bottom-right-radius: 0.75vw;
   border-top-right-radius: 0.75vw;
-  background-color: #7D7D7D;
+  background-color: #5D5D5D;
   color: #ffffff !important;
   transition: background 0.5s;
 }
@@ -482,7 +484,7 @@ input {
   border-bottom-right-radius: 0.0vmin;
   border-top-right-radius: 0.0vmin;
   background-color: #2E2E2E;
-  color: #7D7D7D;
+  color: #5D5D5D;
   transition: background 0.5s;
 }
 
@@ -524,7 +526,7 @@ input {
   border-top-left-radius: 0;
   border-bottom-right-radius: 0.75vw;
   border-top-right-radius: 0.75vw;
-  background-color: #7D7D7D;
+  background-color: #5D5D5D;
   color: #ffffff;
   opacity: 0.5;
 }
@@ -902,7 +904,7 @@ form {
   font-size: 2.50vmin;
   border: none;
   border-radius: 0.75vw;
-  background-color: #7D7D7D;
+  background-color: #5D5D5D;
   color: #ffffff !important;
   transition: background 0.5s;
 }
@@ -919,7 +921,7 @@ form {
   font-size: 2.50vmin;
   border: none;
   border-radius: 0.75vw;
-  background-color: #7D7D7D;
+  background-color: #5D5D5D;
   color: #ffffff !important;
   transition: background 0.5s;
   opacity: 0.5;
