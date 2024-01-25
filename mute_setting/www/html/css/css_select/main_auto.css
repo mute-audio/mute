@@ -434,7 +434,7 @@ input {
   border-top-left-radius: 0;
   border-bottom-right-radius: 0.75vw;
   border-top-right-radius: 0.75vw;
-  background-color: #7D7D7D;
+  background-color: #8D8D8D;
   color: #ffffff !important;
   transition: background 0.5s;
 }
@@ -502,7 +502,7 @@ input {
   border-top-left-radius: 0;
   border-bottom-right-radius: 0.75vw;
   border-top-right-radius: 0.75vw;
-  background-color: #7D7D7D;
+  background-color: #8D8D8D;
   color: #ffffff;
   opacity: 0.5;
 }
@@ -882,7 +882,7 @@ form {
   font-size: 2.50vmin;
   border: none;
   border-radius: 0.75vw;
-  background-color: #7D7D7D;
+  background-color: #8D8D8D;
   color: #ffffff !important;
   transition: background 0.5s;
 }
@@ -899,7 +899,7 @@ form {
   font-size: 2.50vmin;
   border: none;
   border-radius: 0.75vw;
-  background-color: #7D7D7D;
+  background-color: #8D8D8D;
   color: #ffffff !important;
   transition: background 0.5s;
   opacity: 0.5;
@@ -1069,8 +1069,24 @@ padding-left: 2.5vmin;
     color: #CCCCCC;
   }
   
+  .button, .btn {
+    background-color: #5D5D5D;
+  }
+
   .button2 {
     background-color: #2E2E2E;
+  }
+  
+  .button-disabled {
+    background-color: #5D5D5D;
+  }
+  
+  .toggle-on-sw {
+    background-color: #5D5D5D;
+  }
+  
+  .toggle-off-sw {
+    background-color: #5D5D5D;
   }
   
   .inputbox {
