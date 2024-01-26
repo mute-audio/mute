@@ -10,4 +10,6 @@ https://api.github.com/repos/mute-audio/mute/releases \
 | grep -e "\"name\"" -e "\"download_count\"" \
 | sed -e 's/^ *//' -e 's/\"//g' -e 's/,//g' -e 's/name: //g'
 
+date
+
 exit 0
