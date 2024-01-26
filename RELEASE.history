@@ -1,6 +1,7 @@
 Ver_1.10b (WIP)
 - Bugfix: mpdscribble setting / Other Setting Tab
-- New: Preparing to publish on Git Hub
+- New: Host sources and packages on GitHub
+- Revised: mute update scripts : Change update data from DropBox to Git Hub
 
 ToDo
 * Show the notification badges on sidebar (reboot required, update available)
@@ -9,7 +10,6 @@ ToDo
 * MPD DB update Auto-refresh
 * Network Status-ICON (WiFi/LAN)
 * CPU Temp Status-ICON
-* Revise mute update scripts : Change update data from DropBox to Git Hub
 
 Ver_1.09b (2023/12/27)
 - Bugfix: Automatic updating of upgradable package lists / Update Tab
