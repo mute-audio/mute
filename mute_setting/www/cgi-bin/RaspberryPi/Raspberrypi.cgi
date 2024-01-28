@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Raspberrypi.cgi		        				   #
-# (C)2023 kitamura_design <kitamura_design@me.com> #
+# (C)2024 kitamura_design <kitamura_design@me.com> #
 
 #### HTML Header
 query=$(date +%Y%m%d%I%M%S)
@@ -301,8 +301,9 @@ HTML
 		  <form method=GET action="/cgi-bin/RaspberryPi/WiFi_applying.cgi" target="_self">
 		     <!-- SSID  -->
 		     <li class="setting-items-wrap">
+			     <input id="rescan" type="button" value="Rescan" class="button" onClick="ssidStatusCheck()">
 			     <div class="ellipsis-wrap"><div class="allow-down"></div></div>
-		         <select  id="ssid" name="ssid" class="inputbox">
+		         <select  id="ssid" name="ssid" class="inputbox-single">
 		             <option selected>${ssid_STS:- ( No WiFi connection )}</option>
 		             ${ssid_LIST}
 		         </select>
@@ -371,8 +372,6 @@ cat <<HTML
 
                 setTimeout( ssidStatusCheck , 10000 )
            }
-
-//           ssidStatusCheck();
 
 	    </script>
 
