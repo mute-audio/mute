@@ -679,8 +679,9 @@ form {
   height: 2.0vmin;
   width: 2.0vmin;
   position: absolute;
-  top: 2.25vmin;
+  top: 2.0vmin;
   right: 2.5vmin;
+  transition: all 0.5s;
 }  
 
 .status-wrap {

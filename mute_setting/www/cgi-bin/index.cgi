@@ -109,6 +109,7 @@ Content-type: text/html; charset=utf-8
                 RPiBadge.style.display = '';
               }else{
                 RPiBadge.style.display = 'none';
+                throw new Error('404 Error');
               }
             })
             .catch((error) => console.log(error))
