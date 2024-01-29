@@ -49,6 +49,7 @@ Content-type: text/html; charset=utf-8
         <form method=GET action="/cgi-bin/loading.cgi" target="mainview">
           <input type="hidden" name="URL" value="/cgi-bin/RaspberryPi/Raspberrypi.cgi">
           <input id="Raspberrypi" type="submit" value="RaspberryPi" class="menutab">
+          <div id="RaspberrypiBadge" class="status-min"> </div>
         </form>
 
         <!-- Sound Device -->
@@ -79,6 +80,7 @@ Content-type: text/html; charset=utf-8
         <form method=GET action="/cgi-bin/Checking.cgi" target="mainview">
           <input type="hidden" name="URL" value="/cgi-bin/Update/Update.cgi">
           <input id="Update" type="submit" value="Update" class="menutab">
+          <div id="UpdateBadge" class="status-min"> </div>
         </form>
 
         <!-- About [ mute ] -->
@@ -95,6 +97,47 @@ Content-type: text/html; charset=utf-8
       </div>
 
     </div>
+
+    <script>
+
+        function setRPiBadge() {
+            const RPiBadge = document.querySelector('#RaspberrypiBadge');
+
+            fetch("/cgi-bin/log/reboot_required.log")
+            .then(response => {
+              if( response.ok ){
+                RPiBadge.style.display = '';
+              }else{
+                RPiBadge.style.display = 'none';
+              }
+            })
+            .catch((error) => console.log(error))
+
+            setTimeout( setRPiBadge , 60000 )
+        }
+
+        setRPiBadge();
+
+        function setUpdateBadge() {
+            const UpdateBadge = document.querySelector('#UpdateBadge');
+
+            fetch("/cgi-bin/Update/Update_notice.txt")
+            .then(response => response.text())
+            .then((text) => {
+              if( text === 'All packages are up to date.\n' ){
+                UpdateBadge.style.display = 'none';
+              }else{
+                UpdateBadge.style.display = '';
+              }
+            })
+            .catch((error) => console.log(error))
+
+            setTimeout( setUpdateBadge , 60000 )
+        }
+
+        setUpdateBadge();
+        
+    </script>
 
   </body>
 </html>

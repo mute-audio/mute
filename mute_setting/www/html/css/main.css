@@ -504,6 +504,7 @@ input {
 
 form {
   width: 100%;
+  position: relative;
 }
 
 .inputbox {
@@ -663,6 +664,17 @@ form {
   font-size: 2.5vmin;
 }
 
+.status-min {
+  border: none;
+  border-radius: 1.5vmin;
+  background-color: #7D7D7D;
+  height: 2.0vmin;
+  width: 2.0vmin;
+  position: absolute;
+  top: 2.25vmin;
+  right: 2.5vmin;
+}
+  
 .status-wrap {
   z-index: 9999;
   color: #CCCCCC;
