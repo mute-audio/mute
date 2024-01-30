@@ -158,7 +158,7 @@ cat <<HTML
 				<div class="setting-items-wrap">
 				  <input id="Apply" type="submit" value="Set" class="button"></input>
 				  <div class="ellipsis-wrap">Aa</div>
-				  <input type="password" id="hostPWD" name="hostPWD" value="" class="inputbox-single" required>
+				  <input type="password" id="hostPWD" name="hostPWD" value="" class="inputbox-single" placeholder="Password" required>
 				  <label for="">Password</label>
 				</div>
 			</form>
@@ -237,7 +237,19 @@ else
 HTML
 
 	#### WiFi Connection
-	ssid_STS=$(iwconfig wlan0 | grep "wlan0" | cut -d ":" -f 2 | cut -d "\"" -f 2)
+
+	# Check current OS Codename
+	OS_codename=$(lsb_release -a |  grep Codename | cut -f 2)
+
+	if [ ${OS_codename} = "buster" ] || [ ${OS_codename} = "bullseye" ]; then  # In case of Buster, Bullseye etc.
+
+    	ssid_STS=$(iwconfig wlan0 | grep "wlan0" | cut -d ":" -f 2 | cut -d "\"" -f 2)
+    	ssid_LIST=$(sudo iwlist wlan0 scan | grep ESSID | sort | uniq | cut -d ":" -f 2 | cut -d "\"" -f 2 | sed -e 's/^/<option>/g' -e 's/$/<\/option>/g')
+	else
+
+    	ssid_STS=$(iwconfig wlan0 | grep "wlan0" | cut -d ":" -f 2 | cut -d "\"" -f 2)
+    	ssid_LIST=$(nmcli -f SSID device wifi list | sed -e '/SSID/d' | sort | uniq | sed -e 's/^/<option>/g' -e 's/$/<\/option>/g')
+	fi
 
 	if [ "$wifi_STS" = "no" ]; then
 
@@ -291,7 +303,6 @@ HTML
 	fi
 
 	#### SSID & PWD
-	ssid_LIST=$(sudo iwlist wlan0 scan | grep ESSID | sort | uniq | cut -d ":" -f 2 | cut -d "\"" -f 2 | sed -e 's/^/<option>/g' -e 's/$/<\/option>/g')
     ip_STS=$(ip a | grep wlan0 | grep -o state.* | cut -d " " -f 2)
 
 	if [ "$wifi_STS" = "no" ]; then
@@ -338,6 +349,7 @@ cat <<HTML
 	  <div class="separator"><hr></div>
 
 	    <script>
+		// CPU Temp Updater
             function tempUpdateCheck() {
                 const tempUpdate = document.querySelector('#temp');
                 fetch("/cgi-bin/RaspberryPi/temp_check.cgi")
@@ -356,6 +368,7 @@ cat <<HTML
 
             tempUpdateCheck();
 
+		// SSID List Checker
 		    function ssidStatusCheck() {
                 const SSID = document.querySelector('#ssid');
 
@@ -369,9 +382,44 @@ cat <<HTML
                 })
                 .then((text) => SSID.outerHTML = text)
                 .catch((error) => console.log(error))
-
-                setTimeout( ssidStatusCheck , 10000 )
            }
+
+		// Notification badge checker for RaspberryPi tab
+           function setRPiBadge() {
+                const RPiBadge = parent.document.querySelector('#RaspberrypiBadge');
+
+                fetch("/cgi-bin/log/reboot_required.log")
+                .then(response => {
+                    if( !response.ok ){
+                    RPiBadge.style.display = 'none';
+                }else{
+                    RPiBadge.style.display = '';
+                }
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+            }
+
+            setRPiBadge();
+
+		// Notification badge checker for Update tab
+        	function setUpdateBadge() {
+            	const UpdateBadge = parent.document.querySelector('#UpdateBadge');
+
+            	fetch("/cgi-bin/Update/Update_notice.txt")
+            	.then(response => response.text())
+            	.then((text) => {
+            	  if( text === 'All packages are up to date.\n' ){
+            	    UpdateBadge.style.display = 'none';
+            	  }else{
+            	    UpdateBadge.style.display = '';
+            	  }
+            	})
+            	.catch((error) => console.log(error))
+        	}
+
+        	setUpdateBadge();
 
 	    </script>
 
