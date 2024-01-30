@@ -681,7 +681,8 @@ form {
   position: absolute;
   top: 2.0vmin;
   right: 2.5vmin;
-  transition: all 0.5s;
+  animation: fadeIn 2s ease 0s infinite alternate;
+  -webkit-animation: fadeIn 2s ease 0s infinite alternate;
 }  
 
 .status-wrap {
