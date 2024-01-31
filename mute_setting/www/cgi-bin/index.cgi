@@ -114,7 +114,7 @@ Content-type: text/html; charset=utf-8
             })
             .catch((error) => console.log(error))
 
-            setTimeout( setUpdateBadge , 10000 )
+            setTimeout( setUpdateBadge , 5000 )
         }
 
         setUpdateBadge();
