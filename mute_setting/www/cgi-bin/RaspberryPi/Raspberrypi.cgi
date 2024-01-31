@@ -312,13 +312,14 @@ HTML
 		  <form method=GET action="/cgi-bin/RaspberryPi/WiFi_applying.cgi" target="_self">
 		     <!-- SSID  -->
 		     <li class="setting-items-wrap">
-			     <input id="rescan" type="button" value="Rescan" class="button" onClick="ssidStatusCheck()">
+				 <div id="progressBadge" class="progress-badge" style="display: none;"> </div>
+			     <input id="rescan" type="button" value="Rescan" class="button" onClick="ssidRescan()">
 			     <div class="ellipsis-wrap"><div class="allow-down"></div></div>
 		         <select  id="ssid" name="ssid" class="inputbox-single">
 		             <option selected>${ssid_STS:- ( No WiFi connection )}</option>
 		             ${ssid_LIST}
 		         </select>
-    		     <label for="ssid"> SSID </label>
+    		     <label for=""> SSID </label>
 			     <!-- Up/ Down Badge  -->
 			     <div class="status-wrap">
     		         <div class="status">${ip_STS}</div>
@@ -329,7 +330,7 @@ HTML
 			 <div class="setting-items-wrap">
 				 <div class="ellipsis-wrap">Aa</div>
 				 <input id="pwd" name="pwd" type="password" class="inputbox" placeholder="Password" required>
-    			 <label for="pwd">Password </label>
+    			 <label for="">Password </label>
 			 </div>
 
 			 <!-- Submit & reset -->
@@ -368,21 +369,28 @@ cat <<HTML
 
             tempUpdateCheck();
 
-		// SSID List Checker
-		    function ssidStatusCheck() {
+		// Rescan SSID List
+            function ssidRescan() {
                 const SSID = document.querySelector('#ssid');
+                const progressBadge = document.querySelector('#progressBadge');
 
                 if(!SSID) {
                   return;
                 }
 
+                progressBadge.style.display = '';
+                SSID.disabled = true;
+
                 fetch("/cgi-bin/RaspberryPi/SSID_STS.cgi")
                 .then(response => {
                     return response.text();
                 })
-                .then((text) => SSID.outerHTML = text)
+                .then((text) => {
+                    SSID.outerHTML = text;
+                    progressBadge.style.display = 'none';
+                })
                 .catch((error) => console.log(error))
-           }
+            }
 
 		// Notification badge checker for RaspberryPi tab
            function setRPiBadge() {

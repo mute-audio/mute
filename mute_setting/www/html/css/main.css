@@ -676,6 +676,19 @@ form {
   animation: fadeIn 2s ease 0s infinite alternate;
   -webkit-animation: fadeIn 2s ease 0s infinite alternate;
 }
+
+.progress-badge {
+  border: none;
+  border-radius: 1.5vmin;
+  background-color: #CCCCCC;
+  height: 2.0vmin;
+  width: 2.0vmin;
+  position: absolute;
+  top: 2.75vmin;
+  right: 2.75vmin;
+  animation: fadeIn 2s ease 0s infinite alternate;
+  -webkit-animation: fadeIn 2s ease 0s infinite alternate;
+}
   
 .status-wrap {
   z-index: 9999;
