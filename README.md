@@ -62,6 +62,6 @@ cd mute_update && ./update_mute.sh
 ```
 
 ### Further information
-For more information, [visit [ mute ] site(https://kitamura-design.format.com/mute-en)](https://kitamura-design.format.com/mute-en).
+For more information, visit [ mute ] site [(https://kitamura-design.format.com/mute-en)](https://kitamura-design.format.com/mute-en).
 
 ©2024 kitamura_design
