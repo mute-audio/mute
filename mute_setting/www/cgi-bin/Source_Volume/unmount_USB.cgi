@@ -32,3 +32,5 @@ else
         echo "Location: /cgi-bin/Source_Volume/Source_volume.cgi?$query"        # Go back to the Page
         echo
 fi
+
+exit 0
