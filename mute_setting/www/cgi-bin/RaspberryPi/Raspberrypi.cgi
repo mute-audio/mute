@@ -313,7 +313,7 @@ HTML
 		     <!-- SSID  -->
 		     <li class="setting-items-wrap">
 				 <div id="progressBadge" class="progress-badge" style="display: none;"> </div>
-			     <input id="rescan" type="button" value="Rescan" class="button" onClick="ssidRescan()">
+			     <input id="rescan" type="button" value="Scan" class="button" onClick="ssidRescan()">
 			     <div class="ellipsis-wrap"><div class="allow-down"></div></div>
 		         <select  id="ssid" name="ssid" class="inputbox-single">
 		             <option selected>${ssid_STS:- ( No WiFi connection )}</option>
@@ -416,3 +416,5 @@ cat <<HTML
 	</body>
 </html>
 HTML
+
+exit 0
