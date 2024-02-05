@@ -411,24 +411,6 @@ cat <<HTML
 
             setRPiBadge();
 
-		// Notification badge checker for Update tab
-        	function setUpdateBadge() {
-            	const UpdateBadge = parent.document.querySelector('#UpdateBadge');
-
-            	fetch("/cgi-bin/Update/Update_notice.txt")
-            	.then(response => response.text())
-            	.then((text) => {
-            	  if( text === 'All packages are up to date.\n' ){
-            	    UpdateBadge.style.display = 'none';
-            	  }else{
-            	    UpdateBadge.style.display = '';
-            	  }
-            	})
-            	.catch((error) => console.log(error))
-        	}
-
-        	setUpdateBadge();
-
 	    </script>
 
 	</body>
