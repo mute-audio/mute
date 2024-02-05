@@ -248,7 +248,7 @@ HTML
 	else
 
     	ssid_STS=$(iwconfig wlan0 | grep "wlan0" | cut -d ":" -f 2 | cut -d "\"" -f 2)
-    	ssid_LIST=$(nmcli -f SSID device wifi list | sed -e '/SSID/d' | sort | uniq | sed -e 's/^/<option>/g' -e 's/$/<\/option>/g')
+    	ssid_LIST=$(sudo nmcli -f SSID device wifi list | sed -e '/SSID/d' | sort | uniq | sed -e 's/^/<option>/g' -e 's/$/<\/option>/g')
 	fi
 
 	if [ "$wifi_STS" = "no" ]; then
