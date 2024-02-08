@@ -373,6 +373,7 @@ cat <<HTML
             function ssidRescan() {
                 const SSID = document.querySelector('#ssid');
                 const progressBadge = document.querySelector('#progressBadge');
+                const btnRescan = document.querySelector('#rescan');
 
                 if(!SSID) {
                   return;
@@ -380,6 +381,7 @@ cat <<HTML
 
                 progressBadge.style.display = '';
                 SSID.disabled = true;
+                btnRescan.value = 'Scanning...';
 
                 fetch("/cgi-bin/RaspberryPi/SSID_STS.cgi")
                 .then(response => {
@@ -388,6 +390,7 @@ cat <<HTML
                 .then((text) => {
                     SSID.outerHTML = text;
                     progressBadge.style.display = 'none';
+                    btnRescan.value = 'Scan';					
                 })
                 .catch((error) => console.log(error))
             }
