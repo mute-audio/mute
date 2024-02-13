@@ -248,7 +248,7 @@ HTML
 	else
 
     	ssid_STS=$(iwconfig wlan0 | grep "wlan0" | cut -d ":" -f 2 | cut -d "\"" -f 2)
-    	ssid_LIST=$(nmcli -f SSID device wifi list | sed -e '/SSID/d' | sort | uniq | sed -e 's/^/<option>/g' -e 's/$/<\/option>/g')
+    	ssid_LIST=$(sudo nmcli -f SSID device wifi list | sed -e '/SSID/d' | sort | uniq | sed -e 's/^/<option>/g' -e 's/$/<\/option>/g')
 	fi
 
 	if [ "$wifi_STS" = "no" ]; then
@@ -313,7 +313,7 @@ HTML
 		     <!-- SSID  -->
 		     <li class="setting-items-wrap">
 				 <div id="progressBadge" class="progress-badge" style="display: none;"> </div>
-			     <input id="rescan" type="button" value="Rescan" class="button" onClick="ssidRescan()">
+			     <input id="rescan" type="button" value="Scan" class="button" onClick="ssidRescan()">
 			     <div class="ellipsis-wrap"><div class="allow-down"></div></div>
 		         <select  id="ssid" name="ssid" class="inputbox-single">
 		             <option selected>${ssid_STS:- ( No WiFi connection )}</option>
@@ -373,6 +373,7 @@ cat <<HTML
             function ssidRescan() {
                 const SSID = document.querySelector('#ssid');
                 const progressBadge = document.querySelector('#progressBadge');
+                const btnRescan = document.querySelector('#rescan');
 
                 if(!SSID) {
                   return;
@@ -380,6 +381,7 @@ cat <<HTML
 
                 progressBadge.style.display = '';
                 SSID.disabled = true;
+                btnRescan.value = 'Scanning...';
 
                 fetch("/cgi-bin/RaspberryPi/SSID_STS.cgi")
                 .then(response => {
@@ -388,6 +390,7 @@ cat <<HTML
                 .then((text) => {
                     SSID.outerHTML = text;
                     progressBadge.style.display = 'none';
+                    btnRescan.value = 'Scan';					
                 })
                 .catch((error) => console.log(error))
             }
@@ -411,26 +414,10 @@ cat <<HTML
 
             setRPiBadge();
 
-		// Notification badge checker for Update tab
-        	function setUpdateBadge() {
-            	const UpdateBadge = parent.document.querySelector('#UpdateBadge');
-
-            	fetch("/cgi-bin/Update/Update_notice.txt")
-            	.then(response => response.text())
-            	.then((text) => {
-            	  if( text === 'All packages are up to date.\n' ){
-            	    UpdateBadge.style.display = 'none';
-            	  }else{
-            	    UpdateBadge.style.display = '';
-            	  }
-            	})
-            	.catch((error) => console.log(error))
-        	}
-
-        	setUpdateBadge();
-
 	    </script>
 
 	</body>
 </html>
 HTML
+
+exit 0

@@ -70,6 +70,12 @@ Content-type: text/html; charset=utf-8
           <input id="MPD" type="submit" value="MPD" class="menutab">
         </form>
 
+        <!-- Web Radio List-->
+        <form method=GET action="/cgi-bin/loading.cgi" target="mainview">
+          <input type="hidden" name="URL" value="/cgi-bin/Web_Radio/Web_radio.cgi">
+          <input id="WebRadio" type="submit" value="Web Radio List" class="menutab">
+        </form>
+
         <!-- Other Settings -->
         <form method=GET action="/cgi-bin/loading.cgi" target="mainview">
           <input type="hidden" name="URL" value="/cgi-bin/Other_Settings/Other_setting.cgi">

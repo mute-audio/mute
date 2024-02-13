@@ -49,6 +49,15 @@ HTML
 cat <<HTML
 <script>
 
+// Set Reboot notification badge Off
+function setRebootBadgeOff() {
+   target = parent.document.querySelector('#RaspberrypiBadge');
+   target.style.display = 'none';
+}
+
+setRebootBadgeOff();
+
+// Kick Reboot process
 function rebootMute() {
   fetch( '/cgi-bin/RaspberryPi/reboot.cgi' )
   .then( response => {
@@ -61,6 +70,7 @@ function rebootMute() {
 
 rebootMute();
 
+// Wait for Reboot done
 setInterval( autoReconnect , 10000);
 
 function autoReconnect() {
