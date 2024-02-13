@@ -31,10 +31,10 @@ Content-type: text/html; charset=utf-8
        }
      }
 
-	// Set notification badge Off
+	// Set Update notification badge Off
      function setUpdateBadgeOff() {
-        const UpdateBadge = parent.document.querySelector('#UpdateBadge');
-        UpdateBadge.style.display = 'none';
+        target = parent.document.querySelector('#UpdateBadge');
+        target.style.display = 'none';
      }
 
     </script>
