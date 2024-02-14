@@ -45,8 +45,8 @@ HTML
 
         cat <<HTML
         <div id="no_list">
-        <h3>No List Exists</h3>
-
+        <h3>-- No Web Radio List --</h3>
+        
           <div class="setting-items-wrap">
             <a class="button-disabled">Delete</a>
             <input class="inputbox-single-readonly" value="-- No Station --" readonly>
