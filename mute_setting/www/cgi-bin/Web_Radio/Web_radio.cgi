@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Web_radio.cgi                                 #
+# Web_radio.cgi                                    #
 # (C)2024 kitamura_design <kitamura_design@me.com> #
 
 cat <<HTML
@@ -57,7 +57,7 @@ HTML
 
   for playlistFILE in ${listDIR} ; do
 
-	  playlistNAME=$(echo ${playlistFILE} | cut -d "/" -f 6 | cut -d "." -f 1)
+	  playlistNAME=$(echo ${playlistFILE} | cut -d "/" -f 7 | cut -d "." -f 1)
 
 	   cat <<HTML
      <div id="${playlistNAME}">
@@ -101,7 +101,7 @@ HTML
         <div id="WebRadio_Form">
         <h4> Add Station</h4>
 
-        <form method=GET action="/cgi-bin/Web_Radio/add_Web_radio.cgi" onsubmit="" target="_self">
+        <form method=GET action="/cgi-bin/Web_Radio/add_Web_Radio.cgi" onsubmit="" target="_self">
              <ul>
                   <!-- List Title (Playlist File Name) -->
                 <li class="setting-items-wrap">
