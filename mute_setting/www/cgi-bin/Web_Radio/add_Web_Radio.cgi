@@ -3,6 +3,13 @@
 # add_Web_Radio.cgi                                #
 # (C)2024 kitamura_design <kitamura_design@me.com> #
 
+# Web radio directory check
+plsDIR="/var/lib/mpd/music/Web_Radio"
+
+if [ ! -d "${plsDIR}" ]; then
+    sudo mkdir "${plsDIR}"
+fi
+
 # Cut Input Data form Web_Radio.cgi to Parts
 listTITLE=$(echo ${QUERY_STRING} | cut -d '&' -f 1 | cut -d '=' -f 2 | sed -e 's/+/ /g' | nkf -Ww --url-input)
 stationNAME=$(echo ${QUERY_STRING} | cut -d '&' -f 2 | cut -d '=' -f 2 | sed -e 's/+/ /g' | nkf -Ww --url-input)

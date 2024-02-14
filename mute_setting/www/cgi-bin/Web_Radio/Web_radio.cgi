@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Web_radio.cgi                                    #
+# Web_radio.cgi                                 #
 # (C)2024 kitamura_design <kitamura_design@me.com> #
 
 cat <<HTML
@@ -13,14 +13,14 @@ Content-type: text/html; charset=utf-8
         <script>
 
           function keepHover(){
-              target = parent.document.querySelector("#WebRadio");
+              target = parent.document.getElementById("WebRadio");
               if (target != null){
                   target.className = "menutab-keephover";
               }
             }
 
           function offHover(){
-              target = parent.document.querySelector("#WebRadio");
+              target = parent.document.getElementById("WebRadio");
               if (target != null){
                   target.className = "menutab";
                   }
@@ -46,7 +46,7 @@ HTML
         cat <<HTML
         <div id="no_list">
         <h3>-- No Web Radio List --</h3>
-        
+
           <div class="setting-items-wrap">
             <a class="button-disabled">Delete</a>
             <input class="inputbox-single-readonly" value="-- No Station --" readonly>
@@ -62,9 +62,10 @@ HTML
 
 	  playlistNAME=$(echo ${playlistFILE} | cut -d "/" -f 7 | cut -d "." -f 1)
 
-	   cat <<HTML
-     <div id="${playlistNAME}">
-	   <h3>${playlistNAME}</h3>
+	    cat <<HTML
+        <div id="${playlistNAME}">
+	      <h3>${playlistNAME}</h3>
+
 HTML
     listNUM=$(cat "${playlistFILE}" | wc -l)
 
@@ -77,15 +78,15 @@ HTML
 
 		 	cat <<HTML
 			<div id="$stationNAME" class="setting-items-wrap">
-			    <a class="button" href="/cgi/Web_Radio_Delete.cgi?name="$stationNAME"&url="$stationURL"">Delete</a>
+			    <a class="button" href="/cgi-bin/Web_Radio/delete_Web_Radio.cgi?list=${playlistNAME}&name=${stationNAME}">Delete</a>
           <input class="inputbox-single-readonly" value="$stationNAME">
 			</div>
 HTML
 		done
 
 	   cat <<HTML
-      </div>
-      <div class="separator"><hr></div>
+            </div>
+            <div class="separator"><hr></div>
 HTML
 	done
 	fi
@@ -125,7 +126,9 @@ HTML
                    <input id="reset" type="reset" value=" Reset " class="button2"></input>
                  </div>
         </form>
-      </div>
+        </div>
+
+        <div class="separator"><hr></div>
 
 	  </body>
 	</html>
