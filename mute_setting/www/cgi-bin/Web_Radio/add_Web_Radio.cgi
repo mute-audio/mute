@@ -8,8 +8,11 @@ listTITLE=$(echo ${QUERY_STRING} | cut -d '&' -f 1 | cut -d '=' -f 2 | sed -e 's
 stationNAME=$(echo ${QUERY_STRING} | cut -d '&' -f 2 | cut -d '=' -f 2 | sed -e 's/+/ /g' | nkf -Ww --url-input)
 stationURL=$(echo ${QUERY_STRING} | cut -d '&' -f 3 | cut -d '=' -f 2 | nkf -Ww --url-input)
 
+# Set playlist file path
+plsPATH="/var/lib/mpd/music/Web_Radio/${listTITLE}.m3u"
+
 # Add staion info to playlist file
-sudo tee -a /var/lib/mpd/music/Web_Radio/"${listTITLE}".m3u > /dev/null <<PLS
+sudo tee -a ${plsPATH} > /dev/null <<PLS
 #${stationNAME}
 ${stationURL}
 
