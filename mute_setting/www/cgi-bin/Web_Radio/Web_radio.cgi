@@ -90,14 +90,6 @@ HTML
 	done
 	fi
 
-	   cat <<HTML
-        </div>
-
-        <div class="separator"><hr></div>
-
-HTML
-	done
-
  #### Web Radio Station Registration Form
 
         cat <<HTML
