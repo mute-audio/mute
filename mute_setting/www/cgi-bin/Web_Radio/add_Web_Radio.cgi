@@ -19,7 +19,7 @@ stationURL=$(echo ${QUERY_STRING} | cut -d '&' -f 3 | cut -d '=' -f 2 | nkf -Ww 
 plsPATH="/var/lib/mpd/music/Web_Radio/${listTITLE}.m3u"
 
 # Add staion info to playlist file
-sudo tee -a ${plsPATH} > /dev/null <<PLS
+sudo tee -a "${plsPATH}" > /dev/null <<PLS
 #${stationNAME}
 ${stationURL}
 
