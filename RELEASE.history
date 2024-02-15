@@ -1,16 +1,16 @@
 Ver_1.10b (WIP)
 - Bugfix: mpdscribble setting / Other Setting Tab
-- Revised: mute update scripts : Change update data from DropBox to Git Hub
+- Revised: mute update scripts : Change update data from DropBox to GitHub
 - Revised: Show DB Update dialog before NAS mount / Source Volume Tab
 - New: Host sources and packages on GitHub
 - New: Show the notification badges on sidebar (reboot required, update available)
-- New: Web Radio list Tab
+- New: Web Radio list Tab [alfa-release]
 
 ToDo
 * Coverart Server [alfa-release]
 * MPD DB update Auto-refresh
-* Network Status-ICON (WiFi/LAN)
-* CPU Temp Status-ICON
+P Network Status-ICON (WiFi/LAN)
+P CPU Temp Status-ICON
 
 Ver_1.09b (2023/12/27)
 - Bugfix: Automatic updating of upgradable package lists / Update Tab
