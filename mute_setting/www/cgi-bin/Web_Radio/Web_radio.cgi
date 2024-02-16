@@ -89,6 +89,7 @@ HTML
 	   cat <<HTML
             </div>
             <div class="separator"><hr></div>
+            <br>
 HTML
 	done
 	fi
