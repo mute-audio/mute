@@ -53,8 +53,7 @@ HTML
             <a class="button-disabled">Delete</a>
             <input class="inputbox-single-readonly" value="-- No Station --" readonly>
           </div>
-
-	</div>
+        </div>
 HTML
 	else
 
@@ -87,9 +86,7 @@ HTML
 		done
 
 	   cat <<HTML
-            </div>
-            <div class="separator"><hr></div>
-            <br>
+    </div>
 HTML
 	done
 	fi
@@ -97,6 +94,9 @@ HTML
  #### Web Radio Station Registration Form
 
         cat <<HTML
+        <div class="separator"><hr></div>
+        <br>
+
         <div id="WebRadio_Form" class="title-btn-title">
           <a href="https://jcorporation.github.io/webradiodb/" target="_blank" class="toggle-on-sw"> Check "webradiodb" </a>
           <h4> Add Station</h4>
