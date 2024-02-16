@@ -3,6 +3,8 @@
 # Web_radio.cgi                                 #
 # (C)2024 kitamura_design <kitamura_design@me.com> #
 
+destDIR="/var/lib/mpd/music/Web_Radio"
+
 cat <<HTML
 Content-type: text/html; charset=utf-8
 
@@ -39,7 +41,7 @@ HTML
 
 ####### Streaming (Web Radio) List
 
-	listDIR=$(ls "/var/lib/mpd/music/Web_Radio" 2>/dev/null) #Set PlaylistFile Array
+	listDIR=$(ls "${destDIR}" 2>/dev/null) #Set PlaylistFile Array
 
 	if [ -z $listDIR ]; then
 
@@ -56,9 +58,9 @@ HTML
 HTML
 	else
 
-	listDIR="/var/lib/mpd/music/Web_Radio/*m3u"
+	listM3U="${destDIR}/*m3u"
 
-  for playlistFILE in ${listDIR} ; do
+  for playlistFILE in ${listM3U} ; do
 
 	  playlistNAME=$(echo ${playlistFILE} | cut -d "/" -f 7 | cut -d "." -f 1)
 
@@ -94,8 +96,10 @@ HTML
  #### Web Radio Station Registration Form
 
         cat <<HTML
-        <div id="WebRadio_Form">
-        <h4> Add Station</h4>
+        <div id="WebRadio_Form" class="title-btn-title">
+          <a href="https://jcorporation.github.io/webradiodb/" target="_blank" class="toggle-on-sw"> Check "webradiodb" </a>
+          <h4> Add Station</h4>
+        </div>
 
         <form method=GET action="/cgi-bin/Web_Radio/add_Web_Radio.cgi" onsubmit="" target="_self">
              <ul>
