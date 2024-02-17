@@ -125,6 +125,7 @@ Content-type: text/html; charset=utf-8
          <br> 2. Generate Coverart by getcover - get cover art image from music files ; FLAC, ALAC, and AAC
          <br> 3. Copy buttons for the host and server names for use with client apps such as yaMPC ( very useful to use on iPad )
          <br> 4. Dark Mode Switch
+         <br> 5. System Startup Sound Switch
          <br>
          </p>
 
