@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # about_mute.cgi                                        #
-# (C)2023 kitamura_design <kitamura_design@me.com>      #
+# (C)2024 kitamura_design <kitamura_design@me.com>      #
 
 VER=$(grep ver /var/www/cgi-bin/etc/mute.conf | cut -d "=" -f 2)
 #install_log=$(sudo cat /var/www/cgi-bin/log/install.log | sed -e "s/$/<br>/g")
@@ -108,13 +108,24 @@ Content-type: text/html; charset=utf-8
          </p>
 
          <br>
-         <h3>Step 5 : Other Settings</h3>
+         <h3>Step 5 : Web Radio List</h3>
+         <p class="bodytext2">
+         Web Radio Streaming playlists can be registered on [ mute ].
+         The destination of the list will be music directory (.../music/Web_Radio), so you can browse and play it with your client application.
+         <br>
+         A link to <a href="https://jcorporation.github.io/webradiodb/" target="_blank">[ webradiodb ]</a>, a database of web radio stations, is also provided.
+         <br>
+         </p>
+
+         <br>
+         <h3>Step 6 : Other Settings</h3>
          <p class="bodytext2">
          In this step,you can configure the following steps:
          <br> 1. Last.fm scribble settings
          <br> 2. Generate Coverart by getcover - get cover art image from music files ; FLAC, ALAC, and AAC
          <br> 3. Copy buttons for the host and server names for use with client apps such as yaMPC ( very useful to use on iPad )
          <br> 4. Dark Mode Switch
+         <br> 5. System Startup Sound Switch
          <br>
          </p>
 
@@ -124,7 +135,7 @@ Content-type: text/html; charset=utf-8
          <h2>License</h2>
          <p class="bodytext2">
          <br>
-         [ mute ] ©2023 Yoichi KITAMURA / <a href="https://kitamura-design.format.com" target="_blank">kitamura_design</a>
+         [ mute ] ©2024 Yoichi KITAMURA / <a href="https://kitamura-design.format.com" target="_blank">kitamura_design</a>
          <br>
          <br>
          Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
