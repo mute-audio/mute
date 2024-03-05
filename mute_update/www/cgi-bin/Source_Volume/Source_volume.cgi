@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Source_volume.cgi                              #
-# (C)2022 kitamura_design <kitamura_design@me.com> #
+# (C)2024 kitamura_design <kitamura_design@me.com> #
 
 query=$(date +%Y%m%d%I%M%S)
 
@@ -19,14 +19,23 @@ Content-type: text/html; charset=utf-8
               if (target != null){
                   target.className = "menutab-keephover";
               }
-            }
+          }
 
           function offHover(){
               target = parent.document.getElementById("SourceVolume");
               if (target != null){
                   target.className = "menutab";
                   }
-            }
+          }
+
+          function dbUpdateMsg(){
+              if(window.confirm('After mounting, DB Update in the MPD menu.')){
+              return true;
+              } else {
+              return false;
+              }
+          }
+
         </script>
         </head>
 HTML
@@ -99,7 +108,7 @@ HTML
         <div id="NAS_MOUNT_FORM">
         <h4> NAS Setting [ SMB ]</h4>
 
-        <form method=GET action="/cgi-bin/Source_Volume/mouting_NAS.cgi" target="_self">
+        <form method=GET action="/cgi-bin/Source_Volume/mouting_NAS.cgi" onsubmit="return dbUpdateMsg()" target="_self">
              <ul>
                   <!-- NAS Label (Mount Name) -->
                 <li class="setting-items-wrap">

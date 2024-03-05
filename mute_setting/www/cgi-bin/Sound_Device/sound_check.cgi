@@ -24,7 +24,7 @@ if [ "$status" = "[playing]" ]; then
 	mpc -q play
 
 else
-    
+
 	#Play the soundcheck track
     speaker-test -t wav -c2 -l4 -D${HWno} > /dev/null &
     wait

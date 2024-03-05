@@ -20,5 +20,11 @@ CurrentPWD=$(sudo sed -n -e '/\[last.fm\]/,+3p' /etc/mpdscribble.conf | sed -n -
 
 	sudo systemctl restart mpdscribble
 
+	enable_CHECK=$(systemctl is-enabled mpdscribble)
+
+	if [ "$enable_CHECK" = "disabled" ]; then
+	sudo systemctl enable mpdscribble 2>/dev/null 1>/dev/null
+    fi
+
     echo "Location: /cgi-bin/loading.cgi?/cgi-bin/Other_Settings/Other_setting.cgi"
     echo ""

@@ -40,7 +40,7 @@ Content-type: text/html; charset=utf-8
     </script>
    </head>
 
-   <body onload="uiLock(); setUpdateBadgeOff();" onunload="uiUnlock()">
+   <body onload="uiLock()" onunload="uiUnlock(); setUpdateBadgeOff();">
 
      <div id="loading-top2">
        <div class="loader">

@@ -1,50 +1,55 @@
 #!/bin/bash
 
 # Updating_mute.cgi
-# (C)2022 kitamura_design <kitamura_design@me.com> #
+# (C)2024 kitamura_design <kitamura_design@me.com> #
 
 query=$(date +%Y%m%d%I%M%S)
 
 #HTML
-echo "Content-type: text/html; charset=utf-8"
-echo
+cat <<HTML
+Content-type: text/html; charset=utf-8
 
-echo "<!DOCUTYPE html>"
-echo "<html>"
+<!DOCUTYPE html>
+<html>
+<head>
+   <link rel="stylesheet" type="text/css" href="/css/main.css?$query">
+   <meta http-equiv="refresh" content="0; URL=/cgi-bin/Update/Update_mute_exec.cgi">
+   <script>
 
-echo  "<head>"
-echo    "<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/main.css?$query\">"
-echo    "<meta http-equiv=\"refresh\" content=\"0; URL=/cgi-bin/Update/Update_mute_exec.cgi\">"
-echo    "<script>"
+    function uiLock(){
+        target = parent.document.getElementById("sidebar");
+        if (target != null){
+        target.className = "sidebar-ui-lock";
+        }
+    }
 
-echo    "function uiLock(){"
-echo      "target = parent.document.getElementById(\"sidebar\");"
-echo      "if (target != null){"
-echo         "target.className = \"sidebar-ui-lock\";"
-echo      "}"
-echo    "}"
+    function uiUnlock(){
+        target = parent.document.getElementById("sidebar");
+        if (target != null){
+        target.className = "sidebar-ui-unlock";
+        }
+    }
 
-echo    "function uiUnlock(){"
-echo      "target = parent.document.getElementById(\"sidebar\");"
-echo      "if (target != null){"
-echo         "target.className = \"sidebar-ui-unlock\";"
-echo      "}"
-echo    "}"
+	// Set Update notification badge Off
+     function setUpdateBadgeOff() {
+        target = parent.document.querySelector('#UpdateBadge');
+        target.style.display = 'none';
+     }
 
-echo  "</script>"
-echo  "</head>"
+   </script>
+</head>
+<body onLoad="uiLock()" onunload="uiUnlock(); setUpdateBadgeOff();">
 
-echo "<body onLoad=\"uiLock()\" onunload=\"uiUnlock()\">"
-
-#### Loading Screen
-   cat <<HTML
+<!-- Loading Screen -->
    <div id="loading-top2">
      <div class="loader">
         <div class="loadingtext">Updating [ mute ] ...</div>
         <progress class="progress"></progress>
      </div>
    </div>
+
+</body>
+</html>
 HTML
 
-echo "</body>"
-echo "</html>"
+exit 0

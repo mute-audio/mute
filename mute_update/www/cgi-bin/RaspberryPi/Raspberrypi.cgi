@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Raspberrypi.cgi		        				   #
-# (C)2023 kitamura_design <kitamura_design@me.com> #
+# (C)2024 kitamura_design <kitamura_design@me.com> #
 
 #### HTML Header
 query=$(date +%Y%m%d%I%M%S)
@@ -158,7 +158,7 @@ cat <<HTML
 				<div class="setting-items-wrap">
 				  <input id="Apply" type="submit" value="Set" class="button"></input>
 				  <div class="ellipsis-wrap">Aa</div>
-				  <input type="password" id="hostPWD" name="hostPWD" value="" class="inputbox-single" required>
+				  <input type="password" id="hostPWD" name="hostPWD" value="" class="inputbox-single" placeholder="Password" required>
 				  <label for="">Password</label>
 				</div>
 			</form>
@@ -237,7 +237,19 @@ else
 HTML
 
 	#### WiFi Connection
-	ssid_STS=$(iwconfig wlan0 | grep "wlan0" | cut -d ":" -f 2 | cut -d "\"" -f 2)
+
+	# Check current OS Codename
+	OS_codename=$(lsb_release -a |  grep Codename | cut -f 2)
+
+	if [ ${OS_codename} = "buster" ] || [ ${OS_codename} = "bullseye" ]; then  # In case of Buster, Bullseye etc.
+
+    	ssid_STS=$(iwconfig wlan0 | grep "wlan0" | cut -d ":" -f 2 | cut -d "\"" -f 2)
+    	ssid_LIST=$(sudo iwlist wlan0 scan | grep ESSID | sort | uniq | cut -d ":" -f 2 | cut -d "\"" -f 2 | sed -e 's/^/<option>/g' -e 's/$/<\/option>/g')
+	else
+
+    	ssid_STS=$(iwconfig wlan0 | grep "wlan0" | cut -d ":" -f 2 | cut -d "\"" -f 2)
+    	ssid_LIST=$(sudo nmcli -f SSID device wifi list | sed -e '/SSID/d' | sort | uniq | sed -e 's/^/<option>/g' -e 's/$/<\/option>/g')
+	fi
 
 	if [ "$wifi_STS" = "no" ]; then
 
@@ -291,7 +303,6 @@ HTML
 	fi
 
 	#### SSID & PWD
-	ssid_LIST=$(sudo iwlist wlan0 scan | grep ESSID | sort | uniq | cut -d ":" -f 2 | cut -d "\"" -f 2 | sed -e 's/^/<option>/g' -e 's/$/<\/option>/g')
     ip_STS=$(ip a | grep wlan0 | grep -o state.* | cut -d " " -f 2)
 
 	if [ "$wifi_STS" = "no" ]; then
@@ -301,12 +312,14 @@ HTML
 		  <form method=GET action="/cgi-bin/RaspberryPi/WiFi_applying.cgi" target="_self">
 		     <!-- SSID  -->
 		     <li class="setting-items-wrap">
+				 <div id="progressBadge" class="progress-badge" style="display: none;"> </div>
+			     <input id="rescan" type="button" value="Scan" class="button" onClick="ssidRescan()">
 			     <div class="ellipsis-wrap"><div class="allow-down"></div></div>
-		         <select  id="ssid" name="ssid" class="inputbox">
+		         <select  id="ssid" name="ssid" class="inputbox-single">
 		             <option selected>${ssid_STS:- ( No WiFi connection )}</option>
 		             ${ssid_LIST}
 		         </select>
-    		     <label for="ssid"> SSID </label>
+    		     <label for=""> SSID </label>
 			     <!-- Up/ Down Badge  -->
 			     <div class="status-wrap">
     		         <div class="status">${ip_STS}</div>
@@ -317,7 +330,7 @@ HTML
 			 <div class="setting-items-wrap">
 				 <div class="ellipsis-wrap">Aa</div>
 				 <input id="pwd" name="pwd" type="password" class="inputbox" placeholder="Password" required>
-    			 <label for="pwd">Password </label>
+    			 <label for="">Password </label>
 			 </div>
 
 			 <!-- Submit & reset -->
@@ -337,13 +350,14 @@ cat <<HTML
 	  <div class="separator"><hr></div>
 
 	    <script>
+		// CPU Temp Updater
             function tempUpdateCheck() {
                 const tempUpdate = document.querySelector('#temp');
                 fetch("/cgi-bin/RaspberryPi/temp_check.cgi")
                 .then(response => {
 
 				if( response.status === 500 ){
-                  return;
+                  return tempUpdate.outerHTML;
                 }
                   return response.text();
                 })
@@ -355,27 +369,82 @@ cat <<HTML
 
             tempUpdateCheck();
 
-		    function ssidStatusCheck() {
+		// Rescan SSID List
+            function ssidRescan() {
                 const SSID = document.querySelector('#ssid');
+                const progressBadge = document.querySelector('#progressBadge');
+                const btnRescan = document.querySelector('#rescan');
 
                 if(!SSID) {
                   return;
                 }
 
+                progressBadge.style.display = '';
+                SSID.disabled = true;
+                btnRescan.value = 'Scanning...';
+
                 fetch("/cgi-bin/RaspberryPi/SSID_STS.cgi")
                 .then(response => {
                     return response.text();
                 })
-                .then((text) => SSID.outerHTML = text)
+                .then((text) => {
+                    SSID.outerHTML = text;
+                    progressBadge.style.display = 'none';
+                    btnRescan.value = 'Scan';
+                })
                 .catch((error) => console.log(error))
+            }
 
-                setTimeout( ssidStatusCheck , 10000 )
-           }
+		// Notification badge checker for RaspberryPi tab
+           function setRPiBadge() {
+                const RPiBadge = parent.document.querySelector('#RaspberrypiBadge');
 
-//           ssidStatusCheck();
+                fetch("/cgi-bin/log/reboot_required.log")
+                .then(response => {
+                    if( !response.ok ){
+                    RPiBadge.style.display = 'none';
+                }else{
+                    RPiBadge.style.display = '';
+                }
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+            }
+
+            setRPiBadge();
+
+		// Notification badge checker for Update tab
+        function setUpdateBadge() {
+            const UpdateBadge = parent.document.querySelector('#UpdateBadge');
+            let sysUpdate = '';
+            let muteUpdate = '';
+
+            fetch("/cgi-bin/Update/Update_notice.txt")
+            .then(response => response.text())
+            .then((text) => {
+             sysUpdate = text;
+             return fetch("/cgi-bin/Update/Update_mute_notice.txt");
+            })
+            .then(response => response.text())
+            .then((text) => {
+             muteUpdate = text;
+
+            if( sysUpdate !== 'All packages are up to date.\n' || muteUpdate !== '[ mute ] is up to date' ){
+                UpdateBadge.style.display = '';
+            }else{
+                UpdateBadge.style.display = 'none';
+            }
+            })
+            .catch((error) => console.log(error))
+        }
+
+        setUpdateBadge();
 
 	    </script>
 
 	</body>
 </html>
 HTML
+
+exit 0

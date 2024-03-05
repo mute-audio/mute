@@ -1,43 +1,26 @@
-1.09 Beta
-muteサイトのダウンロードリンク作成
-　mute_setting_109b.zip
-    (Google Driveの元リンク)
-    https://drive.google.com/file/d/1yDuqhtra8ujaOqx7My4fa2pbsRQf9PT2/view?usp=sharing
+1.10
+全データをGitHubへアップ
+mute オフィシャルページのダウンロードリンクもGitHubへ変更（1.09bから）
 
-    (直接ダウンロード可能リンクに変換)
-    https://drive.google.com/uc?export=download&id=1yDuqhtra8ujaOqx7My4fa2pbsRQf9PT2
-
-オンラインアップデート用ダウンロードリンク作成手順（update.info）
-　mute_update_108.zip
-    （Drop Boxの元リンク）
-    https://www.dropbox.com/s/1dfvlvkmfwykyyi/mute_update_108.zip?dl=0
-    
-    （直接ダウンロード可能リンクに変換）
-    https://www.dropbox.com/s/1dfvlvkmfwykyyi/mute_update_108.zip
-
-    （注意）DropBoxの直ダウンロードリンクの仕様が変わったため、muteの自動アップデートはしばらく見送ること。
-
-ver=1.09b
+ver=1.10
 
 主な変更点
-- Bugfix: Automatic updating of upgradable package lists / Update Tab
-- Bugfix: Timezone setting / RaspberryPi Tab
-- Revised: Update check process
-- Revised: CPU temp check script
-- Added workaround for cases where MPD cannot be updated due to repository updates
-- Bookworm Support(/boot/firmware issue): Modify Installer and Updater
-- Bookworm Support(/boot/firmware issue): Modify DAC install script / Sound Device Tab
-- Bookworm Support: Revised: Reboot and Shutdown process
-- Bookworm Support: Add: WiFi On/Off script for NetworkManager
+- Bugfix: mpdscribble setting / Other Setting Tab
+- Bugfix: In some cases, I2S DAC cannot be loaded on RaspberryPi5
+- Revised: mute update scripts : Change update data from DropBox to GitHub
+- Revised: Show DB Update dialog before NAS mount / Source Volume Tab
+- New: Host sources and packages on GitHub
+- New: Show the notification badges on sidebar (reboot required, update available)
+- New: Web Radio list Tab [alfa-release]
+- Update: Web Radio List description / About Tab
 
-- アップグレード可能なパッケージリストの自動更新を修正 / Update タブ
-- タイムゾーンの設定を修正 / RaspberryPi タブ
-- アップデートチェックプロセスの見直し
-- CPU temp チェックスクリプトの変更
-- リポジトリの更新によりMPDが更新できない場合の回避策を追加
-- Bookworm サポート(/boot/firmware 問題)： インストーラとアップデータを修正
-- Bookworm サポート(/boot/ファームウェア問題)： DAC インストールスクリプト / サウンドデバイスタブの修正
-- Bookworm サポート： 修正 再起動とシャットダウン処理
-- Bookworm サポート： 追加 NetworkManager 用 WiFi オン/オフスクリプト
+- mpdscribbleの設定を修正 / Other Setting Tab
+- RaspberryPi5でI2S DACをロードできない場合がある問題を修正
+- アップデートスクリプトの見直し： Updateデータのホスト先を DropBox から GitHub に変更
+- NASマウント前にDBアップデートを促すダイアログを表示 / Source Volume Tab
+- GitHubでソースとパッケージの管理を開始
+- サイドバーに通知バッジを表示 (reboot required, update available)
+- Web Radio list Tabを追加 （アルファ版）
+- Web Radio list Tabの説明を追加 / About Tab
 
 以上

@@ -1,15 +1,15 @@
 #!/bin/bash
 
 # Update_mute_exec.cgi                           #
-# (C)2022 kitamura_design <kitamura_design@me.com> #
+# (C)2024 kitamura_design <kitamura_design@me.com> #
 
 #### Get Update file's URL ####
 
 muteUPD_URL=$(\
 sudo wget --no-check-certificate -q -O - \
-"https://www.dropbox.com/s/9op8f7ras6s4a94/update.info" | \
+"https://raw.githubusercontent.com/mute-audio/mute/main/mute_update/update.info" | \
 grep "url=" | \
-cut -d "=" -f 2\
+cut -d "=" -f 2 \
 )
 
 #### Download Update file ####

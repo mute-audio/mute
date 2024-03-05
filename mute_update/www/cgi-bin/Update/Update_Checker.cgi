@@ -15,8 +15,9 @@ fi
 ######## [ mute ] Update Check
 
 ver_UPDATE=$(\
-sudo wget --no-check-certificate -q -O - "https://www.dropbox.com/s/9op8f7ras6s4a94/update.info" \
-    | grep "ver=" | sed -e 's/[^0-9]//g'\
+sudo wget --no-check-certificate -q -O - \
+"https://raw.githubusercontent.com/mute-audio/mute/main/mute_update/update.info" \
+| grep "ver=" | sed -e 's/[^0-9]//g'\
 )
 
 ver_CURRENT=$(\

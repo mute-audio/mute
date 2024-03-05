@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # index.cgi                                        #
-# (C)2023 kitamura_design <kitamura_design@me.com> #
+# (C)2024 kitamura_design <kitamura_design@me.com> #
 
 query=$(date +%Y%m%d%I%M%S)
 muteLogo=$(< /var/www/html/image/mute_logo.svg)
@@ -15,6 +15,7 @@ Content-type: text/html; charset=utf-8
 
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
    <meta name="mobile-web-app-capable" content="yes">
    <meta http-equiv="Cache-Control" content="no-cache">
 
@@ -48,6 +49,7 @@ Content-type: text/html; charset=utf-8
         <form method=GET action="/cgi-bin/loading.cgi" target="mainview">
           <input type="hidden" name="URL" value="/cgi-bin/RaspberryPi/Raspberrypi.cgi">
           <input id="Raspberrypi" type="submit" value="RaspberryPi" class="menutab">
+          <div id="RaspberrypiBadge" class="status-min" style="display: none;"> </div>
         </form>
 
         <!-- Sound Device -->
@@ -68,6 +70,12 @@ Content-type: text/html; charset=utf-8
           <input id="MPD" type="submit" value="MPD" class="menutab">
         </form>
 
+        <!-- Web Radio List-->
+        <form method=GET action="/cgi-bin/loading.cgi" target="mainview">
+          <input type="hidden" name="URL" value="/cgi-bin/Web_Radio/Web_radio.cgi">
+          <input id="WebRadio" type="submit" value="Web Radio List" class="menutab">
+        </form>
+
         <!-- Other Settings -->
         <form method=GET action="/cgi-bin/loading.cgi" target="mainview">
           <input type="hidden" name="URL" value="/cgi-bin/Other_Settings/Other_setting.cgi">
@@ -78,6 +86,7 @@ Content-type: text/html; charset=utf-8
         <form method=GET action="/cgi-bin/Checking.cgi" target="mainview">
           <input type="hidden" name="URL" value="/cgi-bin/Update/Update.cgi">
           <input id="Update" type="submit" value="Update" class="menutab">
+          <div id="UpdateBadge" class="status-min" style="display: none;"> </div>
         </form>
 
         <!-- About [ mute ] -->
@@ -94,6 +103,38 @@ Content-type: text/html; charset=utf-8
       </div>
 
     </div>
+
+    <script>
+
+        function setUpdateBadge() {
+            const UpdateBadge = document.querySelector('#UpdateBadge');
+            let sysUpdate = '';
+            let muteUpdate = '';
+
+            fetch("/cgi-bin/Update/Update_notice.txt")
+            .then(response => response.text())
+            .then((text) => {
+             sysUpdate = text;
+             return fetch("/cgi-bin/Update/Update_mute_notice.txt");
+            })
+            .then(response => response.text())
+            .then((text) => {
+             muteUpdate = text;
+
+            if( sysUpdate !== 'All packages are up to date.\n' || muteUpdate !== '[ mute ] is up to date' ){
+                UpdateBadge.style.display = '';
+            }else{
+                UpdateBadge.style.display = 'none';
+            }
+            })
+            .catch((error) => console.log(error))
+
+            setTimeout( setUpdateBadge , 5000 )
+        }
+
+        setUpdateBadge();
+
+    </script>
 
   </body>
 </html>

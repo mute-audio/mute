@@ -390,7 +390,7 @@ cat <<HTML
                 .then((text) => {
                     SSID.outerHTML = text;
                     progressBadge.style.display = 'none';
-                    btnRescan.value = 'Scan';					
+                    btnRescan.value = 'Scan';
                 })
                 .catch((error) => console.log(error))
             }
@@ -413,6 +413,33 @@ cat <<HTML
             }
 
             setRPiBadge();
+
+		// Notification badge checker for Update tab
+        function setUpdateBadge() {
+            const UpdateBadge = parent.document.querySelector('#UpdateBadge');
+            let sysUpdate = '';
+            let muteUpdate = '';
+
+            fetch("/cgi-bin/Update/Update_notice.txt")
+            .then(response => response.text())
+            .then((text) => {
+             sysUpdate = text;
+             return fetch("/cgi-bin/Update/Update_mute_notice.txt");
+            })
+            .then(response => response.text())
+            .then((text) => {
+             muteUpdate = text;
+
+            if( sysUpdate !== 'All packages are up to date.\n' || muteUpdate !== '[ mute ] is up to date' ){
+                UpdateBadge.style.display = '';
+            }else{
+                UpdateBadge.style.display = 'none';
+            }
+            })
+            .catch((error) => console.log(error))
+        }
+
+        setUpdateBadge();
 
 	    </script>
 

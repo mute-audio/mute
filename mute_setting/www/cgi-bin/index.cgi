@@ -108,15 +108,24 @@ Content-type: text/html; charset=utf-8
 
         function setUpdateBadge() {
             const UpdateBadge = document.querySelector('#UpdateBadge');
+            let sysUpdate = '';
+            let muteUpdate = '';
 
             fetch("/cgi-bin/Update/Update_notice.txt")
             .then(response => response.text())
             .then((text) => {
-              if( text === 'All packages are up to date.\n'){
-                UpdateBadge.style.display = 'none';
-              }else{
+             sysUpdate = text;
+             return fetch("/cgi-bin/Update/Update_mute_notice.txt");
+            })
+            .then(response => response.text())
+            .then((text) => {
+             muteUpdate = text;
+
+            if( sysUpdate !== 'All packages are up to date.\n' || muteUpdate !== '[ mute ] is up to date' ){
                 UpdateBadge.style.display = '';
-              }
+            }else{
+                UpdateBadge.style.display = 'none';
+            }
             })
             .catch((error) => console.log(error))
 

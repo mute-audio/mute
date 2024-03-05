@@ -1,6 +1,6 @@
 /*    Split-View UI Style Sheet          */
-/*    [ mute ] ©2022 kitamura_design     */
-/*    main_auto.css for [LIGHT MODE]      */
+/*    [ mute ] ©2024 kitamura_design     */
+/*    main_auto.css for [AUTO MODE]      */
 
 /* Basic Style   */
 /* Fonts         */
@@ -434,7 +434,7 @@ input {
   border-top-left-radius: 0;
   border-bottom-right-radius: 0.75vw;
   border-top-right-radius: 0.75vw;
-  background-color: #7D7D7D;
+  background-color: #8D8D8D;
   color: #ffffff !important;
   transition: background 0.5s;
 }
@@ -502,7 +502,7 @@ input {
   border-top-left-radius: 0;
   border-bottom-right-radius: 0.75vw;
   border-top-right-radius: 0.75vw;
-  background-color: #7D7D7D;
+  background-color: #8D8D8D;
   color: #ffffff;
   opacity: 0.5;
 }
@@ -510,6 +510,7 @@ input {
 
 form {
   width: 100%;
+  position: relative;
 }
 
 .inputbox {
@@ -669,6 +670,32 @@ form {
   color: #ffffff;
   align-items: center;
   font-size: 2.5vmin;
+}
+
+.status-min {
+  border: none;
+  border-radius: 1.5vmin;
+  background-color: #AAAAAA;
+  height: 2.0vmin;
+  width: 2.0vmin;
+  position: absolute;
+  top: 2.0vmin;
+  right: 2.5vmin;
+  animation: fadeIn 2s ease 0s infinite alternate;
+  -webkit-animation: fadeIn 2s ease 0s infinite alternate;
+}
+
+.progress-badge {
+  border: none;
+  border-radius: 1.5vmin;
+  background-color: #CCCCCC;
+  height: 2.0vmin;
+  width: 2.0vmin;
+  position: absolute;
+  top: 2.75vmin;
+  right: 2.75vmin;
+  animation: fadeIn 2s ease 0s infinite alternate;
+  -webkit-animation: fadeIn 2s ease 0s infinite alternate;
 }
 
 .status-wrap {
@@ -882,7 +909,7 @@ form {
   font-size: 2.50vmin;
   border: none;
   border-radius: 0.75vw;
-  background-color: #7D7D7D;
+  background-color: #8D8D8D;
   color: #ffffff !important;
   transition: background 0.5s;
 }
@@ -899,7 +926,7 @@ form {
   font-size: 2.50vmin;
   border: none;
   border-radius: 0.75vw;
-  background-color: #7D7D7D;
+  background-color: #8D8D8D;
   color: #ffffff !important;
   transition: background 0.5s;
   opacity: 0.5;
@@ -1069,8 +1096,24 @@ padding-left: 2.5vmin;
     color: #CCCCCC;
   }
   
+  .button, .btn {
+    background-color: #5D5D5D;
+  }
+
   .button2 {
     background-color: #2E2E2E;
+  }
+  
+  .button-disabled {
+    background-color: #5D5D5D;
+  }
+  
+  .toggle-on-sw {
+    background-color: #5D5D5D;
+  }
+  
+  .toggle-off-sw {
+    background-color: #5D5D5D;
   }
   
   .inputbox {
