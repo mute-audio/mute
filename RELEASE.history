@@ -1,4 +1,4 @@
-Ver_1.10b (WIP)
+Ver_1.10b (2024/3/05)
 - Bugfix: mpdscribble setting / Other Setting Tab
 - Bugfix: In some cases, I2S DAC cannot be loaded on RaspberryPi5
 - Revised: mute update scripts : Change update data from DropBox to GitHub
