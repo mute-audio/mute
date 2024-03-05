@@ -1,8 +1,8 @@
-1.10
+1.10.0
 全データをGitHubへアップ
 mute オフィシャルページのダウンロードリンクもGitHubへ変更（1.09bから）
 
-ver=1.10
+ver=1.10.0
 
 主な変更点
 - Bugfix: mpdscribble setting / Other Setting Tab
