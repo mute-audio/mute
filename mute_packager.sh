@@ -1,14 +1,29 @@
 #!/bin/bash
 
-set -e
-
+## mute_packager.sh
 ## [ mute ] Packager shell
-## (C)2022 kitamura_design <kitamura_design@me.com>
+## (C)2024 kitamura_design <kitamura_design@me.com>
+
+## Input error handling
+if [ -z $1 ] || [ $1 = " " ] ; then
+
+cat <<EOL
+Usage:./mute_packager.sh [VERSION]
+e.g. "./mute_packager.sh 1.0.9-beta"
+EOL
+
+exit 1
+fi
+
+set -e
 
 ## Show Title
     echo ""
-    echo " [ mute ] Packager"
+    echo " [ mute ] Packager Ver.${1} "
     echo ""
+
+## Pre-cooking: Rewrite Version @mute.conf
+    sudo sed -e "s/ver=.*/ver=${1}/" ./mute_setting/www/cgi-bin/etc/mute.conf 2>/dev/null 1>/dev/null
 
 ## Change Permission
     echo -n " Change permission of source dir ..."
@@ -25,10 +40,12 @@ set -e
     echo " Done."
 
 ## Copy www to mute_update/www, and then Make mute_update_VER.zip
-    VER=$(cat ./mute_setting/www/cgi-bin/etc/mute.conf | grep ver= | sed -e 's/[^0-9]//g')
+    # Extract version number from input
+    VER=$(echo $1 | sed -e 's/[^0-9]//g')
 
     echo -n " Packaging of \" mute_update_$VER.zip \" ..."
 
+#   sudo sed -i -e "s/ver=.*/ver=${1}/" ./mute_update/update.info  ## Activate after release 1.10.1
     sudo rm -r ./mute_update/www
     sudo cp -R ./mute_setting/www/ ./mute_update/www
     sudo zip -rq ./packages/mute_update_$VER.zip ./mute_update
