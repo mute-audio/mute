@@ -1,3 +1,18 @@
+Ver_1.10.1 (WIP)
+- Update: Change of version control method
+
+ToDo
+* Coverart Server [alfa-release]
+* MPD DB update Auto-refresh
+* HiFi Setting: force_turbo=1 (max cpu clock) option
+* HiFi Setting: CPU clock control option
+* HiFi Setting: USB Unbind option
+* HiFi Setting: Bluetooth Unbind option
+
+P Network Status-ICON (WiFi/LAN)
+P CPU Temp Status-ICON
+P Pi5 Support: force_turbo=1 to /boot/firmware/config.txt
+
 Ver_1.10.0 (2024/3/05)
 - Bugfix: mpdscribble setting / Other Setting Tab
 - Bugfix: In some cases, I2S DAC cannot be loaded on RaspberryPi5
@@ -7,19 +22,6 @@ Ver_1.10.0 (2024/3/05)
 - New: Show the notification badges on sidebar (reboot required, update available)
 - New: Web Radio list Tab [alfa-release]
 - Update: Web Radio List description / About Tab
-
-ToDo
-* Coverart Server [alfa-release]
-* MPD DB update Auto-refresh
-* mute_packager.sh: Change of version control method
-* HiFi Setting: force_turbo=1 (max cpu clock) option
-* HiFi Setting: CPU clock control option
-* HiFi Setting: USB Unbind option
-* HiFi Setting: Bluetooth Unbind option
-
-P Network Status-ICON (WiFi/LAN)
-P CPU Temp Status-ICON
-P Pi5 Support: force_turbo=1 to /boot/firmware/config.txt
 
 Ver_1.09b (2023/12/27)
 - Bugfix: Automatic updating of upgradable package lists / Update Tab
