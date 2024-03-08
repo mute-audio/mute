@@ -5,7 +5,7 @@
 ## (C)2024 kitamura_design <kitamura_design@me.com>
 
 ## Input error handling
-if [ -z $1 ] || [ $1 = " " ] ; then
+if [ $# != 1 ] ; then
 
 cat <<EOL
 Usage:./mute_packager.sh [VERSION]
