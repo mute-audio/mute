@@ -45,7 +45,12 @@ set -e
 
     echo -n " Packaging of \" mute_update_$VER.zip \" ..."
 
-#   sudo sed -i -e "s/ver=.*/ver=${1}/" ./mute_update/update.info  ## Activate after release 1.10.1
+## NOTE!! Activate after release 1.10.1
+#   sudo sed -i -e "s/ver=.*/ver=${1}/" \
+#                -e "s/\/v.*\//\/v.${1}\//" \
+#                -e "s/mute_update_.*.zip/mute_update_$VER.zip/" \
+#                ./mute_update/update.info  
+
     sudo rm -r ./mute_update/www
     sudo cp -R ./mute_setting/www/ ./mute_update/www
     sudo zip -rq ./packages/mute_update_$VER.zip ./mute_update
