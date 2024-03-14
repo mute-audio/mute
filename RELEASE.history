@@ -8,10 +8,10 @@ ToDo
 * HiFi Setting: CPU clock control option
 * HiFi Setting: USB Unbind option
 * HiFi Setting: Bluetooth Unbind option
+* Improve: Installation and update progress indication
 
 P Network Status-ICON (WiFi/LAN)
 P CPU Temp Status-ICON
-P Pi5 Support: force_turbo=1 to /boot/firmware/config.txt
 
 Ver_1.10.0 (2024/3/05)
 - Bugfix: mpdscribble setting / Other Setting Tab
