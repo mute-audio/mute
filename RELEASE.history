@@ -1,6 +1,7 @@
 Ver_1.10.0 (2024/3/05)
 - Bugfix: mpdscribble setting / Other Setting Tab
 - Bugfix: In some cases, I2S DAC cannot be loaded on RaspberryPi5
+- Bugfix: mute_setting/install_mute.sh: Found a typo "dev/null"
 - Revised: mute update scripts : Change update data from DropBox to GitHub
 - Revised: Show DB Update dialog before NAS mount / Source Volume Tab
 - New: Host sources and packages on GitHub
