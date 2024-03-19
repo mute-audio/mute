@@ -39,19 +39,16 @@ echo "<body onLoad=\"uiLock()\" onunload=\"uiUnlock()\">"
 #echo "<p>${QUERY_STRING}</p>"
 
 #### Loading Screen
-echo "<div id=\"loading-top2\">"
-
-######### Loading Animation
-echo   "<div class=\"loader\">"
-echo      "<div class=\"ball-scale-ripple\">"
-echo        "<div></div>"
-echo      "</div>"
-echo     "<div class=\"loadingtext\">Setting Password ...</div>"
-echo   "</div>"
-######### Loading Animation
-
-echo "</div>"
-#### Loading Screen
+   cat <<HTML
+   <div id="loading-top2">
+     <div class="loader">
+        <div class="loadingtext">Setting Password ...</div>
+        <div class="progress-bar-base">
+        <div class="progress-value-loading"></div>
+        </div>
+     </div>
+   </div>
+HTML
 
 echo "</body>"
 echo "</html>"
