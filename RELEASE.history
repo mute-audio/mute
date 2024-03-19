@@ -1,5 +1,6 @@
 Ver_1.10.1 (WIP)
 - Update: Change of version notification method
+- Improved: Progress bar animation for Mozilla & Chrome
 
 ToDo
 * Coverart Server [alfa-release]
@@ -8,8 +9,7 @@ ToDo
 * HiFi Setting: CPU clock control option
 * HiFi Setting: USB Unbind option
 * HiFi Setting: Bluetooth Unbind option
-* Improve: Installation and update progress indication
-* Progress bar animation for Mozilla & Chrome
+* Improve: Real-time installation and update progress indication
 
 P Network Status-ICON (WiFi/LAN)
 P CPU Temp Status-ICON

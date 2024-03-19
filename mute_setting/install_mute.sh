@@ -339,7 +339,7 @@ else
     echo " Turned off the HDMI port... Done" | sudo tee -a /${bootDIR}/mute_log > /dev/null
 
 	echo ' Prevent scanning I2C HAT EEPROM.'
-	echo 'force_eeprom_read=0' | sudo tee -a /${bootDIR}/config.txt > dev/null
+	echo 'force_eeprom_read=0' | sudo tee -a /${bootDIR}/config.txt > /dev/null
     echo " Prevent scanning I2C HAT EEPROM... Done" | sudo tee -a /${bootDIR}/mute_log > /dev/null
 
     sudo rm -Rf ../mute_setting
