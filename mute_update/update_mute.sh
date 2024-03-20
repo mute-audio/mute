@@ -4,7 +4,7 @@
 #   m u t e    Updater shell
 # +         +
 #
-# ©2023 kitamura_design <kitamura_design@me.com>
+# ©2024 kitamura_design <kitamura_design@me.com>
 
 # Check current OS Codename
 OS_codename=$(lsb_release -a |  grep Codename | cut -f 2)
@@ -24,7 +24,7 @@ echo '   m u t e    RPi-Audio/ MPD Dashboard'
 echo " +         +  ver.${VER}"
 echo ''
 echo " Updater shell for ver.${VER}"
-echo ' ©2023 kitamura_design <kitamura_design@me.com>'
+echo ' ©2024 kitamura_design <kitamura_design@me.com>'
 echo ''
 
 if [ "$1" = "-y" ]; then
