@@ -44,7 +44,9 @@ echo "<body onLoad=\"uiLock()\" onunload=\"uiUnlock()\">"
    <div id="loading-top2">
      <div class="loader">
         <div class="loadingtext">Connecting to WiFi [$SSID] ...</div>
-        <progress class="loading"></progress>
+        <div class="progress-bar-base">
+        <div class="progress-value-loading"></div>
+        </div>
      </div>
    </div>
 HTML

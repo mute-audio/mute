@@ -150,6 +150,35 @@ progress {
      animation: Progress 20s linear 0s infinite;
     }
 
+    .progress-bar-base {
+      width: 17.5vw;
+      height: 0.35vw;
+      margin: 1.75vw;
+      background-color: #7D7D7D;
+      border: none;
+      border-radius: 0.175vw;
+     }
+
+    .progress-value-loading {
+      width: 33.3%;
+      height: 100%;
+      background-color: #CCCCCC;
+      border: none;
+      border-radius: 0.175vw;
+      -webkit-animation: Loading 0.8s linear 0s infinite alternate;
+      animation: Loading 0.8s linear 0s infinite alternate;
+     }
+
+    .progress-value-progress {
+      width: 100%;
+      height: 100%;
+      background-color: #CCCCCC;
+      border: none;
+      border-radius: 0.175vw;
+      -webkit-animation: Progress 20s linear 0s infinite;
+      animation: Progress 20s linear 0s infinite;
+    }
+
 @-webkit-keyframes Loading {
  from {
    margin-left:0%

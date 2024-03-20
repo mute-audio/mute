@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Updating_MPD.cgi
-# (C)2023 kitamura_design <kitamura_design@me.com> #
+# (C)2024 kitamura_design <kitamura_design@me.com> #
 
 query=$(date +%Y%m%d%I%M%S)
 
@@ -41,7 +41,9 @@ echo "<body onLoad=\"uiLock()\" onunload=\"uiUnlock()\">"
    <div id="loading-top2">
      <div class="loader">
         <div class="loadingtext">Updating MPD ...</div>
-        <progress class="progress"></progress>
+        <div class="progress-bar-base">
+        <div class="progress-value-progress"></div>
+        </div>
      </div>
    </div>
 HTML

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # loading.cgi : Call Tab menu                      #
-# (C)2022 kitamura_design <kitamura_design@me.com> #
+# (C)2024 kitamura_design <kitamura_design@me.com> #
 
 query=$(date +%Y%m%d%I%M%S)
 
@@ -35,7 +35,9 @@ Content-type: text/html; charset=utf-8
    <div id="loading-top2">
      <div class="loader">
         <div class="loadingtext">Loading ...</div>
-        <progress class="loading"></progress>
+        <div class="progress-bar-base">
+        <div class="progress-value-loading"></div>
+        </div>
      </div>
    </div>
   </body>
