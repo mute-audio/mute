@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # dac_applying.cgi		                           #
-# (C)2022 kitamura_design <kitamura_design@me.com> #
+# (C)2024 kitamura_design <kitamura_design@me.com> #
 
 query=$(date +%Y%m%d%I%M%S)
 
@@ -87,7 +87,9 @@ echo "<body onLoad=\"uiLock()\" onunload=\"uiUnlock()\">"
    <div id="loading-top2">
      <div class="loader">
         <div class="loadingtext">Applying DAC ...</div>
-        <progress class="loading"></progress>
+        <div class="progress-bar-base">
+        <div class="progress-value-loading"></div>
+        </div>
      </div>
    </div>
 HTML

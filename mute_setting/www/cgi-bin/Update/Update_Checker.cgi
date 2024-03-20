@@ -1,7 +1,9 @@
 #!/bin/bash
 
-### Cancel this process in case of Web Streaming to avoid alsa_output error.
+## Update_Checker.cgi
+## (C)2024 kitamura_design <kitamura_design@me.com>
 
+### Cancel this process in case of Web Streaming to avoid alsa_output error.
 volume=$(mpc -f %file% current | cut -d / -f 1)
 
 if [ "$volume" = "http:" ] || [ "$volume" = "https:" ]; then
@@ -16,7 +18,7 @@ fi
 
 ver_UPDATE=$(\
 sudo wget --no-check-certificate -q -O - \
-"https://raw.githubusercontent.com/mute-audio/mute/main/mute_update/update.info" \
+"https://raw.githubusercontent.com/mute-audio/mute/main/packages/package.info" \
 | grep "ver=" | sed -e 's/[^0-9]//g'\
 )
 
