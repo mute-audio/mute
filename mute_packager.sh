@@ -23,7 +23,7 @@ set -e
     echo ""
 
 ## Pre-cooking: Rewrite Version @mute.conf
-    sudo sed -e "s/ver=.*/ver=${1}/" ./mute_setting/www/cgi-bin/etc/mute.conf 2>/dev/null 1>/dev/null
+    sudo sed -i "" -e "s/ver=.*/ver=${1}/" ./mute_setting/www/cgi-bin/etc/mute.conf 2>/dev/null 1>/dev/null
 
 ## Change Permission
     echo -n " Change permission of source dir ..."
@@ -45,14 +45,17 @@ set -e
 
     echo -n " Packaging of \" mute_update_$VER.zip \" ..."
 
-## NOTE!! Activate after release 1.10.1
-#   sudo sed -i -e "s/ver=.*/ver=${1}/" \
-#                -e "s/\/v.*\//\/v.${1}\//" \
-#                -e "s/mute_update_.*.zip/mute_update_$VER.zip/" \
-#                ./mute_update/update.info  
+## Rewrite update.info
+    sudo sed -i "" -e "s/ver=.*/ver=${1}/" ./mute_update/update.info
 
+## Rewrite package.info
+    sudo sed -i "" -e "s/ver=.*/ver=${1}/" ./packages/package.info
+
+## Replace the Source
     sudo rm -r ./mute_update/www
     sudo cp -R ./mute_setting/www/ ./mute_update/www
+
+## Make Zip Package
     sudo zip -rq ./packages/mute_update_$VER.zip ./mute_update
 
     echo " Done."

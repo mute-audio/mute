@@ -44,7 +44,9 @@ Content-type: text/html; charset=utf-8
    <div id="loading-top2">
      <div class="loader">
         <div class="loadingtext">Updating [ mute ] ...</div>
-        <progress class="progress"></progress>
+        <div class="progress-bar-base">
+        <div class="progress-value-progress"></div>
+        </div>
      </div>
    </div>
 

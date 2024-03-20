@@ -40,7 +40,9 @@ echo "<body onLoad=\"uiLock()\" onunload=\"uiUnlock()\">"
    <div id="loading-top2">
      <div class="loader">
         <div class="loadingtext">Rebooting ...</div>
-        <progress class="progress"></progress>
+        <div class="progress-bar-base">
+        <div class="progress-value-progress"></div>
+        </div>
      </div>
    </div>
 HTML
