@@ -79,7 +79,7 @@ function autoReconnect() {
   fetch("/")
   .then(response => {
    if(response.ok){
-      location.href="/cgi-bin/start.cgi";
+      parent.location.href="/cgi-bin/index.cgi";
     }else{
       return;
     }
