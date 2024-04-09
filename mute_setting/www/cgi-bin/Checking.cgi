@@ -12,7 +12,7 @@ Content-type: text/html; charset=utf-8
 <html>
 
   <head>
-     <link rel="stylesheet" type="text/css" href="/css/main.css?$query">
+     <link rel="stylesheet" type="text/css" href="/css/main.css">
      <meta http-equiv="refresh" content="0; ${QUERY_STRING}">
      <script>
         function uiLock(){
