@@ -13,7 +13,7 @@ echo "<!DOCUTYPE html>"
 echo "<html>"
 
 echo  "<head>"
-echo    "<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/main.css?$query\">"
+echo    "<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/main.css\">"
 echo    "<script>"
 
 echo    "function uiLock(){"

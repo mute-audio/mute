@@ -31,5 +31,5 @@ else
 
 fi
 
-echo "Location: /cgi-bin/Sound_Device/Sound_device.cgi?$query"
+echo "Location: /cgi-bin/Sound_Device/Sound_device.cgi"
 echo

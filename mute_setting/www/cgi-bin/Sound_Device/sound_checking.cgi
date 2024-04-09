@@ -16,7 +16,7 @@ echo "<!DOCUTYPE html>"
 echo "<html>"
 
 echo  "<head>"
-echo    "<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/main.css?$query\">"
+echo    "<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/main.css\">"
 echo    "<meta http-equiv=\"refresh\" content=\"0; URL=/cgi-bin/Sound_Device/sound_check.cgi?${QUERY_STRING}\">"
 echo    "<script>"
 
