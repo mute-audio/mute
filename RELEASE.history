@@ -1,9 +1,9 @@
 Ver_1.10.1 (WIP)
 - Update: Change of version notification method
-- Improved: Progress bar animation for Mozilla & Chrome
+- Bugfix: Progress bar animation for Mozilla & Chrome
+- Bugfix: WebUI: iframe flickering on Safari
 
 ToDo
-* WebUI: iframe flickering on Safari
 * Coverart Server [alfa-release]
 * MPD DB update Auto-refresh
 * HiFi Setting: force_turbo=1 (max cpu clock) option

@@ -21,7 +21,7 @@ Content-type: text/html; charset=utf-8
 <!DOCUTYPE html>
 <html>
         <head>
-          <link rel="stylesheet" type="text/css" href="/css/main.css?$query">
+          <link rel="stylesheet" type="text/css" href="/css/main.css">
           <!-- <meta http-equiv="Refresh" content="30"> -->
           <script>
 

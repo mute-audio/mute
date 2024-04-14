@@ -19,7 +19,7 @@ echo "<!DOCUTYPE html>"
 echo "<html>"
 
 echo  "<head>"
-echo    "<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/main.css?$query\">"
+echo    "<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/main.css\">"
 echo    "<script>"
 
 echo    "function uiLock(){"
@@ -59,7 +59,7 @@ echo "<!DOCUTYPE html>"
 echo "<html>"
 
 echo  "<head>"
-echo    "<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/main.css?$query\">"
+echo    "<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/main.css\">"
 echo    "<meta http-equiv=\"refresh\" content=\"0; URL=/cgi-bin/Sound_Device/i2s_dac_install.cgi?${QUERY_STRING}\">"
 echo    "<script>"
 

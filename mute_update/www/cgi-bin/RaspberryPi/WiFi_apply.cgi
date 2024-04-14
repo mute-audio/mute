@@ -22,7 +22,7 @@ if [ ${OS_codename} = "buster" ] || [ ${OS_codename} = "bullseye" ]; then  # In 
 
     sleep 4
 
-    echo "Location: /cgi-bin/RaspberryPi/Raspberrypi.cgi?$query"
+    echo "Location: /cgi-bin/RaspberryPi/Raspberrypi.cgi"
     echo ''
 
 else
@@ -32,7 +32,7 @@ else
     #### Rewrite /etc/wpa_supplicant/wpa_supplicant.conf
     sudo sed -i -e "/ssid/s/\".*\"/\"$SSID\"/g" -e "/psk/s/\".*\"/\"$PWD\"/g" /etc/wpa_supplicant/wpa_supplicant.conf
 
-    echo "Location: /cgi-bin/RaspberryPi/Raspberrypi.cgi?$query"
+    echo "Location: /cgi-bin/RaspberryPi/Raspberrypi.cgi"
     echo ''
 
 fi

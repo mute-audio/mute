@@ -1,26 +1,13 @@
-1.10.0
-全データをGitHubへアップ
-mute オフィシャルページのダウンロードリンクもGitHubへ変更（1.09bから）
+1.10.1
 
-ver=1.10.0
+ver=1.10.1
 
 主な変更点
-- Bugfix: mpdscribble setting / Other Setting Tab
-- Bugfix: In some cases, I2S DAC cannot be loaded on RaspberryPi5
-- Revised: mute update scripts : Change update data from DropBox to GitHub
-- Revised: Show DB Update dialog before NAS mount / Source Volume Tab
-- New: Host sources and packages on GitHub
-- New: Show the notification badges on sidebar (reboot required, update available)
-- New: Web Radio list Tab [alfa-release]
-- Update: Web Radio List description / About Tab
+- Update: Change of version notification method
+- Bugfix: Progress bar animation for Mozilla & Chrome
+- Bugfix: WebUI: main-view flickering on Safari
 
-- mpdscribbleの設定を修正 / Other Setting Tab
-- RaspberryPi5でI2S DACをロードできない場合がある問題を修正
-- アップデートスクリプトの見直し： Updateデータのホスト先を DropBox から GitHub に変更
-- NASマウント前にDBアップデートを促すダイアログを表示 / Source Volume Tab
-- GitHubでソースとパッケージの管理を開始
-- サイドバーに通知バッジを表示 (reboot required, update available)
-- Web Radio list Tabを追加 （アルファ版）
-- Web Radio list Tabの説明を追加 / About Tab
-
+- バージョン通知方法を変更
+- Mozilla & Chromeでのプログレスバーアニメーションを修正
+- Safariでメイン画面がちらつくのを修正
 以上

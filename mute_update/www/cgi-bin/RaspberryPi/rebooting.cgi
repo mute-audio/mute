@@ -13,7 +13,7 @@ echo "<!DOCUTYPE html>"
 echo "<html>"
 
 echo  "<head>"
-echo    "<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/main.css?$query\">"
+echo    "<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/main.css\">"
 echo    "<script>"
 
 echo    "function uiLock(){"
@@ -79,7 +79,7 @@ function autoReconnect() {
   fetch("/")
   .then(response => {
    if(response.ok){
-      location.href="/cgi-bin/start.cgi";
+      parent.location.href="/cgi-bin/index.cgi";
     }else{
       return;
     }
