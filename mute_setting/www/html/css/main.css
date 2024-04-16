@@ -1,6 +1,6 @@
 /*    Split-View UI Style Sheet          */
 /*    [ mute ] ©2024 kitamura_design     */
-/*    main_dark.css for [DARK MODE]      */
+/*    main.css for [VARIABLE MODE]      */
 
 
 /* Basic Style   */
@@ -34,6 +34,65 @@
        url('../fonts/palanquin-v6-latin-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
+:root,
+.is-theme-light {
+  /* Color sets for light Mode  */
+
+  --main-text-color: #FBFBFB;
+  --sub-text-color: #5E5E5E;
+  --sub2-text-color: #7D7D7D;
+
+  --main-bg-color: #FAFAFA;
+  --menubar-bg-color: #D8D8D8;
+ 
+  --inputbox-text-color: #7D7D7D;
+  --inputbox-bg-color: #D7D7D7;
+
+  --button-text-color: #FFFFFF;
+  --button-bg-color: #8D8D8D;
+  --button-hover-bg-color: #323232;
+  --button2-bg-color: #D7D7D7;
+  --button2-hover-bg-color: #A3A3A3;
+
+  --status-text-color: #FFFFFF;
+  --toggle-text-color: #FFFFFF;
+
+  --logo-color: #F7F7F7;
+  --spacer-bg-color: #D7D7D7;
+
+  --progress-bar-color: #D7D7D7;
+  --progress-value-color: #5E5E5E;
+}
+
+.is-theme-dark {
+  /* Color sets for Dark Mode  */
+
+  --main-text-color: #FBFBFB;
+  --sub-text-color: #CCCCCC;
+  --sub2-text-color: #7D7D7D;
+
+  --main-bg-color: #0A0A0A;
+  --menubar-bg-color: #2E2E2E;
+ 
+  --inputbox-text-color: #CCCCCC;
+  --inputbox-bg-color: #2E2E2E;
+
+  --button-text-color: #FFFFFF;
+  --button-bg-color: #5D5D5D;
+  --button-hover-bg-color: #323232;
+  --button2-bg-color: #5D5D5D;
+  --button2-hover-bg-color: #323232;
+
+  --status-text-color: #FFFFFF;
+  --toggle-text-color: #FFFFFF;
+
+  --logo-color: #F7F7F7;
+  --spacer-bg-color: #D7D7D7;
+
+  --progress-bar-color: #7D7D7D;
+  --progress-value-color: #CCCCCC;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -52,7 +111,7 @@ html, body {
   overflow: hidden auto;
   -webkit-overflow-scrolling: touch;
   -webkit-text-size-adjust: 100%;
-  background-color: #0A0A0A
+  background-color: var(--main-bg-color);
 }
 
 #iframe {
@@ -99,13 +158,13 @@ progress {
  }
 
    ::-webkit-progress-bar {
-     background-color: #7D7D7D;
+     background-color: var(--progress-bar-color);
      border: none;
      border-radius: 0.175vw;
     }
 
    .loading::-webkit-progress-value {
-     background-color: #CCCCCC;
+     background-color: var(--progress-value-color);
      width: 33%;
      border: none;
      border-radius: 0.175vw;
@@ -114,7 +173,7 @@ progress {
     }
 
    .progress::-webkit-progress-value {
-     background-color: #CCCCCC;
+     background-color: var(--progress-value-color);
      width: 100%;
      border: none;
      border-radius: 0.175vw;
@@ -126,7 +185,7 @@ progress {
       width: 17.5vw;
       height: 0.35vw;
       margin: 1.75vw;
-      background-color: #7D7D7D;
+      background-color: var(--progress-bar-color);
       border: none;
       border-radius: 0.175vw;
      }
@@ -134,7 +193,7 @@ progress {
     .progress-value-loading {
       width: 33.3%;
       height: 100%;
-      background-color: #CCCCCC;
+      background-color: var(--progress-value-color);
       border: none;
       border-radius: 0.175vw;
       -webkit-animation: Loading 0.8s linear 0s infinite alternate;
@@ -144,7 +203,7 @@ progress {
     .progress-value-progress {
       width: 100%;
       height: 100%;
-      background-color: #CCCCCC;
+      background-color: var(--progress-value-color);
       border: none;
       border-radius: 0.175vw;
       -webkit-animation: Progress 20s linear 0s infinite;
@@ -194,7 +253,7 @@ h1 {
   margin-bottom: 2vmin;
   padding-top: 0px;
   font-size: 3.75vmin;
-  color: #7D7D7D;
+  color: var(--sub2-text-color);
 }
 
 h2 {
@@ -202,7 +261,7 @@ h2 {
   margin-bottom: 0rem;
   padding-top: 0rem;
   font-size: 3.25vmin;
-  color: #CCCCCC;
+  color: var(--sub-text-color);
 }
 
 h3 {
@@ -214,7 +273,7 @@ h3 {
   padding-top: 1.0vmin;
   padding-bottom: 1.5vmin;
   font-size: 2.75vmin;
-  color: #CCCCCC;
+  color: var(--sub-text-color);
 }
 
 h4 {
@@ -224,16 +283,16 @@ h4 {
   padding-left: 2.5vw;
   padding-bottom: 0.75vmin;
   font-size: 2.5vmin;
-  color: #7D7D7D;
+  color: var(--sub2-text-color);
   line-height: 1.25;
 }
 
 a:link, a:visited {
- color: #CCCCCC;
+ color: var(--sub-text-color);
 }
 
 hr {
-  border-top: thin #7D7D7D solid;
+  border-top: thin var(--progress-bar-color) solid;
   border-left: none;
   border-bottom: none;
   border-right: none;
@@ -243,7 +302,7 @@ hr {
 .bodytext {
   margin-left: 5px;
   line-height: 1.6;
-  color: #7D7D7D;
+  color: var(--sub2-text-color);
   font-size: 2.5vmin;
 }
 
@@ -252,7 +311,7 @@ hr {
   margin-top: -0.5vmin;
   margin-left: 2.0vmin;
   line-height: 1.6;
-  color: #7D7D7D;
+  color: var(--sub2-text-color);
   font-size: 2.5vmin;
 }
 
@@ -271,7 +330,7 @@ label {
   padding-bottom: 1.5vmin;
   font-size: 2.5vmin;
   text-align: right;
-  color: #7D7D7D;
+  color: var(--sub2-text-color);
   white-space: nowrap;
 }
 
@@ -283,11 +342,11 @@ label#message {
   padding-bottom: 1.5vmin;
   font-size: 2.5vmin;
   text-align: left;
-  color: #7D7D7D;
+  color: var(--sub2-text-color);
 }
 
 input::placeholder {
-  color: #FFFFFF;
+  color: var(--button-text-color);
   opacity: 0.3;
 }
 
@@ -308,8 +367,8 @@ input::placeholder {
   height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: #2E2E2E;
-  color: #FBFBFB;
+  background-color: var(--menubar-bg-color);
+  color: var(--main-text-color);
 }
 
 .sidebar-ui-unlock {
@@ -333,8 +392,8 @@ input::placeholder {
 .main {
   width: 80vw;
   height: 100%;
-  background-color: #0A0A0A;
-  color: #FBFBFB;
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
 }
 
 /* Box, Frame, Spacer */
@@ -378,7 +437,7 @@ input {
 /*   padding: 0.2rem;*/
   font-size: 2.5vmin;
   font-weight: 100;
-  color: #7D7D7D;
+  color: var(--sub2-text-color);
 }
 
 .icon {
@@ -393,14 +452,14 @@ input {
 /* Mute_Logo SVG Style */
 .cls-1 {
   fill: none;
-  stroke: #f7f7f7;
+  stroke: var(--logo-color);
   stroke-linecap: square;
   stroke-linejoin: round;
   stroke-width: 1.41px;
 }
 
 .cls-2 {
-  fill: #f7f7f7;
+  fill: var(--logo-color);
 }
 
 .menutab {
@@ -412,11 +471,11 @@ input {
   padding-right: 2.5vmin;
   padding-top: 1.5vmin;
   padding-bottom: 1.5vmin;
-  background-color: #2E2E2E;
+  background-color: var(--menubar-bg-color);
   border-radius: 0px;
   text-decoration: none;
   font-size: 2.75vmin;
-  color: #7D7D7D !important;
+  color: var(--sub2-text-color) !important;
   transition: background 0.5s;
 }
 
@@ -429,17 +488,17 @@ input {
   padding-right: 2.5vmin;
   padding-top: 1.5vmin;
   padding-bottom: 1.5vmin;
-  background-color: #0A0A0A;
+  background-color: var(--main-bg-color);
   border-radius: 0px;
   text-decoration: none;
   font-size: 2.75vmin;
-  color: #CCCCCC !important;
+  color: var(--sub-text-color) !important;
   transition: background 0.5s;
 }
 
 .menutab:hover {
-  background-color: #0A0A0A;
-  color: #CCCCCC;
+  background-color: var(--main-bg-color);
+  color: var(--sub-text-color);
 }
 
 .button, .btn {
@@ -457,14 +516,14 @@ input {
   border-top-left-radius: 0;
   border-bottom-right-radius: 0.75vw;
   border-top-right-radius: 0.75vw;
-  background-color: #5D5D5D;
-  color: #ffffff !important;
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color) !important;
   transition: background 0.5s;
 }
 
 .button:hover, .btn:hover {
-  background-color: #323232;
-  color: #ffffff;
+  background-color: var(--button-hover-bg-color);
+  color: var(--button-text-color);
 }
 
 .button2 {
@@ -482,14 +541,14 @@ input {
   border-top-left-radius: 0.75vw;
   border-bottom-right-radius: 0.0vmin;
   border-top-right-radius: 0.0vmin;
-  background-color: #2E2E2E;
-  color: #5D5D5D;
+  background-color: var(--button2-bg-color);
+  color: var(--button-text-color);
   transition: background 0.5s;
 }
 
 .button2:hover {
-  background-color: #A3A3A3;
-  color: #ffffff;
+  background-color: var(--button2-hover-bg-color);
+  color: var(--button-text-color);
 }
 
 .spacer {
@@ -505,8 +564,8 @@ input {
   text-decoration: none;
   font-size: 2.50vmin;
   border: none;
-  background-color: #D7D7D7;
-  color: #7D7D7D;
+  background-color: var(--spacer-bg-color);
+  color: var(--sub2-text-color);
   transition: background 0.5s;
 }
 
@@ -525,8 +584,8 @@ input {
   border-top-left-radius: 0;
   border-bottom-right-radius: 0.75vw;
   border-top-right-radius: 0.75vw;
-  background-color: #5D5D5D;
-  color: #ffffff;
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
   opacity: 0.5;
 }
 
@@ -550,8 +609,8 @@ form {
   font-size: 2.50vmin;
   border: none;
   border-radius: 0.75vw;
-  background-color: #2E2E2E;
-  color: #CCCCCC;
+  background-color: var(--inputbox-bg-color);
+  color: var(--inputbox-text-color);
   transition: background 0.5s;
 }
 
@@ -575,8 +634,8 @@ form {
   border-top-left-radius: 0.75vw;
   border-bottom-right-radius: 0vw;
   border-top-right-radius: 0vw;
-  background-color: #2E2E2E;
-  color: #CCCCCC;
+  background-color: var(--inputbox-bg-color);
+  color: var(--inputbox-text-color);
   transition: background 0.5s;
 }
 
@@ -600,8 +659,8 @@ form {
   border-top-left-radius: 0.75vw;
   border-bottom-right-radius: 0vw;
   border-top-right-radius: 0vw;
-  background-color: #2E2E2E;
-  color: #CCCCCC;
+  background-color: var(--inputbox-bg-color);
+  color: var(--inputbox-text-color);
 }
 
 .inputbox-single-invisible {
@@ -651,30 +710,30 @@ form {
   border-bottom-right-radius: 0vw;
   border-top-right-radius: 0vw;
   background-color: #D7D7D700;
-  color: #CCCCCC;
+  color: var(--inputbox-text-color);
 }
 
 
 .inputbox:hover {
-  background-color: #A3A3A3;
-  color: #FFFFFF;
+  background-color: var(--button2-hover-bg-color);
+  color: var(--button-text-color);
 }
 
 .inputbox-single:hover {
-  background-color: #A3A3A3;
-  color: #FFFFFF;
+  background-color: var(--button2-hover-bg-color);
+  color: var(--button-text-color);
 }
 
 .inputbox:focus {
   border-width: 0 !important;
-  background-color: #0A0A0A;
-  color: #7D7D7D;
+  background-color: var(--main-bg-color);
+  color: var(--inputbox-text-color);
 }
 
 .inputbox-single:focus {
   border-width: 0 !important;
-  background-color: #0A0A0A;
-  color: #7D7D7D;
+  background-color: var(--main-bg-color);
+  color: var(--inputbox-text-color);
 }
 
 .status {
@@ -687,8 +746,8 @@ form {
   display: inline-block;
   border: none;
   border-radius: 1.5vmin;
-  background-color: #7D7D7D;
-  color: #ffffff;
+  background-color: var(--progress-bar-color);
+  color: var(--status-text-color);
   align-items: center;
   font-size: 2.5vmin;
 }
@@ -709,7 +768,7 @@ form {
 .progress-badge {
   border: none;
   border-radius: 1.5vmin;
-  background-color: #CCCCCC;
+  background-color: var(--progress-value-color);
   height: 2.0vmin;
   width: 2.0vmin;
   position: absolute;
@@ -721,7 +780,7 @@ form {
   
 .status-wrap {
   z-index: 9999;
-  color: #CCCCCC;
+  color: var(--sub-text-color);
   overflow: visible;
   align-self: center;
   pointer-events: none;
@@ -743,7 +802,7 @@ form {
   width: 100vw;
   height: 100vh;
   transition: all 2s;
-  background-color: #0A0A0Ab3;
+  background-color: var(--main-bg-color);
   position: fixed;
   top: 0;
   left: 0;
@@ -756,7 +815,7 @@ form {
   width: 100vw;
   height: 100%;
   transition: all 2s;
-  background-color: #0A0A0A;
+  background-color: var(--main-bg-color);
 }
 
 .loadingtext {
@@ -776,7 +835,7 @@ form {
   padding-top: 1.5vmin;
   padding-bottom: 1.5vmin;
   padding-right: 2.25vmin;
-  color: #7D7D7D;
+  color: var(--sub2-text-color);
 }
 
 /*------------- inputbox Accent---------------*/
@@ -788,7 +847,7 @@ form {
   position: relative;
   right: 6.25vmin;
   margin-right: -3.0vmin;
-  color: #CCCCCC;
+  color: var(--sub-text-color);
   overflow: visible;
   align-self: center;
   pointer-events: none;
@@ -812,7 +871,7 @@ form {
   width: 0.4vmin;
   height: 0.4vmin;
   border-radius: 100%;
-  background-color: #CCCCCC;
+  background-color: var(--button-bg-color);
   margin: 0.3vmin;
 } 
 
@@ -820,8 +879,8 @@ form {
   display: inline-block;
   width: 1.25vmin;
   height: 1.25vmin;
-  border-top: solid 0.4vmin #CCCCCC;
-  border-left: solid 0.4vmin #CCCCCC;
+  border-top: solid 0.4vmin var(--button-bg-color);
+  border-left: solid 0.4vmin var(--button-bg-color);
   border-radius: 10%;
   transform: rotate(225deg);
   position: relative;
@@ -864,7 +923,7 @@ form {
   width: 4.0vmin;
   height: 4.0vmin;
   border-radius: 25%;
-  background-color: #FFFFFF;
+  background-color: var(--button-text-color);
   position: absolute;
   right: 0%;
   transition: all 0.5s;
@@ -875,7 +934,7 @@ form {
   width: 4.0vmin;
   height: 4.0vmin;
   border-radius: 25%;
-  background-color: #FFFFFF00;
+ /* background-color: #FFFFFF00; */
   position: absolute;
   right: 84.5%;
   transition: all 0.5s;
@@ -901,7 +960,7 @@ form {
   width: 4.0vmin;
   height: 4.0vmin;
   border-radius: 25%;
-  background-color: #FFFFFF;
+  background-color: var(--button-text-color);
   position: absolute;
   left: 0%;
   transition: all 0.5s;
@@ -912,7 +971,7 @@ form {
   width: 4.0vmin;
   height: 4.0vmin;
   border-radius: 25%;
-  background-color: #FFFFFF00;
+  /* background-color: #FFFFFF00; */
   position: absolute;
   left: 84.0%;
   transition: all 0.5s;
@@ -930,8 +989,8 @@ form {
   font-size: 2.50vmin;
   border: none;
   border-radius: 0.75vw;
-  background-color: #5D5D5D;
-  color: #ffffff !important;
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color) !important;
   transition: background 0.5s;
 }
 
@@ -947,25 +1006,25 @@ form {
   font-size: 2.50vmin;
   border: none;
   border-radius: 0.75vw;
-  background-color: #5D5D5D;
-  color: #ffffff !important;
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color) !important;
   transition: background 0.5s;
   opacity: 0.5;
 }
 
 .toggle-on-sw:hover {
-  background-color: #323232;
-  color: #ffffff;
+  background-color: var(--button-hover-bg-color);
+  color: var(--button-text-color);
 }
 
 .toggle-off-sw:hover {
-  background-color: #323232;
+  background-color: var(--button-hover-bg-color);
   opacity: 1.0; 
-  color: #ffffff;
+  color: var(--button-text-color);
 }
 
 ::file-selector-button {
-  color: #ffffff !important;
+  color: var(--button-text-color) !important;
   font-size: 2.25vmin !important;
   background-color: #ffffff00 !important;
   border: none !important;
@@ -990,7 +1049,7 @@ form {
   white-space: break-spaces;
   font-size: 2.50vmin;
   border: none;
-  color: #CCCCCC;
+  color: var(--sub-text-color);
 }
 
 /* ------------- responsive ------------- */
