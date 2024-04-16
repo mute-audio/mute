@@ -1,19 +1,23 @@
-Ver_1.10.1 (WIP)
-- Update: Change of version notification method
-- Bugfix: Progress bar animation for Mozilla & Chrome
-- Bugfix: WebUI: iframe flickering on Safari
+Ver_1.10.2(WIP)
 
 ToDo
-* Coverart Server [alfa-release]
+* Improve: Dark mode/light mode switching operation
+* Improve: Real-time indication of installation and update progress
 * MPD DB update Auto-refresh
+
 * HiFi Setting: force_turbo=1 (max cpu clock) option
 * HiFi Setting: CPU clock control option
 * HiFi Setting: USB Unbind option
 * HiFi Setting: Bluetooth Unbind option
-* Improve: Real-time indication of installation and update progress
+* Coverart Server [alfa-release]
 
 P Network Status-ICON (WiFi/LAN)
 P CPU Temp Status-ICON
+
+Ver_1.10.1 (2024/4/14)
+- Update: Change of version notification method
+- Bugfix: Progress bar animation for Mozilla & Chrome
+- Bugfix: WebUI: iframe flickering on Safari
 
 Ver_1.10.0 (2024/3/05)
 - Bugfix: mpdscribble setting / Other Setting Tab
