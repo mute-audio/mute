@@ -34,6 +34,35 @@
        url('../fonts/palanquin-v6-latin-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
+:root {
+  /* Color sets for Dark Mode  */
+  
+  --main-text-color: #FBFBFB;
+  --sub-text-color: #CCCCCC;
+  --sub2-text-color: #7D7D7D;
+  
+  --main-bg-color: #0A0A0A;
+  --menubar-bg-color: #2E2E2E;
+   
+  --inputbox-text-color: #CCCCCC;
+  --inputbox-bg-color: #2E2E2E;
+  
+  --button-text-color: #FFFFFF;
+  --button-bg-color: #5D5D5D;
+  --button-hover-bg-color: #323232;
+  --button2-bg-color: #5D5D5D;
+  --button2-hover-bg-color: #323232;
+  
+  --status-text-color: #FFFFFF;
+  --toggle-text-color: #FFFFFF;
+  
+  --logo-color: #F7F7F7;
+  --spacer-bg-color: #D7D7D7;
+  
+  --progress-bar-color: #7D7D7D;
+  --progress-value-color: #CCCCCC;
+}
+
 * {
   margin: 0;
   padding: 0;
