@@ -4,7 +4,7 @@
 #   m u t e    Installer shell
 # +         +
 #
-# (C)2023 kitamura_design <kitamura_design@me.com>
+# (C)2024 kitamura_design <kitamura_design@me.com>
 
 # Check current OS Codename
 OS_codename=$(lsb_release -a |  grep Codename | cut -f 2)
