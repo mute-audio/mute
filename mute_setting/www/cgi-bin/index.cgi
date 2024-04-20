@@ -110,12 +110,14 @@ Content-type: text/html; charset=utf-8
             const UpdateBadge = document.querySelector('#UpdateBadge');
             let sysUpdate = '';
             let muteUpdate = '';
+            const URL_sys = '/cgi-bin/Update/Update_notice.txt' + '?' + Date.now();
+            const URL_mute = '/cgi-bin/Update/Update_mute_notice.txt'+ '?' + Date.now();
 
-            fetch("/cgi-bin/Update/Update_notice.txt")
+            fetch(URL_sys)
             .then(response => response.text())
             .then((text) => {
              sysUpdate = text;
-             return fetch("/cgi-bin/Update/Update_mute_notice.txt");
+             return fetch(URL_mute);
             })
             .then(response => response.text())
             .then((text) => {
