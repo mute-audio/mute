@@ -97,19 +97,19 @@ elif  [ "$PKG" = "MPD Official ( Backports version )" ]; then
 
          #       if [ "${OS_bit}" = "aarch64" ]; then
          #               sudo echo "deb [signed-by=/usr/share/keyrings/deb.kaliko.me.gpg] https://deb.kaliko.me/debian-backports/ ${RELEASE}-backports main" \
-                        | sudo tee /etc/apt/sources.list.d/deb.kaliko.me.list > /dev/null
+         #               | sudo tee /etc/apt/sources.list.d/deb.kaliko.me.list > /dev/null
          #       else
          #               sudo echo "deb [signed-by=/usr/share/keyrings/deb.kaliko.me.gpg] https://deb.kaliko.me/raspios-backports/ ${RELEASE}-backports main" \
-                        | sudo tee /etc/apt/sources.list.d/deb.kaliko.me.list > /dev/null
+         #               | sudo tee /etc/apt/sources.list.d/deb.kaliko.me.list > /dev/null
          #       fi
 
                 if [ "${OS_bit}" = "64" ]; then
-                        sudo echo "deb [signed-by=/usr/share/keyrings/deb.kaliko.me.gpg] https://deb.kaliko.me/debian-backports/ ${RELEASE}-backports main" \
-                        | sudo tee /etc/apt/sources.list.d/deb.kaliko.me.list > /dev/null
+                        sudo echo "deb [signed-by=/usr/share/keyrings/deb.kaliko.me.gpg] https://deb.kaliko.me/debian-backports/ ${RELEASE}-backports main" | \
+                        sudo tee /etc/apt/sources.list.d/deb.kaliko.me.list > /dev/null
                 
                 elif [ "${OS_bit}" = "32" ]; then
-                        sudo echo "deb [signed-by=/usr/share/keyrings/deb.kaliko.me.gpg] https://deb.kaliko.me/raspios-backports/ ${RELEASE}-backports main" \
-                        | sudo tee /etc/apt/sources.list.d/deb.kaliko.me.list > /dev/null
+                        sudo echo "deb [signed-by=/usr/share/keyrings/deb.kaliko.me.gpg] https://deb.kaliko.me/raspios-backports/ ${RELEASE}-backports main" | \
+                        sudo tee /etc/apt/sources.list.d/deb.kaliko.me.list > /dev/null
                 fi
 
 	sudo apt update -q 2>/dev/null 1>/dev/null
