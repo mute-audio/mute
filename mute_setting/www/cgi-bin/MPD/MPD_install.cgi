@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # MPD_install.cgi                                  #
-# (C)2022 kitamura_design <kitamura_design@me.com> #
+# (C)2024 kitamura_design <kitamura_design@me.com> #
 
 PKG=$(echo ${QUERY_STRING} | cut -d '=' -f 2 | sed -e 's/+/\ /g' | nkf -Ww --url-input)
 query=$(date +%Y%m%d%I%M%S)
-RELEASE=$(lsb_release -sc)
+RELEASE=$(lsb_release -sc 2>/dev/null)
 
 # sudo apt update -qq 2>/dev/null 1>/dev/null
 # sudo apt clean 2>/dev/null 1>/dev/null
@@ -91,12 +91,25 @@ elif  [ "$PKG" = "MPD Official ( Backports version )" ]; then
           sudo wget -O /usr/share/keyrings/deb.kaliko.me.gpg https://media.kaliko.me/kaliko.gpg
 
         ## OS bit check
-          OS_bit=$(uname -m)
+         # OS_bit=$(uname -m)
+          OS_bit=$(getconf LONG_BIT)
 
-                if [ "${OS_bit}" = "aarch64" ]; then
-                        sudo echo "deb [signed-by=/usr/share/keyrings/deb.kaliko.me.gpg] https://deb.kaliko.me/debian-backports/ ${RELEASE}-backports main" | sudo tee /etc/apt/sources.list.d/deb.kaliko.me.list > /dev/null
-                else
-                        sudo echo "deb [signed-by=/usr/share/keyrings/deb.kaliko.me.gpg] https://deb.kaliko.me/raspios-backports/ ${RELEASE}-backports main" | sudo tee /etc/apt/sources.list.d/deb.kaliko.me.list > /dev/null
+
+         #       if [ "${OS_bit}" = "aarch64" ]; then
+         #               sudo echo "deb [signed-by=/usr/share/keyrings/deb.kaliko.me.gpg] https://deb.kaliko.me/debian-backports/ ${RELEASE}-backports main" \
+                        | sudo tee /etc/apt/sources.list.d/deb.kaliko.me.list > /dev/null
+         #       else
+         #               sudo echo "deb [signed-by=/usr/share/keyrings/deb.kaliko.me.gpg] https://deb.kaliko.me/raspios-backports/ ${RELEASE}-backports main" \
+                        | sudo tee /etc/apt/sources.list.d/deb.kaliko.me.list > /dev/null
+         #       fi
+
+                if [ "${OS_bit}" = "64" ]; then
+                        sudo echo "deb [signed-by=/usr/share/keyrings/deb.kaliko.me.gpg] https://deb.kaliko.me/debian-backports/ ${RELEASE}-backports main" \
+                        | sudo tee /etc/apt/sources.list.d/deb.kaliko.me.list > /dev/null
+                
+                elif [ "${OS_bit}" = "32" ]; then
+                        sudo echo "deb [signed-by=/usr/share/keyrings/deb.kaliko.me.gpg] https://deb.kaliko.me/raspios-backports/ ${RELEASE}-backports main" \
+                        | sudo tee /etc/apt/sources.list.d/deb.kaliko.me.list > /dev/null
                 fi
 
 	sudo apt update -q 2>/dev/null 1>/dev/null

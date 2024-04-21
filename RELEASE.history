@@ -1,8 +1,8 @@
 Ver_1.10.2(WIP)
 - Bugfix: Update script for Update badge
+- Bugfix: MPD-backports fails installation when using 32bit OS on RaspberryPi4
 
 ToDo
-* MPD-backports fails installation when using 32-bit OS on RaspberryPi4
 * Improve: Dark mode/light mode switching operation
 * Improve: Real-time indication of installation and update progress
 * MPD DB update Auto-refresh
