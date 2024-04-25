@@ -3,6 +3,7 @@ Ver_1.10.2(WIP)
 - Bugfix: MPD-backports fails installation when using 32bit OS on RaspberryPi4
 
 ToDo
+* mpd upgrade not working
 * Improve: Dark mode/light mode switching operation
 * Improve: Real-time indication of installation and update progress
 * MPD DB update Auto-refresh
