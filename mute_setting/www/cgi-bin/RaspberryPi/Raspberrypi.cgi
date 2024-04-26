@@ -398,8 +398,9 @@ cat <<HTML
 		// Notification badge checker for RaspberryPi tab
            function setRPiBadge() {
                 const RPiBadge = parent.document.querySelector('#RaspberrypiBadge');
+                const URL_rpi = '/cgi-bin/log/reboot_required.log' + '?' + Date.now();
 
-                fetch("/cgi-bin/log/reboot_required.log")
+                fetch(URL_rpi)
                 .then(response => {
                     if( !response.ok ){
                     RPiBadge.style.display = 'none';
