@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## [ mute ] DAC list generator shell
-## (C)2023 kitamura_design <kitamura_design@me.com>
+## (C)2024 kitamura_design <kitamura_design@me.com>
 
 
 ## Extract the Info line containing "audio", "sound", "music", "DAC", 
@@ -11,7 +11,7 @@
 OS_codename=$(lsb_release -a |  grep Codename | cut -f 2)
 
 if [ ${OS_codename} = "bookworm" ]; then
-   bootDIR="${bootDIR}"
+   bootDIR="boot/firmware"
 else
    bootDIR="boot"
 fi
