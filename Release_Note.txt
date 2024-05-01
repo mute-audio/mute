@@ -1,13 +1,13 @@
-1.10.1
+1.10.2
 
-ver=1.10.1
+ver=1.10.2
 
 主な変更点
-- Update: Change of version notification method
-- Bugfix: Progress bar animation for Mozilla & Chrome
-- Bugfix: WebUI: main-view flickering on Safari
+- Bugfix: Update script for Update badge/ RaspberryPi badge
+- Bugfix: MPD-backports fails installation when using 32bit OS on RaspberryPi4
+- Update: DAC list for Kernel 6.6.28
 
-- バージョン通知方法を変更
-- Mozilla & Chromeでのプログレスバーアニメーションを修正
-- Safariでメイン画面がちらつくのを修正
+- Updateバッジ/RaspberryPiバッジのスクリプトの修正
+- RaspberryPi4 で 32bit OS を使用している場合、MPD-backports のインストールに失敗する問題を修正
+- カーネル 6.6.28 用 DACリストに更新
 以上
