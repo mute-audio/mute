@@ -1,4 +1,4 @@
-Ver_1.10.2(WIP)
+Ver_1.10.2(2024/5/01)
 - Bugfix: Update script for Update badge/ RaspberryPi badge
 - Bugfix: MPD-backports fails installation when using 32bit OS on RaspberryPi4
 - Update: DAC list for Kernel 6.6.28
