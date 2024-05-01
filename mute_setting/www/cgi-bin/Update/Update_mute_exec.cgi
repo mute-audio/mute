@@ -7,7 +7,7 @@
 
 muteUPD_URL=$(\
 sudo wget --no-check-certificate -q -O - \
-"https://raw.githubusercontent.com/mute-audio/mute/main/packages/package.info" \
+"https://raw.githubusercontent.com/mute-audio/mute/main/packages/package.info" | \
 grep "url=" | \
 cut -d "=" -f 2 \
 )
