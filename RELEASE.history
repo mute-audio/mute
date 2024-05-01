@@ -1,9 +1,10 @@
 Ver_1.10.2(WIP)
-- Bugfix: Update script for Update badge
+- Bugfix: Update script for Update badge/ RaspberryPi badge
 - Bugfix: MPD-backports fails installation when using 32bit OS on RaspberryPi4
+- Update: DAC list for Kernel 6.6.28
 
 ToDo
-* mpd upgrade not working
+* mpd upgrade for mpd-backports not working
 * Improve: Dark mode/light mode switching operation
 * Improve: Real-time indication of installation and update progress
 * MPD DB update Auto-refresh
