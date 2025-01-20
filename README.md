@@ -3,7 +3,7 @@
 ![Static Badge](https://img.shields.io/badge/-RaspberryPi-A22846?logo=raspberrypi&logoColor=white)
  ![Static Badge](https://img.shields.io/badge/-Raspi_Audio-red) ![Static Badge](https://img.shields.io/badge/-MPD-brightgreen)
  ![Static Badge](https://img.shields.io/badge/GNU_Bash-4EAA25?logo=gnubash&logoColor=white) ![Static Badge](https://img.shields.io/badge/-CSS-1572B6?logo=css3&logoColor=white) ![Static Badge](https://img.shields.io/badge/-HTML-E34F26?logo=html5&logoColor=white) ![Static Badge](https://img.shields.io/badge/license-MIT-blue) 
-
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/B0B019ARF5)
 
 ## Simple Raspi-Audio / MPD Dashboard
 [ mute ] is a simple dashboard program for setting up a "RaspberryPi Audio Player" using [MPD (Music Player Daemon)](https://github.com/MusicPlayerDaemon/MPD) and a RaspberryPi.
