@@ -65,4 +65,4 @@ For more information, visit [ mute ] site [(https://kitamura-design.format.com/m
 
 ©2025 kitamura_design
 
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/B0B019ARF5)
+[![ko-fi](https://ko-fi.com/img/githubbutton_dark.svg)](https://ko-fi.com/B0B019ARF5)
