@@ -44,7 +44,7 @@ HTML
 
 	listDIR=$(ls "${destDIR}" 2>/dev/null) #Set PlaylistFile Array
 
-	if [ -z $listDIR ]; then
+	if [ -z "$listDIR" ]; then
 
         cat <<HTML
         <div id="no_list">

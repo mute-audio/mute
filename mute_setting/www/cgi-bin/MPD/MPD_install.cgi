@@ -7,13 +7,9 @@ PKG=$(echo ${QUERY_STRING} | cut -d '=' -f 2 | sed -e 's/+/\ /g' | nkf -Ww --url
 query=$(date +%Y%m%d%I%M%S)
 RELEASE=$(lsb_release -sc 2>/dev/null)
 
-# sudo apt update -qq 2>/dev/null 1>/dev/null
-# sudo apt clean 2>/dev/null 1>/dev/null
-# sudo apt autoremove -y -q 2>/dev/null 1>/dev/null
-
 if [ "$PKG" = "Debian Official ( Stable version )" ]; then
 
-        # install Debian Official
+        ## install Debian Official
 	sudo apt -o Acquire::Retries=5 install -y --no-install-recommends mpd 2>/dev/null 1>/dev/null
 
 	if [ $? != 0 ]; then
@@ -22,24 +18,14 @@ if [ "$PKG" = "Debian Official ( Stable version )" ]; then
 	exit 1
 	fi
 
-        ## MPD install check
-        ## If the mpd installation status is [installed,local],
-        ## reinstall mpd so that automatic updates are enabled.
-
-        mpd_Install_CHK=$(sudo apt -a -qq list mpd 2>/dev/null | grep --only-matching "installed,local")
-
-        if [ -n "$mpd_Install_CHK" ]; then
-            sudo apt install --reinstall -y mpd 2>/dev/null
-        fi
-
-        # replace original mpd.conf to mute mpd.conf
+        ## replace original mpd.conf to mute mpd.conf
         sudo cp /etc/mpd.conf /var/www/cgi-bin/etc/mpd.conf.bkup
         sudo chmod 755 /var/www/cgi-bin/etc/mpd.conf.bkup
         sudo cp /var/www/cgi-bin/etc/mpd.conf.mute /etc/mpd.conf
 
 	set +e
 
-	# Check NAS already mounted or not
+	## Check NAS already mounted or not
         NAS_count=$(df -ah | grep /mnt.* | wc -l) # Check Multiple NAS Mounted
 
         if [ $NAS_count != 0 ]; then
@@ -91,26 +77,19 @@ elif  [ "$PKG" = "MPD Official ( Backports version )" ]; then
           sudo wget -O /usr/share/keyrings/deb.kaliko.me.gpg https://media.kaliko.me/kaliko.gpg
 
         ## OS bit check
-         # OS_bit=$(uname -m)
           OS_bit=$(getconf LONG_BIT)
 
+        ## Repo settting
+          if [ "${OS_bit}" = "64" ]; then
+                sudo echo "deb [signed-by=/usr/share/keyrings/deb.kaliko.me.gpg] https://deb.kaliko.me/debian-backports/ ${RELEASE}-backports main" | \
+                sudo tee /etc/apt/sources.list.d/deb.kaliko.me.list > /dev/null
+                sudo cp var/www/cgi-bin/etc/90-mpd-kaliko-backports /etc/apt/preferences.d/90-mpd-kaliko-backports
 
-         #       if [ "${OS_bit}" = "aarch64" ]; then
-         #               sudo echo "deb [signed-by=/usr/share/keyrings/deb.kaliko.me.gpg] https://deb.kaliko.me/debian-backports/ ${RELEASE}-backports main" \
-         #               | sudo tee /etc/apt/sources.list.d/deb.kaliko.me.list > /dev/null
-         #       else
-         #               sudo echo "deb [signed-by=/usr/share/keyrings/deb.kaliko.me.gpg] https://deb.kaliko.me/raspios-backports/ ${RELEASE}-backports main" \
-         #               | sudo tee /etc/apt/sources.list.d/deb.kaliko.me.list > /dev/null
-         #       fi
-
-                if [ "${OS_bit}" = "64" ]; then
-                        sudo echo "deb [signed-by=/usr/share/keyrings/deb.kaliko.me.gpg] https://deb.kaliko.me/debian-backports/ ${RELEASE}-backports main" | \
-                        sudo tee /etc/apt/sources.list.d/deb.kaliko.me.list > /dev/null
-                
-                elif [ "${OS_bit}" = "32" ]; then
-                        sudo echo "deb [signed-by=/usr/share/keyrings/deb.kaliko.me.gpg] https://deb.kaliko.me/raspios-backports/ ${RELEASE}-backports main" | \
-                        sudo tee /etc/apt/sources.list.d/deb.kaliko.me.list > /dev/null
-                fi
+          elif [ "${OS_bit}" = "32" ]; then
+                sudo echo "deb [signed-by=/usr/share/keyrings/deb.kaliko.me.gpg] https://deb.kaliko.me/raspios-backports/ ${RELEASE}-backports main" | \
+                sudo tee /etc/apt/sources.list.d/deb.kaliko.me.list > /dev/null
+                sudo cp var/www/cgi-bin/etc/90-mpd-kaliko-backports /etc/apt/preferences.d/90-mpd-kaliko-backports
+          fi
 
 	sudo apt update -q 2>/dev/null 1>/dev/null
 
@@ -122,24 +101,14 @@ elif  [ "$PKG" = "MPD Official ( Backports version )" ]; then
         exit 1
         fi
 
-        ## MPD install check
-        ## If the mpd installation status is [installed,local],
-        ## reinstall mpd so that automatic updates are enabled.
-
-        mpd_Install_CHK=$(sudo apt -a -qq list mpd 2>/dev/null | grep --only-matching "installed,local")
-
-        if [ -n "$mpd_Install_CHK" ]; then
-            sudo apt install --reinstall -y mpd/${RELEASE}-backports 2>/dev/null 1>/dev/null
-        fi
-
-        #replace original mpd.conf to mute mpd.conf
+        ## replace original mpd.conf to mute mpd.conf
         sudo cp /etc/mpd.conf /var/www/cgi-bin/etc/mpd.conf.bkup
         sudo chmod 755 /var/www/cgi-bin/etc/mpd.conf.bkup
         sudo cp /var/www/cgi-bin/etc/mpd.conf.mute /etc/mpd.conf
 
         set +e
 
-        # Check NAS already mounted or not
+        ## Check NAS already mounted or not
         NAS_count=$(df -ah | grep /mnt.* | wc -l) # Check Multiple NAS Mounted
 
         if [ $NAS_count != 0 ]; then
@@ -191,3 +160,5 @@ else
 	echo ''
 
 fi
+
+exit 0

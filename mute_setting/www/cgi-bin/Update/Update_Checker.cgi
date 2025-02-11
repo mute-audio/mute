@@ -15,22 +15,21 @@ if [ "$volume" = "http:" ] || [ "$volume" = "https:" ]; then
 fi
 
 ######## [ mute ] Update Check
+URL="https://raw.githubusercontent.com/mute-audio/mute/main/packages/package.info"
+pkg_INFO=$(sudo wget --no-check-certificate -q -O - ${URL})
+pkg_VER=$(echo "$pkg_INFO" | grep 'ver=' | sed -e 's/ver=/Ver./g' -e 's/$/<br>/')
+pkg_DTL=$(echo "$pkg_INFO" | sed -n '/info:/,$p' | sed '1d' | sed -e 's/$/<br>/')
 
-ver_UPDATE=$(\
-sudo wget --no-check-certificate -q -O - \
-"https://raw.githubusercontent.com/mute-audio/mute/main/packages/package.info" \
-| grep "ver=" | sed -e 's/[^0-9]//g'\
-)
+chk_UPDATE=$(echo "$pkg_INFO" | grep "ver=" | sed -e 's/[^0-9]//g')
+chk_CURRENT=$(grep "ver=" /var/www/cgi-bin/etc/mute.conf | sed -e 's/[^0-9]//g')
 
-ver_CURRENT=$(\
-grep "ver=" /var/www/cgi-bin/etc/mute.conf \
-    | sed -e 's/[^0-9]//g'\
-)
+if [[ "$chk_UPDATE" -gt "$chk_CURRENT" ]]; then
 
-if [[ "$ver_UPDATE" -gt "$ver_CURRENT" ]]; then
-
-    echo "[ mute ] Update available" | sudo tee /var/www/cgi-bin/Update/Update_mute_notice.txt > /dev/null
-
+#   echo "[ mute ] Update available" | sudo tee /var/www/cgi-bin/Update/Update_mute_notice.txt > /dev/null
+    echo "[ mute ] Update available.<br>" | sudo tee /var/www/cgi-bin/Update/Update_mute_notice.txt > /dev/null
+    echo "<br>" | sudo tee /var/www/cgi-bin/Update/Update_mute_notice.txt > /dev/null
+    echo "$pkg_VER" | sudo tee -a /var/www/cgi-bin/Update/Update_mute_notice.txt > /dev/null
+    echo "$pkg_DTL" | sudo tee -a /var/www/cgi-bin/Update/Update_mute_notice.txt > /dev/null
 fi
 
 ####### MPD Update Check

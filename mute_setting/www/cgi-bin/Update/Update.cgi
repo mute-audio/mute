@@ -79,6 +79,7 @@ HTML
 
 ######## [ mute ] Update
 
+current_VER_mute=$(grep ver /var/www/cgi-bin/etc/mute.conf | cut -d "=" -f 2)
 stsUPDmute=$(cat /var/www/cgi-bin/Update/Update_mute_notice.txt)
 lastUPDmute=$(sudo sed -n '$p' /var/www/cgi-bin/log/update_mute.log)
 
@@ -93,7 +94,8 @@ lastUPDmute=$(sudo sed -n '$p' /var/www/cgi-bin/log/update_mute.log)
         </div>
 
         <h4>
-          Last Updated : ${lastUPDmute:- Not updated yet}</br>
+          Ver.${current_VER_mute}<br>
+          Last Updated : ${lastUPDmute:- Not updated yet}<br>
           ${stsUPDmute}.
         </h4>
 
@@ -115,8 +117,9 @@ HTML
         </div>
 
         <h4>
-          Last Updated : ${lastUPDmute:- Not updated yet}</br>
-          ${stsUPDmute}.
+          Ver.${current_VER_mute}<br>
+          Last Updated : ${lastUPDmute:- Not updated yet}<br>
+          ${stsUPDmute}
         </h4>
 
         <div hidden id="stsUPDmute">${stsUPDmute}</div>
@@ -145,7 +148,7 @@ HTML
           </div>
 
           <h4>
-            New Package Found : ${newPKG}</br>
+            New Package Found : ${newPKG}<br>
           </h4>
         </div>
 
@@ -194,8 +197,8 @@ HTML
     fi
         cat <<HTML
         <h4>
-          Kernel Ver. : ${kernelNAME} ${kernelR}</br>
-          Last Updated : ${lastUPD:- Not updated yet}</br>
+          Kernel Ver. : ${kernelNAME} ${kernelR}<br>
+          Last Updated : ${lastUPD:- Not updated yet}<br>
           ${stsUPD}
         </h4>
 

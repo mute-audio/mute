@@ -1,24 +1,29 @@
-Ver_1.10.2(2024/5/01)
-- Bugfix: Update script for Update badge/ RaspberryPi badge
-- Bugfix: MPD-backports fails installation when using 32bit OS on RaspberryPi4
-- Update: DAC list for Kernel 6.6.28
+Ver_1.10.3(2025/MM/DD)
+- Bugfix: mpd upgrade for mpd-backports not working/ Update Tab
+- Bugfix: Fixed Minor bug/ WebRadio Tab
+- Revised: Icon & Favicon design
+- Revised: Display of mute update information/ Update Tab
 
 ToDo
-* mpd upgrade for mpd-backports not working
+* Display of Update Not Allowed During Web Stream Playback
 * Improve: Dark mode/light mode switching operation
 * Improve: Real-time indication of installation and update progress
 * MPD DB update Auto-refresh
-* Display of update details / Update Tab
-* Display of Update Not Allowed During Web Stream Playback
 
 * HiFi Setting: force_turbo=1 (max cpu clock) option
 * HiFi Setting: CPU clock control option
 * HiFi Setting: USB Unbind option
 * HiFi Setting: Bluetooth Unbind option
 * Coverart Server [alfa-release]
+* "Now Playing" post for Bluesky
 
-P Network Status-ICON (WiFi/LAN)
-P CPU Temp Status-ICON
+Pending: Network Status-ICON (WiFi/LAN)
+Pending: CPU Temp Status-ICON
+
+Ver_1.10.2(2024/5/01)
+- Bugfix: Update script for Update badge/ RaspberryPi badge
+- Bugfix: MPD-backports fails installation when using 32bit OS on RaspberryPi4
+- Update: DAC list for Kernel 6.6.28
 
 Ver_1.10.1 (2024/4/14)
 - Update: Change of version notification method
