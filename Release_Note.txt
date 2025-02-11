@@ -1,13 +1,16 @@
-1.10.2
+1.10.3
 
-ver=1.10.2
+ver=1.10.3
 
 主な変更点
-- Bugfix: Update script for Update badge/ RaspberryPi badge
-- Bugfix: MPD-backports fails installation when using 32bit OS on RaspberryPi4
-- Update: DAC list for Kernel 6.6.28
+- Bugfix: mpd upgrade for mpd-backports not working/ Update Tab
+- Bugfix: Fixed Minor bug/ WebRadio Tab
+- Revised: Icon & Favicon design
+- Revised: Display of mute update information/ Update Tab
 
-- Updateバッジ/RaspberryPiバッジのスクリプトの修正
-- RaspberryPi4 で 32bit OS を使用している場合、MPD-backports のインストールに失敗する問題を修正
-- カーネル 6.6.28 用 DACリストに更新
+- mpd-backportsのアップデートができない問題を修正
+- WebRadio Tabのバグ修正
+- アプリアイコン、ファビコンのデザインを変更
+- muteアップデート情報の追加
+
 以上

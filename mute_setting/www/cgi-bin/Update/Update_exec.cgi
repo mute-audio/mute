@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Update_exec.cgi		                               #
-# (C)2022 kitamura_design <kitamura_design@me.com> #
+# (C)2025 kitamura_design <kitamura_design@me.com> #
 
 ## Do Update by apt
 # sudo apt -o Acquire::Retries=3 -y -qq full-upgrade 2>/dev/null 1>/dev/null

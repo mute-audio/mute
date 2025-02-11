@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # about_mute.cgi                                        #
-# (C)2024 kitamura_design <kitamura_design@me.com>      #
+# (C)2025 kitamura_design <kitamura_design@me.com>      #
 
 VER=$(grep ver /var/www/cgi-bin/etc/mute.conf | cut -d "=" -f 2)
 #install_log=$(sudo cat /var/www/cgi-bin/log/install.log | sed -e "s/$/<br>/g")
@@ -135,7 +135,7 @@ Content-type: text/html; charset=utf-8
          <h2>License</h2>
          <p class="bodytext2">
          <br>
-         [ mute ] ©2024 Yoichi KITAMURA / <a href="https://kitamura-design.format.com" target="_blank">kitamura_design</a>
+         [ mute ] ©2025 Yoichi KITAMURA / <a href="https://kitamura-design.format.com" target="_blank">kitamura_design</a>
          <br>
          <br>
          Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 

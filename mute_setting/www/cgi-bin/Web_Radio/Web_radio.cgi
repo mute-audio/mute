@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Web_radio.cgi                                 #
-# (C)2024 kitamura_design <kitamura_design@me.com> #
+# (C)2025 kitamura_design <kitamura_design@me.com> #
 
 destDIR="/var/lib/mpd/music/Web_Radio"
 
