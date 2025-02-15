@@ -2,12 +2,13 @@
 
 ver=1.10.3
 
-主な変更点
+Major Changes
 - Bugfix: mpd upgrade for mpd-backports not working/ Update Tab
 - Bugfix: Fixed Minor bug/ WebRadio Tab
 - Revised: Icon & Favicon design
 - Revised: Display of mute update information/ Update Tab
 
+主な変更点
 - mpd-backportsのアップデートができない問題を修正
 - WebRadio Tabのバグ修正
 - アプリアイコン、ファビコンのデザインを変更

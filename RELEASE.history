@@ -17,9 +17,6 @@ ToDo
 * Coverart Server [alfa-release]
 * "Now Playing" post for Bluesky
 
-Pending: Network Status-ICON (WiFi/LAN)
-Pending: CPU Temp Status-ICON
-
 Ver_1.10.2(2024/5/01)
 - Bugfix: Update script for Update badge/ RaspberryPi badge
 - Bugfix: MPD-backports fails installation when using 32bit OS on RaspberryPi4
