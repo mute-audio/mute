@@ -1,10 +1,7 @@
-Ver_1.10.3(2025/02/11)
-- Bugfix: mpd upgrade for mpd-backports not working/ Update Tab
-- Bugfix: Fixed Minor bug/ WebRadio Tab
-- Revised: Icon & Favicon design
-- Revised: Display of mute update information/ Update Tab
+Ver_1.1X.X(YYYY/MM/DD)
 
 ToDo
+* Bugfix: Update_Checker may show incorrect notification
 * Display of Update Not Allowed During Web Stream Playback
 * Improve: Dark mode/light mode switching operation
 * Improve: Real-time indication of installation and update progress
@@ -14,8 +11,17 @@ ToDo
 * HiFi Setting: CPU clock control option
 * HiFi Setting: USB Unbind option
 * HiFi Setting: Bluetooth Unbind option
+* HiFi Setting: Kill triggerhappy
+* HiFi Setting: Kill Modem Manager
+
 * Coverart Server [alfa-release]
 * "Now Playing" post for Bluesky
+
+Ver_1.10.3(2025/02/11)
+- Bugfix: mpd upgrade for mpd-backports not working/ Update Tab
+- Bugfix: Fixed Minor bug/ WebRadio Tab
+- Revised: Icon & Favicon design
+- Revised: Display of mute update information/ Update Tab
 
 Ver_1.10.2(2024/5/01)
 - Bugfix: Update script for Update badge/ RaspberryPi badge
