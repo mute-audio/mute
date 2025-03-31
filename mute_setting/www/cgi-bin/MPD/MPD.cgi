@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # MPD.cgi                                          #
-# (C)2022 kitamura_design <kitamura_design@me.com> #
+# (C)2025 kitamura_design <kitamura_design@me.com> #
 
 #### General options Status @/etc/mpd.conf
  bindADD=$(sudo grep bind_to_address /etc/mpd.conf | sed -n 1p | cut -d "\"" -f 2 | cut -d "\"" -f 1)
