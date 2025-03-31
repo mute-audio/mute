@@ -642,7 +642,7 @@ HTML
 HTML
 
 ######  Plugin Selector Toggle SW
-DECODER=$(sed -n /Decoders\ plugins/,/Filters/p /var/www/cgi-bin/MPD/MPD_conf/temp/mpd_v.txt | egrep  --only-matching '\[.+\]' | cut -d "[" -f 2 | cut -d "]" -f 1)
+DECODER=$(sed -n /Decoder\ plugins/,/Filters/p /var/www/cgi-bin/MPD/MPD_conf/temp/mpd_v.txt | egrep  --only-matching '\[.+\]' | cut -d "[" -f 2 | cut -d "]" -f 1)
 
           cat <<HTML
           <div>
