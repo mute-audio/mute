@@ -240,7 +240,7 @@ NKF_INFO3=$(nkf -v | sed -n 3p)
 
 cat <<HTML
          <br>
-         <h3><a href="https://ja.osdn.net/projects/nkf/" target="_blank">nkf - Network Kanji Filter</a></h3>
+         <h3><a href="https://github.com/nurse/nkf?tab=readme-ov-file#name" target="_blank">nkf - Network Kanji Filter</a></h3>
          <p class="bodytext2">
          ${NKF_INFO1}<br>
 	 ${NKF_INFO2}<br>

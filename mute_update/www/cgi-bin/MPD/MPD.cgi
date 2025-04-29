@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # MPD.cgi                                          #
-# (C)2022 kitamura_design <kitamura_design@me.com> #
+# (C)2025 kitamura_design <kitamura_design@me.com> #
 
 #### General options Status @/etc/mpd.conf
  bindADD=$(sudo grep bind_to_address /etc/mpd.conf | sed -n 1p | cut -d "\"" -f 2 | cut -d "\"" -f 1)
@@ -579,7 +579,7 @@ HTML
             <label>HTTP Server</label>
           </div>
 
-          <!-- HTTP Server Setting form -->          
+          <!-- HTTP Server Setting form -->
           <div>
           <form method=GET action="/cgi-bin/MPD/MPD_conf/httpd_conf_processing.cgi" target="_self">
 
@@ -642,7 +642,7 @@ HTML
 HTML
 
 ######  Plugin Selector Toggle SW
-DECODER=$(sed -n /Decoders\ plugins/,/Filters/p /var/www/cgi-bin/MPD/MPD_conf/temp/mpd_v.txt | egrep  --only-matching '\[.+\]' | cut -d "[" -f 2 | cut -d "]" -f 1)
+DECODER=$(sed -n /Decoders*\ plugins/,/Filters/p /var/www/cgi-bin/MPD/MPD_conf/temp/mpd_v.txt | egrep  --only-matching '\[.+\]' | cut -d "[" -f 2 | cut -d "]" -f 1)
 
           cat <<HTML
           <div>

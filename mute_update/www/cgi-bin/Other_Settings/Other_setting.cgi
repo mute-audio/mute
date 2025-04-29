@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # other_setting_host.cgi                           #
-# (C)2023 kitamura_design <kitamura_design@me.com> #
+# (C)2025 kitamura_design <kitamura_design@me.com> #
 
 # Get infomations
 # mpdscribble
@@ -242,7 +242,7 @@ HTML
             <a id="SoundOFFbtn" href="/cgi-bin/Other_Settings/StartUpSound_switching.cgi?other_setting_host.cgi" onclick="toggleOff()" target="_self" class="toggle-on-sw"> Enabled </a>
             <div class="toggle-on-wrap"><div id="tgl-on" class="toggle-on-mark"></div></div>
             </div><input class="inputbox-single-invisible" value="off/any  " readonly="">
-            <label>System Startup Sound</label>
+            <label>System Start-up Sound</label>
         </div>
 HTML
       else
@@ -253,7 +253,7 @@ HTML
             <div class="toggle-off-wrap"><div id="tgl-off" class="toggle-off-mark"></div></div>
             <a id="SoundONbtn" href="/cgi-bin/Other_Settings/StartUpSound_switching.cgi?other_setting_host.cgi" onclick="toggleOn()" target="_self" class="toggle-off-sw"> Disabled </a>
             </div><input class="inputbox-single-invisible" value="off/any  " readonly="">
-            <label>System Startup Sound</label>
+            <label>System Start-up Sound</label>
         </div>
 HTML
       fi

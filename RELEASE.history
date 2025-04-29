@@ -1,11 +1,14 @@
-Ver_1.1X.X(YYYY/MM/DD)
+Ver_1.11.0(2025/04/29)
+- Support for MPD 0.24
+- Bugfix: Problem with Decoder Plugin not displaying on MPD 0.24/ MPD Tab
+- Bugfix: Update_Checker may show incorrect notification
+- Bugfix: Broken nkf Link fixed
+- Improve: Display caution of Update checking canceled during Web streaming
 
 ToDo
-* Bugfix: Update_Checker may show incorrect notification
-* Display of Update Not Allowed During Web Stream Playback
-* Improve: Dark mode/light mode switching operation
 * Improve: Real-time indication of installation and update progress
-* MPD DB update Auto-refresh
+* Improve: MPD DB update Auto-refresh
+* Add: About mute: Dependencies lists: Palanquin Light: UI Font
 
 * HiFi Setting: force_turbo=1 (max cpu clock) option
 * HiFi Setting: CPU clock control option
@@ -16,6 +19,7 @@ ToDo
 
 * Coverart Server [alfa-release]
 * "Now Playing" post for Bluesky
+* PWA/HTTPS -enabled
 
 Ver_1.10.3(2025/02/11)
 - Bugfix: mpd upgrade for mpd-backports not working/ Update Tab
