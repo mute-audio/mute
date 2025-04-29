@@ -26,7 +26,7 @@ chk_CURRENT=$(grep "ver=" /var/www/cgi-bin/etc/mute.conf | sed -e 's/[^0-9]//g')
 if [[ "$chk_UPDATE" -gt "$chk_CURRENT" ]]; then
 
     echo "[ mute ] Update available.<br>" | sudo tee /var/www/cgi-bin/Update/Update_mute_notice.txt > /dev/null
-    echo "<br>" | sudo tee /var/www/cgi-bin/Update/Update_mute_notice.txt > /dev/null
+    echo "<br>" | sudo -a tee /var/www/cgi-bin/Update/Update_mute_notice.txt > /dev/null
     echo "$pkg_VER" | sudo tee -a /var/www/cgi-bin/Update/Update_mute_notice.txt > /dev/null
     echo "$pkg_DTL" | sudo tee -a /var/www/cgi-bin/Update/Update_mute_notice.txt > /dev/null
 
