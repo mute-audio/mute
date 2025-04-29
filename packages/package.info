@@ -1,2 +1,8 @@
 ver=1.11.0
 url=https://github.com/mute-audio/mute/releases/download/v1.11.0/mute_update_1110.zip
+info:
+- Support for MPD 0.24
+- Bugfix: Problem with Decoder Plugin not displaying on MPD 0.24/ MPD Tab
+- Bugfix: Update_Checker may show incorrect notification
+- Bugfix: Broken nkf Link fixed
+- Improve: Display caution of Update checking canceled during Web streaming
