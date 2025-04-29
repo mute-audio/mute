@@ -4,6 +4,7 @@ ver=1.11.0
 
 Major Changes
 - Support for MPD 0.24
+- Improve: Show [mute] Update Information
 - Bugfix: Problem with Decoder Plugin not displaying on MPD 0.24/ MPD Tab
 - Bugfix: Update_Checker may show incorrect notification
 - Bugfix: Broken nkf Link fixed on Dependencies/ About [mute] Tab
@@ -11,6 +12,7 @@ Major Changes
 
 主な変更点
 - MPD 0.24に対応
+- [mute]アップデート情報を表示
 - MPD 0.24 MPDタブでDecoder Pluginが表示されない問題の修正
 - Update_Checkerが間違った通知を表示することがある点を修正
 - About [mute]タブでDependenciesのnkfリンクの修正

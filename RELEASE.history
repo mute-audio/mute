@@ -1,5 +1,6 @@
 Ver_1.11.0(2025/04/29)
 - Support for MPD 0.24
+- Improve: Show [mute] Update Information
 - Bugfix: Problem with Decoder Plugin not displaying on MPD 0.24/ MPD Tab
 - Bugfix: Update_Checker may show incorrect notification
 - Bugfix: Broken nkf Link fixed
