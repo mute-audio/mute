@@ -83,12 +83,12 @@ elif  [ "$PKG" = "MPD Official ( Backports version )" ]; then
           if [ "${OS_bit}" = "64" ]; then
                 sudo echo "deb [signed-by=/usr/share/keyrings/deb.kaliko.me.gpg] https://deb.kaliko.me/debian-backports/ ${RELEASE}-backports main" | \
                 sudo tee /etc/apt/sources.list.d/deb.kaliko.me.list > /dev/null
-                sudo cp var/www/cgi-bin/etc/90-mpd-kaliko-backports /etc/apt/preferences.d/90-mpd-kaliko-backports
+                sudo cp /var/www/cgi-bin/etc/90-mpd-kaliko-backports /etc/apt/preferences.d/90-mpd-kaliko-backports
 
           elif [ "${OS_bit}" = "32" ]; then
                 sudo echo "deb [signed-by=/usr/share/keyrings/deb.kaliko.me.gpg] https://deb.kaliko.me/raspios-backports/ ${RELEASE}-backports main" | \
                 sudo tee /etc/apt/sources.list.d/deb.kaliko.me.list > /dev/null
-                sudo cp var/www/cgi-bin/etc/90-mpd-kaliko-backports /etc/apt/preferences.d/90-mpd-kaliko-backports
+                sudo cp /var/www/cgi-bin/etc/90-mpd-kaliko-backports /etc/apt/preferences.d/90-mpd-kaliko-backports
           fi
 
 	sudo apt update -q 2>/dev/null 1>/dev/null
