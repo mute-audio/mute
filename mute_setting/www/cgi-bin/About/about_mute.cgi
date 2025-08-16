@@ -304,6 +304,16 @@ cat <<HTML
          <br>
          </p>
 
+        <br>
+         <h3><a href="https://fonts.google.com/specimen/Palanquin/about" target="_blank">Palanquin</a></h3>
+         <p class="bodytext2">
+         Palanquin is a Unicode-compliant Latin and Devanagari text type family designed for the digital age. 
+         The Devanagari is monolinear and was designed alongside the sans serif Latin.
+         <br>
+         Designed by Pria Ravichandran
+         <br>
+         </p>
+         
          <div class="separator"><hr></div>
 
   </body>
