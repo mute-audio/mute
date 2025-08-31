@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Country_processing.cgi	                       #
-# (C)2024 kitamura_design <kitamura_design@me.com> #
+# (C)2025 kitamura_design <kitamura_design@me.com> #
 
 query=$(date +%Y%m%d%I%M%S)
 
-COUNTRY=$(echo ${QUERY_STRING} | cut -d '&' -f 2 | nkf -Ww --url-input | cut -d '+' -f 1)
+COUNTRY=$(echo ${QUERY_STRING} | cut -d '=' -f 2 | nkf -Ww --url-input | cut -d '+' -f 1)
 
 #HTML
 echo "Content-type: text/html; charset=utf-8"

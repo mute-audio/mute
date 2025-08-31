@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Raspberrypi.cgi		        				   #
-# (C)2024 kitamura_design <kitamura_design@me.com> #
+# (C)2025 kitamura_design <kitamura_design@me.com> #
 
 #### HTML Header
 query=$(date +%Y%m%d%I%M%S)
@@ -239,7 +239,7 @@ HTML
 	#### WiFi Connection
 
 	# Check current OS Codename
-	OS_codename=$(lsb_release -a |  grep Codename | cut -f 2)
+	OS_codename=$(lsb_release -a | grep Codename | cut -f 2)
 
 	if [ ${OS_codename} = "buster" ] || [ ${OS_codename} = "bullseye" ]; then  # In case of Buster, Bullseye etc.
 
@@ -280,7 +280,8 @@ HTML
 	fi
 
 	#### WiFi Country
-	country=$(sudo grep country /etc/wpa_supplicant/wpa_supplicant.conf | cut -d '=' -f 2)
+#	country=$(sudo grep country /etc/wpa_supplicant/wpa_supplicant.conf | cut -d '=' -f 2)
+	country=$(sudo raspi-config nonint get_wifi_country)
 	country_STS=$(grep ${country} /usr/share/zoneinfo/iso3166.tab)
 	country_LIST=$(< /usr/share/zoneinfo/iso3166.tab sed -e /^#/d -e 's/^/<option>/g' -e 's/$/<\/option>/g')
 

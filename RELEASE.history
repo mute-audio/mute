@@ -1,15 +1,11 @@
-Ver_1.11.0(2025/04/29)
-- Support for MPD 0.24
-- Improve: Show [mute] Update Information
-- Bugfix: Problem with Decoder Plugin not displaying on MPD 0.24/ MPD Tab
-- Bugfix: Update_Checker may show incorrect notification
-- Bugfix: Broken nkf Link fixed
-- Improve: Display caution of Update checking canceled during Web streaming
+Ver_1.11.1(2025/08/31)
+- Bugfix: MPD-backports install process
+- BugFix: WiFi Settings: Country Setting/ RaspberryPi Tab
+- Add: About mute: Dependencies lists: Palanquin Light: UI Font/ About Tab
 
 ToDo
 * Improve: Real-time indication of installation and update progress
 * Improve: MPD DB update Auto-refresh
-* Add: About mute: Dependencies lists: Palanquin Light: UI Font
 
 * HiFi Setting: force_turbo=1 (max cpu clock) option
 * HiFi Setting: CPU clock control option
@@ -18,9 +14,18 @@ ToDo
 * HiFi Setting: Kill triggerhappy
 * HiFi Setting: Kill Modem Manager
 
+* Play-back Option: Auto-shuffle Mode: ashuffle implementation
 * Coverart Server [alfa-release]
 * "Now Playing" post for Bluesky
 * PWA/HTTPS -enabled
+
+Ver_1.11.0(2025/04/29)
+- Support for MPD 0.24
+- Improve: Show [mute] Update Information
+- Bugfix: Problem with Decoder Plugin not displaying on MPD 0.24/ MPD Tab
+- Bugfix: Update_Checker may show incorrect notification
+- Bugfix: Broken nkf Link fixed
+- Improve: Display caution of Update checking canceled during Web streaming
 
 Ver_1.10.3(2025/02/11)
 - Bugfix: mpd upgrade for mpd-backports not working/ Update Tab
