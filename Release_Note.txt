@@ -11,6 +11,5 @@ Major Changes
 - MPD-backportsのインストールプロセスを修正
 - RaspberryPiタブでWiFi設定時に国設定が表示されない問題を修正
 - About [mute]タブでDependenciesにPalanquin フォントを追加
-- ウェブストリーミング中にアップデートチェックがキャンセルされた場合の注意を表示
 
 以上
