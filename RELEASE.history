@@ -1,11 +1,9 @@
-Ver_1.11.1(2025/08/31)
-- Bugfix: MPD-backports install process
-- BugFix: WiFi Settings: Country Setting/ RaspberryPi Tab
-- Add: About mute: Dependencies lists: Palanquin Light: UI Font/ About Tab
-
 ToDo
-* Improve: Real-time indication of installation and update progress
-* Improve: MPD DB update Auto-refresh
+* Improve: Real-time indication of installation and update progress (Using with SSE)
+* Coverart Server [Only for "Cover.jpeg" of Local Library]
+* Revise WebRadio UI: Edit/ Delete/ Move on the List View
+* ALSA Mixer (alsamixer, amixer) setting UI
+* Play-back Option: Auto-shuffle Mode: ashuffle implementation
 
 * HiFi Setting: force_turbo=1 (max cpu clock) option
 * HiFi Setting: CPU clock control option
@@ -14,10 +12,13 @@ ToDo
 * HiFi Setting: Kill triggerhappy
 * HiFi Setting: Kill Modem Manager
 
-* Play-back Option: Auto-shuffle Mode: ashuffle implementation
-* Coverart Server [alfa-release]
-* "Now Playing" post for Bluesky
-* PWA/HTTPS -enabled
+* ETC: PWA/HTTPS -enabled
+* ETC: MPD DB update Auto-refresh
+
+Ver_1.11.1(2025/08/31)
+- Bugfix: MPD-backports install process
+- BugFix: WiFi Settings: Country Setting/ RaspberryPi Tab
+- Add: About mute: Dependencies lists: Palanquin Light: UI Font/ About Tab
 
 Ver_1.11.0(2025/04/29)
 - Support for MPD 0.24
