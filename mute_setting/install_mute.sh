@@ -24,7 +24,7 @@ echo '   m u t e    RPi-Audio/ MPD Dashboard'
 echo " +         +  ver.${VER}"
 echo ''
 echo " Installer shell for ver.${VER}"
-echo ' ©2023 kitamura_design <kitamura_design@me.com>'
+echo ' ©2024 kitamura_design <kitamura_design@me.com>'
 echo ''
 echo ' PROCEDURES'
 echo ''
