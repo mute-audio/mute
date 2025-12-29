@@ -257,7 +257,7 @@ if [ -e /usr/local/bin/getcover ]; then
 else
         echo ''
         echo " Installing getcover..."
-	sudo wget -q --no-check-cert https://www.openaudiolab.com/app/download/14111530129/getcover20181203.tar.gz
+	sudo wget -q --header="User-Agent:Safari/537.36" https://www.openaudiolab.com/app/download/14111530129/getcover20181203.tar.gz
         wait
 	sudo gunzip getcover20181203.tar.gz && sudo tar xvf getcover20181203.tar --no-same-owner
 	wait
