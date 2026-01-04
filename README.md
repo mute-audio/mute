@@ -35,10 +35,12 @@ Step 5 : Connect to RaspberryPi via SSH and type the installation command;
 ```
 cd /boot/firmware/mute_setting && ./install_mute.sh
 ```
+<!--
 Or in case of installing on a legacy OS;
 ```
 cd /boot/mute_setting && ./install_mute.sh
 ```
+-->
 Step 6 : Access RaspberryPi with a browser on PC or tablet
 
 ### Update [ mute ] 
