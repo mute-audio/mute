@@ -1,4 +1,6 @@
 ToDo
+* Trixie Support - lighttpd sudo issue
+* Change getcover install method - Build indsade the install_mute.sh
 * Improve: Real-time indication of installation and update progress (Using with SSE)
 * Coverart Server [Only for "Cover.jpeg" of Local Library]
 * Revise WebRadio UI: Edit/ Delete/ Move on the List View
