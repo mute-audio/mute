@@ -6,6 +6,41 @@
 #### HTML Header
 query=$(date +%Y%m%d%I%M%S)
 
+#### MainBoard status: CPU Model, Vendor, RAM, and Temp
+mainboard=$(grep Model /proc/cpuinfo | cut -d ":" -f 2 | sed -e 's/^ //g')
+TEMP=$(sudo vcgencmd measure_temp | cut -d "=" -f 2)
+CPUMax=$(sudo vcgencmd get_config int | grep arm_freq | cut -d "=" -f 2 | sed -n 1p)
+VNDR=$(sudo lscpu | grep Vendor | cut -d ":" -f 2 | cut -d " " -f 12)
+MDL=$(sudo lscpu | grep "Model name" | cut -d ":" -f 2 | sed -e 's/ //g')
+RAM=$(free --mega -t | grep Total: | sed -e 's/  */ /g' | cut -d " " -f2)
+
+######## RaspberryPi OS
+DISTRO=$(lsb_release -a 2>/dev/null | sed -n 2p | cut -d "(" -f 2 | cut -d ")" -f 1)
+kernelR=$(uname -r)
+kernelNAME=$(uname -s)
+
+######### Genaral Options: TimeZone
+TimezoneSTS=$(timedatectl show | grep Timezone | cut -d "=" -f 2)
+TimezoneLIST=$(timedatectl list-timezones | sed -e 's/^/<option>/g' -e 's/$/<\/option>/g')
+
+#### Bonjour/ Avahi
+# Get the status of mpd.socket
+SOCKET=$(systemctl status mpd.socket | sed -n 3p | cut -d"(" -f2 | cut -d")" -f1)
+
+# Initialize wpa_supplicant.conf
+wpa_country=$(sudo grep country /etc/wpa_supplicant/wpa_supplicant.conf)
+if [ -z ${wpa_country} ]; then
+        sudo sed -i -e '$a\\ncountry\=GB' /etc/wpa_supplicant/wpa_supplicant.conf
+fi
+
+wpa_network=$(sudo grep network /etc/wpa_supplicant/wpa_supplicant.conf)
+if [ -z ${wpa_network} ]; then
+        sudo sed -i -e '$a\\nnetwork\={' -e '$a\\tssid=\"SSID\"' -e '$a\\tpsk=\"PWD\"\n}' /etc/wpa_supplicant/wpa_supplicant.conf
+fi
+
+# Check WiFi status
+wifi_STS=$(rfkill list wlan | grep "Soft blocked" | cut -d " " -f 3)
+
 cat <<HTML
 Content-type: text/html; charset=utf-8
 
@@ -88,15 +123,6 @@ cat <<HTML
 HTML
 
 #### MainBoard status: CPU Model, Vendor, RAM, and Temp
-mainboard=$(grep Model /proc/cpuinfo | cut -d ":" -f 2 | sed -e 's/^ //g')
-#temp="$(cat /sys/class/thermal/thermal_zone0/temp)"
-#TEMP="$(bc <<< "scale=1; $temp/1000") c˚"
-TEMP=$(sudo vcgencmd measure_temp | cut -d "=" -f 2)
-CPUMax=$(sudo vcgencmd get_config int | grep arm_freq | cut -d "=" -f 2 | sed -n 1p)
-VNDR=$(sudo lscpu | grep Vendor | cut -d ":" -f 2 | cut -d " " -f 12)
-MDL=$(sudo lscpu | grep "Model name" | cut -d ":" -f 2 | sed -e 's/ //g')
-RAM=$(free --mega -t | grep Total: | sed -e 's/  */ /g' | cut -d " " -f2)
-
 cat <<HTML
 		<!-- Main Board -->
 		<div class="title-btn-title">
@@ -114,10 +140,6 @@ cat <<HTML
 HTML
 
 ######## RaspberryPi OS
-DISTRO=$(lsb_release -a 2>/dev/null | sed -n 2p | cut -d "(" -f 2 | cut -d ")" -f 1)
-kernelR=$(uname -r)
-kernelNAME=$(uname -s)
-
 if [ -e "/var/www/cgi-bin/log/reboot_required.log" ]; then
 	reboot_badge="<div class="status">Reboot required</div>"
 fi
@@ -135,10 +157,6 @@ cat <<HTML
 HTML
 
 ######### Genaral Options: TimeZone
-#TimezoneSTS=$(< /etc/timezone)
-TimezoneSTS=$(timedatectl show | grep Timezone | cut -d "=" -f 2)
-TimezoneLIST=$(timedatectl list-timezones | sed -e 's/^/<option>/g' -e 's/$/<\/option>/g')
-
 cat <<HTML
 		<!-- General Options -->
 		<h4>General Options</h4>
@@ -178,8 +196,6 @@ cat <<HTML
 HTML
 
 #### Bonjour/ Avahi
-SOCKET=$(systemctl status mpd.socket | sed -n 3p | cut -d"(" -f2 | cut -d")" -f1) # Get the status of mpd.socket
-
 if [ "$SOCKET" = "dead" ]; then 	# If mpd.socket is dead,
 
   cat <<HTML
@@ -211,21 +227,6 @@ HTML
 fi
 
 #### WiFi Settings
-
-# Initialize wpa_supplicant.conf
-wpa_country=$(sudo grep country /etc/wpa_supplicant/wpa_supplicant.conf)
-if [ -z ${wpa_country} ]; then
-	sudo sed -i -e '$a\\ncountry\=GB' /etc/wpa_supplicant/wpa_supplicant.conf
-fi
-
-wpa_network=$(sudo grep network /etc/wpa_supplicant/wpa_supplicant.conf)
-if [ -z ${wpa_network} ]; then
-	sudo sed -i -e '$a\\nnetwork\={' -e '$a\\tssid=\"SSID\"' -e '$a\\tpsk=\"PWD\"\n}' /etc/wpa_supplicant/wpa_supplicant.conf
-fi
-
-# Check WiFi status
-wifi_STS=$(rfkill list wlan | grep "Soft blocked" | cut -d " " -f 3)
-
 if [ -z ${wifi_STS} ]; then
  #### Hide WiFi Settings
 	echo ''
@@ -280,7 +281,6 @@ HTML
 	fi
 
 	#### WiFi Country
-#	country=$(sudo grep country /etc/wpa_supplicant/wpa_supplicant.conf | cut -d '=' -f 2)
 	country=$(sudo raspi-config nonint get_wifi_country)
 	country_STS=$(grep ${country} /usr/share/zoneinfo/iso3166.tab)
 	country_LIST=$(< /usr/share/zoneinfo/iso3166.tab sed -e /^#/d -e 's/^/<option>/g' -e 's/$/<\/option>/g')
