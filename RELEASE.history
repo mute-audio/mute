@@ -1,7 +1,7 @@
 ToDo
 * Trixie Support - The "no new privileges" flag issue on lighttpd
-* Change getcover install method - Build indsade the install_mute.sh
 * Improve: Real-time indication of installation and update progress (Using with SSE)
+* Change getcover install method - Build indsade the install_mute.sh
 * Coverart Server [Only for "Cover.jpeg" of Local Library]
 * Revise WebRadio UI: Edit/ Delete/ Move on the List View
 * ALSA Mixer (alsamixer, amixer) setting UI
