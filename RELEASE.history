@@ -5,7 +5,7 @@ ToDo
 * Coverart Server [Only for "Cover.jpeg" of Local Library]
 * Revise WebRadio UI: Edit/ Delete/ Move on the List View
 * ALSA Mixer (alsamixer, amixer) setting UI
-* Play-back Option: Auto-shuffle Mode: ashuffle implementation
+* Play-back Option: Auto-shuffle Mode: "ashuffle" implementation
 
 * HiFi Setting: force_turbo=1 (max cpu clock) option
 * HiFi Setting: CPU clock control option
@@ -16,6 +16,11 @@ ToDo
 
 * ETC: PWA/HTTPS -enabled
 * ETC: MPD DB update Auto-refresh
+
+Ver_1.12.0_WIP(2026/MM/DD)
+* Trixie Support - The "no new privileges" flag issue on lighttpd
+* Update: Install & Update Script (install_mute.sh, update_mute.sh & Update_mute_exec2.sh)
+* Improve: Real-time indication of installation and update progress (Using with SSE)
 
 Ver_1.11.1(2025/08/31)
 - Bugfix: MPD-backports install process
