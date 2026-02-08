@@ -21,6 +21,7 @@ Ver_1.12.0_WIP(2026/MM/DD)
 * Trixie Support - The "no new privileges" flag issue on lighttpd
 * Update: Install & Update Script (install_mute.sh, update_mute.sh & Update_mute_exec2.sh)
 * Improve: Real-time indication of installation and update progress (Using with SSE)
+  >> MPD DB Update, MPD DB Rescan, Check & Exec Update for mute and RPi OS
 
 Ver_1.11.1(2025/08/31)
 - Bugfix: MPD-backports install process
