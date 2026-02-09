@@ -71,15 +71,20 @@ else
 	echo " Updating the package index files..."
 	sudo apt clean && sudo apt update
 	wait
-        echo " Updating the package index files... Done" | sudo tee -a /${bootDIR}/mute_log > /dev/null
-
-        echo ''
+	echo " Updating the package index files... Done" | sudo tee -a /${bootDIR}/mute_log > /dev/null
+    echo ''
+	
 	echo " Installing lighttpd..."
 	sudo apt -o Acquire::Retries=3 -y -q install lighttpd
 	wait
-        echo " Installing lighttpd... Done" | sudo tee -a /${bootDIR}/mute_log > /dev/null
-
+    echo " Installing lighttpd... Done" | sudo tee -a /${bootDIR}/mute_log > /dev/null
 	echo ''
+
+    ## lighttpd trixie support (1.12.0)
+	if [ ${OS_codename} = "trixie" ]
+	    sudo cp ./lighttpd.service /etc/systemd/system/multi-user.target.wants/lighttpd.service
+	fi
+
 	echo " Starting & Enabling lighttpd..."
 	sudo systemctl daemon-reload
 	sudo systemctl enable --now lighttpd | sudo tee -a /${bootDIR}/mute_log
