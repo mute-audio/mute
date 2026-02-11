@@ -79,6 +79,16 @@
 	sudo systemctl daemon-reload
 	sudo systemctl enable startUpSound.service 2>/dev/null 1>/dev/null
 
+  ## Replace getcover (1.12.0)
+	sudo gcc -o getcover getcover.c
+  sudo mv ./getcover /usr/local/bin/getcover
+
+  if [ $? != 0 ]; then
+    echo "Location: /cgi-bin/Update/Update_mute_error.cgi"
+    echo ''
+    exit 1
+  fi
+
 #### Finalize ####
 newVER=$(cat ./update.info | grep ver | cut -d "=" -f 2)
 sudo sed -i -e "s/ver.*/ver.${newVER}/" /etc/motd 2>/dev/null 1>/dev/null

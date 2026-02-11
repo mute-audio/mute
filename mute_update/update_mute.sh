@@ -76,6 +76,10 @@ echo " Updating [ mute ] ..."
 	sudo systemctl daemon-reload
 	sudo systemctl enable startUpSound.service > /dev/null
 
+  ## Replace getcover (1.12.0)
+	sudo gcc -o getcover getcover.c
+  sudo mv ./getcover /usr/local/bin/getcover
+
 echo " Updating [ mute ]... Done" \
  | sudo tee -a /${bootDIR}/mute_log > /dev/null
 
