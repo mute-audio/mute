@@ -1,7 +1,7 @@
 ToDo
 * Trixie Support - The "no new privileges" flag issue on lighttpd
 * Improve: Real-time indication of installation and update progress (Using with SSE)
-* Change getcover install method - Build indsade the install_mute.sh
+* Change getcover install method - Build inside the install_mute.sh
 * Coverart Server [Only for "Cover.jpeg" of Local Library]
 * Revise WebRadio UI: Edit/ Delete/ Move on the List View
 * ALSA Mixer (alsamixer, amixer) setting UI
@@ -19,6 +19,7 @@ ToDo
 
 Ver_1.12.0_WIP(2026/MM/DD)
 * Trixie Support - The "no new privileges" flag issue on lighttpd
+* Revised : Change getcover install method - Build inside the install_mute.sh
 * Update: Install & Update Script (install_mute.sh, update_mute.sh & Update_mute_exec2.sh)
 * Improve: Real-time indication of installation and update progress (Using with SSE)
   >> MPD DB Update, MPD DB Rescan, Check & Exec Update for mute and RPi OS

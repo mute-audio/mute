@@ -4,7 +4,7 @@
 #   m u t e    Installer shell
 # +         +
 #
-# (C)2024 kitamura_design <kitamura_design@me.com>
+# (C)2026 kitamura_design <kitamura_design@me.com>
 
 # Check current OS Codename
 OS_codename=$(lsb_release -a |  grep Codename | cut -f 2)
@@ -24,7 +24,7 @@ echo '   m u t e    RPi-Audio/ MPD Dashboard'
 echo " +         +  ver.${VER}"
 echo ''
 echo " Installer shell for ver.${VER}"
-echo ' ©2024 kitamura_design <kitamura_design@me.com>'
+echo ' ©2026 kitamura_design <kitamura_design@me.com>'
 echo ''
 echo ' PROCEDURES'
 echo ''
@@ -256,20 +256,30 @@ else
 fi
 
 #### getcover ####
-
 if [ -e /usr/local/bin/getcover ]; then
         echo " getcover is already installed. Installer will skip this process.." | sudo tee -a /${bootDIR}/mute_log
 else
         echo ''
         echo " Installing getcover..."
-	sudo wget -q --header="User-Agent:Safari/537.36" https://www.openaudiolab.com/app/download/14111530129/getcover20181203.tar.gz
-        wait
-	sudo gunzip getcover20181203.tar.gz && sudo tar xvf getcover20181203.tar --no-same-owner
-	wait
-	sudo mv ./getcover/getcover /usr/local/bin
+
+		sudo gcc -o getcover getcover.c
+        sudo mv ./getcover /usr/local/bin/getcover
+
         echo " Installing getcover... Done" | sudo tee -a /${bootDIR}/mute_log > /dev/null
 fi
 
+#if [ -e /usr/local/bin/getcover ]; then
+#        echo " getcover is already installed. Installer will skip this process.." | sudo tee -a /${bootDIR}/mute_log
+#else
+#        echo ''
+#        echo " Installing getcover..."
+#	sudo wget -q --header="User-Agent:Safari/537.36" https://www.openaudiolab.com/app/download/14111530129/getcover20181203.tar.gz
+#        wait
+#	sudo gunzip getcover20181203.tar.gz && sudo tar xvf getcover20181203.tar --no-same-owner
+#	wait
+#	sudo mv ./getcover/getcover /usr/local/bin
+#        echo " Installing getcover... Done" | sudo tee -a /${bootDIR}/mute_log > /dev/null
+#fi
 
 #### Install [ mute ] Source		####################
 
