@@ -109,8 +109,8 @@ fi
 
       <!-- Music Database -->
       <div class="title-btn-title">
-         <a href="/cgi-bin/MPD/DBupdating.cgi" target="mainview" class="button"> Update DB </a>
-         <a href="/cgi-bin/MPD/DBrescanning.cgi" target="mainview" class="button2"> Rescan DB </a>
+         <a href="/cgi-bin/MPD/DB_updating.cgi" target="mainview" class="button"> Update DB </a>
+         <a href="/cgi-bin/MPD/DB_rescanning.cgi" target="mainview" class="button2"> Rescan DB </a>
          <h3>Music Database</h3>
       </div>
 
