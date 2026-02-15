@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # DB_Updating.cgi
-# (C)2025 kitamura_design <kitamura_design@me.com> #
+# (C)2026 kitamura_design <kitamura_design@me.com> #
 
 #HTML
 cat <<HTML

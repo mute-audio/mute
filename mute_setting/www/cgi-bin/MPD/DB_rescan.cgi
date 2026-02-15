@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # mpc_dbrescan.cgi                                  #
-# (C)2025 kitamura_design <kitamura_design@me.com>  #
+# (C)2026 kitamura_design <kitamura_design@me.com>  #
 
 set -e
 set -o pipefail
