@@ -1,9 +1,7 @@
 #!/bin/bash
 
-# Updating.cgi
-# (C)2024 kitamura_design <kitamura_design@me.com> #
-
-query=$(date +%Y%m%d%I%M%S)
+# Checking_Update_RPi.cgi
+# (C)2026 kitamura_design <kitamura_design@me.com> #
 
 #HTML
 cat <<HTML
@@ -14,7 +12,6 @@ Content-type: text/html; charset=utf-8
 
   <head>
     <link rel="stylesheet" type="text/css" href="/css/main.css">
-    <meta http-equiv="refresh" content="0; URL=/cgi-bin/Update/Update_exec.cgi">
     <script>
 
      function uiLock(){
@@ -44,12 +41,27 @@ Content-type: text/html; charset=utf-8
 
      <div id="loading-top2">
        <div class="loader">
-          <div class="loadingtext">Updating ...</div>
+          <div class="loadingtext">Checking Update ...</div>
           <div class="progress-bar-base">
           <div class="progress-value-progress"></div>
-          </div>
        </div>
+       <h4 id="SSE-CONTENT" class="loadingtext" style="white-space: nowrap;"></h4>
      </div>
+
+     <script>
+     const aptUpdateSource = new EventSource('/cgi-bin/Update/Check_Update_RPi.cgi');
+
+     aptUpdateSource.onmessage = (e) => {
+         const content = document.querySelector('#SSE-CONTENT');
+         content.textContent = e.data;
+     };
+
+     aptUpdateSource.addEventListener('close', (e) => {
+             aptUpdateSource.close();
+             window.location.href = "/cgi-bin/Update/Update.cgi";
+     });
+
+    </script>
 
    </body>
 </html>
