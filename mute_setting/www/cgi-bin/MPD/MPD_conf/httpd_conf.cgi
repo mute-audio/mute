@@ -14,5 +14,5 @@ sudo sed -i -e "/^#HTTPD$/,/\}/ s/\tencoder.*\".*\"/\tencoder\t\t\"${ENCODER}\"/
 sudo sed -i -e "/^#HTTPD$/,/\}/ s/\tport.*\".*\"/\tport\t\t\"${PORT}\"/" /etc/mpd.conf
 sudo sed -i -e "/^#HTTPD$/,/\}/ s/\tbitrate.*\".*\"/\tbitrate\t\t\"${BPS}\"/" /etc/mpd.conf
 
-echo "Location: /cgi-bin/MPD/MPDupdating.cgi?httpd"
+echo "Location: /cgi-bin/MPD/MPD_updating.cgi?httpd"
 echo ''

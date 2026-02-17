@@ -18,5 +18,5 @@ elif [ ${SW} = "Off" ]; then
 
 fi
 
-echo "Location: /cgi-bin/MPD/MPDupdating.cgi?httpd"
+echo "Location: /cgi-bin/MPD/MPD_updating.cgi?httpd"
 echo ''

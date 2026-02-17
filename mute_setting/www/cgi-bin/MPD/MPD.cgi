@@ -96,7 +96,7 @@ fi
 
       <!-- MPD Restart -->
       <div class="title-btn-title">
-         <a href="/cgi-bin/MPD/MPDrestarting.cgi" target="mainview" class="toggle-on-sw"> Restart MPD </a>
+         <a href="/cgi-bin/MPD/MPD_restarting.cgi" target="mainview" class="toggle-on-sw"> Restart MPD </a>
          <h3>Music Player Deamon <div class="status">${StatusMPD}</div> </h3>
       </div>
 

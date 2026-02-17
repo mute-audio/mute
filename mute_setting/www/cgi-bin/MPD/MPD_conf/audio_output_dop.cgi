@@ -8,5 +8,5 @@
 
 sudo sed -i -e "/^#ALSA$/,/\}/ s/\tdop.*\".*\"/\tdop\t\t\"${DOP,,}\"/" /etc/mpd.conf
 
-echo "Location: /cgi-bin/MPD/MPDupdating.cgi?output"
+echo "Location: /cgi-bin/MPD/MPD_updating.cgi?output"
 echo ''

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# MPDrestarting.cgi                                 #
-# (c)2022 kitamura_design <kitamura_design@me.com>  #
+# MPD_restarting.cgi                                 #
+# (c)2026 kitamura_design <kitamura_design@me.com>  #
 
 query=$(date +%Y%m%d%I%M%S)
 

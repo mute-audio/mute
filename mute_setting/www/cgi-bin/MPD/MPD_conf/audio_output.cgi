@@ -16,5 +16,5 @@ sudo sed -i -e "/^#ALSA$/,/\}/ s/\tdop.*\".*\"/\tdop\t\t\"${DOP,,}\"/" /etc/mpd.
 sudo sed -i -e "/^#ALSA$/,/\}/ s/\tauto_resample.*\".*\"/\tauto_resample\t\"${RESMPLE,,}\"/" /etc/mpd.conf
 sudo sed -i -e "/^#ALSA$/,/\}/ s/\tmixer_type.*\".*\"/\tmixer_type\t\"${MIXER,,}\"/" /etc/mpd.conf
 
-echo "Location: /cgi-bin/MPD/MPDupdating.cgi?output"
+echo "Location: /cgi-bin/MPD/MPD_updating.cgi?output"
 echo ''

@@ -16,5 +16,5 @@ elif [ ${CURL} = "No" ]; then
 
 fi
 
-echo "Location: /cgi-bin/MPD/MPDupdating.cgi?inputplugin"
+echo "Location: /cgi-bin/MPD/MPD_updating.cgi?inputplugin"
 echo ''
