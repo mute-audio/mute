@@ -79,6 +79,13 @@
 	sudo systemctl daemon-reload
 	sudo systemctl enable startUpSound.service 2>/dev/null 1>/dev/null
 
+	## Activate streaming (1.12.0)
+  CHK_streaming=$(sudo grep "server.stream-response-body = 1" /etc/lighttpd/lighttpd.conf)
+
+  if [ -z "$CHK_streaming" ]; then 
+	    sudo sed -i -e '/server.port.*= */a server.stream-response-body = 1' /etc/lighttpd/lighttpd.conf
+  fi
+
   ## Replace getcover (1.12.0)
 	sudo gcc -o getcover getcover.c
   sudo mv ./getcover /usr/local/bin/getcover

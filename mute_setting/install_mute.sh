@@ -85,6 +85,9 @@ else
 	    sudo cp ./lighttpd.service /etc/systemd/system/multi-user.target.wants/lighttpd.service
 	fi
 
+	## Activate streaming (1.12.0)
+	sudo sed -i -e '/server.port.*= */a server.stream-response-body = 1' /etc/lighttpd/lighttpd.conf
+
 	echo " Starting & Enabling lighttpd..."
 	sudo systemctl daemon-reload
 	sudo systemctl enable --now lighttpd | sudo tee -a /${bootDIR}/mute_log
