@@ -73,7 +73,7 @@ else
 	wait
 	echo " Updating the package index files... Done" | sudo tee -a /${bootDIR}/mute_log > /dev/null
     echo ''
-	
+
 	echo " Installing lighttpd..."
 	sudo apt -o Acquire::Retries=3 -y -q install lighttpd
 	wait
@@ -81,7 +81,7 @@ else
 	echo ''
 
     ## lighttpd trixie support (1.12.0)
-	if [ ${OS_codename} = "trixie" ]
+	if [ ${OS_codename} = "trixie" ]; then
 	    sudo cp ./lighttpd.service /etc/systemd/system/multi-user.target.wants/lighttpd.service
 	fi
 

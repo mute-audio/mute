@@ -40,7 +40,7 @@ set -e
 
     echo -n " Packaging of \" mute_setting_test_$VER.zip \" ..."
 
-    sudo zip -rq ./packages_test/mute_setting__test_$VER.zip ./mute_setting
+    sudo zip -rq ./packages_test/mute_setting_test_$VER.zip ./mute_setting
 
     echo " Done."
 
