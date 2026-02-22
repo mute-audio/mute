@@ -8,5 +8,5 @@
 
 sudo sed -i -e "/HTTPD/,/}/ !s/bind_to_address.*\"/bind_to_address\t\t\"${bindADD}\"/g" /etc/mpd.conf
 
-echo "Location: /cgi-bin/MPD/MPDupdating.cgi?mpdconfig"
+echo "Location: /cgi-bin/MPD/MPD_updating.cgi?mpdconfig"
 echo ''

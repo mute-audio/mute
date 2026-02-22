@@ -8,5 +8,5 @@
 
 sudo sed -i -e "s/mixer_type\t.*\"/mixer_type\t\t\"${mixTYPE,,}\"/g" /etc/mpd.conf
 
-echo "Location: /cgi-bin/MPD/MPDrestarting.cgi?mpdconfig"
+echo "Location: /cgi-bin/MPD/MPD_restarting.cgi?mpdconfig"
 echo ''

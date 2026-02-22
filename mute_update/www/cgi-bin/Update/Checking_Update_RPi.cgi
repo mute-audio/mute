@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Updating_mute.cgi
+# Checking_Update_RPi.cgi
 # (C)2026 kitamura_design <kitamura_design@me.com> #
 
 #HTML
@@ -41,7 +41,7 @@ Content-type: text/html; charset=utf-8
 
      <div id="loading-top2">
        <div class="loader">
-          <div class="loadingtext">Updating ...</div>
+          <div class="loadingtext">Checking Update ...</div>
           <div class="progress-bar-base">
           <div class="progress-value-progress"></div>
        </div>
@@ -49,7 +49,7 @@ Content-type: text/html; charset=utf-8
      </div>
 
      <script>
-     const aptUpdateSource = new EventSource('/cgi-bin/Update/Update_mute_exec.cgi');
+     const aptUpdateSource = new EventSource('/cgi-bin/Update/Check_Update_RPi.cgi');
 
      aptUpdateSource.onmessage = (e) => {
          const content = document.querySelector('#SSE-CONTENT');
@@ -58,7 +58,7 @@ Content-type: text/html; charset=utf-8
 
      aptUpdateSource.addEventListener('close', (e) => {
              aptUpdateSource.close();
-             window.location.href = "/cgi-bin/RaspberryPi/Raspberrypi.cgi";
+             window.location.href = "/cgi-bin/Update/Update.cgi";
      });
 
     </script>

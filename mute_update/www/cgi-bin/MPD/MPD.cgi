@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # MPD.cgi                                          #
-# (C)2025 kitamura_design <kitamura_design@me.com> #
+# (C)2026 kitamura_design <kitamura_design@me.com> #
 
 #### General options Status @/etc/mpd.conf
  bindADD=$(sudo grep bind_to_address /etc/mpd.conf | sed -n 1p | cut -d "\"" -f 2 | cut -d "\"" -f 1)
@@ -96,7 +96,7 @@ fi
 
       <!-- MPD Restart -->
       <div class="title-btn-title">
-         <a href="/cgi-bin/MPD/MPDrestarting.cgi" target="mainview" class="toggle-on-sw"> Restart MPD </a>
+         <a href="/cgi-bin/MPD/MPD_restarting.cgi" target="mainview" class="toggle-on-sw"> Restart MPD </a>
          <h3>Music Player Deamon <div class="status">${StatusMPD}</div> </h3>
       </div>
 
@@ -109,8 +109,8 @@ fi
 
       <!-- Music Database -->
       <div class="title-btn-title">
-         <a href="/cgi-bin/MPD/DBupdating.cgi" target="mainview" class="button"> Update DB </a>
-         <a href="/cgi-bin/MPD/DBrescanning.cgi" target="mainview" class="button2"> Rescan DB </a>
+         <a href="/cgi-bin/MPD/DB_updating.cgi" target="mainview" class="button"> Update DB </a>
+         <a href="/cgi-bin/MPD/DB_rescanning.cgi" target="mainview" class="button2"> Rescan DB </a>
          <h3>Music Database</h3>
       </div>
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# DBupdating.cgi	                        	   #
-# (C)2022 kitamura_design <kitamura_design@me.com> #
+# MPD_restarting.cgi                                 #
+# (c)2026 kitamura_design <kitamura_design@me.com>  #
 
 query=$(date +%Y%m%d%I%M%S)
 
@@ -14,7 +14,7 @@ echo "<html>"
 
 echo  "<head>"
 echo    "<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/main.css\">"
-echo    "<meta http-equiv=\"refresh\" content=\"0; URL=/cgi-bin/MPD/mpc_dbupdate.cgi\">"
+echo    "<meta http-equiv=\"refresh\" content=\"0; URL=/cgi-bin/MPD/mpd_restart.cgi?${QUERY_STRING}\">"
 echo    "<script>"
 
 echo    "function uiLock(){"
@@ -40,9 +40,9 @@ echo "<body onLoad=\"uiLock()\" onunload=\"uiUnlock()\">"
    cat <<HTML
    <div id="loading-top2">
      <div class="loader">
-        <div class="loadingtext">Updating DB ...</div>
+        <div class="loadingtext">Restarting MPD ...</div>
         <div class="progress-bar-base">
-        <div class="progress-value-progress"></div>
+        <div class="progress-value-loading"></div>
         </div>
      </div>
    </div>

@@ -8,5 +8,5 @@
 
 sudo sed -i -e "/auto_update\t.*\"/s/\".*\"/\"${autoUPDT,,}\"/g" /etc/mpd.conf
 
-echo "Location: /cgi-bin/MPD/MPDupdating.cgi?mpdconfig"
+echo "Location: /cgi-bin/MPD/MPD_updating.cgi?mpdconfig"
 echo ''

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # MPD_not_installed.cgi                 		   #
-# (C)2022 kitamura_design <kitamura_design@me.com> #
+# (C)2026 kitamura_design <kitamura_design@me.com> #
 
 # Get infomations
 
@@ -45,7 +45,7 @@ echo    "<h1>MPD</h1>"
 
 echo    "<h3>Music Player Deamon <div class=\"status\">Not Installed</div> </h3>"
 
-echo    "<form method=GET action=\"/cgi-bin/MPD/MPD_install_processing.cgi\" target=\"_self\">"
+echo    "<form method=GET action=\"/cgi-bin/MPD/MPD_installing.cgi\" target=\"_self\">"
 echo        "<div class=\"setting-items-wrap\">"
 echo          "<input id=\"Apply\" type=\"submit\" value=\"Install \" class=\"button\">"
 echo          "<div class=\"ellipsis-wrap\"><div class=\"allow-down\"></div></div>"

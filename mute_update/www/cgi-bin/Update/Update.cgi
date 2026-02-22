@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Update.cgi           			                   #
-# (C)2023 kitamura_design <kitamura_design@me.com> #
+# (C)2026 kitamura_design <kitamura_design@me.com> #
 
 query=$(date +%Y%m%d%I%M%S)
 
@@ -16,7 +16,7 @@ Content-type: text/html; charset=utf-8
   <script type="text/javascript">
     function dispUpdate(){
         if(window.confirm('To take effect, Reboot after Updating.')){
-            location.href = "/cgi-bin/Update/Updating.cgi";
+            location.href = "/cgi-bin/Update/Updating_RPi.cgi";
         }
     }
 
@@ -89,7 +89,7 @@ lastUPDmute=$(sudo sed -n '$p' /var/www/cgi-bin/log/update_mute.log)
         <!-- [ mute ] -->
       <div id="mute">
         <div class="title-btn-title">
-          <a href="/cgi-bin/Update/Update_checking.cgi" class="toggle-on-sw"> Check Update </a>
+          <a href="/cgi-bin/Update/Checking_Update_mute.cgi" class="toggle-on-sw"> Check Update </a>
           <h3>[ mute ]</h3>
         </div>
 
@@ -111,7 +111,6 @@ HTML
       <div id="mute">
         <div class="title-btn-title">
           <a href="#" onClick="dispUpdateMute(); return false;" target="_self" class="toggle-on-sw"> Update </a>
-          <!-- a href="/cgi-bin/Update/Updating_mute.cgi" target="_self" class="toggle-on-sw"> Update </a -->
           <h3>[ mute ]</h3>
         <div class="status">Update Available</div>
         </div>
@@ -179,7 +178,7 @@ kernelNAME=$(uname -s)
         <!-- RaspberryPi OS -->
       <div id="RPi_OS">
         <div class="title-btn-title">
-          <a href="/cgi-bin/Update/Update_checking.cgi" target="mainview" class="toggle-on-sw"> Check Update </a>
+          <a href="/cgi-bin/Update/Checking_Update_RPi.cgi" target="mainview" class="toggle-on-sw"> Check Update </a>
           <h3>RaspberryPi OS</h3>
         </div>
 HTML

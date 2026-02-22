@@ -36,8 +36,8 @@ NNT_check=$(df -ah | egrep --only-matching '/mnt/${NAME}')
 
 #### Mount check
  if [ $? = 0 ]; then
-    sudo sed -i -e "/# a swapfile/i${FSTAB//\//\\/}" /etc/fstab     # Write mount setting to fstab
-
+#    sudo sed -i -e "/# a swapfile/i${FSTAB//\//\\/}" /etc/fstab     # Write mount setting to fstab
+     echo ${FSTAB} | sudo tee -a /etc/fstab >/dev/null               # Write mount setting to fstab
  else                                                               # If failed to mount NAS, Exit with deleting the mount-point dir.
     sudo rmdir /mnt/${NAME}                                         # Delete a mount point dir.
     echo "Location: /cgi-bin/Source_Volume/NAS_mount_error.cgi"     # Go to the error Page

@@ -17,5 +17,5 @@ elif [ ${SW} = "No" ]; then
 
 fi
 
-echo "Location: /cgi-bin/MPD/MPDupdating.cgi?decoder"
+echo "Location: /cgi-bin/MPD/MPD_updating.cgi?decoder"
 echo ''
