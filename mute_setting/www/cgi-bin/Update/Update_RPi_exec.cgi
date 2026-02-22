@@ -51,22 +51,35 @@ function stream() {
 
 #### PROCESS ####
 
-### Cancel this process in case of Web Streaming to avoid alsa_output error.
-volume=$(mpc -f %file% current | cut -d / -f 1)
+## check existing mpc or not
+if [ -e $(which mpc) ]; then
 
-if [ "$volume" = "http:" ] || [ "$volume" = "https:" ]; then
+    ### Cancel this process in case of Web Streaming to avoid alsa_output error.
+    volume=$(mpc -f %file% current | cut -d / -f 1)
 
-    echo "Location: /cgi-bin/Update/Update_caution.cgi"
-    echo ''
+    if [ "$volume" = "http:" ] || [ "$volume" = "https:" ]; then
 
-    exit 1
+        echo "Location: /cgi-bin/Update/Update_caution.cgi"
+        echo ''
+
+        exit 1
+    fi
+
+    ### Start apt-update streaming
+    echo "Content-type: text/event-stream; charset=utf-8"
+    echo "Cache-Control: no-cache"
+    echo ""
+
+    genInput_aptUpgrade 2>/dev/null | stream
+
+else
+    ### Start apt-update streaming
+    echo "Content-type: text/event-stream; charset=utf-8"
+    echo "Cache-Control: no-cache"
+    echo ""
+
+    genInput_aptUpgrade 2>/dev/null | stream
+
 fi
-
-### Start apt-update streaming
-echo "Content-type: text/event-stream; charset=utf-8"
-echo "Cache-Control: no-cache"
-echo ""
-
-genInput_aptUpgrade 2>/dev/null | stream
 
 exit 0
