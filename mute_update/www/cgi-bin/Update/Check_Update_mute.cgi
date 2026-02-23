@@ -3,24 +3,13 @@
 ## Check_Update_mute.cgi
 ## (C)2026 kitamura_design <kitamura_design@me.com>
 
-### Cancel this process in case of Web Streaming to avoid alsa_output error.
-volume=$(mpc -f %file% current | cut -d / -f 1)
-
-if [ "$volume" = "http:" ] || [ "$volume" = "https:" ]; then
-
-    echo "Location: /cgi-bin/Update/Update_caution.cgi"
-    echo ''
-
-    exit 1
-fi
-
 set -e
 set -o pipefail
 
 #### FUNCTION ####
 
 ######## [ mute ] Update Check
-function genInput_muteUpdate() {
+function genInput_muteUpdateCheck() {
     URL="https://raw.githubusercontent.com/mute-audio/mute/main/packages/package.info"
     pkg_INFO=$(sudo wget --no-check-certificate -q -O - ${URL})
     pkg_VER=$(echo "$pkg_INFO" | grep 'ver=' | sed -e 's/ver=/Ver./g' -e 's/$/<br>/')
@@ -55,22 +44,32 @@ function stream() {
 
 #### PROCESS ####
 
-### Cancel this process in case of Web Streaming to avoid alsa_output error.
-volume=$(mpc -f %file% current | cut -d / -f 1)
+if [ $(which mpc)]; then
+    ### Cancel this process in case of Web Streaming to avoid alsa_output error.
+    volume=$(mpc -f %file% current | cut -d / -f 1)
 
-if [ "$volume" = "http:" ] || [ "$volume" = "https:" ]; then
+    if [ "$volume" = "http:" ] || [ "$volume" = "https:" ]; then
 
-    echo "Location: /cgi-bin/Update/Update_caution.cgi"
-    echo ''
+        echo "Location: /cgi-bin/Update/Update_caution.cgi"
+        echo ''
 
-    exit 1
+        exit 1
+    fi
+
+    ### Start apt-update streaming
+    echo "Content-type: text/event-stream; charset=utf-8"
+    echo "Cache-Control: no-cache"
+    echo ""
+
+    genInput_muteUpdateCheck 2>/dev/null | stream
+
+else
+    ### Start apt-update streaming
+    echo "Content-type: text/event-stream; charset=utf-8"
+    echo "Cache-Control: no-cache"
+    echo ""
+
+    genInput_muteUpdateCheck 2>/dev/null | stream
 fi
-
-### Start apt-update streaming
-echo "Content-type: text/event-stream; charset=utf-8"
-echo "Cache-Control: no-cache"
-echo ""
-
-genInput_muteUpdate 2>/dev/null | stream
 
 exit 0

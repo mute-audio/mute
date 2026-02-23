@@ -5,7 +5,7 @@
 
 #### FUNCTION ####
 
-function getInput_muteUpdate() {
+function genInput_muteUpdate() {
 
     #### Get Update file's URL ####
     muteUPD_URL=$(\
@@ -69,22 +69,33 @@ function stream() {
 
 #### PROCESS ####
 
-### Cancel this process in case of Web Streaming to avoid alsa_output error.
-volume=$(mpc -f %file% current | cut -d / -f 1)
+if [ $(which mpc) ]; then
+    ### Cancel this process in case of Web Streaming to avoid alsa_output error.
+    volume=$(mpc -f %file% current | cut -d / -f 1)
 
-if [ "$volume" = "http:" ] || [ "$volume" = "https:" ]; then
+    if [ "$volume" = "http:" ] || [ "$volume" = "https:" ]; then
 
-    echo "Location: /cgi-bin/Update/Update_caution.cgi"
-    echo ''
+        echo "Location: /cgi-bin/Update/Update_caution.cgi"
+        echo ''
 
-    exit 1
+        exit 1
+    fi
+
+    ### Start apt-update streaming
+    echo "Content-type: text/event-stream; charset=utf-8"
+    echo "Cache-Control: no-cache"
+    echo ""
+
+    genInput_muteUpdate 2>/dev/null | stream
+
+else
+    ### Start apt-update streaming
+    echo "Content-type: text/event-stream; charset=utf-8"
+    echo "Cache-Control: no-cache"
+    echo ""
+
+    genInput_muteUpdate 2>/dev/null | stream
+
 fi
-
-### Start apt-update streaming
-echo "Content-type: text/event-stream; charset=utf-8"
-echo "Cache-Control: no-cache"
-echo ""
-
-genInput_muteUpdate 2>/dev/null | stream
 
 exit 0
