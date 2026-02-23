@@ -392,7 +392,7 @@ CARDS=$(grep -c " [0-9]" /proc/asound/cards)
 
           cat <<HTML
           <!-- Output Select -->
-          <form method=GET action="/cgi-bin/MPD/MPD_conf/audio_output_processing_name.cgi" target="_self">
+          <form method=GET action="/cgi-bin/MPD/MPD_conf/audio_output_selecting.cgi" target="_self">
             <div class="setting-items-wrap">
               <input id="Apply" type="submit" value="Select " class="button"></input>
               <div class="ellipsis-wrap"><div class="allow-down"></div></div>
