@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# audio_output.cgi                               #
+# audio_output_name.cgi                               #
 # (C)2022 kitamura_design <kitamura_design@me.com> #
 
 # Clean QUERY_STRING
