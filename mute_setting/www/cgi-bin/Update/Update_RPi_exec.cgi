@@ -25,7 +25,9 @@ function genInput_aptUpgrade() {
      date +"%Y-%m-%d %H:%M:%S" | sudo tee -a /var/www/cgi-bin/log/update.log > /dev/null
 
     ## Update MPD Version
-     mpd -V | sudo tee /var/www/cgi-bin/MPD/MPD_conf/temp/mpd_v.txt > /dev/null
+    if [ $(which mpd) ]; then
+        mpd -V | sudo tee /var/www/cgi-bin/MPD/MPD_conf/temp/mpd_v.txt > /dev/null
+    fi
 
     ## Set Reboot Required Badge
      if [ ! -e "/var/www/cgi-bin/log/reboot_required.log" ]; then
@@ -52,7 +54,7 @@ function stream() {
 #### PROCESS ####
 
 ## check existing mpc or not
-if [ -e $(which mpc) ]; then
+if [ $(which mpc) ]; then
 
     ### Cancel this process in case of Web Streaming to avoid alsa_output error.
     volume=$(mpc -f %file% current | cut -d / -f 1)
