@@ -31,17 +31,17 @@ set -e
     echo " Done."
 
 ## Make mute_setting_yymmdd.zip
-    TimeStamp=$(date +%y%m%d)
+    # Extract version number from input
+    VER=$(echo $1 | sed -e 's/[^0-9]//g')
+#    TimeStamp=$(date +%y%m%d)
 
-    echo -n " Packaging of \" mute_setting_$TimeStamp.zip \" ..."
+    echo -n " Packaging of \" mute_setting_$VER.zip \" ..."
 
-    sudo zip -rq ./packages/mute_setting_$TimeStamp.zip ./mute_setting
+    sudo zip -rq ./packages/mute_setting_$VER.zip ./mute_setting
 
     echo " Done."
 
 ## Copy www to mute_update/www, and then Make mute_update_VER.zip
-    # Extract version number from input
-    VER=$(echo $1 | sed -e 's/[^0-9]//g')
 
     echo -n " Packaging of \" mute_update_$VER.zip \" ..."
 
