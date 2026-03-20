@@ -20,7 +20,6 @@ So, let's make something that can easily build a "plain MPD audio server," and t
 ## Install and Update [ mute ]
 
 ### Install [ mute ] 
-NOTE:[ mute ] is currently not supported on the new OS (Trixie). Please use Raspberry Pi OS Lite (Legacy) as the base OS image.
 
 Follow the steps below to install [ mute ].
 
