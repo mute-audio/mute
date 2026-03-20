@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# audio_output_processing_name.cgi                 #
+# audio_output_selecting.cgi                 #
 # (C)2022 kitamura_design <kitamura_design@me.com> #
 
 query=$(date +%Y%m%d%I%M%S)
@@ -14,7 +14,7 @@ echo "<html>"
 
 echo  "<head>"
 echo    "<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/main.css\">"
-echo    "<meta http-equiv=\"refresh\" content=\"0; /cgi-bin/MPD/MPD_conf/audio_output_name.cgi?${QUERY_STRING}\">"
+echo    "<meta http-equiv=\"refresh\" content=\"0; /cgi-bin/MPD/MPD_conf/audio_output_select.cgi?${QUERY_STRING}\">"
 echo    "<script>"
 
 echo    "function uiLock(){"

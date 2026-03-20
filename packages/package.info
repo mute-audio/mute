@@ -1,6 +1,8 @@
-ver=1.11.1
-url=https://github.com/mute-audio/mute/releases/download/v1.11.1/mute_update_1111.zip
+ver=1.12.0
+url=https://github.com/mute-audio/mute/releases/download/v1.12.0/mute_update_1120.zip
 info:
-- Bugfix: MPD-backports install process
-- BugFix: WiFi Settings: Country Setting/ RaspberryPi Tab
-- Add: About mute: Dependencies lists: Palanquin Light: UI Font/ About Tab
+- Trixie Support - Fix "no new privileges" flag issue on lighttpd
+- Revised : Change getcover install method - Build inside the install_mute.sh
+- Improve: Real-time indication of installation and update progress (Using with SSE)
+  - MPD DB Update, MPD DB Rescan, Check & Exec Update for mute and RPi OS, and installing MPD
+- Update: Install & Update Script (install_mute.sh, update_mute.sh & Update_mute_exec2.sh)

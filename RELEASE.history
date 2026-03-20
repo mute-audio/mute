@@ -16,7 +16,7 @@ ToDo
 * ETC: MPD DB update Auto-refresh
 
 Ver_1.12.0(2026/03/20)
-- Trixie Support - The "no new privileges" flag issue on lighttpd
+- Trixie Support - Fix "no new privileges" flag issue on lighttpd
 - Revised : Change getcover install method - Build inside the install_mute.sh
 - Update: Install & Update Script (install_mute.sh, update_mute.sh & Update_mute_exec2.sh)
 - Improve: Real-time indication of installation and update progress (Using with SSE)
