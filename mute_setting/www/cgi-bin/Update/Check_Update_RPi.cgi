@@ -39,18 +39,16 @@ if [ $(which mpc) ]; then
     ### Cancel this process in case of Web Streaming to avoid alsa_output error.
     volume=$(mpc -f %file% current | cut -d / -f 1)
 
-    if [ "$volume" = "http:" ] || [ "$volume" = "https:" ]; then
-
-        echo "Location: /cgi-bin/Update/Update_caution.cgi"
-        echo ''
-
-        exit 1
-    fi
-
     ### Start apt-update streaming
     echo "Content-type: text/event-stream; charset=utf-8"
     echo "Cache-Control: no-cache"
     echo ""
+
+    if [ "$volume" = "http:" ] || [ "$volume" = "https:" ]; then
+
+        echo -n -e "data: RE-ROUTE_CAUTION\n\n"
+        exit 0
+    fi
 
     genInput_aptUpdate 2> /dev/null | stream
 

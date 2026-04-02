@@ -52,6 +52,13 @@ Content-type: text/html; charset=utf-8
      const aptUpdateSource = new EventSource('/cgi-bin/Update/Update_mute_exec.cgi');
 
      aptUpdateSource.onmessage = (e) => {
+
+        if (e.data === 'RE-ROUTE_CAUTION') {
+            aptUpdateSource.close();
+            window.location.href = "/cgi-bin/Update/Update_caution.cgi";
+            return;
+        }
+
          const content = document.querySelector('#SSE-CONTENT');
          content.textContent = e.data;
      };
