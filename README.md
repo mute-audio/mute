@@ -25,7 +25,7 @@ Follow the steps below to install [ mute ].
 
 Step 1 : Create RaspberryPi OS media (SD card)
 
-Step 2 : Download the latest setting file "mute_setting_[DATE].zip"  (Check [here](https://github.com/mute-audio/mute/releases))
+Step 2 : Download the latest setting file "mute_setting_[VERSION].zip"  (Check [here](https://github.com/mute-audio/mute/releases))
 
 Step 3 : Unzip and copy the "mute_setting" folder under /boot of the OS media
 
