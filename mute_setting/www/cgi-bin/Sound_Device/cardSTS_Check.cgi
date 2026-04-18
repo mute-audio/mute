@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # cardSTS_Check.cgi                                 #
-# (C)2023 kitamura_design <kitamura_design@me.com> #
+# (C)2026 kitamura_design <kitamura_design@me.com> #
 
 #Counting Sound Card(s)
 CARDS=$(grep -c " [0-9]" /proc/asound/cards)
@@ -42,8 +42,51 @@ else
 	   </form>
            </div>
 HTML
-        done
 
+          #### DSP Filters
+          ## Checking DAC with DSP filters
+          for card in $(aplay -l | grep '^card' | awk '{print $2}' | tr -d ':'); do
+              NUMID=$(amixer -c $card contents | grep "name='DSP Program'" | sed -n 's/.*numid=\([0-9]*\).*/\1/p')
+                if [ -n "$NUMID" ]; then
+                    CARD_INDEX=$card
+                    break
+                fi
+          done
+
+          # Genarate UI only if DAC with DSP filter
+          if [ -n "$CARD_INDEX" ]; then
+            ITEMS_COUNT=$(amixer -c $CARD_INDEX contents | grep -A 1 "numid=$NUMID," | grep "items=" | sed 's/.*items=//' | tr -d '[:space:]')
+            CURRENT_VAL=$(amixer -c $CARD_INDEX contents | sed -n "/numid=$NUMID,/,/numid=/p" | grep "^  : values=" | cut -d'=' -f2 | tr -d '[:space:]')
+
+            # safty for null
+            : ${CURRENT_VAL:=0}
+
+            cat <<HTML
+            <div id="dsp_filter" class="setting-items-wrap">
+                <div class="ellipsis-wrap"><div class="allow-down"></div></div>
+                <select name="dsp_filter" class="inputbox" onfocus="isOperating = true;" onblur="isOperating = false;" onchange="applyFilter($CARD_INDEX, $NUMID, this.value)">
+HTML
+                for i in $(seq 0 $((ITEMS_COUNT - 1))); do
+                    ITEM_NAME=$(amixer -c $CARD_INDEX contents | sed -n "/numid=$NUMID,/,/numid=/p" | grep "Item #$i " | cut -d"'" -f2)
+
+                    # Set “selected” only if the value matches the current value
+                    SELECTED=""
+                    if [ "$i" = "$CURRENT_VAL" ]; then
+                        SELECTED="selected"
+                    fi
+
+                cat <<HTML
+                <option value="$i" $SELECTED>$ITEM_NAME</option>
+HTML
+                done
+
+            cat <<HTML
+            </select>
+            <label id="dac_list">DSP Filter</label>
+            </div>
+HTML
+          fi
+        done
 fi
 
 exit 0

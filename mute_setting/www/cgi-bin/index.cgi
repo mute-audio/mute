@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # index.cgi                                        #
-# (C)2024 kitamura_design <kitamura_design@me.com> #
+# (C)2026 kitamura_design <kitamura_design@me.com> #
 
 query=$(date +%Y%m%d%I%M%S)
 muteLogo=$(< /var/www/html/image/mute_logo.svg)
@@ -70,6 +70,12 @@ Content-type: text/html; charset=utf-8
           <input id="MPD" type="submit" value="MPD" class="menutab">
         </form>
 
+        <!-- DLNA/AirPlay -->
+        <form method=GET action="/cgi-bin/loading.cgi" target="mainview">
+          <input type="hidden" name="URL" value="/cgi-bin/DLNA_AirPlay/DLNA_AirPlay.cgi">
+          <input id="DLNA-AirPlay" type="submit" value="DLNA / AirPlay" class="menutab">
+        </form>
+        
         <!-- Web Radio List-->
         <form method=GET action="/cgi-bin/loading.cgi" target="mainview">
           <input type="hidden" name="URL" value="/cgi-bin/Web_Radio/Web_radio.cgi">

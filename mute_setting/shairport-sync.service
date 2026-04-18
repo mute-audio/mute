@@ -1,0 +1,14 @@
+[Unit]
+Description=Shairport Sync for mute-audio
+After=network.target sound.target
+
+[Service]
+# Bypass /etc/default/ and use the config file directly
+ExecStart=/usr/bin/shairport-sync --configfile=/etc/shairport-sync.conf
+User=shairport-sync
+Group=shairport-sync
+Restart=always
+RestartSec=5 
+
+[Install]
+WantedBy=multi-user.target

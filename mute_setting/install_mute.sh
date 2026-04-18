@@ -32,8 +32,9 @@ echo ' 1 - Install lighttpd (Web Server middle-ware)'
 echo ' 2 - User group & Permission settings'
 echo ' 3 - Enable CGI'
 echo ' 4 - Install dependencies - nkf, lsof, bc, pmount, getcover'
-echo ' 5 - Copy [ mute ] source'
-echo ' 6 - Finalize - Clean up the sources and this script'
+echo ' 5 - Install Media Renderers (DLNA & AirPlay)'
+echo ' 6 - Copy [ mute ] source'
+echo ' 7 - Finalize - Clean up the sources and this script'
 echo ''
 
 if [ "$1" = "-y" ]; then
@@ -271,23 +272,83 @@ else
         echo " Installing getcover... Done" | sudo tee -a /${bootDIR}/mute_log > /dev/null
 fi
 
-#if [ -e /usr/local/bin/getcover ]; then
-#        echo " getcover is already installed. Installer will skip this process.." | sudo tee -a /${bootDIR}/mute_log
-#else
-#        echo ''
-#        echo " Installing getcover..."
-#	sudo wget -q --header="User-Agent:Safari/537.36" https://www.openaudiolab.com/app/download/14111530129/getcover20181203.tar.gz
-#        wait
-#	sudo gunzip getcover20181203.tar.gz && sudo tar xvf getcover20181203.tar --no-same-owner
-#	wait
-#	sudo mv ./getcover/getcover /usr/local/bin
-#        echo " Installing getcover... Done" | sudo tee -a /${bootDIR}/mute_log > /dev/null
-#fi
+#### Install DLNA & AirPlay Renderers (1.20) 	####################
+
+echo ''
+echo ' 5 - Install Media Renderers' | sudo tee -a /${bootDIR}/mute_log
+
+## DLNA Renderer (UpMPDcli) 
+echo " Installing DLNA Renderer..."
+
+	# Get OS Code-name
+	OS_CODENAME=$(lsb_release -sc)
+	echo "Detected OS: ${OS_CODENAME}"
+
+	# Install UpMPDcli and Setting
+	if [ "${OS_CODENAME}" = "bullseye" ] || [ "${OS_CODENAME}" = "bookworm" ] || [ "${OS_CODENAME}" = "trixie" ]; then #Version Check
+		# Import repository key & Keylist
+	    sudo curl -L \
+	    https://www.lesbonscomptes.com/pages/lesbonscomptes.gpg \
+	    -o /usr/share/keyrings/lesbonscomptes.gpg
+
+	    sudo curl -L \
+ 	   "https://www.lesbonscomptes.com/upmpdcli/pages/upmpdcli-${OS_CODENAME}.sources" \
+ 	   -o /etc/apt/sources.list.d/upmpdcli.sources
+
+		# Install upmpdcli
+	    sudo apt update
+	    sudo apt -o Acquire::Retries=3 install -y -q upmpdcli
+
+    	# Replace unit file
+    	if [ -f /usr/lib/systemd/system/upmpdcli.service ]; then
+    	    sudo rm /usr/lib/systemd/system/upmpdcli.service
+    	fi
+    	sudo cp ./upmpdcli.service /etc/systemd/system/upmpdcli.service
+		sudo cp ./upmpdcli.conf /etc/upmpdcli.conf
+		sudo cp ./mute_icon.png /usr/share/upmpdcli/mute_icon.png
+
+		#Enable and Start
+		echo " Enabling and Starting DLNA Renderer..."
+        sudo systemctl daemon-reload
+        sudo systemctl enable --now upmpdcli
+
+		echo " Installing DLNA Renderer... Done" | sudo tee -a /${bootDIR}/mute_log > /dev/null
+	else
+    	echo " Skipping UpMPDcli: Unsupported OS version." | sudo tee -a /${bootDIR}/mute_log
+	fi
+
+# Shairport-sync
+echo " Installing AirPlay Reciever..."
+
+	# Install shair-port-sync
+	sudo apt -o Acquire::Retries=3 install -y -q shairport-sync
+
+	# AirPlay (Shairport-sync) settings
+	sudo systemctl stop shairport-sync
+
+	# Remove old init script if exists
+	if [ -f /etc/init.d/shairport-sync ]; then
+	    sudo rm /etc/init.d/shairport-sync
+	fi
+
+	# Copy config and systemd service files from the same directory
+	sudo cp ./shairport-sync.conf /etc/shairport-sync.conf
+	sudo cp ./shairport-sync.service /etc/systemd/system/shairport-sync.service	
+
+	# Enable and Start
+	echo " Enabling and Starting AirPlay Reciever..."
+	sudo systemctl daemon-reload
+	sudo systemctl enable --now shairport-sync
+
+	echo " Installing AirPlay Reciever... Done" | sudo tee -a /${bootDIR}/mute_log > /dev/null
+
+echo " Enabling and Starting Media Renderers... Done" | sudo tee -a /${bootDIR}/mute_log > /dev/null
+
 
 #### Install [ mute ] Source		####################
 
 echo ''
-echo " 5 - Copy [ mute ] source" | sudo tee -a /${bootDIR}/mute_log
+echo " 6 - Copy [ mute ] source" | sudo tee -a /${bootDIR}/mute_log
 
 set +e
 
@@ -331,7 +392,7 @@ else
 	#### Finalize			####################
 
 	echo ''
-	echo " 6 - Finalize - Clean up the sources and this script" | sudo tee -a /${bootDIR}/mute_log
+	echo " 7 - Finalize - Clean up the sources and this script" | sudo tee -a /${bootDIR}/mute_log
 	echo " Finalizing Install..."
 
 	sudo sed -i -e "s/ver.*/ver.${VER}/" ./motd && sudo cp ./motd /etc/motd

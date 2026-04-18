@@ -2,13 +2,14 @@
 
 # Web_radio.cgi                                 #
 # (C)2025 kitamura_design <kitamura_design@me.com> #
+# Associate with Gemini
 
 destDIR="/var/lib/mpd/music/Web_Radio"
 
 cat <<HTML
 Content-type: text/html; charset=utf-8
 
-<!DOCUTYPE html>
+<!DOCTYPE html>
 <html>
        <head>
         <link rel="stylesheet" type="text/css" href="/css/main.css">
@@ -36,7 +37,7 @@ Content-type: text/html; charset=utf-8
         <h1>Web Radio List</h1>
 
         <div class="title-btn-title">
-          <h3> Destination : ${destDIR}</h3>
+          <h3> Destination : ${destDIR}/</h3>
         </div>
 HTML
 
@@ -70,6 +71,9 @@ HTML
 	      <h3>${playlistNAME}</h3>
 
 HTML
+
+# --- Loop internal HTML output ---
+
     listNUM=$(cat "${playlistFILE}" | wc -l)
 
 		for ((i=1; i <= $listNUM; i=i+3)); do
@@ -79,12 +83,14 @@ HTML
 		 	stationURL=$(sed -n ${j}p "${playlistFILE}")
       stationNAME=$(sed -n ${i}p "${playlistFILE}" | sed -e 's/^#//g')
 
-		 	cat <<HTML
-			<div id="$stationNAME" class="setting-items-wrap">
-			    <a class="button" href="/cgi-bin/Web_Radio/delete_Web_Radio.cgi?list=${playlistNAME}&name=${stationNAME}">Delete</a>
-          <input class="inputbox-single-readonly" value="$stationNAME">
-			</div>
+## WebRadio List
+    cat <<HTML
+    <div id="$stationNAME" class="setting-items-wrap">
+        <a href="/cgi-bin/Web_Radio/delete_Web_Radio.cgi?list=${playlistNAME}&name=${stationNAME}" class="ellipsis-wrap" style="font-size:1.0em; text-decoration:none; pointer-events: auto; z-index: 100;">&>
+        <input class="inputbox" value="$stationNAME" style="pointer-events: none; cursor: default; position: relative; z-index: 1;" readonly>
+    </div>
 HTML
+
 		done
 
 	   cat <<HTML

@@ -1,15 +1,19 @@
-1.11.1
+1.12.0
 
-ver=1.11.1
+ver=1.12.0
 
 Major Changes
-- Bugfix: MPD-backports install process
-- BugFix: WiFi Settings: Country Setting/ RaspberryPi Tab
-- Add: About mute: Dependencies lists: Palanquin Light: UI Font/ About Tab
+- Trixie Support - Fix "no new privileges" flag issue on lighttpd
+- Revised : Change getcover install method - Build inside the install_mute.sh
+- Update: Install & Update Script (install_mute.sh, update_mute.sh & Update_mute_exec2.sh)
+- Improve: Real-time indication of installation and update progress (Using with SSE)
+  >> MPD database updates, MPD database rescans, system update and upgrade processes, and MPD installation
 
 主な変更点
-- MPD-backportsのインストールプロセスを修正
-- RaspberryPiタブでWiFi設定時に国設定が表示されない問題を修正
-- About [mute]タブでDependenciesにPalanquin フォントを追加
+- Trixieのサポート - lighttpdの実行権限問題を修正
+- getcover のインストール方法を変更 - install_mute.sh 内でビルド
+- インストールおよびアップデートスクリプトを更新（install_mute.sh、update_mute.sh、Update_mute_exec2.sh）
+- インストールおよびアップデートの進行状況をリアルタイムで表示（SSE使用）
+　>> MPD DB 更新、MPD DB 再スキャン、システムのアップデートとアップグレードプロセス、および MPDインストール
 
 以上

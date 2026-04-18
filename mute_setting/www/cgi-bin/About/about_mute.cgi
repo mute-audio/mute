@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # about_mute.cgi                                        #
-# (C)2025 kitamura_design <kitamura_design@me.com>      #
+# (C)2026 kitamura_design <kitamura_design@me.com>      #
 
 VER=$(grep ver /var/www/cgi-bin/etc/mute.conf | cut -d "=" -f 2)
 #install_log=$(sudo cat /var/www/cgi-bin/log/install.log | sed -e "s/$/<br>/g")
@@ -10,7 +10,7 @@ query=$(date +%Y%m%d%I%M%S)
 cat <<HTML
 Content-type: text/html; charset=utf-8
 
-<!DOCUTYPE html>
+<!DOCTYPE html>
 <html>
 
   <head>
@@ -34,7 +34,7 @@ Content-type: text/html; charset=utf-8
 
   <body id="iframe" onLoad="keepHover()" onunload="offHover()">
 
-         <h1>About [ mute ]</h1>
+         <h1>About [ m u t e ]</h1>
 
          <h3>A Simple RPi-Audio/ MPD Dashboard [ ver.${VER} ]</h3>
          <br>
@@ -93,7 +93,7 @@ Content-type: text/html; charset=utf-8
          Did you get any sound with Sound Check?
          <br>
          Next, use this form to register the NAS where your music library is stored.
-         When the NAS is mounted successfully, [ mute ] will automatically create a symbolic link to the /music directory in MPD.
+         When the NAS is mounted successfully, [ m u t e ] will automatically create a symbolic link to the /music directory in MPD.
          If not, please check your SMB version. In most cases "vers=1.0" should work.
          <br>
          </p>
@@ -108,20 +108,29 @@ Content-type: text/html; charset=utf-8
          </p>
 
          <br>
-         <h3>Step 5 : Web Radio List</h3>
+         <h3>Step 5 : DLNA / AirPlay</h3>
          <p class="bodytext2">
-         Web Radio Streaming playlists can be registered on [ mute ].
-         The destination of the list will be music directory (.../music/Web_Radio), so you can browse and play it with your client application.
+         [ m u t e ] also functions as an UPnP/DLNA renderer or an AirPlay receiver.
+         It enables streaming playback from services such as Qobuz and TIDAL, as well as playback from iOS devices—features not supported by MPD alone. 
+         Please make sure to stop the current playback before switching between these functions and MPD.
+         <br>
+         </p>
+
+         <br>
+         <h3>Step 6 : Web Radio List</h3>
+         <p class="bodytext2">
+         Web Radio Streaming playlists can be registered on [ m u t e ].
+         The destination of the list will be music_directory (.../music/Web_Radio), so you can browse and play it with your client application.
          <br>
          A link to <a href="https://jcorporation.github.io/webradiodb/" target="_blank">[ webradiodb ]</a>, a database of web radio stations, is also provided.
          <br>
          </p>
 
          <br>
-         <h3>Step 6 : Other Settings</h3>
+         <h3>Step 7 : Other Settings</h3>
          <p class="bodytext2">
-         In this step,you can configure the following steps:
-         <br> 1. Last.fm scribble settings
+         In this step, you can configure the following steps:
+         <br> 1. Last.fm "scrobble" (scribble) settings
          <br> 2. Generate Coverart by getcover - get cover art image from music files ; FLAC, ALAC, and AAC
          <br> 3. Copy buttons for the host and server names for use with client apps such as yaMPC ( very useful to use on iPad )
          <br> 4. Dark Mode Switch
@@ -135,19 +144,19 @@ Content-type: text/html; charset=utf-8
          <h2>License</h2>
          <p class="bodytext2">
          <br>
-         [ mute ] ©2025 Yoichi KITAMURA / <a href="https://kitamura-design.format.com" target="_blank">kitamura_design</a>
+         [ m u t e ] ©2026 Yoichi KITAMURA / <a href="https://kitamura-design.format.com" target="_blank">kitamura_design</a>
          <br>
          <br>
-         Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
-         to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+         Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
+         to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
          and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
          <br>
          <br>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
          <br>
          <br>
-         THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
+         THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
          INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-         IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
+         IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
          TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
          <br>
          <br>
@@ -307,13 +316,35 @@ cat <<HTML
         <br>
          <h3><a href="https://fonts.google.com/specimen/Palanquin/about" target="_blank">Palanquin</a></h3>
          <p class="bodytext2">
-         Palanquin is a Unicode-compliant Latin and Devanagari text type family designed for the digital age. 
-         The Devanagari is monolinear and was designed alongside the sans serif Latin.
+         Palanquin is a Unicode-compliant Latin and Devanagari text type family designed for the digital age.
+          The Devanagari is monolinear and was designed alongside the sans serif Latin.
          <br>
          Designed by Pria Ravichandran
          <br>
          </p>
-         
+
+        <br>
+         <h3><a href="https://github.com/hzeller/gmrender-resurrect" target="_blank">gmediarender - UPNP-AV renderer daemon</a></h3>
+         <p class="bodytext2">
+         gmediarender is a daemon which acts as a UPNP-AV renderer on the local network. It can be controlled from a
+         UPNP-AV control point to play media files from a UPNP-AV media server through an audio device on the local system.
+         The source code for gmediarender is gmrender-resurrect, a fork of the GmediaRender which was abandoned upstream.
+         <br>
+         Developed by Henner Zeller (https://github.com/hzeller)
+         <br>
+         </p>
+
+        <br>
+         <h3><a href="https://github.com/mikebrady/shairport-sync" target="_blank">shairport-sync - AirPlay and AirPlay 2 Audio Player</a></h3>
+         <p class="bodytext2">
+         Shairport Sync plays AirPlay audio. It can be built to stream either from "classic" AirPlay (aka "AirPlay 1") or
+         from AirPlay 2 devices.
+         <br>
+         Mike Brady (https://github.com/mikebrady) developed Shairport Sync
+         from Shairport by James Wah (https://github.com/abrasive).
+         <br>
+         </p>
+
          <div class="separator"><hr></div>
 
   </body>
