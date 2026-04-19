@@ -278,7 +278,9 @@ echo ''
 echo ' 5 - Install Media Renderers' | sudo tee -a /${bootDIR}/mute_log
 
 ## DLNA Renderer (UpMPDcli) 
-echo " Installing DLNA Renderer..."
+echo ""
+echo "Installing DLNA Renderer..."
+echo ""
 
 	# Get OS Code-name
 	OS_CODENAME=$(lsb_release -sc)
@@ -292,7 +294,7 @@ echo " Installing DLNA Renderer..."
 	    -o /usr/share/keyrings/lesbonscomptes.gpg
 
 	    sudo curl -L \
- 	   "https://www.lesbonscomptes.com/upmpdcli/pages/upmpdcli-${OS_CODENAME}.sources" \
+ 	   "https://www.lesbonscomptes.com/upmpdcli/pages/upmpdcli-r${OS_CODENAME}.sources" \
  	   -o /etc/apt/sources.list.d/upmpdcli.sources
 
 		# Install upmpdcli
@@ -308,6 +310,7 @@ echo " Installing DLNA Renderer..."
 		sudo cp ./mute_icon.png /usr/share/upmpdcli/mute_icon.png
 
 		#Enable and Start
+		echo ""
 		echo " Enabling and Starting DLNA Renderer..."
         sudo systemctl daemon-reload
         sudo systemctl enable --now upmpdcli
@@ -318,7 +321,8 @@ echo " Installing DLNA Renderer..."
 	fi
 
 # Shairport-sync
-echo " Installing AirPlay Reciever..."
+echo "Installing AirPlay Reciever..."
+echo ""
 
 	# Install shair-port-sync
 	sudo apt -o Acquire::Retries=3 install -y -q shairport-sync
@@ -342,6 +346,7 @@ echo " Installing AirPlay Reciever..."
 
 	echo " Installing AirPlay Reciever... Done" | sudo tee -a /${bootDIR}/mute_log > /dev/null
 
+echo ""
 echo " Enabling and Starting Media Renderers... Done" | sudo tee -a /${bootDIR}/mute_log > /dev/null
 
 

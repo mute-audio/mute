@@ -12,7 +12,7 @@ query=$(date +%Y%m%d%I%M%S)
 echo "Content-type: text/html; charset=utf-8"
 echo
 
-echo "<!DOCTYPE html>"
+echo "<!DOCUTYPE html>"
 echo "<html>"
 
 echo  "<head>"

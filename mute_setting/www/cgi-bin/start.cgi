@@ -13,7 +13,7 @@ fi
 cat << HTML
 Content-type: text/html; charset=utf-8
 
-<!DOCTYPE html>
+<!DOCUTYPE html>
 <html>
 HTML
 

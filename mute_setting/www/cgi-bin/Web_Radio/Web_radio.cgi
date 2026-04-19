@@ -9,7 +9,7 @@ destDIR="/var/lib/mpd/music/Web_Radio"
 cat <<HTML
 Content-type: text/html; charset=utf-8
 
-<!DOCTYPE html>
+<!DOCUTYPE html>
 <html>
        <head>
         <link rel="stylesheet" type="text/css" href="/css/main.css">
@@ -50,10 +50,11 @@ HTML
         cat <<HTML
         <div id="no_list">
         <h3>-- No Web Radio List --</h3>
-          <div class="setting-items-wrap">
-            <a class="button-disabled">Delete</a>
-            <input class="inputbox-single-readonly" value="-- No Station --" readonly>
-          </div>
+
+            <div id="no_station" class="setting-items-wrap">
+            <input class="inputbox" placeholder="-- No Station --" style="pointer-events: none; cursor: default; position: relative; z-index: 1;" readonly>
+            </div>
+
         </div>
 
         <div class="separator"><hr></div>
@@ -84,11 +85,12 @@ HTML
       stationNAME=$(sed -n ${i}p "${playlistFILE}" | sed -e 's/^#//g')
 
 ## WebRadio List
-    cat <<HTML
-    <div id="$stationNAME" class="setting-items-wrap">
-        <a href="/cgi-bin/Web_Radio/delete_Web_Radio.cgi?list=${playlistNAME}&name=${stationNAME}" class="ellipsis-wrap" style="font-size:1.0em; text-decoration:none; pointer-events: auto; z-index: 100;">&>
-        <input class="inputbox" value="$stationNAME" style="pointer-events: none; cursor: default; position: relative; z-index: 1;" readonly>
-    </div>
+cat <<HTML
+<div id="$stationNAME" class="setting-items-wrap">
+    <a href="/cgi-bin/Web_Radio/delete_Web_Radio.cgi?list=${playlistNAME}&name=${stationNAME}" class="ellipsis-wrap" style="text-decoration:none; pointer-events: auto; z-index: 100;">&#10005;</a>
+    <input class="inputbox" value="$stationNAME" style="pointer-events: none; cursor: default; position: relative; z-index: 1;" readonly>
+
+</div>
 HTML
 
 		done
