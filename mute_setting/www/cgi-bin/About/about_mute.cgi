@@ -324,13 +324,12 @@ cat <<HTML
          </p>
 
         <br>
-         <h3><a href="https://github.com/hzeller/gmrender-resurrect" target="_blank">gmediarender - UPNP-AV renderer daemon</a></h3>
+         <h3><a href="https://www.lesbonscomptes.com/upmpdcli/index.html" target="_blank">upmpdcli - An UPnP Audio Media Renderer based on MPD</a></h3>
          <p class="bodytext2">
-         gmediarender is a daemon which acts as a UPNP-AV renderer on the local network. It can be controlled from a
-         UPNP-AV control point to play media files from a UPNP-AV media server through an audio device on the local system.
-         The source code for gmediarender is gmrender-resurrect, a fork of the GmediaRender which was abandoned upstream.
+         upmpdcli is a UPnP Media Renderer front-end for MPD, the Music Player Daemon. It supports UPnP gapless track transitions
+          and the OpenHome ohMedia services.
          <br>
-         Developed by Henner Zeller (https://github.com/hzeller)
+         Jean-Francois Dockes (jf@dockes.org)
          <br>
          </p>
 
@@ -340,8 +339,8 @@ cat <<HTML
          Shairport Sync plays AirPlay audio. It can be built to stream either from "classic" AirPlay (aka "AirPlay 1") or
          from AirPlay 2 devices.
          <br>
-         Mike Brady (https://github.com/mikebrady) developed Shairport Sync
-         from Shairport by James Wah (https://github.com/abrasive).
+         Mike Brady developed Shairport Sync
+         from Shairport by James Wah <a href="https://github.com/abrasive" target="_blank"> (https://github.com/abrasive)</a>.
          <br>
          </p>
 
