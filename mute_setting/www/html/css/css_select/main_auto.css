@@ -543,6 +543,7 @@ form {
 }
 
 .inputbox {
+  box-sizing: border-box;
   width: 73.25vw;
   height: 5.5vmin;
   float: right;
@@ -562,6 +563,7 @@ form {
 }
 
 .inputbox-single {
+  box-sizing: border-box;
   width: 48.25vw;
   height: 5.5vmin;
   float: right;
@@ -587,6 +589,7 @@ form {
 }
 
 .inputbox-single-readonly {
+  box-sizing: border-box;
   width: 48.25vw;
   height: 5.5vmin;
   float: right;
@@ -611,6 +614,7 @@ form {
 }
 
 .inputbox-single-invisible {
+  box-sizing: border-box;
   width: 48.25vw;
   height: 5.5vmin;
   float: right;
@@ -636,6 +640,7 @@ form {
 }
 
 .inputbox-single-textonly {
+  box-sizing: border-box;
   width: 48.25vw;
   height: 5.5vmin;
   float: right;

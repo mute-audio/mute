@@ -10,7 +10,7 @@ query=$(date +%Y%m%d%I%M%S)
 cat <<HTML
 Content-type: text/html; charset=utf-8
 
-<!DOCUTYPE html>
+<!DOCTYPE html>
 <html>
 
   <head>

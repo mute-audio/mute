@@ -9,7 +9,7 @@ echo "Content-type: text/html; charset=utf-8"
 echo ""
 
 cat <<HTML
-<!DOCUTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="/css/main.css">
