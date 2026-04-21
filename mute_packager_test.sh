@@ -5,8 +5,8 @@
 ## (C)2026 kitamura_design <kitamura_design@me.com>
 
 ##ポイント
-## Update_Checkerの処理を回避するために./packages/package.infoを書き換えない
-## テストパッケージは/Users/mute/Documents/mute_source/packages_testに隔離され公開されない
+## Update_Checkerの処理を回避するために./packages/package.infoを書き換えない: Line 54
+## テストパッケージのみGithubにコミット、ダウンロードからテストすること
 
 ## Input error handling
 if [ $# != 1 ] ; then
