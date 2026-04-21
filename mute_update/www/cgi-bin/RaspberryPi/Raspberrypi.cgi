@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Raspberrypi.cgi		        				   #
-# (C)2025 kitamura_design <kitamura_design@me.com> #
+# (C)2026 kitamura_design <kitamura_design@me.com> #
 
 #### HTML Header
 query=$(date +%Y%m%d%I%M%S)
@@ -12,7 +12,7 @@ TEMP=$(sudo vcgencmd measure_temp | cut -d "=" -f 2)
 CPUMax=$(sudo vcgencmd get_config int | grep arm_freq | cut -d "=" -f 2 | sed -n 1p)
 VNDR=$(sudo lscpu | grep Vendor | cut -d ":" -f 2 | cut -d " " -f 12)
 MDL=$(sudo lscpu | grep "Model name" | cut -d ":" -f 2 | sed -e 's/ //g')
-RAM=$(free --mega -t | grep Total: | sed -e 's/  */ /g' | cut -d " " -f2)
+RAM=$(free --giga | grep Mem: | sed -e 's/  */ /g' | cut -d " " -f2)
 
 ######## RaspberryPi OS
 DISTRO=$(lsb_release -a 2>/dev/null | sed -n 2p | cut -d "(" -f 2 | cut -d ")" -f 1)
@@ -44,7 +44,7 @@ wifi_STS=$(rfkill list wlan | grep "Soft blocked" | cut -d " " -f 3)
 cat <<HTML
 Content-type: text/html; charset=utf-8
 
-<!DOCUTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="/css/main.css">
@@ -132,7 +132,7 @@ cat <<HTML
 		</div>
 			<!-- Main Board Info-->
 			<h4>
-			${VNDR} ${MDL} / ${CPUMax} MHz / ${RAM} MB RAM
+			${VNDR} ${MDL} / ${CPUMax} MHz / ${RAM} GB RAM
 			<br>
 			<div id="temp">CPU Temp : ${TEMP}</div>
 			</h4>

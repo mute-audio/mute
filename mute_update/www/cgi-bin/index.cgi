@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # index.cgi                                        #
-# (C)2024 kitamura_design <kitamura_design@me.com> #
+# (C)2026 kitamura_design <kitamura_design@me.com> #
 
 query=$(date +%Y%m%d%I%M%S)
 muteLogo=$(< /var/www/html/image/mute_logo.svg)
@@ -19,7 +19,7 @@ Content-type: text/html; charset=utf-8
    <meta name="mobile-web-app-capable" content="yes">
    <meta http-equiv="Cache-Control" content="no-cache">
 
-   <title>[ mute ]</title>
+   <title>[ m u t e ]</title>
    <link rel="stylesheet" type="text/css" href="/css/main.css?$query">
    <link rel="icon" type="image/png" href="/image/mute_favicon.png">
    <link rel="apple-touch-icon" href="/image/mute_apple_icon.png">
@@ -70,6 +70,12 @@ Content-type: text/html; charset=utf-8
           <input id="MPD" type="submit" value="MPD" class="menutab">
         </form>
 
+        <!-- DLNA/AirPlay -->
+        <form method=GET action="/cgi-bin/loading.cgi" target="mainview">
+          <input type="hidden" name="URL" value="/cgi-bin/DLNA_AirPlay/DLNA_AirPlay.cgi">
+          <input id="DLNA-AirPlay" type="submit" value="DLNA / AirPlay" class="menutab">
+        </form>
+        
         <!-- Web Radio List-->
         <form method=GET action="/cgi-bin/loading.cgi" target="mainview">
           <input type="hidden" name="URL" value="/cgi-bin/Web_Radio/Web_radio.cgi">
@@ -89,10 +95,10 @@ Content-type: text/html; charset=utf-8
           <div id="UpdateBadge" class="status-min" style="display: none;"> </div>
         </form>
 
-        <!-- About [ mute ] -->
+        <!-- About [ m u t e ] -->
         <form method=GET action="/cgi-bin/loading.cgi" target="mainview">
           <input type="hidden" name="URL" value="/cgi-bin/About/about_mute.cgi">
-          <input id="AboutMute" type="submit" value="About [ mute ]" class="menutab">
+          <input id="AboutMute" type="submit" value="About [ m u t e ]" class="menutab">
         </form>
 
       </div>
@@ -123,10 +129,10 @@ Content-type: text/html; charset=utf-8
             .then((text) => {
              muteUpdate = text;
 
-            if( sysUpdate !== 'All packages are up to date.\n' || muteUpdate !== '[ mute ] is up to date' ){
-                UpdateBadge.style.display = '';
-            }else{
+            if( sysUpdate == 'All packages are up to date.\n' || muteUpdate == '[ m u t e ] is up to date' ){
                 UpdateBadge.style.display = 'none';
+            }else{
+                UpdateBadge.style.display = '';
             }
             })
             .catch((error) => console.log(error))

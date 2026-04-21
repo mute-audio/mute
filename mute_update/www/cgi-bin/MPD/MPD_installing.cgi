@@ -9,7 +9,7 @@ PKG=$(echo ${QUERY_STRING} | cut -d '=' -f 2 | sed -e 's/+/\ /g' | nkf -Ww --url
 echo "Content-type: text/html; charset=utf-8"
 echo
 
-echo "<!DOCUTYPE html>"
+echo "<!DOCTYPE html>"
 echo "<html>"
 
 echo  "<head>"
