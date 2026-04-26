@@ -15,6 +15,9 @@ ToDo
 * ETC: MPD DB update Auto-refresh
 * [ m u t e ] Setup Server: A WebUI server that can be installed without a terminal
 
+Ver_1.XX.XX(2026/MM/DD)
+- UI Design Minor Update
+
 Ver_1.20.0(2026/04/26)
 - New: DLNA / AirPlay Tab: Media Renderer for Streaming
 - Add: I2S DAC DSP Filter Switching on the fly (Control amixer)/ Sound Device Tab

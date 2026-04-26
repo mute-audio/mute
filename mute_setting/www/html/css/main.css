@@ -484,8 +484,8 @@ input {
   border: none;
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
-  border-bottom-right-radius: 0.75vw;
-  border-top-right-radius: 0.75vw;
+  border-bottom-right-radius: 1.25vw;
+  border-top-right-radius: 1.25vw;
   background-color: #5D5D5D;
   color: #ffffff !important;
   transition: background 0.5s;
@@ -507,8 +507,8 @@ input {
   text-decoration: none;
   font-size: 2.50vmin;
   border: none;
-  border-bottom-left-radius: 0.75vw;
-  border-top-left-radius: 0.75vw;
+  border-bottom-left-radius: 1.25vw;
+  border-top-left-radius: 1.25vw;
   border-bottom-right-radius: 0.0vmin;
   border-top-right-radius: 0.0vmin;
   background-color: #2E2E2E;
@@ -552,8 +552,8 @@ input {
   border: none;
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
-  border-bottom-right-radius: 0.75vw;
-  border-top-right-radius: 0.75vw;
+  border-bottom-right-radius: 1.25vw;
+  border-top-right-radius: 1.25vw;
   background-color: #5D5D5D;
   color: #ffffff;
   opacity: 0.5;
@@ -579,7 +579,7 @@ form {
   text-decoration: none;
   font-size: 2.50vmin;
   border: none;
-  border-radius: 0.75vw;
+  border-radius: 1.25vw;
   background-color: #2E2E2E;
   color: #CCCCCC;
   transition: background 0.5s;
@@ -602,8 +602,8 @@ form {
   text-decoration: none;
   font-size: 2.50vmin;
   border: none;
-  border-bottom-left-radius: 0.75vw;
-  border-top-left-radius: 0.75vw;
+  border-bottom-left-radius: 1.25vw;
+  border-top-left-radius: 1.25vw;
   border-bottom-right-radius: 0vw;
   border-top-right-radius: 0vw;
   background-color: #2E2E2E;
@@ -628,8 +628,8 @@ form {
   text-decoration: none;
   font-size: 2.50vmin;
   border: none;
-  border-bottom-left-radius: 0.75vw;
-  border-top-left-radius: 0.75vw;
+  border-bottom-left-radius: 1.25vw;
+  border-top-left-radius: 1.25vw;
   border-bottom-right-radius: 0vw;
   border-top-right-radius: 0vw;
   background-color: #2E2E2E;
@@ -653,8 +653,8 @@ form {
   text-decoration: none;
   font-size: 2.50vmin;
   border: none;
-  border-bottom-left-radius: 0.75vw;
-  border-top-left-radius: 0.75vw;
+  border-bottom-left-radius: 1.25vw;
+  border-top-left-radius: 1.25vw;
   border-bottom-right-radius: 0vw;
   border-top-right-radius: 0vw;
   visibility: hidden;
@@ -680,8 +680,8 @@ form {
   white-space: nowrap;
   font-size: 2.50vmin;
   border: none;
-  border-bottom-left-radius: 0.75vw;
-  border-top-left-radius: 0.75vw;
+  border-bottom-left-radius: 1.25vw;
+  border-top-left-radius: 1.25vw;
   border-bottom-right-radius: 0vw;
   border-top-right-radius: 0vw;
   background-color: #D7D7D700;
@@ -895,7 +895,7 @@ form {
 
 .toggle-on-mark {
   display: inline-block;
-  width: 4.0vmin;
+  width: 5.0vmin;
   height: 4.0vmin;
   border-radius: 25%;
   background-color: #FFFFFF;
@@ -906,7 +906,7 @@ form {
 
 .toggle-on-mark-off {
   display: inline-block;
-  width: 4.0vmin;
+  width: 5.0vmin;
   height: 4.0vmin;
   border-radius: 25%;
   background-color: #FFFFFF00;
@@ -932,7 +932,7 @@ form {
 
 .toggle-off-mark {
   display: inline-block;
-  width: 4.0vmin;
+  width: 5.0vmin;
   height: 4.0vmin;
   border-radius: 25%;
   background-color: #FFFFFF;
@@ -943,7 +943,7 @@ form {
 
 .toggle-off-mark-on {
   display: inline-block;
-  width: 4.0vmin;
+  width: 5.0vmin;
   height: 4.0vmin;
   border-radius: 25%;
   background-color: #FFFFFF00;
@@ -963,7 +963,7 @@ form {
   text-decoration: none;
   font-size: 2.50vmin;
   border: none;
-  border-radius: 0.75vw;
+  border-radius: 1.25vw;
   background-color: #5D5D5D;
   color: #ffffff !important;
   transition: background 0.5s;
@@ -980,7 +980,7 @@ form {
   text-decoration: none;
   font-size: 2.50vmin;
   border: none;
-  border-radius: 0.75vw;
+  border-radius: 1.25vw;
   background-color: #5D5D5D;
   color: #ffffff !important;
   transition: background 0.5s;
