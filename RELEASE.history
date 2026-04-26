@@ -5,15 +5,15 @@ ToDo
 * Pure Audio Optimization: Kill Bluetooth
 * Pure Audio Optimization: Kill triggerhappy
 * Pure Audio Optimization: Kill Modem Manager
-* ETC: PWA/HTTPS -enabled
+* Revise Branding of [ mute ]: Logo Design, Tag-line and Description
+* [ m u t e ] Setup Server: A WebUI server that can be installed without a terminal
 
 * Coverart Server [Only for "Cover.jpeg" of Local Library]
 * Revise WebRadio UI: Edit/ Delete/ Move on the List View
 * Revise WebRadio UI: Search WebradioDB and Add to the Webradio List Directly
 * Play-back Option: Auto-shuffle Mode: "ashuffle" implementation
-
+* ETC: PWA/HTTPS -enabled
 * ETC: MPD DB update Auto-refresh
-* [ m u t e ] Setup Server: A WebUI server that can be installed without a terminal
 
 Ver_1.XX.XX(2026/MM/DD)
 - UI Design Minor Update (CSS)
