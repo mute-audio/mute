@@ -1,26 +1,33 @@
 ToDo
-* implementation of Audio Renderer: DLNA and AirPlay
+* Update UpMPDcli: Support OpenHome $ qubuz login UI
+* Pure Audio Optimization: USB Unbind option
+* Pure Audio Optimization: Fix CPU Clock
+* Pure Audio Optimization: Kill Bluetooth
+* Pure Audio Optimization: Kill triggerhappy
+* Pure Audio Optimization: Kill Modem Manager
+* ETC: PWA/HTTPS -enabled
+
 * Coverart Server [Only for "Cover.jpeg" of Local Library]
 * Revise WebRadio UI: Edit/ Delete/ Move on the List View
-* ALSA Mixer (alsamixer, amixer) setting UI
+* Revise WebRadio UI: Search WebradioDB and Add to the Webradio List Directly
 * Play-back Option: Auto-shuffle Mode: "ashuffle" implementation
 
-* HiFi Setting: force_turbo=1 (max cpu clock) option
-* HiFi Setting: CPU clock control option
-* HiFi Setting: USB Unbind option
-* HiFi Setting: Bluetooth Unbind option
-* HiFi Setting: Kill triggerhappy
-* HiFi Setting: Kill Modem Manager
-
-* ETC: PWA/HTTPS -enabled
 * ETC: MPD DB update Auto-refresh
+* [ m u t e ] Setup Server: A WebUI server that can be installed without a terminal
+
+Ver_1.20.0(2026/MM/DD)
+- New: DLNA / AirPlay Tab: Media Renderer for Streaming
+- Add: I2S DAC DSP Filter Switching on the fly (Control amixer)/ Sound Device Tab
+- Revise: WebRadio UI Appearance: Change the Delete button to an “X” icon/ Web Radio List Tab
+- BugFix: Update_RPi_exec.cgi error handling when playing streaming
+- BugFix: Display of Main Board physical RAM/ RaspberryPi Tab
 
 Ver_1.12.0(2026/03/20)
 - Trixie Support - Fix "no new privileges" flag issue on lighttpd
 - Revised : Change getcover install method - Build inside the install_mute.sh
 - Update: Install & Update Script (install_mute.sh, update_mute.sh & Update_mute_exec2.sh)
 - Improve: Real-time indication of installation and update progress (Using with SSE)
-  >> MPD DB Update, MPD DB Rescan, Check & Exec Update for mute and RPi OS, and installing MPD
+  >> MPD database updates, MPD database rescans, system update and upgrade processes, and MPD installation
 
 Ver_1.11.1(2025/08/31)
 - Bugfix: MPD-backports install process

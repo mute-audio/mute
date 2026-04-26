@@ -1,19 +1,29 @@
-1.12.0
+1.20.0
 
-ver=1.12.0
+ver=1.20.0
 
 Major Changes
-- Trixie Support - Fix "no new privileges" flag issue on lighttpd
-- Revised : Change getcover install method - Build inside the install_mute.sh
-- Update: Install & Update Script (install_mute.sh, update_mute.sh & Update_mute_exec2.sh)
-- Improve: Real-time indication of installation and update progress (Using with SSE)
-  >> MPD database updates, MPD database rescans, system update and upgrade processes, and MPD installation
+- New: DLNA / AirPlay Tab: Media Renderer for Streaming
+- Add: I2S DAC DSP Filter Switching on the fly (Control amixer)/ Sound Device Tab
+- Revise: WebRadio UI Appearance: Change the Delete button to an “X” icon/ Web Radio List Tab
+- BugFix: Update_RPi_exec.cgi error handling when playing streaming
+- BugFix: Display of Main Board physical RAM/ RaspberryPi Tab
 
+Note: 
+If you are using a version earlier than 1.11.1, the update process to version 1.20.0 may not display properly. 
+You can also update manually using the latest mute_update.zip package.
+ (https://github.com/mute-audio/mute#update--m-u-t-e-)
+ 
 主な変更点
-- Trixieのサポート - lighttpdの実行権限問題を修正
-- getcover のインストール方法を変更 - install_mute.sh 内でビルド
-- インストールおよびアップデートスクリプトを更新（install_mute.sh、update_mute.sh、Update_mute_exec2.sh）
-- インストールおよびアップデートの進行状況をリアルタイムで表示（SSE使用）
-　>> MPD DB 更新、MPD DB 再スキャン、システムのアップデートとアップグレードプロセス、および MPDインストール
+- DLNA / AirPlay タブ：ストリーミング用メディアレンダラーを新たに搭載
+- I2S DAC DSP フィルターのオンザフライ切り替えに対応
+- WebRadio UI の外観：削除ボタンを「X」アイコンに変更
+- ストリーミング再生時の Update_RPi_exec.cgi のエラー処理を修正
+- メインボードの物理RAMの表示を正しい表示(GB)に
+
+Note: 
+バージョン1.11.1以前のバージョンをご利用の場合は、1.20.0へのアップデートプロセスが正常に表示されない場合があります。
+最新のmute_update.zipパッケージでマニュアルでアップデートも可能です。
+（https://github.com/mute-audio/mute#update--m-u-t-e-）
 
 以上
