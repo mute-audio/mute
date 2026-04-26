@@ -225,9 +225,8 @@ echo -n "[ mute ] is up to date" | sudo tee /var/www/cgi-bin/Update/Update_mute_
 #### Update Log ####
 date +"%Y-%m-%d %H:%M:%S" | sudo tee -a /var/www/cgi-bin/log/update_mute.log > /dev/null
 
-## Go back to the Page
-#echo "Location: /index.html"
+#echo "Location: /cgi-bin/loading.cgi?/cgi-bin/RaspberryPi/Raspberrypi.cgi"
 #echo ''
 
-echo "Location: /cgi-bin/loading.cgi?/cgi-bin/RaspberryPi/Raspberrypi.cgi"
+echo "Location: /cgi-bin/RaspberryPi/rebooting.cgi"
 echo ''
