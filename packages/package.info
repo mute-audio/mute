@@ -1,8 +1,10 @@
-ver=1.12.0
-url=https://github.com/mute-audio/mute/releases/download/v1.12.0/mute_update_1120.zip
+ver=1.20.0
+url=https://github.com/mute-audio/mute/releases/download/v1.20.0/mute_update_1200.zip
 info:
-- Trixie Support - Fix "no new privileges" flag issue on lighttpd
-- Revised : Change getcover install method - Build inside the install_mute.sh
-- Improve: Real-time indication of installation and update progress (Using with SSE)
-  - MPD DB Update, MPD DB Rescan, Check & Exec Update for mute and RPi OS, and installing MPD
-- Update: Install & Update Script (install_mute.sh, update_mute.sh & Update_mute_exec2.sh)
+- New: DLNA / AirPlay Tab: Media Renderer for Streaming
+- Add: I2S DAC DSP Filter Switching on the fly (Control amixer)/ Sound Device Tab
+- Revise: WebRadio UI Appearance: Change the Delete button to an “X” icon/ Web Radio List Tab
+- BugFix: Update_RPi_exec.cgi error handling when playing streaming
+- BugFix: Display of Main Board physical RAM/ RaspberryPi Tab
+
+Note: For versions prior to 1.11.1, it is recommended to manually update to 1.12.0 before updating to 1.20.0.
