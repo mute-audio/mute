@@ -66,5 +66,3 @@ cd mute_update && ./update_mute.sh
 For more information, visit [ m u t e ] site [(https://kitamura-design.format.com/mute-en)](https://kitamura-design.format.com/mute-en).
 
 ©2026 kitamura_design
-
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/B0B019ARF5)
