@@ -2,6 +2,7 @@
 
 # cardSTS_Check.cgi                                 #
 # (C)2026 kitamura_design <kitamura_design@me.com> #
+# Collaborated with Gemini
 
 #Counting Sound Card(s)
 CARDS=$(grep -c " [0-9]" /proc/asound/cards)

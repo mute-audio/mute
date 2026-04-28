@@ -2,6 +2,7 @@
 
 # Rename_AirPlay.cgi
 # (C)2026 kitamura_design <kitamura_design@me.com>
+# Collaborated with Gemini
 
 # Extract Name from Query String
 NEW_NAME=$(echo "$QUERY_STRING" | grep -o 'airplayNAME=[^&]*' | cut -d'=' -f2)

@@ -2,7 +2,7 @@
 
 # DLNA_AirPlay.cgi                                 #
 # (C)2026 kitamura_design <kitamura_design@me.com> #
-
+# Collaborated with Gemini
 
 cat <<HTML
 Content-type: text/html; charset=utf-8
