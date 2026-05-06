@@ -15,7 +15,7 @@ MDL=$(sudo lscpu | grep "Model name" | cut -d ":" -f 2 | sed -e 's/ //g')
 RAM=$(free --giga | grep Mem: | sed -e 's/  */ /g' | cut -d " " -f2)
 
 ######## RaspberryPi OS
-DISTRO=$(lsb_release -a 2>/dev/null | sed -n 2p | cut -d "(" -f 2 | cut -d ")" -f 1)
+DISTRO=$(lsb_release -sd | cut -d "(" -f 2 | cut -d ")" -f 1)
 kernelR=$(uname -r)
 kernelNAME=$(uname -s)
 
@@ -29,17 +29,40 @@ SOCKET=$(systemctl status mpd.socket | sed -n 3p | cut -d"(" -f2 | cut -d")" -f1
 
 # Initialize wpa_supplicant.conf
 wpa_country=$(sudo grep country /etc/wpa_supplicant/wpa_supplicant.conf)
-if [ -z ${wpa_country} ]; then
+if [ -z "${wpa_country}" ]; then
         sudo sed -i -e '$a\\ncountry\=GB' /etc/wpa_supplicant/wpa_supplicant.conf
 fi
 
 wpa_network=$(sudo grep network /etc/wpa_supplicant/wpa_supplicant.conf)
-if [ -z ${wpa_network} ]; then
+if [ -z "${wpa_network}" ]; then
         sudo sed -i -e '$a\\nnetwork\={' -e '$a\\tssid=\"SSID\"' -e '$a\\tpsk=\"PWD\"\n}' /etc/wpa_supplicant/wpa_supplicant.conf
 fi
 
 # Check WiFi status
 wifi_STS=$(rfkill list wlan | grep "Soft blocked" | cut -d " " -f 3)
+
+if [ ! -z "${wifi_STS}" ]; then
+	# Check current OS Codename
+	OS_codename=$(lsb_release -a | grep Codename | cut -f 2)
+
+	if [ "${OS_codename}" = "buster" ] || [ "${OS_codename}" = "bullseye" ]; then  # In case of Buster, Bullseye etc.
+
+    	ssid_STS=$(iwconfig wlan0 | grep "wlan0" | cut -d ":" -f 2 | cut -d "\"" -f 2)
+    	ssid_LIST=$(sudo iwlist wlan0 scan | grep ESSID | sort | uniq | cut -d ":" -f 2 | cut -d "\"" -f 2 | sed -e 's/^/<option>/g' -e 's/$/<\/option>/g')
+	else
+
+    	ssid_STS=$(iwconfig wlan0 | grep "wlan0" | cut -d ":" -f 2 | cut -d "\"" -f 2)
+    	ssid_LIST=$(sudo nmcli -f SSID device wifi list | sed -e '/SSID/d' | sort | uniq | sed -e 's/^/<option>/g' -e 's/$/<\/option>/g')
+	fi
+
+	#### WiFi Country
+	country=$(sudo raspi-config nonint get_wifi_country)
+	country_STS=$(grep "^${country}" /usr/share/zoneinfo/iso3166.tab 2>/dev/null || echo "${country}")
+	country_LIST=$(< /usr/share/zoneinfo/iso3166.tab sed -e /^#/d -e 's/^/<option>/g' -e 's/$/<\/option>/g')
+
+	#### SSID & PWD
+    ip_STS=$(ip a | grep wlan0 | grep -o state.* | cut -d " " -f 2)
+fi
 
 cat <<HTML
 Content-type: text/html; charset=utf-8
@@ -141,7 +164,7 @@ HTML
 
 ######## RaspberryPi OS
 if [ -e "/var/www/cgi-bin/log/reboot_required.log" ]; then
-	reboot_badge="<div class="status">Reboot required</div>"
+	reboot_badge='<div class="status">Reboot required</div>'
 fi
 
 cat <<HTML
@@ -227,7 +250,7 @@ HTML
 fi
 
 #### WiFi Settings
-if [ -z ${wifi_STS} ]; then
+if [ -z "${wifi_STS}" ]; then
  #### Hide WiFi Settings
 	echo ''
 
@@ -238,20 +261,6 @@ else
 HTML
 
 	#### WiFi Connection
-
-	# Check current OS Codename
-	OS_codename=$(lsb_release -a | grep Codename | cut -f 2)
-
-	if [ ${OS_codename} = "buster" ] || [ ${OS_codename} = "bullseye" ]; then  # In case of Buster, Bullseye etc.
-
-    	ssid_STS=$(iwconfig wlan0 | grep "wlan0" | cut -d ":" -f 2 | cut -d "\"" -f 2)
-    	ssid_LIST=$(sudo iwlist wlan0 scan | grep ESSID | sort | uniq | cut -d ":" -f 2 | cut -d "\"" -f 2 | sed -e 's/^/<option>/g' -e 's/$/<\/option>/g')
-	else
-
-    	ssid_STS=$(iwconfig wlan0 | grep "wlan0" | cut -d ":" -f 2 | cut -d "\"" -f 2)
-    	ssid_LIST=$(sudo nmcli -f SSID device wifi list | sed -e '/SSID/d' | sort | uniq | sed -e 's/^/<option>/g' -e 's/$/<\/option>/g')
-	fi
-
 	if [ "$wifi_STS" = "no" ]; then
 
   	  cat <<HTML
@@ -281,10 +290,6 @@ HTML
 	fi
 
 	#### WiFi Country
-	country=$(sudo raspi-config nonint get_wifi_country)
-	country_STS=$(grep ${country} /usr/share/zoneinfo/iso3166.tab)
-	country_LIST=$(< /usr/share/zoneinfo/iso3166.tab sed -e /^#/d -e 's/^/<option>/g' -e 's/$/<\/option>/g')
-
     if [ "$wifi_STS" = "no" ]; then
 
 		cat <<HTML
@@ -304,8 +309,6 @@ HTML
 	fi
 
 	#### SSID & PWD
-    ip_STS=$(ip a | grep wlan0 | grep -o state.* | cut -d " " -f 2)
-
 	if [ "$wifi_STS" = "no" ]; then
 
 		cat <<HTML
@@ -346,7 +349,6 @@ HTML
 fi
 
 ## CPU Temp & SSID List updator
-
 cat <<HTML
 	  <div class="separator"><hr></div>
 
