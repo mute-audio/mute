@@ -29,8 +29,8 @@ else
 		  cardSTS=Running
 	  elif [ ${cardSTS} = "closed" ]; then
 		  cardSTS=Closed
-          elif [ ${cardSTS} = "DRAINING" ]; then
-                  cardSTS=Draining
+      elif [ ${cardSTS} = "DRAINING" ]; then
+          cardSTS=Draining
 	  fi
 
           cat <<HTML

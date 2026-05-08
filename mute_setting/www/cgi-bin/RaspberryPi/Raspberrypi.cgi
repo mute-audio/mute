@@ -15,7 +15,7 @@ MDL=$(sudo lscpu | grep "Model name" | cut -d ":" -f 2 | sed -e 's/ //g')
 RAM=$(free --giga | grep Mem: | sed -e 's/  */ /g' | cut -d " " -f2)
 
 ######## RaspberryPi OS
-DISTRO=$(lsb_release -sd | cut -d "(" -f 2 | cut -d ")" -f 1)
+DISTRO=$(lsb_release -sc)
 kernelR=$(uname -r)
 kernelNAME=$(uname -s)
 
