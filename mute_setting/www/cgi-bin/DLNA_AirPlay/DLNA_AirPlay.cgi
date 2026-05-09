@@ -99,13 +99,12 @@ fi
 
 cat <<HTML
 		<!-- Name Setting -->
-		<h4> Display Name Setting </h4>
                 <form method=GET action="/cgi-bin/DLNA_AirPlay/Renaming_DLNA.cgi" onsubmit="" target="_self">
                         <div class="setting-items-wrap">
                             <input id="dlna_Apply" type="submit" value="Set" class="button"></input>
                             <div class="ellipsis-wrap">Aa</div>
                             <input type="text" id="dlnaNAME" name="dlnaNAME" value="$DLNA_NAME" class="inputbox-single" required>
-                            <label for="">Name</label>
+                            <label for="">Display Name</label>
                         </div>
                 </form>
 
@@ -147,13 +146,12 @@ fi
 
 cat <<HTML
             <!-- Name Setting -->
-		<h4>Display Name Setting</h4>
 		<form method=GET action="/cgi-bin/DLNA_AirPlay/Renaming_AirPlay.cgi" onsubmit="" target="_self">
 			<div class="setting-items-wrap">
 			    <input id="airplay_Apply" type="submit" value="Set" class="button"></input>
 			    <div class="ellipsis-wrap">Aa</div>
 			    <input type="text" id="airplayNAME" name="airplayNAME" value="$AirPlay_NAME" class="inputbox-single" required>
-			    <label for="">Name</label>
+			    <label for="">Display Name</label>
 			</div>
 		</form>
 
