@@ -77,7 +77,7 @@ cat <<HTML
     <h1>Update</h1>
 HTML
 
-######## [ mute ] Update
+######## [ m u t e ] Update
 
 current_VER_mute=$(grep ver /var/www/cgi-bin/etc/mute.conf | cut -d "=" -f 2)
 stsUPDmute=$(cat /var/www/cgi-bin/Update/Update_mute_notice.txt)
@@ -86,11 +86,11 @@ lastUPDmute=$(sudo sed -n '$p' /var/www/cgi-bin/log/update_mute.log)
     if [ "$stsUPDmute" = "[ mute ] is up to date" ]; then
 
         cat <<HTML
-        <!-- [ mute ] -->
+        <!-- [ m u t e ] -->
       <div id="mute">
         <div class="title-btn-title">
           <a href="/cgi-bin/Update/Checking_Update_mute.cgi" class="toggle-on-sw"> Check Update </a>
-          <h3>[ mute ]</h3>
+          <h3>[ m u t e ]</h3>
         </div>
 
         <h4>
@@ -107,11 +107,11 @@ HTML
     else
 
         cat <<HTML
-        <!-- [ mute ] -->
+        <!-- [ m u t e ] -->
       <div id="mute">
         <div class="title-btn-title">
           <a href="#" onClick="dispUpdateMute(); return false;" target="_self" class="toggle-on-sw"> Update </a>
-          <h3>[ mute ]</h3>
+          <h3>[ m u t e ]</h3>
         <div class="status">Update Available</div>
         </div>
 
