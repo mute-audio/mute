@@ -11,13 +11,16 @@ USER=$(echo ${QUERY_STRING} | cut -d '&' -f 4 | cut -d '=' -f 2 | nkf -Ww --url-
 PASS=$(echo ${QUERY_STRING} | cut -d '&' -f 5 | cut -d '=' -f 2 | nkf -Ww --url-input)
 
 #### Input validation - reject anything outside expected format
-if [[ ! "${NAME}" =~ ^[A-Za-z0-9_-]+$ ]]; then
+NG_CHARS='[[:space:];|&$`"'\''\<>(){}*?~!#]'
+NG_CHARS_NAME="${NG_CHARS%]}/.]"
+
+if [[ "${NAME}" =~ ${NG_CHARS_NAME} ]]; then
     echo "Location: /cgi-bin/Source_Volume/NAS_mount_error.cgi"
     echo ""
     exit 1
 fi
 
-if [[ ! "${ADRS}" =~ ^[A-Za-z0-9.-]+$ ]]; then
+if [[ "${ADRS}" =~ ${NG_CHARS} ]]; then
     echo "Location: /cgi-bin/Source_Volume/NAS_mount_error.cgi"
     echo ""
     exit 1
@@ -34,11 +37,9 @@ FSTAB="//${ADRS} /mnt/${NAME} cifs _netdev,${MOUNT_OPTS} 0 0"
 MOUNT_POINT="/mnt/${NAME}"
 
 #### Clean-up any existing fstab entry for this mount point, regardless of IP
-#fstab_CHK=$(grep --only-matching "$FSTAB" /etc/fstab)
 fstab_CHK=$(grep -F " ${MOUNT_POINT} " /etc/fstab)
 
  if [ -n "$fstab_CHK" ]; then
-#    sudo sed -i -e "/${FSTAB//\//\\/}/d" /etc/fstab
     sudo sed -i -e "\@[[:space:]]${MOUNT_POINT}[[:space:]]@d" /etc/fstab
  fi
 
@@ -55,8 +56,8 @@ MNT_check=$(df -ah | egrep --only-matching "/mnt/${NAME}")
  fi
 
 #### Mount NAS
- #sudo mount -o ${VERS},username=${USER:-guest},password=${PASS},rw,iocharset=utf8 //${ADRS} /mnt/${NAME}        # Mount NAS
  sudo mount -t cifs -o "${MOUNT_OPTS}" "//${ADRS}" "/mnt/${NAME}"
+
 #### Mount check
  if [ $? = 0 ]; then
 #    sudo sed -i -e "/# a swapfile/i${FSTAB//\//\\/}" /etc/fstab     # Write mount setting to fstab
