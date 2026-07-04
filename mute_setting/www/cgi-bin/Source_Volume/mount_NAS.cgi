@@ -10,13 +10,36 @@ VERS=$(echo ${QUERY_STRING} | cut -d '&' -f 3 | cut -d '=' -f 2 | nkf -Ww --url-
 USER=$(echo ${QUERY_STRING} | cut -d '&' -f 4 | cut -d '=' -f 2 | nkf -Ww --url-input)
 PASS=$(echo ${QUERY_STRING} | cut -d '&' -f 5 | cut -d '=' -f 2 | nkf -Ww --url-input)
 
-FSTAB="//${ADRS} /mnt/${NAME} cifs _netdev,${VERS},username=${USER:- guest},password=${PASS},rw,iocharset=utf8 0 0"
+#### Input validation - reject anything outside expected format
+if [[ ! "${NAME}" =~ ^[A-Za-z0-9_-]+$ ]]; then
+    echo "Location: /cgi-bin/Source_Volume/NAS_mount_error.cgi"
+    echo ""
+    exit 1
+fi
 
-#### Clean-up fstab even if setting already exits
-fstab_CHK=$(grep --only-matching "$FSTAB" /etc/fstab)
+if [[ ! "${ADRS}" =~ ^[A-Za-z0-9.-]+$ ]]; then
+    echo "Location: /cgi-bin/Source_Volume/NAS_mount_error.cgi"
+    echo ""
+    exit 1
+fi
+
+if [[ ! "${VERS}" =~ ^vers=[0-9.]+$ ]]; then
+    echo "Location: /cgi-bin/Source_Volume/NAS_mount_error.cgi"
+    echo ""
+    exit 1
+fi
+
+MOUNT_OPTS="${VERS},username=${USER:-guest},password=${PASS},rw,iocharset=utf8"
+FSTAB="//${ADRS} /mnt/${NAME} cifs _netdev,${MOUNT_OPTS} 0 0"
+MOUNT_POINT="/mnt/${NAME}"
+
+#### Clean-up any existing fstab entry for this mount point, regardless of IP
+#fstab_CHK=$(grep --only-matching "$FSTAB" /etc/fstab)
+fstab_CHK=$(grep -F " ${MOUNT_POINT} " /etc/fstab)
 
  if [ -n "$fstab_CHK" ]; then
-    sudo sed -i -e "/${FSTAB//\//\\/}/d" /etc/fstab
+#    sudo sed -i -e "/${FSTAB//\//\\/}/d" /etc/fstab
+    sudo sed -i -e "\@[[:space:]]${MOUNT_POINT}[[:space:]]@d" /etc/fstab
  fi
 
 #### If NAS already mounted to the same Mount-Point, unmount once
@@ -32,8 +55,8 @@ MNT_check=$(df -ah | egrep --only-matching "/mnt/${NAME}")
  fi
 
 #### Mount NAS
- sudo mount -o ${VERS},username=${USER:- guest},password=${PASS},rw,iocharset=utf8 //${ADRS} /mnt/${NAME}        # Mount NAS
-
+ #sudo mount -o ${VERS},username=${USER:-guest},password=${PASS},rw,iocharset=utf8 //${ADRS} /mnt/${NAME}        # Mount NAS
+ sudo mount -t cifs -o "${MOUNT_OPTS}" "//${ADRS}" "/mnt/${NAME}"
 #### Mount check
  if [ $? = 0 ]; then
 #    sudo sed -i -e "/# a swapfile/i${FSTAB//\//\\/}" /etc/fstab     # Write mount setting to fstab
