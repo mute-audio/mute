@@ -10,9 +10,10 @@ VERS=$(echo ${QUERY_STRING} | cut -d '&' -f 3 | cut -d '=' -f 2 | nkf -Ww --url-
 USER=$(echo ${QUERY_STRING} | cut -d '&' -f 4 | cut -d '=' -f 2 | nkf -Ww --url-input)
 PASS=$(echo ${QUERY_STRING} | cut -d '&' -f 5 | cut -d '=' -f 2 | nkf -Ww --url-input)
 
-#### Input validation - reject anything outside expected format
+#### Input validation
 NG_CHARS='[[:space:];|&$`"'\''\<>(){}*?~!#]'
 NG_CHARS_NAME="${NG_CHARS%]}/.]"
+VERS_PATTERN='^vers=[0-9]+(\.[0-9]+)+$'
 
 if [[ "${NAME}" =~ ${NG_CHARS_NAME} ]]; then
     echo "Location: /cgi-bin/Source_Volume/NAS_mount_error.cgi"
@@ -26,13 +27,18 @@ if [[ "${ADRS}" =~ ${NG_CHARS} ]]; then
     exit 1
 fi
 
-if [[ ! "${VERS}" =~ ^vers=[0-9.]+$ ]]; then
+if [[ -n "${VERS}" && ! "${VERS}" =~ ${VERS_PATTERN} ]]; then
     echo "Location: /cgi-bin/Source_Volume/NAS_mount_error.cgi"
     echo ""
     exit 1
 fi
 
-MOUNT_OPTS="${VERS},username=${USER:-guest},password=${PASS},rw,iocharset=utf8"
+if [ -n "${VERS}" ]; then
+    MOUNT_OPTS="${VERS},username=${USER:-guest},password=${PASS},rw,iocharset=utf8"
+else
+    MOUNT_OPTS="username=${USER:-guest},password=${PASS},rw,iocharset=utf8"
+fi
+
 FSTAB="//${ADRS} /mnt/${NAME} cifs _netdev,${MOUNT_OPTS} 0 0"
 MOUNT_POINT="/mnt/${NAME}"
 
@@ -86,4 +92,3 @@ MPD_check=$(dpkg -l mpd | grep --only-matching mpd)
  # Go back to the Page
 echo "Location: /cgi-bin/loading.cgi?/cgi-bin/Source_Volume/Source_volume.cgi"
 echo ""
-
