@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Web_radio.cgi                                 #
-# (C)2025 kitamura_design <kitamura_design@me.com> #
-# Associate with Gemini
+# (C)2026 kitamura_design <kitamura_design@me.com> #
+# Collaborated with Gemini
 
 destDIR="/var/lib/mpd/music/Web_Radio"
 

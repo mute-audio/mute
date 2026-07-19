@@ -276,7 +276,6 @@ HTML
 ##### Input Options
 
 CURL=$(sed -n /input\ \{/,/\}/p /etc/mpd.conf | grep -B 1 'plugin.*\"curl\"' | sed -n /.*enabled.*/p | cut -d "\"" -f 2 | cut -d "\"" -f 1)
-QOBUZ=$(sed -n /input\ \{/,/\}/p /etc/mpd.conf | grep -B 1 'plugin.*\"qobuz\"' | sed -n /.*enabled.*/p | cut -d "\"" -f 2 | cut -d "\"" -f 1)
 
         cat <<HTML
       <!-- Input Plugins -->
@@ -324,61 +323,6 @@ HTML
           </div>
 HTML
         fi
-
-#### QOBUZ check
-
-#        if [ "$QOBUZ" = "no" ]; then
-
-#         cat <<HTML
-#          <!-- QOBUZ Toggle No -->
-#          <div class="setting-items-wrap">
-#            <div class="toggle-wrap">
-#              <div class="toggle-off-wrap"><div class="toggle-off-mark"></div></div>
-#              <a id="qobuz_btn" href="/cgi-bin/MPD/MPD_conf/qobuz_processing.cgi?QOBUZ=Yes" onClick="toggleOn()" target="_self" class="toggle-off-sw">No</a>
-#            </div>
-#            <input class="inputbox-single-invisible" value="No" readonly></input>
-#            <label>QOBUZ</label>
-#          </div>
-#HTML
-#        elif [ "$QOBUZ" = "yes" ]; then
-
-#          cat <<HTML
-#          <!-- QOBUZ Toggle Yes -->
-#          <div class="setting-items-wrap">
-#            <div class="toggle-wrap">
-#              <a id="qobuz_btn" href="/cgi-bin/MPD/MPD_conf/qobuz_processing.cgi?QOBUZ=No" onClick="toggleOff" target="_self" class="toggle-on-sw">Yes</a>
-#              <div class="toggle-on-wrap"><div class="toggle-on-mark"></div></div>
-#            </div>
-#            <input class="inputbox-single-invisible" value="Yes" readonly></input>
-#            <label>QUBUZ</label>
-#          </div>
-#HTML
-#        elif [ -z "$QOBUZ" ]; then
-
-#          cat <<HTML
-#          <!-- QOBUZ Toggle N/A -->
-#          <div class="setting-items-wrap">
-#            <div class="toggle-wrap">
-#              <a href="" target="_self" class="toggle-off-sw">Not assigned</a>
-#            </div>
-#            <input class="inputbox-single-invisible" value="NA" readonly></input>
-#            <label>QOBUZ</label>
-#          </div>
-#HTML
-#        fi
-
-#          cat <<HTML
-#          <div class=\separator"></div>
-#HTML
-
-          cat <<HTML
-          <!-- QOBUZ N/A-->
-          <div class="setting-items-wrap">
-            <a class="toggle-off-sw">Not Available</a>
-            <input class="inputbox-single-invisible" value="NA" readonly></input>
-            <label>QOBUZ</label>
-          </div>
-HTML
 
 ###### Audio_Output
 

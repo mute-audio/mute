@@ -1,6 +1,7 @@
 #!/bin/bash
 # Toggling_AirPlay.cgi
 # (C)2026 kitamura_design <kitamura_design@me.com>
+# Collaborated with Gemini
 
 echo "Content-type: text/html; charset=utf-8"
 echo ""

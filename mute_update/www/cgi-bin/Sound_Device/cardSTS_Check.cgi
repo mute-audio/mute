@@ -2,6 +2,7 @@
 
 # cardSTS_Check.cgi                                 #
 # (C)2026 kitamura_design <kitamura_design@me.com> #
+# Collaborated with Gemini
 
 #Counting Sound Card(s)
 CARDS=$(grep -c " [0-9]" /proc/asound/cards)
@@ -28,8 +29,8 @@ else
 		  cardSTS=Running
 	  elif [ ${cardSTS} = "closed" ]; then
 		  cardSTS=Closed
-          elif [ ${cardSTS} = "DRAINING" ]; then
-                  cardSTS=Draining
+      elif [ ${cardSTS} = "DRAINING" ]; then
+          cardSTS=Draining
 	  fi
 
           cat <<HTML
@@ -82,7 +83,7 @@ HTML
 
             cat <<HTML
             </select>
-            <label id="dac_list">DSP Filter</label>
+            <label id="dac_list">Digital Filter</label>
             </div>
 HTML
           fi

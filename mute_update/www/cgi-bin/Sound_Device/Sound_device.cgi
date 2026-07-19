@@ -162,7 +162,7 @@ HTML
 
             cat <<HTML
             </select>
-            <label id="dac_list">DSP Filter</label>
+            <label id="dac_list">Digital Filter</label>
             </div>
 HTML
           fi

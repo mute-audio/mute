@@ -5,7 +5,7 @@ ToDo
 * Pure Audio Optimization: Kill Bluetooth
 * Pure Audio Optimization: Kill triggerhappy
 * Pure Audio Optimization: Kill Modem Manager
-* Revise Branding of [ mute ]: Logo Design, and README.md
+* Revise Branding of [ m u t e ]: Logo Design, and README.md
 * [ m u t e ] Setup Server: A WebUI server that can be installed without a terminal
 
 * Coverart Server [Only for "Cover.jpeg" of Local Library]
@@ -15,9 +15,12 @@ ToDo
 * ETC: PWA/HTTPS -enabled
 * ETC: MPD DB update Auto-refresh
 
-Ver_1.XX.XX(2026/MM/DD)
-- UI Design Minor Update (CSS)
-- Revise Branding of [ mute ]: Rewritten README.md
+Ver_1.20.1(2026/07/19)
+- Revise: UI Design Brush-Up (CSS)
+- Revise: Clean up qobuz Input Plugin/ MPD Tab
+- Revise: Re-branding a little: [ mute ] -> [ m u t e ]
+- Revise: Re-designed SSH login Display: /etc/motd
+- BugFix: Mount/unmount Volume (NAS/USB) Process/ Source Volume Tab
 
 Ver_1.20.0(2026/04/26)
 - New: DLNA / AirPlay Tab: Media Renderer for Streaming

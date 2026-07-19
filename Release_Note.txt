@@ -1,29 +1,21 @@
-1.20.0
+1.20.1
 
-ver=1.20.0
+ver=1.20.1
 
-Major Changes
-- New: DLNA / AirPlay Tab: Media Renderer for Streaming
-- Add: I2S DAC DSP Filter Switching on the fly (Control amixer)/ Sound Device Tab
-- Revise: WebRadio UI Appearance: Change the Delete button to an “X” icon/ Web Radio List Tab
-- BugFix: Update_RPi_exec.cgi error handling when playing streaming
-- BugFix: Display of Main Board physical RAM/ RaspberryPi Tab
-
-Note: 
-If you are using a version earlier than 1.11.1, the update process to version 1.20.0 may not display properly. 
-You can also update manually using the latest mute_update.zip package.
- (https://github.com/mute-audio/mute#update--m-u-t-e-)
+Changes
+- Revise: UI Design Brush-Up (CSS)
+- Revise: Desabled qobuz Input Plugin/ MPD Tab
+- Revise: Re-branding a little: [ mute ] -> [ m u t e ]
+- Revise: Re-designed SSH login Display: /etc/motd
+- Improved: XSS Mitigation: QUERY_STRING Handling
+- BugFix: Mount/unmount Volume (NAS/USB) Process/ Source Volume Tab
  
-主な変更点
-- DLNA / AirPlay タブ：ストリーミング用メディアレンダラーを新たに搭載
-- I2S DAC DSP フィルターのオンザフライ切り替えに対応
-- WebRadio UI の外観：削除ボタンを「X」アイコンに変更
-- ストリーミング再生時の Update_RPi_exec.cgi のエラー処理を修正
-- メインボードの物理RAMの表示を正しい表示(GB)に
-
-Note: 
-バージョン1.11.1以前のバージョンをご利用の場合は、1.20.0へのアップデートプロセスが正常に表示されない場合があります。
-最新のmute_update.zipパッケージでマニュアルでアップデートも可能です。
-（https://github.com/mute-audio/mute#update--m-u-t-e-）
+変更点
+- UIデザインをブラッシュアップ（CSS）
+- Qobuzプラグインを無効に / MPDタブ
+- ほんの少し リ・ブランディング：[ mute ] -> [ m u t e ]
+- SSHログイン時の表示を見直し（/etc/motd）
+- XSS対応：QUERY_STRING処理
+- ボリューム（NAS/USB）のマウント/アンマウント処理のバグを修正 / Souece Volume タブ
 
 以上

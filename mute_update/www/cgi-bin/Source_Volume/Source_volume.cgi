@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Source_volume.cgi                              #
-# (C)2024 kitamura_design <kitamura_design@me.com> #
+# (C)2026 kitamura_design <kitamura_design@me.com> #
 
 query=$(date +%Y%m%d%I%M%S)
 
-cat <<HTML
+cat <<'HTML'
 Content-type: text/html; charset=utf-8
 
 <!DOCTYPE html>
@@ -34,6 +34,31 @@ Content-type: text/html; charset=utf-8
               } else {
               return false;
               }
+          }
+
+          // Input validation
+          const NG_CHARS_COMMON = /[\s;|&$`"'<>(){}*?~!#]/;
+          const NG_CHARS_NAME   = /[\s/.;|&$`"'<>(){}*?~!#]/;
+          const VERS_PATTERN    = /^vers=[0-9]+(\.[0-9]+)+$/;
+
+          function validateNasForm(){
+              const name = document.getElementById('mount_name').value;
+              const path = document.getElementById('volume_path').value;
+              const vers = document.getElementById('vers').value;
+
+              if (NG_CHARS_NAME.test(name)) {
+                  alert('NAS Name contains invalid characters.\n(space / . ; | & $ ` " \' < > ( ) { } * ? ~ ! #)');
+                  return false;
+              }
+              if (NG_CHARS_COMMON.test(path)) {
+                  alert('Volume Path contains invalid characters.\n(space ; | & $ ` " \' < > ( ) { } * ? ~ ! #)');
+                  return false;
+              }
+              if (vers !== '' && !VERS_PATTERN.test(vers)) {
+                  alert('SMB Version must be in the format "vers=X.X".');
+                  return false;
+              }
+              return true;
           }
 
         </script>
@@ -108,7 +133,7 @@ HTML
         <div id="NAS_MOUNT_FORM">
         <h4> NAS Setting [ SMB ]</h4>
 
-        <form method=GET action="/cgi-bin/Source_Volume/mouting_NAS.cgi" onsubmit="return dbUpdateMsg()" target="_self">
+        <form method=GET action="/cgi-bin/Source_Volume/mouting_NAS.cgi" onsubmit="return validateNasForm() && dbUpdateMsg()" target="_self">
              <ul>
                   <!-- NAS Label (Mount Name) -->
                 <li class="setting-items-wrap">

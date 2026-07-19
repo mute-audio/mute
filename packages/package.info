@@ -1,10 +1,9 @@
-ver=1.20.0
-url=https://github.com/mute-audio/mute/releases/download/v1.20.0/mute_update_1200.zip
+ver=1.20.1
+url=https://github.com/mute-audio/mute/releases/download/v1.20.1/mute_update_1201.zip
 info:
-- New: DLNA / AirPlay Tab: Media Renderer for Streaming
-- Add: I2S DAC DSP Filter Switching on the fly (Control amixer)/ Sound Device Tab
-- Revise: WebRadio UI Appearance: Change the Delete button to an “X” icon/ Web Radio List Tab
-- BugFix: Update_RPi_exec.cgi error handling when playing streaming
-- BugFix: Display of Main Board physical RAM/ RaspberryPi Tab
-
-Note: For versions prior to 1.11.1, it is recommended to manually update to 1.12.0 before updating to 1.20.0.
+- Revise: UI Design Brush-Up (CSS)
+- Revise: Desabled qobuz Input Plugin/ MPD Tab
+- Revise: Re-branding a little: [ mute ] -> [ m u t e ]
+- Revise: Re-designed SSH login Display: /etc/motd
+- Improved: XSS Mitigation: QUERY_STRING Handling
+- BugFix: Mount/unmount Volume (NAS/USB) Process/ Source Volume Tab

@@ -1,4 +1,5 @@
 #!/bin/bash
+QUERY_STRING_ESC=$(echo -n "${QUERY_STRING}" | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g' -e 's/"/\&quot;/g' -e "s/'/\&#39;/g")
 
 # WiFi_applying.cgi		                           #
 # (C)2022 kitamura_design <kitamura_design@me.com> #
@@ -17,7 +18,7 @@ echo "<html>"
 
 echo  "<head>"
 echo    "<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/main.css?#query\">"
-echo    "<meta http-equiv=\"refresh\" content=\"0; URL=/cgi-bin/RaspberryPi/WiFi_apply.cgi?${QUERY_STRING}\">"
+echo    "<meta http-equiv=\"refresh\" content=\"0; URL=/cgi-bin/RaspberryPi/WiFi_apply.cgi?${QUERY_STRING_ESC}\">"
 echo    "<script>"
 
 echo    "function uiLock(){"
