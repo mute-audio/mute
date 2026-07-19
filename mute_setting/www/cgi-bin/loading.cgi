@@ -3,6 +3,7 @@
 # loading.cgi : Call Tab menu                      #
 # (C)2024 kitamura_design <kitamura_design@me.com> #
 
+QUERY_STRING_ESC=$(echo -n "${QUERY_STRING}" | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g' -e 's/"/\&quot;/g' -e "s/'/\&#39;/g")
 query=$(date +%Y%m%d%I%M%S)
 
 cat <<HTML
@@ -13,7 +14,7 @@ Content-type: text/html; charset=utf-8
 
   <head>
      <link rel="stylesheet" type="text/css" href="/css/main.css">
-     <meta http-equiv="refresh" content="0; ${QUERY_STRING}">
+     <meta http-equiv="refresh" content="0; ${QUERY_STRING_ESC}">
      <script>
         function uiLock(){ 
          target = parent.document.getElementById("sidebar");

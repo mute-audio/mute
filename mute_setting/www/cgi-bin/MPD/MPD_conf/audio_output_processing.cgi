@@ -3,6 +3,7 @@
 # audio_output_processing.cgi                    #
 # (C)2022 kitamura_design <kitamura_design@me.com> #
 
+QUERY_STRING_ESC=$(echo -n "${QUERY_STRING}" | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g' -e 's/"/\&quot;/g' -e "s/'/\&#39;/g")
 # Clean QUERY_STRING
  OPTION=$(echo ${QUERY_STRING} | cut -d '=' -f 1 | nkf -Ww --url-input)
 
@@ -17,7 +18,7 @@ echo "<html>"
 
 echo  "<head>"
 echo    "<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/main.css\">"
-echo    "<meta http-equiv=\"refresh\" content=\"0; /cgi-bin/MPD/MPD_conf/audio_output_$OPTION.cgi?${QUERY_STRING}\">"
+echo    "<meta http-equiv=\"refresh\" content=\"0; /cgi-bin/MPD/MPD_conf/audio_output_$OPTION.cgi?${QUERY_STRING_ESC}\">"
 echo    "<script>"
 
 echo    "function uiLock(){"
