@@ -1,9 +1,9 @@
 #!/bin/bash
-QUERY_STRING_ESC=$(echo -n "${QUERY_STRING}" | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g' -e 's/"/\&quot;/g' -e "s/'/\&#39;/g")
 
 # curl_processing.cgi
 # (C)2022 kitamura_design <kitamura_design@me.com> #
 
+QUERY_STRING_ESC=$(echo -n "${QUERY_STRING}" | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g' -e 's/"/\&quot;/g' -e "s/'/\&#39;/g")
 query=$(date +%Y%m%d%I%M%S)
 
 #HTML
