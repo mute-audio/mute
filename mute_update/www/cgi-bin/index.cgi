@@ -129,7 +129,7 @@ Content-type: text/html; charset=utf-8
             .then((text) => {
              muteUpdate = text;
 
-            if( sysUpdate == 'All packages are up to date.\n' && muteUpdate == '[ m u t e ] is up to date' ){
+            if( sysUpdate.trim() == 'All packages are up to date.' && muteUpdate.trim() == '[ mute ] is up to date' ){
                 UpdateBadge.style.display = 'none';
             }else{
                 UpdateBadge.style.display = '';
