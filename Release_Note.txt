@@ -1,21 +1,7 @@
-1.20.1
+1.20.2
 
-ver=1.20.1
+ver=1.20.2
 
 Changes
-- Revise: UI Design Brush-Up (CSS)
-- Revise: Desabled qobuz Input Plugin/ MPD Tab
 - Revise: Re-branding a little: [ mute ] -> [ m u t e ]
-- Revise: Re-designed SSH login Display: /etc/motd
-- Improved: XSS Mitigation: QUERY_STRING Handling
-- BugFix: Mount/unmount Volume (NAS/USB) Process/ Source Volume Tab
- 
-変更点
-- UIデザインをブラッシュアップ（CSS）
-- Qobuzプラグインを無効に / MPDタブ
-- ほんの少し リ・ブランディング：[ mute ] -> [ m u t e ]
-- SSHログイン時の表示を見直し（/etc/motd）
-- XSS対応：QUERY_STRING処理
-- ボリューム（NAS/USB）のマウント/アンマウント処理のバグを修正 / Souece Volume タブ
-
-以上
+- Minor BugFix

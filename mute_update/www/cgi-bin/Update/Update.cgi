@@ -83,7 +83,7 @@ current_VER_mute=$(grep ver /var/www/cgi-bin/etc/mute.conf | cut -d "=" -f 2)
 stsUPDmute=$(cat /var/www/cgi-bin/Update/Update_mute_notice.txt)
 lastUPDmute=$(sudo sed -n '$p' /var/www/cgi-bin/log/update_mute.log)
 
-    if [ "$stsUPDmute" = "[ mute ] is up to date" ]; then
+    if [ "$stsUPDmute" = "[ m u t e ] is up to date" ]; then
 
         cat <<HTML
         <!-- [ m u t e ] -->

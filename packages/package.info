@@ -1,9 +1,5 @@
-ver=1.20.1
-url=https://github.com/mute-audio/mute/releases/download/v1.20.1/mute_update_1201.zip
+ver=1.20.2
+url=https://github.com/mute-audio/mute/releases/download/1.20.2/mute_update_1202.zip
 info:
-- Revise: UI Design Brush-Up (CSS)
-- Revise: Desabled qobuz Input Plugin/ MPD Tab
 - Revise: Re-branding a little: [ mute ] -> [ m u t e ]
-- Revise: Re-designed SSH login Display: /etc/motd
-- Improved: XSS Mitigation: QUERY_STRING Handling
-- BugFix: Mount/unmount Volume (NAS/USB) Process/ Source Volume Tab
+- Minor BugFix
