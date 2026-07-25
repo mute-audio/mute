@@ -220,7 +220,7 @@ sudo rm -Rf ../mute_update 2>/dev/null 1>/dev/null
   fi
 
 ## Rewrite Update_mute_notice.txt
-echo -n "[ mute ] is up to date" | sudo tee /var/www/cgi-bin/Update/Update_mute_notice.txt > /dev/null
+echo -n "[ m u t e ] is up to date" | sudo tee /var/www/cgi-bin/Update/Update_mute_notice.txt > /dev/null
 
 #### Update Log ####
 date +"%Y-%m-%d %H:%M:%S" | sudo tee -a /var/www/cgi-bin/log/update_mute.log > /dev/null
