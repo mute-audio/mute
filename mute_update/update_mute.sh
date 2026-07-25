@@ -49,7 +49,7 @@ echo " -------- mute Update ( ver.${VER} ) Starts  ${DATE} --------" \
 
 #### Copy Updated Source       ####################
 
-echo " Updating [ mute ] ..."
+echo " Updating [ m u t e ] ..."
 
   ### Backup the current log & config files ###
   echo ""
@@ -177,7 +177,7 @@ echo " Updating [ mute ] ..."
   echo " Installing Media Renderers... Done"
 
 echo ""
-echo " Updating [ mute ]... Done" \
+echo " Updating [ m u t e ]... Done" \
  | sudo tee -a /${bootDIR}/mute_log > /dev/null
 
 #### Finalize ####################
@@ -212,7 +212,7 @@ date +"%Y-%m-%d %H:%M:%S" \
 hostname=$(hostname)
 
 echo ''
-echo " [ mute ] is updated successfully."
+echo " [ m u t e ] is updated successfully."
 echo " To confirm update, re-load \" ${hostname}.local \"."
 echo ''
 

@@ -1,8 +1,8 @@
 #!/bin/bash
 
 ## mute_packager.sh
-## [ mute ] Packager shell
-## (C)2024 kitamura_design <kitamura_design@me.com>
+## [ m u t e ] Packager shell
+## (C)2026 kitamura_design <kitamura_design@me.com>
 
 ## Input error handling
 if [ $# != 1 ] ; then
@@ -19,7 +19,7 @@ set -e
 
 ## Show Title
     echo ""
-    echo " [ mute ] Packager Ver.${1} "
+    echo " [ m u t e ] Packager Ver.${1} "
     echo ""
 
 ## Pre-cooking: Rewrite Version @mute.conf

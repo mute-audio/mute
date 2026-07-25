@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Update_mute_exec2.sh            #
-# mute (C)2023 kitamura_design    #
+# mute (C)2026 kitamura_design    #
 
-echo " Updating [ mute ] ..."
+echo " Updating [ m u t e ] ..."
 
 #### Copy Update source ####
   ### Move to HOME dir ###

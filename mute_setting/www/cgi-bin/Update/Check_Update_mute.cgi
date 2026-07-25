@@ -8,7 +8,7 @@ set -o pipefail
 
 #### FUNCTION ####
 
-######## [ mute ] Update Check
+######## [ m u t e ] Update Check
 function genInput_muteUpdateCheck() {
     URL="https://raw.githubusercontent.com/mute-audio/mute/main/packages/package.info"
     pkg_INFO=$(sudo wget --no-check-certificate -q -O - ${URL})
@@ -20,13 +20,13 @@ function genInput_muteUpdateCheck() {
 
     if [[ "$chk_UPDATE" -gt "$chk_CURRENT" ]]; then
 
-        echo "[ mute ] Update available.<br>" | sudo tee /var/www/cgi-bin/Update/Update_mute_notice.txt > /dev/null
+        echo "[ m u t e ] Update available.<br>" | sudo tee /var/www/cgi-bin/Update/Update_mute_notice.txt > /dev/null
         echo "<br>" | sudo tee -a /var/www/cgi-bin/Update/Update_mute_notice.txt > /dev/null
         echo "$pkg_VER" | sudo tee -a /var/www/cgi-bin/Update/Update_mute_notice.txt > /dev/null
         echo "$pkg_DTL" | sudo tee -a /var/www/cgi-bin/Update/Update_mute_notice.txt > /dev/null
 
     else
-        echo "[ mute ] is up to date."
+        echo "[ m u t e ] is up to date."
     fi
 }
 

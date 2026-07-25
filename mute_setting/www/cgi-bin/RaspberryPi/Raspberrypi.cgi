@@ -436,7 +436,7 @@ cat <<HTML
             .then((text) => {
              muteUpdate = text;
 
-            if( sysUpdate !== 'All packages are up to date.\n' || muteUpdate !== '[ mute ] is up to date' ){
+            if( sysUpdate.trim() !== 'All packages are up to date.' || muteUpdate.trim() !== '[ m u t e ] is up to date' ){
                 UpdateBadge.style.display = '';
             }else{
                 UpdateBadge.style.display = 'none';

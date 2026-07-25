@@ -1,7 +1,7 @@
 #!/bin/bash
 
-## [ mute ] DAC list generator shell
-## (C)2024 kitamura_design <kitamura_design@me.com>
+## [ m u t e ] DAC list generator shell
+## (C)2026 kitamura_design <kitamura_design@me.com>
 
 
 ## Extract the Info line containing "audio", "sound", "music", "DAC", 

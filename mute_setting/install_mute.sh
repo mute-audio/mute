@@ -33,7 +33,7 @@ echo ' 2 - User group & Permission settings'
 echo ' 3 - Enable CGI'
 echo ' 4 - Install dependencies - nkf, lsof, bc, pmount, getcover'
 echo ' 5 - Install Media Renderers (DLNA & AirPlay)'
-echo ' 6 - Copy [ mute ] source'
+echo ' 6 - Copy [ m u t e ] source'
 echo ' 7 - Finalize - Clean up the sources and this script'
 echo ''
 
@@ -350,10 +350,10 @@ echo ""
 echo " Enabling and Starting Media Renderers... Done" | sudo tee -a /${bootDIR}/mute_log > /dev/null
 
 
-#### Install [ mute ] Source		####################
+#### Install [ m u t e ] Source		####################
 
 echo ''
-echo " 6 - Copy [ mute ] source" | sudo tee -a /${bootDIR}/mute_log
+echo " 6 - Copy [ m u t e ] source" | sudo tee -a /${bootDIR}/mute_log
 
 set +e
 
@@ -363,14 +363,14 @@ set -e
 
 if [ -e /var/www/cgi-bin/etc/mute.conf ]; then
 
-    echo " [ mute ] source exists, you can use [ mute ] already." | sudo tee -a /${bootDIR}/mute_log
-	echo " To control [ mute ], access \" ${hostname}.local \" via web browser from your PC/Tablet."
+    echo " [ m u t e ] source exists, you can use [ m u t e ] already." | sudo tee -a /${bootDIR}/mute_log
+	echo " To control [ m u t e ], access \" ${hostname}.local \" via web browser from your PC/Tablet."
     echo ''
     echo ' --------  mute install Finished. --------' | sudo tee -a /${bootDIR}/mute_log > /dev/null
 
 else
 
-	echo " Copying [ mute ] source..."
+	echo " Copying [ m u t e ] source..."
 	sudo chmod -R 777 /var/www
 	sudo cp -RT ./www /var/www
 	wait
@@ -392,7 +392,7 @@ else
 	sudo systemctl daemon-reload
 	sudo systemctl enable startUpSound.service > /dev/null
 
-    echo " Copying [ mute ] source... Done" | sudo tee -a /${bootDIR}/mute_log > /dev/null
+    echo " Copying [ m u t e ] source... Done" | sudo tee -a /${bootDIR}/mute_log > /dev/null
 
 	#### Finalize			####################
 
@@ -431,8 +431,8 @@ else
     echo " Removed mute_setting files." | sudo tee -a /${bootDIR}/mute_log
 
 	echo ''
-    echo " [ mute ] is installed successfully, automatically reboots."
-    echo " To control [ mute ], access \" ${hostname}.local \" via web browser from your PC/Tablet after rebooting."
+    echo " [ m u t e ] is installed successfully, automatically reboots."
+    echo " To control [ m u t e ], access \" ${hostname}.local \" via web browser from your PC/Tablet after rebooting."
     echo ''
 
     DATE=$(date)
