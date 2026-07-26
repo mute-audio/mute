@@ -113,65 +113,77 @@ echo " Updating [ m u t e ] ..."
   echo ""
   echo " DLNA Renderer..."
 
-	# Get OS Code-name
-	#OS_CODENAME=$(lsb_release -sc)
-  OS_CODENAME="${OS_codename}"
+  if [ which upmpdcli ]; then
+  
+    echo "Skipping UpMpdcli: Already installed."
 
-	echo "Detected OS: ${OS_CODENAME}"
+  else 
+  	# Get OS Code-name
+    OS_CODENAME="${OS_codename}"
 
-	# Install UpMPDcli and Setting
-	if [ "${OS_CODENAME}" = "bullseye" ] || [ "${OS_CODENAME}" = "bookworm" ] || [ "${OS_CODENAME}" = "trixie" ]; then #Version Check
-		# Import repository key & Keylist
-	    sudo curl -L \
-	    https://www.lesbonscomptes.com/pages/lesbonscomptes.gpg \
-	    -o /usr/share/keyrings/lesbonscomptes.gpg
+  	echo "Detected OS: ${OS_CODENAME}"
 
-	    sudo curl -L \
- 	   "https://www.lesbonscomptes.com/upmpdcli/pages/upmpdcli-r${OS_CODENAME}.sources" \
- 	   -o /etc/apt/sources.list.d/upmpdcli.sources
+  	# Install UpMPDcli and Setting
+  	if [ "${OS_CODENAME}" = "bullseye" ] || [ "${OS_CODENAME}" = "bookworm" ] || [ "${OS_CODENAME}" = "trixie" ]; then #Version Check
+  		# Import repository key & Keylist
+  	    sudo curl -L \
+  	    https://www.lesbonscomptes.com/pages/lesbonscomptes.gpg \
+  	    -o /usr/share/keyrings/lesbonscomptes.gpg
 
-		# Install upmpdcli
-	    sudo apt update
-	    sudo apt -o Acquire::Retries=3 install -y -q upmpdcli
+  	    sudo curl -L \
+  	   "https://www.lesbonscomptes.com/upmpdcli/pages/upmpdcli-r${OS_CODENAME}.sources" \
+  	   -o /etc/apt/sources.list.d/upmpdcli.sources
 
-    	# Replace unit file
-    	if [ -f /usr/lib/systemd/system/upmpdcli.service ]; then
-    	    sudo rm /usr/lib/systemd/system/upmpdcli.service
-    	fi
-    	sudo cp ./upmpdcli.service /etc/systemd/system/upmpdcli.service
-		  sudo cp ./upmpdcli.conf /etc/upmpdcli.conf
-		  sudo cp ./mute_icon.png /usr/share/upmpdcli/mute_icon.png
+  		# Install upmpdcli
+  	    sudo apt update
+  	    sudo apt -o Acquire::Retries=3 install -y -q upmpdcli
 
-		  #Enable and Start
-      sudo systemctl daemon-reload
-      sudo systemctl enable --now upmpdcli
-	else
-    	echo " Skipping UpMPDcli: Unsupported OS version."
-	fi
+      	# Replace unit file
+      	if [ -f /usr/lib/systemd/system/upmpdcli.service ]; then
+      	    sudo rm /usr/lib/systemd/system/upmpdcli.service
+      	fi
+      	sudo cp ./upmpdcli.service /etc/systemd/system/upmpdcli.service
+  		  sudo cp ./upmpdcli.conf /etc/upmpdcli.conf
+  		  sudo cp ./mute_icon.png /usr/share/upmpdcli/mute_icon.png
+
+  		  #Enable and Start
+        sudo systemctl daemon-reload
+        sudo systemctl enable --now upmpdcli
+  	else
+      	echo " Skipping UpMPDcli: Unsupported OS version."
+  	fi
+  fi
 
   ## Shairport-sync
   echo ""
   echo "AirPlay Reciever..."
 
-	# Install shairport-sync
-	sudo apt -o Acquire::Retries=3 install -y -q shairport-sync
+  if [ which shairport-sync ]; then
+  
+    echo "Skipping Shairport-sync: Already installed."
 
-	# AirPlay (Shairport-sync) settings
-	sudo systemctl stop shairport-sync
+  else
+  	# Install shairport-sync
+  	sudo apt -o Acquire::Retries=3 install -y -q shairport-sync
 
-	# Remove old init script if exists
-	if [ -f /etc/init.d/shairport-sync ]; then
-	    sudo rm /etc/init.d/shairport-sync
-	fi
+  	# AirPlay (Shairport-sync) settings
+  	sudo systemctl stop shairport-sync
 
-	# Copy config and systemd service files from the same directory
-	sudo cp ./shairport-sync.conf /etc/shairport-sync.conf
-	sudo cp ./shairport-sync.service /etc/systemd/system/shairport-sync.service	
+  	# Remove old init script if exists
+	  if [ -f /etc/init.d/shairport-sync ]; then
+  	    sudo rm /etc/init.d/shairport-sync
+  	fi
 
-	# Enable and Start
-	echo " Enabling and Starting AirPlay Reciever..."
-	sudo systemctl daemon-reload
-	sudo systemctl enable --now shairport-sync
+  	# Copy config and systemd service files from the same directory
+  	sudo cp ./shairport-sync.conf /etc/shairport-sync.conf
+  	sudo cp ./shairport-sync.service /etc/systemd/system/shairport-sync.service	
+
+  	# Enable and Start
+  	echo " Enabling and Starting AirPlay Reciever..."
+  	sudo systemctl daemon-reload
+  	sudo systemctl enable --now shairport-sync
+
+  fi
 
   echo ""
   echo " Installing Media Renderers... Done"
