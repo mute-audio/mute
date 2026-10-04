@@ -53,6 +53,10 @@ function getInput_mpdInstall_official() {
 
         sudo systemctl enable mpd
         sudo systemctl restart mpd
+
+        # Sync AirPlay (shairport-sync) volume settings with MPD output
+        /var/www/cgi-bin/DLNA_AirPlay/sync_AirPlay_volume.sh || true
+
         sudo apt -o Acquire::Retries=3 install -y --no-install-recommends mpc mpdscribble 2>/dev/null
         sudo systemctl stop mpdscribble
 
@@ -132,6 +136,9 @@ function getInput_mpdInstall_backports() {
         set -e
         sudo systemctl enable mpd
         sudo systemctl restart mpd
+
+        # Sync AirPlay (shairport-sync) volume settings with MPD output
+        /var/www/cgi-bin/DLNA_AirPlay/sync_AirPlay_volume.sh || true
 
         sudo apt -o Acquire::Retries=3 install -y --no-install-recommends mpc mpdscribble  2>/dev/null
 

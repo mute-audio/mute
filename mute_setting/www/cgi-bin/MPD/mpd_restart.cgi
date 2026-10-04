@@ -42,6 +42,9 @@ else
         sudo systemctl restart mpd
 fi
 
+# Sync AirPlay (shairport-sync) volume settings with MPD output
+/var/www/cgi-bin/DLNA_AirPlay/sync_AirPlay_volume.sh
+
 echo "Location: /cgi-bin/MPD/MPD.cgi#${QUERY_STRING}"
 echo ''
 
