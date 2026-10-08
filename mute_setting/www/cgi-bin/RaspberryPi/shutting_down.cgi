@@ -1,7 +1,14 @@
 #!/bin/bash
 
 # shutting_down.cgi                                #
-# (C)2022 kitamura_design <kitamura_design@me.com> #
+# (C)2026 kitamura_design <kitamura_design@me.com> #
+
+# Browser reload after kicked : cancel, back to start page
+if [ "${QUERY_STRING}" = "done" ]; then
+    echo "Location: /cgi-bin/start.cgi"
+    echo ""
+    exit 0
+fi
 
 query=$(date +%Y%m%d%I%M%S)
 
@@ -53,6 +60,9 @@ function powerOffMute() {
   })
   .catch((error) => console.log(error))
 }
+
+// Mark this history entry as "already kicked"
+history.replaceState(null, "", "/cgi-bin/RaspberryPi/shutting_down.cgi?done");
 
 powerOffMute();
 

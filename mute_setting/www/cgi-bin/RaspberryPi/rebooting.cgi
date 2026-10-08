@@ -1,7 +1,14 @@
 #!/bin/bash
 
 # rebooting.cgi                                    #
-# (C)2023 kitamura_design <kitamura_design@me.com> #
+# (C)2026 kitamura_design <kitamura_design@me.com> #
+
+# Browser reload after kicked : cancel, back to start page
+if [ "${QUERY_STRING}" = "done" ]; then
+    echo "Location: /cgi-bin/start.cgi"
+    echo ""
+    exit 0
+fi
 
 query=$(date +%Y%m%d%I%M%S)
 
@@ -69,6 +76,9 @@ function rebootMute() {
   })
   .catch((error) => console.log(error))
 }
+
+// Mark this history entry as "already kicked"
+history.replaceState(null, "", "/cgi-bin/RaspberryPi/rebooting.cgi?done");
 
 rebootMute();
 
