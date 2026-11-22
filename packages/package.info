@@ -1,5 +1,5 @@
-ver=1.20.2
-url=https://github.com/mute-audio/mute/releases/download/1.20.2/mute_update_1202.zip
+ver=1.20.3
+url=https://github.com/mute-audio/mute/releases/download/v1.20.3/mute_update_1203.zip
 info:
-- Revise: Re-branding a little: [ mute ] -> [ m u t e ]
-- Minor BugFix
+- Shairport Sync: Sync volume setting to MPD Output
+- BugFix: Unexpected reboots may occur when the browser reloads

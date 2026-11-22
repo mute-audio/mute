@@ -5,7 +5,7 @@ ToDo
 * Pure Audio Optimization: Kill Bluetooth
 * Pure Audio Optimization: Kill triggerhappy
 * Pure Audio Optimization: Kill Modem Manager
-* Shairport Sync: Toggle Fixed Volume / Software Volume
+
 * Revise Branding of [ m u t e ]: Logo Design, and README.md
 * [ m u t e ] Setup Server: A WebUI server that can be installed without a terminal
 
@@ -15,6 +15,10 @@ ToDo
 * Play-back Option: Auto-shuffle Mode: "ashuffle" implementation
 * ETC: PWA/HTTPS -enabled
 * ETC: MPD DB update Auto-refresh
+
+Ver_1.20.3(2026/11/22)
+- Shairport Sync: Sync volume setting to MPD Output
+- BugFix: Unexpected reboots may occur when the browser reloads
 
 Ver_1.20.2(2026/07/25)
 - Revise: Re-branding a little: [ mute ] -> [ m u t e ]

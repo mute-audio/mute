@@ -7,8 +7,12 @@
 CHK_STATUS=$(sudo systemctl is-enabled shairport-sync 2>/dev/null || echo "disabled")
 
 if [ "$CHK_STATUS" = "enabled" ]; then
+    # Disable Shairport-Sync
     sudo systemctl disable --now shairport-sync
 else
+    # Sync volume settings with MPD before enabling
+    /var/www/cgi-bin/DLNA_AirPlay/sync_AirPlay_volume.sh
+    # Enable Shairport-Sync
     sudo systemctl enable --now shairport-sync
 fi
 
