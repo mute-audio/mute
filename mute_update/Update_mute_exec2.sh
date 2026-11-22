@@ -117,7 +117,7 @@ echo " Updating [ m u t e ] ..."
   echo ""
   echo " DLNA Renderer..."
 
-  if [ which upmpdcli ]; then
+  if which upmpdcli > /dev/null 2>&1; then
     echo "Skipping upmpdcli: Already installed."
 
   else 
@@ -160,7 +160,8 @@ echo " Updating [ m u t e ] ..."
   echo ""
   echo "AirPlay Reciever..."
 
-  if [ which shairport-sync ]; then
+  if which shairport-sync > /dev/null 2>&1; then
+
     echo " Skipping Shairport-sync: Already installed. "
 
   else
@@ -188,6 +189,13 @@ echo " Updating [ m u t e ] ..."
 
   echo ""
   echo " Installing Media Renderers... Done"
+  
+  ## Sync AirPlay volume settings with MPD output (1.20.3)
+  if [ -e /etc/mpd.conf ] && [ -e /etc/shairport-sync.conf ]; then
+    echo ""
+    echo " Syncing AirPlay volume settings..."
+    bash /var/www/cgi-bin/DLNA_AirPlay/sync_AirPlay_volume.sh > /dev/null 2>&1 || true
+  fi
 
 #### Finalize ####
 #newVER=$(cat ./update.info | grep ver | cut -d "=" -f 2)
